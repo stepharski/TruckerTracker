@@ -19,6 +19,7 @@
 		5FB92F2E28B921680037A4AD /* NewItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2D28B921680037A4AD /* NewItemVC.swift */; };
 		5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2F28B921F30037A4AD /* ProfileVC.swift */; };
 		5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3628BC18ED0037A4AD /* Constants.swift */; };
+		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		5FB92F2D28B921680037A4AD /* NewItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemVC.swift; sourceTree = "<group>"; };
 		5FB92F2F28B921F30037A4AD /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		5FB92F3628BC18ED0037A4AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		5F8BE2F328B7F9FA00441353 /* TruckerTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5FB92F3828BD7CBD0037A4AD /* Extensions */,
 				5FB92F3528BC18E20037A4AD /* Utilities */,
 				5FB92F3328B922320037A4AD /* Supporting Files */,
 				5FB92F3228B922080037A4AD /* Custom Views */,
@@ -123,6 +126,14 @@
 				5FB92F3628BC18ED0037A4AD /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5FB92F3828BD7CBD0037A4AD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 			files = (
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5FB92F2C28B920D90037A4AD /* HomeVC.swift in Sources */,
+				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
 				5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5FB92F2E28B921680037A4AD /* NewItemVC.swift in Sources */,
