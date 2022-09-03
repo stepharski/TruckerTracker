@@ -7,13 +7,13 @@
 
 import UIKit
 
-enum TRTabBarItem: String, CaseIterable {
-    case home, newItem, profile
+enum TRTabBarItem: String {
+    case tracker, newItem, profile
 
     var image: UIImage? {
         switch self {
-        case .home:
-            return SFSymbols.house
+        case .tracker:
+            return SFSymbols.circleLine
         case .newItem:
             return nil
         case .profile:
@@ -23,8 +23,8 @@ enum TRTabBarItem: String, CaseIterable {
     
     var selectedImage: UIImage? {
         switch self {
-        case .home:
-            return SFSymbols.houseFill
+        case .tracker:
+            return SFSymbols.circleLineFilled
         case .newItem:
             return nil
         case .profile:

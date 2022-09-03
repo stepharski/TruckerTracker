@@ -15,11 +15,12 @@
 		5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8BE30228B7F9FB00441353 /* LaunchScreen.storyboard */; };
 		5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */; };
 		5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2928B920540037A4AD /* TRTabBar.swift */; };
-		5FB92F2C28B920D90037A4AD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2B28B920D90037A4AD /* HomeVC.swift */; };
 		5FB92F2E28B921680037A4AD /* NewItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2D28B921680037A4AD /* NewItemVC.swift */; };
 		5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2F28B921F30037A4AD /* ProfileVC.swift */; };
 		5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3628BC18ED0037A4AD /* Constants.swift */; };
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
+		5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */; };
+		5FB92F4028C369310037A4AD /* TrackerCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,11 +34,12 @@
 		5F8BE30528B7F9FB00441353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBarController.swift; sourceTree = "<group>"; };
 		5FB92F2928B920540037A4AD /* TRTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBar.swift; sourceTree = "<group>"; };
-		5FB92F2B28B920D90037A4AD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		5FB92F2D28B921680037A4AD /* NewItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemVC.swift; sourceTree = "<group>"; };
 		5FB92F2F28B921F30037A4AD /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		5FB92F3628BC18ED0037A4AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerVC.swift; sourceTree = "<group>"; };
+		5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +87,8 @@
 		5FB92F3128B921FD0037A4AD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				5FB92F2B28B920D90037A4AD /* HomeVC.swift */,
+				5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */,
+				5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */,
 				5FB92F2D28B921680037A4AD /* NewItemVC.swift */,
 				5FB92F2F28B921F30037A4AD /* ProfileVC.swift */,
 			);
@@ -208,12 +211,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
-				5FB92F2C28B920D90037A4AD /* HomeVC.swift in Sources */,
+				5FB92F4028C369310037A4AD /* TrackerCategoryVC.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
 				5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5FB92F2E28B921680037A4AD /* NewItemVC.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
+				5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */,

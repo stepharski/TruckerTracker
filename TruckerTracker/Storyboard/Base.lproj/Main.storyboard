@@ -12,7 +12,7 @@
         <!--Tracker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TrackerVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -285,16 +285,31 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tracker" id="qSN-TD-ugg"/>
                     <connections>
-                        <outlet property="dateRangePickerView" destination="ap8-VV-W12" id="TjT-Kh-Z3y"/>
-                        <outlet property="expensesPlaceholderView" destination="cD6-Xu-8s3" id="xU7-uv-cE3"/>
-                        <outlet property="fuelPlaceholderView" destination="iag-qR-MGL" id="3VT-vO-cWn"/>
-                        <outlet property="grossPlaceholderView" destination="6s2-vM-WLs" id="iXV-oa-z7H"/>
-                        <outlet property="milesPlaceholderView" destination="sMg-x9-th6" id="7nS-Mt-Vpo"/>
+                        <outlet property="dateRangePickerView" destination="ap8-VV-W12" id="PGO-83-l6k"/>
+                        <outlet property="expensesCategoryView" destination="cD6-Xu-8s3" id="HK2-mw-dxP"/>
+                        <outlet property="fuelCategoryView" destination="iag-qR-MGL" id="G6J-Hn-bq9"/>
+                        <outlet property="grossCategoryView" destination="6s2-vM-WLs" id="e7K-t4-I66"/>
+                        <outlet property="milesCategoryView" destination="sMg-x9-th6" id="nGy-f8-H4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1942" y="-478"/>
+        </scene>
+        <!--Tracker CategoryVC-->
+        <scene sceneID="mAq-VX-tWd">
+            <objects>
+                <viewController storyboardIdentifier="TrackerCategoryVC" id="rs2-6z-mgJ" customClass="TrackerCategoryVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4rK-3l-LuG">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sb2-pG-AQh"/>
+                        <color key="backgroundColor" red="0.15294117647058825" green="0.32941176470588235" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MUN-tM-TgW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2835" y="-478"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ZN9-JH-CFa">
@@ -377,7 +392,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Dyr-s4-MBi">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="N17-t0-9Uo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TrackerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="N17-t0-9Uo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="IyU-Q5-Tc9">
                         <imageReference key="image" image="house" catalog="system" symbolScale="large"/>
                         <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large"/>
