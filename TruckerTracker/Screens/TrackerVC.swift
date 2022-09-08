@@ -7,52 +7,10 @@
 
 import UIKit
 
-enum TrackerCategory: String {
-    case gross, miles, expenses, fuel
-    
-    var image: UIImage? {
-        switch self {
-        case .gross:
-            return SFSymbols.dollar
-        case .miles:
-            return SFSymbols.doubleCircle
-        case .expenses:
-            return SFSymbols.minusCircle
-        case .fuel:
-            return SFSymbols.flame
-        }
-    }
-    
-    var gradientColors: [UIColor] {
-        switch self {
-        case .gross:
-            return [#colorLiteral(red: 0.1921568627, green: 0.6431372549, blue: 0.4549019608, alpha: 1), #colorLiteral(red: 0.1058823529, green: 0.1450980392, blue: 0.1333333333, alpha: 1)]
-        case .miles:
-            return [#colorLiteral(red: 0.168627451, green: 0.2509803922, blue: 0.2235294118, alpha: 1), #colorLiteral(red: 0, green: 0.06274509804, blue: 0, alpha: 1)]
-        case .expenses:
-            return [#colorLiteral(red: 0.7058823529, green: 0.2745098039, blue: 0.2235294118, alpha: 1), #colorLiteral(red: 0.2509803922, green: 0.0431372549, blue: 0.02352941176, alpha: 1)]
-        case .fuel:
-            return [#colorLiteral(red: 0.4509803922, green: 0.1098039216, blue: 0.07058823529, alpha: 1), #colorLiteral(red: 0.05490196078, green: 0.01176470588, blue: 0.007843137255, alpha: 1)]
-        }
-    }
-    
-    var gradientLocations: [NSNumber] {
-        return [0, 1]
-    }
-    
-    var title: String {
-        return self.rawValue.capitalized(with: nil)
-    }
-}
-
 class TrackerVC: UIViewController {
 
     @IBOutlet weak var dateRangePickerView: UIView!
-    
-    @IBOutlet weak var grossCategoryView: UIView!
-    @IBOutlet weak var milesCategoryView: UIView!
-    @IBOutlet weak var expensesCategoryView: UIView!
-    @IBOutlet weak var fuelCategoryView: UIView!
+    @IBOutlet var categoryBackgroundViews: [UIView]!
     
     
     override func viewDidLoad() {
@@ -60,6 +18,7 @@ class TrackerVC: UIViewController {
 
         configureNavBar()
         configureUI()
+        configureCategoryViews()
         bindTapGestureToCategories()
     }
     
@@ -89,31 +48,52 @@ class TrackerVC: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
 
+    
     func configureUI() {
         dateRangePickerView.layer.cornerRadius = 30
-        
-        let categoryViews = [grossCategoryView, milesCategoryView,
-                            expensesCategoryView, fuelCategoryView]
-        categoryViews.forEach { $0?.layer.cornerRadius = 30 }
+        categoryBackgroundViews.forEach { $0.layer.cornerRadius = 30 }
     }
+    
+    
+    func configureCategoryViews() {
+        guard categoryBackgroundViews.count == TrackerCategoryType.allCases.count else {
+            return
+        }
+        
+        for index in categoryBackgroundViews.indices {
+            let categoryType = TrackerCategoryType.allCases[index]
+            let categoryInfoView = TRCategoryInfoView(categoryType: categoryType, withCount: 8800)
+            let categoryBackgroundView = categoryBackgroundViews[index]
+            
+            categoryBackgroundView.addSubview(categoryInfoView)
+            categoryInfoView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                categoryInfoView.centerXAnchor.constraint(equalTo: categoryBackgroundView.centerXAnchor),
+                categoryInfoView.centerYAnchor.constraint(equalTo: categoryBackgroundView.centerYAnchor)
+            ])
+        }
+    }
+    
     
     func applyGradients() {
         dateRangePickerView.applyGradient(colors: [#colorLiteral(red: 0.1529411765, green: 0.3294117647, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.09411764706, green: 0.09411764706, blue: 0.09411764706, alpha: 1)], locations: [0, 1])
         
-        grossCategoryView.applyGradient(colors: TrackerCategory.gross.gradientColors,
-                                        locations: TrackerCategory.gross.gradientLocations)
-        milesCategoryView.applyGradient(colors: TrackerCategory.miles.gradientColors,
-                                        locations: TrackerCategory.miles.gradientLocations)
-        expensesCategoryView.applyGradient(colors: TrackerCategory.expenses.gradientColors,
-                                           locations: TrackerCategory.expenses.gradientLocations)
-        fuelCategoryView.applyGradient(colors: TrackerCategory.fuel.gradientColors,
-                                       locations: TrackerCategory.fuel.gradientLocations)
+        guard categoryBackgroundViews.count == TrackerCategoryType.allCases.count else {
+            return
+        }
+        
+        for index in categoryBackgroundViews.indices {
+            let categoryType = TrackerCategoryType.allCases[index]
+            categoryBackgroundViews[index].applyGradient(colors: categoryType.gradientColors,
+                                                         locations: categoryType.gradientLocations)
+        }
     }
     
     
     func bindTapGestureToCategories() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCategory(_:)))
-        grossCategoryView.addGestureRecognizer(tapGestureRecognizer)
+        categoryBackgroundViews.forEach { $0.addGestureRecognizer(tapGestureRecognizer) }
     }
     
     @objc func didTapCategory(_ sender: UITapGestureRecognizer) {

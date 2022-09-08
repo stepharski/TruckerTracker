@@ -21,6 +21,8 @@
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
 		5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */; };
 		5FB92F4028C369310037A4AD /* TrackerCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */; };
+		5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */; };
+		5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerVC.swift; sourceTree = "<group>"; };
 		5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryVC.swift; sourceTree = "<group>"; };
+		5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryType.swift; sourceTree = "<group>"; };
+		5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRCategoryInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 		5F8BE2F328B7F9FA00441353 /* TruckerTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5FB92F4728C984140037A4AD /* Model */,
 				5FB92F3828BD7CBD0037A4AD /* Extensions */,
 				5FB92F3528BC18E20037A4AD /* Utilities */,
 				5FB92F3328B922320037A4AD /* Supporting Files */,
@@ -98,8 +103,8 @@
 		5FB92F3228B922080037A4AD /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */,
-				5FB92F2928B920540037A4AD /* TRTabBar.swift */,
+				5FB92F4128C970FD0037A4AD /* TabBar */,
+				5FB92F4228C971250037A4AD /* Views */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -137,6 +142,39 @@
 				5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5FB92F4128C970FD0037A4AD /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */,
+				5FB92F2928B920540037A4AD /* TRTabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		5FB92F4228C971250037A4AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5FB92F4728C984140037A4AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5FB92F4828C9841A0037A4AD /* Enums */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5FB92F4828C9841A0037A4AD /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
+				5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */,
 				5FB92F4028C369310037A4AD /* TrackerCategoryVC.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
 				5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */,
