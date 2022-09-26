@@ -30,6 +30,7 @@ class TrackerVC: UIViewController {
     
     
     func configureNavBar() {
+        navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -43,9 +44,6 @@ class TrackerVC: UIViewController {
             style: .plain,
             target: self,
             action: #selector(shareReport))
-        
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.rightBarButtonItem?.tintColor = .white
     }
 
     
@@ -92,18 +90,32 @@ class TrackerVC: UIViewController {
     
     
     func bindTapGestureToCategories() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCategory(_:)))
-        categoryBackgroundViews.forEach { $0.addGestureRecognizer(tapGestureRecognizer) }
+        categoryBackgroundViews.forEach {
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCategory(_:)))
+            $0.addGestureRecognizer(tapGestureRecognizer)
+        }
     }
+    
     
     @objc func didTapCategory(_ sender: UITapGestureRecognizer) {
-        presentTrackerCategoryVC()
+        guard let tappedView = sender.view,
+              let tappedViewIndex = categoryBackgroundViews.firstIndex(of: tappedView) else {
+            return
+        }
+        
+        let category = TrackerCategoryType.allCases[tappedViewIndex]
+        presentTrackerCategoryVC(for: category)
     }
     
-    @objc func presentTrackerCategoryVC() {
-        let trackerCategoryVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.trackerCategoryVC) as! TrackerCategoryVC
-        self.present(trackerCategoryVC, animated: true)
+    
+    func presentTrackerCategoryVC(for category: TrackerCategoryType) {
+        let trackerCategoryVC = self.storyboard?
+            .instantiateViewController(withIdentifier: StoryboardIdentifiers.trackerCategoryVC) as! TrackerCategoryVC
+        
+        trackerCategoryVC.category = category
+        navigationController?.pushViewController(trackerCategoryVC, animated: true)
     }
+    
     
     @objc func openMenu() {
         // TODO: Open MenuVC

@@ -8,22 +8,46 @@
 import UIKit
 
 class TrackerCategoryVC: UIViewController {
-
+    
+    @IBOutlet weak var totalSumLabel: UILabel!
+    @IBOutlet weak var leadingStatisticsLabel: UILabel!
+    @IBOutlet weak var trailingStatisticsLabel: UILabel!
+    @IBOutlet weak var symbolImageView: UIImageView!
+    
+    @IBOutlet weak var tableBackgroundView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    var category = TrackerCategoryType.gross
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureNavBar()
+        configureUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        applyGradients()
     }
-    */
 
+    
+    func configureNavBar() {
+        navigationItem.title = category.title.capitalized
+    }
+    
+    func configureUI() {
+        tableBackgroundView.layer.cornerRadius = 30
+        symbolImageView.image = category.image
+        symbolImageView.tintColor = category.imageTintColor
+        
+    }
+    
+    func applyGradients() {
+        view.applyGradient(colors: category.gradientColors, locations: category.gradientLocations)
+        tableBackgroundView.applyGradient(colors: category.contrastGradientColors, locations: category.gradientLocations)
+    }
 }
