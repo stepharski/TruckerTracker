@@ -9,6 +9,9 @@ import UIKit
 
 class TrackerVC: UIViewController {
 
+    @IBOutlet weak var totalValueTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var totalValueBottomConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var dateRangePickerView: UIView!
     @IBOutlet var categoryBackgroundViews: [UIView]!
     
@@ -50,6 +53,9 @@ class TrackerVC: UIViewController {
     func configureUI() {
         dateRangePickerView.layer.cornerRadius = 30
         categoryBackgroundViews.forEach { $0.layer.cornerRadius = 30 }
+        
+        totalValueTopConstraint.constant = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhoneZoomed ? 20 : 40
+        totalValueBottomConstraint.constant = totalValueTopConstraint.constant
     }
     
     

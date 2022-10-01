@@ -142,6 +142,8 @@
                     <navigationItem key="navigationItem" title="Tracker" id="qSN-TD-ugg"/>
                     <connections>
                         <outlet property="dateRangePickerView" destination="ap8-VV-W12" id="PGO-83-l6k"/>
+                        <outlet property="totalValueBottomConstraint" destination="Nlr-ex-fJf" id="ksd-eE-RmA"/>
+                        <outlet property="totalValueTopConstraint" destination="Amr-HI-akI" id="134-Ib-VVF"/>
                         <outletCollection property="categoryBackgroundViews" destination="6s2-vM-WLs" collectionClass="NSMutableArray" id="OUS-iP-9KV"/>
                         <outletCollection property="categoryBackgroundViews" destination="cD6-Xu-8s3" collectionClass="NSMutableArray" id="NjO-uK-s3j"/>
                         <outletCollection property="categoryBackgroundViews" destination="sMg-x9-th6" collectionClass="NSMutableArray" id="FDt-QO-TGo"/>
@@ -258,7 +260,7 @@ last week</string>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rCB-ze-Ldx">
-                                        <rect key="frame" x="10" y="74.999999999999972" width="330" height="457.33333333333326"/>
+                                        <rect key="frame" x="10" y="74.999999999999972" width="330" height="417.33333333333326"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -268,7 +270,7 @@ last week</string>
                                     <constraint firstItem="RO1-Hd-xgF" firstAttribute="top" secondItem="bmO-Jq-Nyz" secondAttribute="top" id="6Go-VQ-Y40"/>
                                     <constraint firstAttribute="trailing" secondItem="RO1-Hd-xgF" secondAttribute="trailing" id="U7j-eZ-qqN"/>
                                     <constraint firstItem="rCB-ze-Ldx" firstAttribute="top" secondItem="RO1-Hd-xgF" secondAttribute="bottom" constant="15" id="VNa-ZA-Xoa"/>
-                                    <constraint firstAttribute="bottom" secondItem="rCB-ze-Ldx" secondAttribute="bottom" constant="10" id="XeQ-at-r4I"/>
+                                    <constraint firstAttribute="bottom" secondItem="rCB-ze-Ldx" secondAttribute="bottom" constant="50" id="XeQ-at-r4I"/>
                                     <constraint firstItem="RO1-Hd-xgF" firstAttribute="leading" secondItem="bmO-Jq-Nyz" secondAttribute="leading" id="esR-j9-W6Q"/>
                                     <constraint firstItem="rCB-ze-Ldx" firstAttribute="leading" secondItem="bmO-Jq-Nyz" secondAttribute="leading" constant="10" id="fUE-FT-zTx"/>
                                 </constraints>

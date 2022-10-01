@@ -43,7 +43,7 @@ class TRCategoryInfoView: UIView {
         generalStackView.axis = .vertical
         generalStackView.alignment = .center
         generalStackView.distribution = .fill
-        generalStackView.spacing = 20
+        generalStackView.spacing = DeviceTypes.isiPhoneZoomed ? 10 : 20
         
         generalStackView.addArrangedSubview(symbolImageView)
         generalStackView.addArrangedSubview(labelsStackView)
@@ -65,18 +65,23 @@ class TRCategoryInfoView: UIView {
         
         symbolImageView.contentMode = .scaleAspectFit
         
-        countLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        let countLabelFontSize: CGFloat = DeviceTypes.isiPhoneZoomed ? 20 : 28
+        countLabel.font = UIFont.systemFont(ofSize: countLabelFontSize, weight: .bold)
         countLabel.textColor = #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
         
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        let titleLabelFontSize: CGFloat = DeviceTypes.isiPhoneZoomed ? 14 : 16
+        titleLabel.font = UIFont.systemFont(ofSize: titleLabelFontSize, weight: .medium)
         titleLabel.textColor = #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 0.8)
+        
+        
+        let symbolImageHeight: CGFloat = DeviceTypes.isiPhoneZoomed ? 30 : 40
         
         NSLayoutConstraint.activate([
             generalStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             generalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            symbolImageView.heightAnchor.constraint(equalToConstant: 40),
-            symbolImageView.widthAnchor.constraint(equalToConstant: 40)
+            symbolImageView.heightAnchor.constraint(equalToConstant: symbolImageHeight),
+            symbolImageView.widthAnchor.constraint(equalToConstant: symbolImageHeight)
         ])
     }
 }
