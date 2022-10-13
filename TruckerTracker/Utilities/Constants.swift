@@ -10,6 +10,7 @@ import UIKit
 enum SFSymbols {
     static let menu = UIImage(systemName: "line.3.horizontal")
     static let share = UIImage(systemName: "square.and.arrow.up")
+    static let xmark = UIImage(systemName: "xmark")
     static let circleLine = UIImage(systemName: "circle.and.line.horizontal")
     static let circleLineFilled = UIImage(systemName: "circle.and.line.horizontal.fill")
     static let plus = UIImage(systemName: "plus")
@@ -29,7 +30,7 @@ enum SFSymbols {
 
 enum StoryboardIdentifiers {
     static let trackerNavigationController = "TrackerNavigationController"
-    static let newItemNavigationController = "NewItemNavigationController"
+    static let categoryItemNavigationController = "CategoryItemNavigationController"
     static let profileNavigationController = "ProfileNavigationController"
     static let trackerCategoryVC = "TrackerCategoryVC"
 }

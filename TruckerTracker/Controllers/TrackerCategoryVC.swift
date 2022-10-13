@@ -58,13 +58,19 @@ class TrackerCategoryVC: UIViewController {
         switch category {
         case .gross:
             tableView.register(GrossCell.nib, forCellReuseIdentifier: GrossCell.identifier)
-        case .expenses:
-            tableView.register(ExpensesCell.nib, forCellReuseIdentifier: ExpensesCell.identifier)
         case .miles:
             tableView.register(MilesCell.nib, forCellReuseIdentifier: MilesCell.identifier)
+        case .expenses:
+            tableView.register(ExpensesCell.nib, forCellReuseIdentifier: ExpensesCell.identifier)
         case .fuel:
             tableView.register(FuelCell.nib, forCellReuseIdentifier: FuelCell.identifier)
         }
+    }
+    
+    
+    func presentCategoryItemNavController() {
+        let categoryItemNavController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.categoryItemNavigationController) as! UINavigationController
+        self.present(categoryItemNavController, animated: true)
     }
 }
 
@@ -81,10 +87,10 @@ extension TrackerCategoryVC: UITableViewDelegate, UITableViewDataSource {
         switch category {
         case .gross:
             cell = tableView.dequeueReusableCell(withIdentifier: GrossCell.identifier) as! GrossCell
-        case .expenses:
-            cell = tableView.dequeueReusableCell(withIdentifier: ExpensesCell.identifier) as! ExpensesCell
         case .miles:
             cell = tableView.dequeueReusableCell(withIdentifier: MilesCell.identifier) as! MilesCell
+        case .expenses:
+            cell = tableView.dequeueReusableCell(withIdentifier: ExpensesCell.identifier) as! ExpensesCell
         case .fuel:
             cell = tableView.dequeueReusableCell(withIdentifier: FuelCell.identifier) as! FuelCell
         }
@@ -98,7 +104,8 @@ extension TrackerCategoryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: Show Detailed Category VC
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        presentCategoryItemNavController()
     }
 }

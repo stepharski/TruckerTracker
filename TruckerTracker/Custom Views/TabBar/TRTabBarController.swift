@@ -24,7 +24,7 @@ class TRTabBarController: UITabBarController {
     
     func createTabBarItems() {
         let trackerNavController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.trackerNavigationController) as! UINavigationController
-        let newItemNavController = self.storyboard?.instantiateViewController( withIdentifier: StoryboardIdentifiers.newItemNavigationController) as! UINavigationController
+        let newItemNavController = self.storyboard?.instantiateViewController( withIdentifier: StoryboardIdentifiers.categoryItemNavigationController) as! UINavigationController
         let profileNavController = self.storyboard?.instantiateViewController( withIdentifier: StoryboardIdentifiers.profileNavigationController) as! UINavigationController
         
         trackerNavController.tabBarItem = UITabBarItem(title: nil,
@@ -50,8 +50,8 @@ class TRTabBarController: UITabBarController {
     }
     
     func presentNewItemNavController() {
-        let newItemNavController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.newItemNavigationController) as! UINavigationController
-//        newItemNavController.modalPresentationCapturesStatusBarAppearance = true
+        let newItemNavController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.categoryItemNavigationController) as! UINavigationController
+        newItemNavController.modalPresentationCapturesStatusBarAppearance = true
         self.present(newItemNavController, animated: true)
     }
 }
