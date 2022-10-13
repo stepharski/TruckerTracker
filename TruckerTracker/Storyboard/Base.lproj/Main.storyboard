@@ -156,10 +156,10 @@
             </objects>
             <point key="canvasLocation" x="1941.5384615384614" y="-478.43601895734594"/>
         </scene>
-        <!--Tracker CategoryVC-->
+        <!--Category SummaryVC-->
         <scene sceneID="mAq-VX-tWd">
             <objects>
-                <viewController storyboardIdentifier="TrackerCategoryVC" id="rs2-6z-mgJ" customClass="TrackerCategoryVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategorySummaryVC" id="rs2-6z-mgJ" customClass="CategorySummaryVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4rK-3l-LuG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,12 +309,12 @@ last week</string>
                     </view>
                     <navigationItem key="navigationItem" id="POW-kD-baw"/>
                     <connections>
-                        <outlet property="leadingStatisticsLabel" destination="ST1-bJ-iUb" id="dnx-wT-SfW"/>
-                        <outlet property="symbolImageView" destination="olW-A2-FH6" id="YLx-Ym-YwP"/>
-                        <outlet property="tableBackgroundView" destination="bmO-Jq-Nyz" id="vmq-Kc-4g7"/>
-                        <outlet property="tableView" destination="rCB-ze-Ldx" id="BbA-44-Ow3"/>
-                        <outlet property="totalSumLabel" destination="79A-iH-1cr" id="Ium-TH-zkB"/>
-                        <outlet property="trailingStatisticsLabel" destination="l2F-4Y-2Xb" id="EzD-po-UHf"/>
+                        <outlet property="leadingStatiscitcsLabel" destination="ST1-bJ-iUb" id="H7h-KL-vg6"/>
+                        <outlet property="symbolImageView" destination="olW-A2-FH6" id="AIz-K1-wpd"/>
+                        <outlet property="tableBackgroundView" destination="bmO-Jq-Nyz" id="bkc-2I-loX"/>
+                        <outlet property="tableView" destination="rCB-ze-Ldx" id="PZh-RJ-Qqp"/>
+                        <outlet property="totalSumLabel" destination="79A-iH-1cr" id="5x4-Pw-k8i"/>
+                        <outlet property="trailingStatiscticsLabel" destination="l2F-4Y-2Xb" id="sMD-rx-uen"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUN-tM-TgW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

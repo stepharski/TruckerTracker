@@ -110,16 +110,16 @@ class TrackerVC: UIViewController {
         }
         
         let category = TrackerCategoryType.allCases[tappedViewIndex]
-        presentTrackerCategoryVC(for: category)
+        presentCategorySummaryVC(for: category)
     }
     
     
-    func presentTrackerCategoryVC(for category: TrackerCategoryType) {
-        let trackerCategoryVC = self.storyboard?
-            .instantiateViewController(withIdentifier: StoryboardIdentifiers.trackerCategoryVC) as! TrackerCategoryVC
+    func presentCategorySummaryVC(for category: TrackerCategoryType) {
+        let categorySummaryVC = self.storyboard?
+            .instantiateViewController(withIdentifier: StoryboardIdentifiers.categorySummaryVC) as! CategorySummaryVC
         
-        trackerCategoryVC.category = category
-        navigationController?.pushViewController(trackerCategoryVC, animated: true)
+        categorySummaryVC.category = category
+        navigationController?.pushViewController(categorySummaryVC, animated: true)
     }
     
     

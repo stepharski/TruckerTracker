@@ -29,9 +29,9 @@
 		5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3628BC18ED0037A4AD /* Constants.swift */; };
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
 		5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */; };
-		5FB92F4028C369310037A4AD /* TrackerCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */; };
 		5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */; };
 		5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */; };
+		5FD315A628F882AD00169E23 /* CategorySummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,9 +59,9 @@
 		5FB92F3628BC18ED0037A4AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerVC.swift; sourceTree = "<group>"; };
-		5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryVC.swift; sourceTree = "<group>"; };
 		5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryType.swift; sourceTree = "<group>"; };
 		5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRCategoryInfoView.swift; sourceTree = "<group>"; };
+		5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySummaryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +78,8 @@
 		5F7B12B928E63EE200AA4B6F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5F7B12BE28E6444F00AA4B6F /* GrossCell */,
-				5F7B12C128E8871B00AA4B6F /* MilesCell */,
-				5F7B12C628E88BA900AA4B6F /* ExpensesCell */,
-				5F7B12CB28E891A900AA4B6F /* FuelCell */,
+				5FD3159C28F87BFD00169E23 /* Summary Cells */,
+				5FD3159D28F87C0900169E23 /* Detailed Cells */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -158,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */,
-				5FB92F3F28C369310037A4AD /* TrackerCategoryVC.swift */,
+				5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */,
 				5FAEAF5C28F70297005F7C6C /* CategoryItemVC.swift */,
 				5FB92F2F28B921F30037A4AD /* ProfileVC.swift */,
 			);
@@ -244,6 +242,24 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		5FD3159C28F87BFD00169E23 /* Summary Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5F7B12BE28E6444F00AA4B6F /* GrossCell */,
+				5F7B12C128E8871B00AA4B6F /* MilesCell */,
+				5F7B12C628E88BA900AA4B6F /* ExpensesCell */,
+				5F7B12CB28E891A900AA4B6F /* FuelCell */,
+			);
+			path = "Summary Cells";
+			sourceTree = "<group>";
+		};
+		5FD3159D28F87C0900169E23 /* Detailed Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Detailed Cells";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,7 +339,6 @@
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */,
 				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
-				5FB92F4028C369310037A4AD /* TrackerCategoryVC.swift in Sources */,
 				5F7B12C428E8873400AA4B6F /* MilesCell.swift in Sources */,
 				5F7B12C928E88BC900AA4B6F /* ExpensesCell.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
@@ -336,6 +351,7 @@
 				5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
+				5FD315A628F882AD00169E23 /* CategorySummaryVC.swift in Sources */,
 				5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

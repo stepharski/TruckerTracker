@@ -1,25 +1,23 @@
 //
-//  TrackerCategoryVC.swift
+//  CategorySummaryVC.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 9/3/22.
+//  Created by Stepan Kukharskyi on 10/13/22.
 //
 
 import UIKit
 
-class TrackerCategoryVC: UIViewController {
-    
+class CategorySummaryVC: UIViewController {
+
     @IBOutlet weak var totalSumLabel: UILabel!
-    @IBOutlet weak var leadingStatisticsLabel: UILabel!
-    @IBOutlet weak var trailingStatisticsLabel: UILabel!
+    @IBOutlet weak var leadingStatiscitcsLabel: UILabel!
+    @IBOutlet weak var trailingStatiscticsLabel: UILabel!
     @IBOutlet weak var symbolImageView: UIImageView!
     
     @IBOutlet weak var tableBackgroundView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     var category = TrackerCategoryType.gross
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +74,7 @@ class TrackerCategoryVC: UIViewController {
 
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
-extension TrackerCategoryVC: UITableViewDelegate, UITableViewDataSource {
+extension CategorySummaryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
@@ -109,3 +107,4 @@ extension TrackerCategoryVC: UITableViewDelegate, UITableViewDataSource {
         presentCategoryItemNavController()
     }
 }
+
