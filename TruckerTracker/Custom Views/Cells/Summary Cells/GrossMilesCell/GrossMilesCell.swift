@@ -1,14 +1,14 @@
 //
-//  GrossCell.swift
+//  GrossMilesCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 9/29/22.
+//  Created by Stepan Kukharskyi on 10/17/22.
 //
 
 import UIKit
 
-class GrossCell: UITableViewCell {
-    
+class GrossMilesCell: UITableViewCell {
+
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     

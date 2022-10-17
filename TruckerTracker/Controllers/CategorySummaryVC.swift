@@ -54,10 +54,8 @@ class CategorySummaryVC: UIViewController {
         tableView.dataSource = self
         
         switch category {
-        case .gross:
-            tableView.register(GrossCell.nib, forCellReuseIdentifier: GrossCell.identifier)
-        case .miles:
-            tableView.register(MilesCell.nib, forCellReuseIdentifier: MilesCell.identifier)
+        case .gross, .miles:
+            tableView.register(GrossMilesCell.nib, forCellReuseIdentifier: GrossMilesCell.identifier)
         case .expenses:
             tableView.register(ExpensesCell.nib, forCellReuseIdentifier: ExpensesCell.identifier)
         case .fuel:
@@ -84,9 +82,9 @@ extension CategorySummaryVC: UITableViewDelegate, UITableViewDataSource {
         
         switch category {
         case .gross:
-            cell = tableView.dequeueReusableCell(withIdentifier: GrossCell.identifier) as! GrossCell
+            cell = tableView.dequeueReusableCell(withIdentifier: GrossMilesCell.identifier) as! GrossMilesCell
         case .miles:
-            cell = tableView.dequeueReusableCell(withIdentifier: MilesCell.identifier) as! MilesCell
+            cell = tableView.dequeueReusableCell(withIdentifier: GrossMilesCell.identifier) as! GrossMilesCell
         case .expenses:
             cell = tableView.dequeueReusableCell(withIdentifier: ExpensesCell.identifier) as! ExpensesCell
         case .fuel:

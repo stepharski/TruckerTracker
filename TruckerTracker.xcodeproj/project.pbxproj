@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F7B12BC28E6444800AA4B6F /* GrossCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BA28E6444800AA4B6F /* GrossCell.swift */; };
-		5F7B12BD28E6444800AA4B6F /* GrossCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7B12BB28E6444800AA4B6F /* GrossCell.xib */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
-		5F7B12C428E8873400AA4B6F /* MilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12C228E8873400AA4B6F /* MilesCell.swift */; };
-		5F7B12C528E8873400AA4B6F /* MilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7B12C328E8873400AA4B6F /* MilesCell.xib */; };
 		5F7B12C928E88BC900AA4B6F /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12C728E88BC900AA4B6F /* ExpensesCell.swift */; };
 		5F7B12CA28E88BC900AA4B6F /* ExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7B12C828E88BC900AA4B6F /* ExpensesCell.xib */; };
 		5F7B12CE28E891C000AA4B6F /* FuelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12CC28E891C000AA4B6F /* FuelCell.swift */; };
@@ -32,14 +28,12 @@
 		5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */; };
 		5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */; };
 		5FD315A628F882AD00169E23 /* CategorySummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */; };
+		5FD315AA28FDCC4600169E23 /* GrossMilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315A828FDCC4600169E23 /* GrossMilesCell.swift */; };
+		5FD315AB28FDCC4600169E23 /* GrossMilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD315A928FDCC4600169E23 /* GrossMilesCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F7B12BA28E6444800AA4B6F /* GrossCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossCell.swift; sourceTree = "<group>"; };
-		5F7B12BB28E6444800AA4B6F /* GrossCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrossCell.xib; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
-		5F7B12C228E8873400AA4B6F /* MilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilesCell.swift; sourceTree = "<group>"; };
-		5F7B12C328E8873400AA4B6F /* MilesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MilesCell.xib; sourceTree = "<group>"; };
 		5F7B12C728E88BC900AA4B6F /* ExpensesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesCell.swift; sourceTree = "<group>"; };
 		5F7B12C828E88BC900AA4B6F /* ExpensesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesCell.xib; sourceTree = "<group>"; };
 		5F7B12CC28E891C000AA4B6F /* FuelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCell.swift; sourceTree = "<group>"; };
@@ -62,6 +56,8 @@
 		5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryType.swift; sourceTree = "<group>"; };
 		5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRCategoryInfoView.swift; sourceTree = "<group>"; };
 		5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySummaryVC.swift; sourceTree = "<group>"; };
+		5FD315A828FDCC4600169E23 /* GrossMilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossMilesCell.swift; sourceTree = "<group>"; };
+		5FD315A928FDCC4600169E23 /* GrossMilesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrossMilesCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,24 +78,6 @@
 				5FD3159D28F87C0900169E23 /* Detailed Cells */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		5F7B12BE28E6444F00AA4B6F /* GrossCell */ = {
-			isa = PBXGroup;
-			children = (
-				5F7B12BA28E6444800AA4B6F /* GrossCell.swift */,
-				5F7B12BB28E6444800AA4B6F /* GrossCell.xib */,
-			);
-			path = GrossCell;
-			sourceTree = "<group>";
-		};
-		5F7B12C128E8871B00AA4B6F /* MilesCell */ = {
-			isa = PBXGroup;
-			children = (
-				5F7B12C228E8873400AA4B6F /* MilesCell.swift */,
-				5F7B12C328E8873400AA4B6F /* MilesCell.xib */,
-			);
-			path = MilesCell;
 			sourceTree = "<group>";
 		};
 		5F7B12C628E88BA900AA4B6F /* ExpensesCell */ = {
@@ -245,8 +223,7 @@
 		5FD3159C28F87BFD00169E23 /* Summary Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5F7B12BE28E6444F00AA4B6F /* GrossCell */,
-				5F7B12C128E8871B00AA4B6F /* MilesCell */,
+				5FD315A728FDCA3100169E23 /* GrossMilesCell */,
 				5F7B12C628E88BA900AA4B6F /* ExpensesCell */,
 				5F7B12CB28E891A900AA4B6F /* FuelCell */,
 			);
@@ -258,6 +235,15 @@
 			children = (
 			);
 			path = "Detailed Cells";
+			sourceTree = "<group>";
+		};
+		5FD315A728FDCA3100169E23 /* GrossMilesCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FD315A828FDCC4600169E23 /* GrossMilesCell.swift */,
+				5FD315A928FDCC4600169E23 /* GrossMilesCell.xib */,
+			);
+			path = GrossMilesCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,9 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F7B12BD28E6444800AA4B6F /* GrossCell.xib in Resources */,
-				5F7B12C528E8873400AA4B6F /* MilesCell.xib in Resources */,
 				5F7B12CA28E88BC900AA4B6F /* ExpensesCell.xib in Resources */,
+				5FD315AB28FDCC4600169E23 /* GrossMilesCell.xib in Resources */,
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
@@ -339,15 +324,14 @@
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */,
 				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
-				5F7B12C428E8873400AA4B6F /* MilesCell.swift in Sources */,
 				5F7B12C928E88BC900AA4B6F /* ExpensesCell.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
 				5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
-				5F7B12BC28E6444800AA4B6F /* GrossCell.swift in Sources */,
 				5F7B12CE28E891C000AA4B6F /* FuelCell.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
+				5FD315AA28FDCC4600169E23 /* GrossMilesCell.swift in Sources */,
 				5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
