@@ -22,8 +22,8 @@ class CategorySummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureNavBar()
         configureUI()
+        configureNavBar()
         configureTableView()
     }
     
