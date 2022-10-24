@@ -122,8 +122,14 @@ class CategoryItemVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.sectionHeaderTopPadding = 0
+        tableView.estimatedSectionHeaderHeight = 0.0
+        
         tableView.register(ItemDetailCell.nib, forCellReuseIdentifier: ItemDetailCell.identifier)
         tableView.register(ItemPickerCell.nib, forCellReuseIdentifier: ItemPickerCell.identifier)
+        tableView.register(RouteCell.nib, forCellReuseIdentifier: RouteCell.identifier)
+        tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
+        tableView.register(AddDocRouteCell.nib, forCellReuseIdentifier: AddDocRouteCell.identifier)
         updateSectionsRows()
     }
     
@@ -177,24 +183,38 @@ extension CategoryItemVC: UITableViewDelegate, UITableViewDataSource {
         return sections[section].rows.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch sections[section].type {
         case .documents:
-            return "Documents"
-        case .route:
-            return "Route"
+            return DocumentsHeaderView(frame: CGRect(x: 0, y: 0,
+                                                     width: tableView.frame.width, height: 30))
         default:
             return nil
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch sections[section].type {
+        case .route:
+            return 10
+        case .documents:
+            return 35
+        default:
+            return 0
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = sections[indexPath.section].rows[indexPath.row]
         switch item {
+            
         case .gross, .miles, .name, .location, .store, .price, .quantity:
             let cell = tableView.dequeueReusableCell(withIdentifier: ItemDetailCell.identifier) as! ItemDetailCell
             cell.itemName = item.title.capitalized
             return cell
+            
         case .date, .frequency, .type:
             let cell = tableView.dequeueReusableCell(withIdentifier: ItemPickerCell.identifier) as! ItemPickerCell
             cell.pickerName = item.title.capitalized
@@ -217,13 +237,39 @@ extension CategoryItemVC: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-        default:
-            return UITableViewCell()
+            
+        case .routeFrom, .routeTo:
+            let cell = tableView.dequeueReusableCell(withIdentifier: RouteCell.identifier) as! RouteCell
+            cell.direction = item == .routeFrom ? .from : .to
+            
+            return cell
+            
+        case .addToRoute, .addDocument:
+            let cell = tableView.dequeueReusableCell(withIdentifier: AddDocRouteCell.identifier) as! AddDocRouteCell
+            cell.cellType = item == .addToRoute ? .route : .document
+            
+            cell.addButtonPressed = { }
+            
+            return cell
+            
+        case .document:
+            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier) as! DocumentCell
+            cell.docName = "Document2022.pdf"
+            
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        let item = sections[indexPath.section].rows[indexPath.row]
+        switch item {
+        case .routeFrom, .routeTo:
+            return 60
+        case .document:
+            return 40
+        default:
+            return 50
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

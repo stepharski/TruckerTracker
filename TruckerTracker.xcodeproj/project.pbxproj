@@ -21,6 +21,13 @@
 		5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2FD28B7F9FA00441353 /* TruckerTracker.xcdatamodeld */; };
 		5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8BE30028B7F9FB00441353 /* Assets.xcassets */; };
 		5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8BE30228B7F9FB00441353 /* LaunchScreen.storyboard */; };
+		5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602CC29071B1B00319E18 /* RouteCell.swift */; };
+		5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602CD29071B1B00319E18 /* RouteCell.xib */; };
+		5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */; };
+		5FA602D4290727AF00319E18 /* AddDocRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602D2290727AF00319E18 /* AddDocRouteCell.xib */; };
+		5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D6290730BE00319E18 /* DocumentCell.swift */; };
+		5FA602D9290730BE00319E18 /* DocumentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602D7290730BE00319E18 /* DocumentCell.xib */; };
+		5FA602E1290748CC00319E18 /* DocumentsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602E0290748CC00319E18 /* DocumentsHeaderView.swift */; };
 		5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEAF5C28F70297005F7C6C /* CategoryItemVC.swift */; };
 		5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */; };
 		5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2928B920540037A4AD /* TRTabBar.swift */; };
@@ -55,6 +62,13 @@
 		5F8BE30028B7F9FB00441353 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F8BE30328B7F9FB00441353 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F8BE30528B7F9FB00441353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FA602CC29071B1B00319E18 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
+		5FA602CD29071B1B00319E18 /* RouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCell.xib; sourceTree = "<group>"; };
+		5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocRouteCell.swift; sourceTree = "<group>"; };
+		5FA602D2290727AF00319E18 /* AddDocRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDocRouteCell.xib; sourceTree = "<group>"; };
+		5FA602D6290730BE00319E18 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
+		5FA602D7290730BE00319E18 /* DocumentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentCell.xib; sourceTree = "<group>"; };
+		5FA602E0290748CC00319E18 /* DocumentsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsHeaderView.swift; sourceTree = "<group>"; };
 		5FAEAF5C28F70297005F7C6C /* CategoryItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemVC.swift; sourceTree = "<group>"; };
 		5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBarController.swift; sourceTree = "<group>"; };
 		5FB92F2928B920540037A4AD /* TRTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBar.swift; sourceTree = "<group>"; };
@@ -149,6 +163,41 @@
 				5F8BE2FD28B7F9FA00441353 /* TruckerTracker.xcdatamodeld */,
 			);
 			path = TruckerTracker;
+			sourceTree = "<group>";
+		};
+		5FA602CB29071AA100319E18 /* RouteCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FA602CC29071B1B00319E18 /* RouteCell.swift */,
+				5FA602CD29071B1B00319E18 /* RouteCell.xib */,
+			);
+			path = RouteCell;
+			sourceTree = "<group>";
+		};
+		5FA602D02907273F00319E18 /* AddDocRouteCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */,
+				5FA602D2290727AF00319E18 /* AddDocRouteCell.xib */,
+			);
+			path = AddDocRouteCell;
+			sourceTree = "<group>";
+		};
+		5FA602D5290730A300319E18 /* DocumentCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FA602D6290730BE00319E18 /* DocumentCell.swift */,
+				5FA602D7290730BE00319E18 /* DocumentCell.xib */,
+			);
+			path = DocumentCell;
+			sourceTree = "<group>";
+		};
+		5FA602DF2907488E00319E18 /* DocHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				5FA602E0290748CC00319E18 /* DocumentsHeaderView.swift */,
+			);
+			path = DocHeaderView;
 			sourceTree = "<group>";
 		};
 		5FB92F3128B921FD0037A4AD /* ViewControllers */ = {
@@ -258,6 +307,10 @@
 			children = (
 				5FD315AC28FDD45900169E23 /* ItemDetailCell */,
 				5F2EEF852905860800194997 /* ItemPickerCell */,
+				5FA602CB29071AA100319E18 /* RouteCell */,
+				5FA602D02907273F00319E18 /* AddDocRouteCell */,
+				5FA602DF2907488E00319E18 /* DocHeaderView */,
+				5FA602D5290730A300319E18 /* DocumentCell */,
 			);
 			path = "CategoryItem Cells";
 			sourceTree = "<group>";
@@ -350,9 +403,12 @@
 				5FD315AB28FDCC4600169E23 /* GrossMilesCell.xib in Resources */,
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5F2EEF892905864500194997 /* ItemPickerCell.xib in Resources */,
+				5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */,
 				5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */,
+				5FA602D4290727AF00319E18 /* AddDocRouteCell.xib in Resources */,
 				5FD315B028FDD4AB00169E23 /* ItemDetailCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
+				5FA602D9290730BE00319E18 /* DocumentCell.xib in Resources */,
 				5F7B12CF28E891C000AA4B6F /* FuelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,10 +432,14 @@
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F7B12CE28E891C000AA4B6F /* FuelCell.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
+				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
+				5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */,
 				5FD315AA28FDCC4600169E23 /* GrossMilesCell.swift in Sources */,
 				5F2EEF8B29058EDA00194997 /* ItemPickerType.swift in Sources */,
+				5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */,
 				5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */,
+				5FA602E1290748CC00319E18 /* DocumentsHeaderView.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5F2EEF882905864500194997 /* ItemPickerCell.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,

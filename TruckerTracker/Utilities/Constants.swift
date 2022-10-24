@@ -25,6 +25,9 @@ enum SFSymbols {
     static let minusCircleFilled = UIImage(systemName: "minus.circle.fill")
     static let flame = UIImage(systemName: "flame")
     static let flameFilled = UIImage(systemName: "flame.fill")
+    
+    static let plusSquares = UIImage(systemName: "plus.square.on.square")
+    static let docPlus = UIImage(systemName: "doc.fill.badge.plus")
 }
 
 
