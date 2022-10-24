@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PickerType: String, CaseIterable {
+enum PickerType {
     case date, frequency, fuel
     
     var itemTypes: [PickerItemType] {
@@ -22,7 +22,7 @@ enum PickerType: String, CaseIterable {
     }
 }
 
-enum PickerItemType: String, CaseIterable {
+enum PickerItemType: String {
     case diesel, def, gas
     case never, day, week, month, year
 }

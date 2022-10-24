@@ -533,7 +533,7 @@ last week</string>
         <!--Tab Bar Controller-->
         <scene sceneID="E8e-bT-vme">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Vqz-P0-wp0" customClass="TRTabBarController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TRTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="Vqz-P0-wp0" customClass="TRTabBarController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="uK3-r8-tbZ"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rny-wi-IDq" customClass="TRTabBar" customModule="TruckerTracker" customModuleProvider="target">

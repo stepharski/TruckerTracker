@@ -159,12 +159,10 @@ class CategoryItemVC: UIViewController {
     // Navigation
     func showPickerVC(for pickerType: PickerType) {
         let pickerVC = TRPickerVC(picker: pickerType)
-        
-        if let sheet = pickerVC.sheetPresentationController {
-            sheet.detents = [.medium()]
-        }
+        pickerVC.modalPresentationStyle = .overCurrentContext
+        pickerVC.modalTransitionStyle = .coverVertical
 
-        self.present(pickerVC, animated: true)
+        navigationController?.present(pickerVC, animated: true)
     }
 }
 

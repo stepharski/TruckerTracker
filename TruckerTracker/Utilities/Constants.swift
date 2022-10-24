@@ -29,6 +29,7 @@ enum SFSymbols {
 
 
 enum StoryboardIdentifiers {
+    static let tabBarController = "TRTabBarController"
     static let trackerNavigationController = "TrackerNavigationController"
     static let categoryItemNavigationController = "CategoryItemNavigationController"
     static let profileNavigationController = "ProfileNavigationController"

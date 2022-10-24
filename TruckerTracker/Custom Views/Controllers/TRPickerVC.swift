@@ -15,9 +15,10 @@ protocol TRPickerVCDelegate: AnyObject {
 class TRPickerVC: UIViewController {
     
     var picker: PickerType!
-    let toolbar = UIToolbar()
+    var toolbar = UIToolbar()
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
+    let containerView = UIView()
     
     init(picker: PickerType) {
         super.init(nibName: nil, bundle: nil)
@@ -31,13 +32,17 @@ class TRPickerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configure()
     }
     
     private func configure() {
-        configureToolbar()
+        bindTapGestures()
+        view.backgroundColor = .clear
         
+        configureContainerView()
+        configureToolbar()
+
         switch picker {
         case .date:
             configureDatePicker()
@@ -48,8 +53,33 @@ class TRPickerVC: UIViewController {
         }
     }
     
+    private func configureContainerView() {
+        view.addSubview(containerView)
+        containerView.backgroundColor = .white
+        let containerHeight: CGFloat = picker == .date ?
+        view.bounds.height * 0.52 : view.bounds.height * 0.35
+        
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: containerHeight)
+        ])
+    }
+    
+    private func bindTapGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissVC))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissVC() {
+        self.dismiss(animated: true)
+    }
+    
     private func configureToolbar() {
-        view.addSubview(toolbar)
+        toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        containerView.addSubview(toolbar)
         
         toolbar.barStyle = .default
         toolbar.tintColor = .black
@@ -62,20 +92,19 @@ class TRPickerVC: UIViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self,
                                          action: #selector(doneButtonPressed(_:)))
         toolbar.setItems([cancelButton, flexSpace, doneButton], animated: true)
-        toolbar.sizeToFit()
     }
     
-    @objc func cancelButtonPressed(_ button: UIBarButtonItem) {
+    @objc private func cancelButtonPressed(_ button: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
     
-    @objc func doneButtonPressed(_ button: UIBarButtonItem) {
+    @objc private func doneButtonPressed(_ button: UIBarButtonItem) {
         //TODO: Pass data
         self.dismiss(animated: true)
     }
     
     private func configureDatePicker() {
-        view.addSubview(datePicker)
+        containerView.addSubview(datePicker)
         
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
@@ -85,9 +114,9 @@ class TRPickerVC: UIViewController {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             datePicker.topAnchor.constraint(equalTo: toolbar.bottomAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            datePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            datePicker.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            datePicker.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            datePicker.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
     
@@ -95,15 +124,16 @@ class TRPickerVC: UIViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        view.addSubview(pickerView)
+        containerView.addSubview(pickerView)
 
-        pickerView.backgroundColor = #colorLiteral(red: 0.9251462817, green: 0.9367927313, blue: 0.9365878701, alpha: 1)
+        
+        pickerView.backgroundColor = #colorLiteral(red: 0.9450981021, green: 0.9450981021, blue: 0.9450981021, alpha: 1)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pickerView.topAnchor.constraint(equalTo: toolbar.bottomAnchor),
-            pickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            pickerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            pickerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            pickerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            pickerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
 }
