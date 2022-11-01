@@ -35,10 +35,28 @@ class RouteCell: UITableViewCell {
         }
     }
     
+    var dateTextFieldPressed: (() -> Void)?
+    var locationTextFieldPressed: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         backgroundColor = .clear
+        dateTextField.delegate = self
+        locationTextField.delegate = self
+    }
+}
+
+//MARK: - UITextFieldDelegate
+extension RouteCell: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+
+        if textField == dateTextField {
+            dateTextFieldPressed?()
+        } else if textField == locationTextField {
+            locationTextFieldPressed?()
+        }
+        
+        return false
     }
 }

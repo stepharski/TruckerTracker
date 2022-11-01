@@ -242,6 +242,14 @@ extension CategoryItemVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: RouteCell.identifier) as! RouteCell
             cell.direction = item == .routeFrom ? .from : .to
             
+            cell.dateTextFieldPressed = {
+                print("Route date pressed")
+            }
+            
+            cell.locationTextFieldPressed = {
+                print("Route location pressed")
+            }
+            
             return cell
             
         case .addToRoute, .addDocument:
