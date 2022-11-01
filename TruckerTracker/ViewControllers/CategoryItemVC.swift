@@ -170,6 +170,11 @@ class CategoryItemVC: UIViewController {
 
         navigationController?.present(pickerVC, animated: true)
     }
+    
+    func showLocationSearchVC() {
+        let locationSearchVC = LocationSearchVC()
+        navigationController?.pushViewController(locationSearchVC, animated: true)
+    }
 }
 
 
@@ -243,11 +248,11 @@ extension CategoryItemVC: UITableViewDelegate, UITableViewDataSource {
             cell.direction = item == .routeFrom ? .from : .to
             
             cell.dateTextFieldPressed = {
-                print("Route date pressed")
+                self.showPickerVC(for: .date)
             }
             
             cell.locationTextFieldPressed = {
-                print("Route location pressed")
+                self.showLocationSearchVC()
             }
             
             return cell

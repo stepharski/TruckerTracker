@@ -19,6 +19,10 @@ class TRPickerVC: UIViewController {
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
     let containerView = UIView()
+
+    let pickerTintColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
+    let pickerBackgroundColor = #colorLiteral(red: 0.1490196078, green: 0.1882352941, blue: 0.2196078431, alpha: 1)
+    let toolbarBackgroundColor = #colorLiteral(red: 0.1882352941, green: 0.2235294118, blue: 0.2509803922, alpha: 1)
     
     init(picker: PickerType) {
         super.init(nibName: nil, bundle: nil)
@@ -37,7 +41,7 @@ class TRPickerVC: UIViewController {
     }
     
     private func configure() {
-        bindTapGestures()
+//        bindTapGestures()
         view.backgroundColor = .clear
         
         configureContainerView()
@@ -55,7 +59,7 @@ class TRPickerVC: UIViewController {
     
     private func configureContainerView() {
         view.addSubview(containerView)
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = pickerBackgroundColor
         let containerHeight: CGFloat = picker == .date ?
         view.bounds.height * 0.52 : view.bounds.height * 0.35
         
@@ -82,8 +86,9 @@ class TRPickerVC: UIViewController {
         containerView.addSubview(toolbar)
         
         toolbar.barStyle = .default
-        toolbar.tintColor = .black
         toolbar.isTranslucent = false
+        toolbar.tintColor = .white
+        toolbar.barTintColor = toolbarBackgroundColor
         toolbar.isUserInteractionEnabled = true
         
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
@@ -108,8 +113,9 @@ class TRPickerVC: UIViewController {
         
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
-        datePicker.tintColor = .black
-        datePicker.backgroundColor = #colorLiteral(red: 0.9251462817, green: 0.9367927313, blue: 0.9365878701, alpha: 1)
+        datePicker.overrideUserInterfaceStyle = .dark
+        datePicker.backgroundColor = .clear
+        datePicker.tintColor = pickerTintColor
         
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -125,9 +131,8 @@ class TRPickerVC: UIViewController {
         pickerView.dataSource = self
         
         containerView.addSubview(pickerView)
+        pickerView.backgroundColor = pickerBackgroundColor
 
-        
-        pickerView.backgroundColor = #colorLiteral(red: 0.9450981021, green: 0.9450981021, blue: 0.9450981021, alpha: 1)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pickerView.topAnchor.constraint(equalTo: toolbar.bottomAnchor),
@@ -148,7 +153,12 @@ extension TRPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
         return picker.itemTypes.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return picker.itemTypes[row].rawValue.capitalized
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: picker.itemTypes[row].rawValue.capitalized,
+                                  attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(component)
     }
 }
