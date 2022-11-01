@@ -40,8 +40,19 @@ class TRPickerVC: UIViewController {
         configure()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: view)
+        if !containerView.frame.contains(location) {
+            self.dismiss(animated: true)
+        }
+    }
+    
+    
     private func configure() {
-//        bindTapGestures()
         view.backgroundColor = .clear
         
         configureContainerView()
@@ -70,15 +81,6 @@ class TRPickerVC: UIViewController {
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             containerView.heightAnchor.constraint(equalToConstant: containerHeight)
         ])
-    }
-    
-    private func bindTapGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissVC))
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func dismissVC() {
-        self.dismiss(animated: true)
     }
     
     private func configureToolbar() {
