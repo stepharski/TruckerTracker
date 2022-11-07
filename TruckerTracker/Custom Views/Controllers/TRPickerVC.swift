@@ -21,8 +21,8 @@ class TRPickerVC: UIViewController {
     let containerView = UIView()
 
     let pickerTintColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
-    let pickerBackgroundColor = #colorLiteral(red: 0.1490196078, green: 0.1882352941, blue: 0.2196078431, alpha: 1)
-    let toolbarBackgroundColor = #colorLiteral(red: 0.1882352941, green: 0.2235294118, blue: 0.2509803922, alpha: 1)
+    let pickerBackgroundColor = #colorLiteral(red: 0.06274509804, green: 0.06274509804, blue: 0.06274509804, alpha: 1)
+    let toolbarBackgroundColor = #colorLiteral(red: 0.07058823529, green: 0.07058823529, blue: 0.07058823529, alpha: 1)
     
     init(picker: PickerType) {
         super.init(nibName: nil, bundle: nil)
@@ -54,6 +54,7 @@ class TRPickerVC: UIViewController {
     
     private func configure() {
         view.backgroundColor = .clear
+        overrideUserInterfaceStyle = .dark
         
         configureContainerView()
         configureToolbar()
@@ -115,7 +116,6 @@ class TRPickerVC: UIViewController {
         
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
-        datePicker.overrideUserInterfaceStyle = .dark
         datePicker.backgroundColor = .clear
         datePicker.tintColor = pickerTintColor
         

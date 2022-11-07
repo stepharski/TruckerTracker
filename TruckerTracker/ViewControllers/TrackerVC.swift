@@ -110,11 +110,11 @@ class TrackerVC: UIViewController {
         }
         
         let category = TrackerCategoryType.allCases[tappedViewIndex]
-        presentCategorySummaryVC(for: category)
+        showCategorySummaryVC(for: category)
     }
     
     
-    func presentCategorySummaryVC(for category: TrackerCategoryType) {
+    func showCategorySummaryVC(for category: TrackerCategoryType) {
         let categorySummaryVC = self.storyboard?
             .instantiateViewController(withIdentifier: StoryboardIdentifiers.categorySummaryVC) as! CategorySummaryVC
         

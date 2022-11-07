@@ -37,6 +37,7 @@ enum StoryboardIdentifiers {
     static let categoryItemNavigationController = "CategoryItemNavigationController"
     static let profileNavigationController = "ProfileNavigationController"
     static let categorySummaryVC = "CategorySummaryVC"
+    static let locationSearchVC = "LocationSearchVC"
 }
 
 

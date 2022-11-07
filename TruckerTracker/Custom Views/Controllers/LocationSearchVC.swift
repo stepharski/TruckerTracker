@@ -9,83 +9,97 @@ import UIKit
 import MapKit
 
 class LocationSearchVC: UIViewController {
+
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var selectLocationButton: UIButton!
     
-    var searchBar = UISearchBar()
-    var searchResultsTable = UITableView()
+    var selectedLocation: String?
     
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     
+    let searchBarColor: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
+    let searchBarTextColor: UIColor = #colorLiteral(red: 0.1137254902, green: 0.1098039216, blue: 0.1294117647, alpha: 1)
+    let searchBarBackgroundColor: UIColor = #colorLiteral(red: 0.07058823529, green: 0.1019607843, blue: 0.09411764706, alpha: 1)
     
-    init(searchBar: UISearchBar = UISearchBar(), searchResultsTable: UITableView = UITableView(), searchCompleter: MKLocalSearchCompleter = MKLocalSearchCompleter(), searchResults: [MKLocalSearchCompletion] = [MKLocalSearchCompletion]()) {
-        super.init(nibName: nil, bundle: nil)
-        
-        self.searchBar = searchBar
-        self.searchResultsTable = searchResultsTable
-        self.searchCompleter = searchCompleter
-        self.searchResults = searchResults
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var searchIsActive: Bool = true {
+        didSet {
+            mapView.isHidden = searchIsActive
+            selectLocationButton.isHidden = searchIsActive
+        }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configure()
+        
+        configureMapView()
+        configureSearchBar()
+        overrideUserInterfaceStyle = .dark
+        
         searchBar.delegate = self
         searchCompleter.delegate = self
-        searchResultsTable.delegate = self
-        searchResultsTable.dataSource = self
-    }
-
-    func configure() {
-        view.backgroundColor = .black
-        
-        configureNavBar()
-        configureSearchBar()
-        configureSearchResultsTable()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-    func configureNavBar() {
-        navigationItem.title = "Location"
+    
+    @IBAction func xButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func selectLocationTapped(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
     func configureSearchBar() {
-        view.addSubview(searchBar)
-        searchBar.backgroundColor = .red
+        searchIsActive = true
+        searchBar.becomeFirstResponder()
+        searchBar.text = selectedLocation ?? ""
         
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        let guide = view.safeAreaLayoutGuide
-        let padding: CGFloat = 10
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: guide.topAnchor, constant: padding),
-            searchBar.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: padding),
-            searchBar.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -padding),
-            searchBar.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        searchBar.barTintColor = searchBarBackgroundColor
+        searchBar.searchTextField.backgroundColor = searchBarColor
+        searchBar.setClearButtonColorTo(color: searchBarTextColor)
+        searchBar.setMagnifyingGlassColorTo(color: searchBarTextColor)
+        searchBar.setPlaceholderTextColorTo(color: searchBarTextColor)
     }
     
-    func configureSearchResultsTable() {
-        view.addSubview(searchResultsTable)
+    func configureMapView() {
+        mapView.layer.cornerRadius = 10
+    }
+    
+    func setMapPin(location: CLLocationCoordinate2D, name: String?) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = name ?? "Here"
         
-        searchResultsTable.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            searchResultsTable.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            searchResultsTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchResultsTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        //TODO: Pass city and Country
+        annotation.subtitle = "City, Country"
+        
+        let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate,
+                                                  latitudinalMeters: 300,
+                                                  longitudinalMeters: 300)
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.addAnnotation(annotation)
     }
 }
 
 
 //MARK: - UISearchBarDelegate
 extension LocationSearchVC: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchIsActive = true
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchCompleter.queryFragment = searchText
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
     }
 }
 
@@ -93,7 +107,7 @@ extension LocationSearchVC: UISearchBarDelegate {
 extension LocationSearchVC: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         searchResults = completer.results
-        searchResultsTable.reloadData()
+        tableView.reloadData()
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
@@ -111,9 +125,16 @@ extension LocationSearchVC: UITableViewDelegate, UITableViewDataSource {
         let result = searchResults[indexPath.row]
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = result.title
-        cell.detailTextLabel?.text = result.subtitle
+        var contentConfig = cell.defaultContentConfiguration()
         
+        cell.backgroundColor = .clear
+        contentConfig.textProperties.color = .white
+        contentConfig.secondaryTextProperties.color = .white
+        contentConfig.text = result.title
+        contentConfig.secondaryText = result.subtitle
+        
+        cell.contentConfiguration = contentConfig
+
         return cell
     }
     
@@ -122,23 +143,21 @@ extension LocationSearchVC: UITableViewDelegate, UITableViewDataSource {
         
         let result = searchResults[indexPath.row]
         let searchRequest = MKLocalSearch.Request(completion: result)
-        
         let search = MKLocalSearch(request: searchRequest)
+        
         search.start { response, error in
             guard let coordinate = response?.mapItems[0].placemark.coordinate else {
                 return
             }
+
+            self.searchIsActive = false
+            self.searchBar.endEditing(true)
             
-            guard let name = response?.mapItems[0].name else {
-                return
-            }
+            self.searchResults = [result]
+            tableView.reloadData()
             
-            let lat = coordinate.latitude
-            let lon = coordinate.longitude
-            
-            print(lat)
-            print(lon)
-            print(name)
+            let name = response?.mapItems[0].name
+            self.setMapPin(location: coordinate, name: name)
         }
     }
 }

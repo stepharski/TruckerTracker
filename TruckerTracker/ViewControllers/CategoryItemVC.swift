@@ -172,8 +172,9 @@ class CategoryItemVC: UIViewController {
     }
     
     func showLocationSearchVC() {
-        let locationSearchVC = LocationSearchVC()
-        navigationController?.pushViewController(locationSearchVC, animated: true)
+        let locationSearchNavController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.locationSearchVC) as! LocationSearchVC
+        
+        navigationController?.present(locationSearchNavController, animated: true)
     }
 }
 
