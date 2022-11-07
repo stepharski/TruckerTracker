@@ -52,14 +52,6 @@ class CategoryItemVC: UIViewController {
     }
     
     
-    @IBAction func didTapCategoryButton(_ sender: UIButton) {
-        guard let index = categoryButtons.firstIndex(of: sender) else { return }
-        
-        categoryButtons.forEach { $0.isSelected = $0 == sender }
-        currentCategory = TrackerCategoryType.allCases[index]
-    }
-    
-    // VC life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +65,15 @@ class CategoryItemVC: UIViewController {
 
         applyGradients()
     }
+    
+    
+    @IBAction func didTapCategoryButton(_ sender: UIButton) {
+        guard let index = categoryButtons.firstIndex(of: sender) else { return }
+        
+        categoryButtons.forEach { $0.isSelected = $0 == sender }
+        currentCategory = TrackerCategoryType.allCases[index]
+    }
+    
 
     // UI Configuration
     func configureNavBar() {

@@ -65,8 +65,10 @@ class CategorySummaryVC: UIViewController {
     
     
     func presentCategoryItemNavController() {
-        let categoryItemNavController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.categoryItemNavigationController) as! UINavigationController
-        navigationController?.present(categoryItemNavController, animated: true)
+        let categoryItemVC = self.storyboard?.instantiateViewController(
+            withIdentifier: StoryboardIdentifiers.categoryItemVC) as! CategoryItemVC
+        let categoryNavController = UINavigationController(rootViewController: categoryItemVC)
+        navigationController?.present(categoryNavController, animated: true)
     }
 }
 

@@ -72,8 +72,7 @@ class TRPickerVC: UIViewController {
     private func configureContainerView() {
         view.addSubview(containerView)
         containerView.backgroundColor = pickerBackgroundColor
-        let containerHeight: CGFloat = picker == .date ?
-        view.bounds.height * 0.52 : view.bounds.height * 0.35
+        let containerHeight: CGFloat = picker == .date ? 440 : 300
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
