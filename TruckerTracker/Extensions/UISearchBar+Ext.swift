@@ -20,9 +20,9 @@ extension UISearchBar {
     func setClearButtonColorTo(color: UIColor) {
         // Clear Button
         let textFieldInsideSearchBar = self.value(forKey: "searchField") as? UITextField
-        let crossIconView = textFieldInsideSearchBar?.value(forKey: "clearButton") as? UIButton
-        crossIconView?.setImage(crossIconView?.currentImage?.withRenderingMode(.alwaysTemplate), for: .normal)
-        crossIconView?.tintColor = color
+        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as? UIButton
+        clearButton?.setImage(clearButton?.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        clearButton?.tintColor = color
     }
 
     func setPlaceholderTextColorTo(color: UIColor) {

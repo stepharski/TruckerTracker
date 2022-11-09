@@ -58,6 +58,8 @@ class CategoryItemVC: UIViewController {
         configureUI()
         configureNavBar()
         configureTableView()
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -169,13 +171,16 @@ class CategoryItemVC: UIViewController {
         pickerVC.modalPresentationStyle = .overCurrentContext
         pickerVC.modalTransitionStyle = .coverVertical
 
-        navigationController?.present(pickerVC, animated: true)
+        self.present(pickerVC, animated: true)
     }
     
     func showLocationSearchVC() {
-        let locationSearchNavController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.locationSearchVC) as! LocationSearchVC
+        let locationSearchVC = storyboard?.instantiateViewController(
+            withIdentifier: StoryboardIdentifiers.locationSearchVC) as! LocationSearchVC
         
-        navigationController?.present(locationSearchNavController, animated: true)
+//        self.present(locationSearchVC, animated: true)
+        
+        navigationController?.pushViewController(locationSearchVC, animated: true)
     }
 }
 

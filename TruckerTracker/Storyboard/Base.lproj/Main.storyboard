@@ -523,42 +523,8 @@ last week</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJC-o3-TXR" userLabel="Title Placeholder">
-                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56z-Iu-t28">
-                                        <rect key="frame" x="10" y="6" width="42" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="SAI-dZ-C0q"/>
-                                            <constraint firstAttribute="height" secondItem="56z-Iu-t28" secondAttribute="width" multiplier="23:22" id="w5E-Si-Ol5"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="xButtonTapped:" destination="Xdh-sr-qfT" eventType="touchUpInside" id="fxz-BF-89h"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEr-0B-uLc">
-                                        <rect key="frame" x="162.33333333333334" y="18" width="68.666666666666657" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="YEr-0B-uLc" firstAttribute="centerX" secondItem="aJC-o3-TXR" secondAttribute="centerX" id="AFp-sz-MHs"/>
-                                    <constraint firstItem="YEr-0B-uLc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="56z-Iu-t28" secondAttribute="trailing" constant="8" symbolic="YES" id="JVi-L0-MFx"/>
-                                    <constraint firstItem="YEr-0B-uLc" firstAttribute="centerY" secondItem="aJC-o3-TXR" secondAttribute="centerY" id="KU1-I8-MTZ"/>
-                                    <constraint firstItem="56z-Iu-t28" firstAttribute="leading" secondItem="aJC-o3-TXR" secondAttribute="leading" constant="10" id="ggr-Bt-23J"/>
-                                    <constraint firstItem="56z-Iu-t28" firstAttribute="centerY" secondItem="aJC-o3-TXR" secondAttribute="centerY" id="vXv-uF-ld3"/>
-                                    <constraint firstAttribute="height" constant="56" id="xFa-54-YOW"/>
-                                </constraints>
-                            </view>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCO-PM-G4a">
-                                <rect key="frame" x="10" y="125" width="373" height="44"/>
+                                <rect key="frame" x="10" y="69" width="373" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="tVy-Ag-dPz"/>
                                 </constraints>
@@ -568,7 +534,7 @@ last week</string>
                                 </connections>
                             </searchBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hg6-UX-0Ch">
-                                <rect key="frame" x="5" y="189" width="383" height="563"/>
+                                <rect key="frame" x="5" y="133" width="383" height="619"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TE-QZ-vU1">
                                         <rect key="frame" x="15" y="0.0" width="353" height="300"/>
@@ -578,7 +544,7 @@ last week</string>
                                         <standardMapConfiguration key="preferredConfiguration"/>
                                     </mapView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KXJ-Ws-t18">
-                                        <rect key="frame" x="0.0" y="320" width="383" height="243"/>
+                                        <rect key="frame" x="0.0" y="320" width="383" height="299"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -607,21 +573,18 @@ last week</string>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oKR-py-gy8"/>
-                        <color key="backgroundColor" red="0.070588235294117646" green="0.10196078431372549" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.047058823529411764" green="0.062745098039215685" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="aJC-o3-TXR" firstAttribute="top" secondItem="oKR-py-gy8" secondAttribute="top" id="3Bt-ak-eq0"/>
                             <constraint firstItem="Hg6-UX-0Ch" firstAttribute="top" secondItem="NCO-PM-G4a" secondAttribute="bottom" constant="20" id="3uW-QD-RLl"/>
                             <constraint firstAttribute="bottom" secondItem="RyU-lR-C7E" secondAttribute="bottom" constant="30" id="4Ms-aU-Kcx"/>
-                            <constraint firstItem="oKR-py-gy8" firstAttribute="trailing" secondItem="aJC-o3-TXR" secondAttribute="trailing" id="5HS-Es-RAr"/>
                             <constraint firstItem="Hg6-UX-0Ch" firstAttribute="leading" secondItem="oKR-py-gy8" secondAttribute="leading" constant="5" id="6a7-lm-aKD"/>
                             <constraint firstItem="oKR-py-gy8" firstAttribute="trailing" secondItem="Hg6-UX-0Ch" secondAttribute="trailing" constant="5" id="C2s-rA-8Vg"/>
                             <constraint firstItem="RyU-lR-C7E" firstAttribute="leading" secondItem="oKR-py-gy8" secondAttribute="leading" constant="80" id="DJF-At-9Uo"/>
                             <constraint firstAttribute="trailing" secondItem="NCO-PM-G4a" secondAttribute="trailing" constant="10" id="SgH-4k-LkX"/>
-                            <constraint firstItem="aJC-o3-TXR" firstAttribute="leading" secondItem="oKR-py-gy8" secondAttribute="leading" id="Xtz-Sz-yNS"/>
+                            <constraint firstItem="NCO-PM-G4a" firstAttribute="top" secondItem="oKR-py-gy8" secondAttribute="top" constant="10" id="TvZ-ex-YgX"/>
                             <constraint firstItem="NCO-PM-G4a" firstAttribute="leading" secondItem="oKR-py-gy8" secondAttribute="leading" constant="10" id="f5I-V7-27H"/>
                             <constraint firstItem="oKR-py-gy8" firstAttribute="trailing" secondItem="RyU-lR-C7E" secondAttribute="trailing" constant="80" id="meq-ra-Jnp"/>
                             <constraint firstItem="RyU-lR-C7E" firstAttribute="top" secondItem="Hg6-UX-0Ch" secondAttribute="bottom" constant="20" id="t4d-SF-VeB"/>
-                            <constraint firstItem="NCO-PM-G4a" firstAttribute="top" secondItem="aJC-o3-TXR" secondAttribute="bottom" constant="10" id="vGk-dz-W88"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="04G-ee-TcP"/>
@@ -682,7 +645,6 @@ last week</string>
         <image name="chevron.compact.right" catalog="system" width="62" height="128"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="123"/>
         <image name="trash" catalog="system" width="117" height="128"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
