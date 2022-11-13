@@ -8,6 +8,7 @@
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -606,10 +607,41 @@ last week</string>
                     <view key="view" contentMode="scaleToFill" id="GRQ-fS-uy1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yc8-GP-5aa">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zFB-5J-rIP">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="izt-tp-q8u">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TAZ-By-r8u">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="mTi-Km-Mx1"/>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.22352941176470587" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="mTi-Km-Mx1" firstAttribute="bottom" secondItem="yc8-GP-5aa" secondAttribute="bottom" id="Cdu-nW-N5T"/>
+                            <constraint firstItem="yc8-GP-5aa" firstAttribute="top" secondItem="mTi-Km-Mx1" secondAttribute="top" id="Ruy-S2-Xaj"/>
+                            <constraint firstItem="mTi-Km-Mx1" firstAttribute="trailing" secondItem="yc8-GP-5aa" secondAttribute="trailing" id="XGj-n6-hVX"/>
+                            <constraint firstItem="yc8-GP-5aa" firstAttribute="leading" secondItem="mTi-Km-Mx1" secondAttribute="leading" id="oCt-XI-9FT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trucker" id="SAb-sm-ay7"/>
+                    <connections>
+                        <outlet property="collectionView" destination="yc8-GP-5aa" id="TdU-ja-rTM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dha-rh-PMC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

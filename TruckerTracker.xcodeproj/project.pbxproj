@@ -23,6 +23,11 @@
 		5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8BE30228B7F9FB00441353 /* LaunchScreen.storyboard */; };
 		5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */; };
 		5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */; };
+		5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5C29201FB800DEEC20 /* ProfileHeaderView.swift */; };
+		5F97FD5F29201FB800DEEC20 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F97FD5D29201FB800DEEC20 /* ProfileHeaderView.xib */; };
+		5F97FD68292045D400DEEC20 /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD66292045D400DEEC20 /* ProfileSettingsCell.swift */; };
+		5F97FD69292045D400DEEC20 /* ProfileSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F97FD67292045D400DEEC20 /* ProfileSettingsCell.xib */; };
+		5F97FD6B29205D9B00DEEC20 /* UICollectionViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD6A29205D9B00DEEC20 /* UICollectionViewCell+Ext.swift */; };
 		5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602CC29071B1B00319E18 /* RouteCell.swift */; };
 		5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602CD29071B1B00319E18 /* RouteCell.xib */; };
 		5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */; };
@@ -66,6 +71,11 @@
 		5F8BE30528B7F9FB00441353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Ext.swift"; sourceTree = "<group>"; };
+		5F97FD5C29201FB800DEEC20 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		5F97FD5D29201FB800DEEC20 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		5F97FD66292045D400DEEC20 /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
+		5F97FD67292045D400DEEC20 /* ProfileSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingsCell.xib; sourceTree = "<group>"; };
+		5F97FD6A29205D9B00DEEC20 /* UICollectionViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Ext.swift"; sourceTree = "<group>"; };
 		5FA602CC29071B1B00319E18 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		5FA602CD29071B1B00319E18 /* RouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCell.xib; sourceTree = "<group>"; };
 		5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocRouteCell.swift; sourceTree = "<group>"; };
@@ -113,8 +123,8 @@
 		5F7B12B928E63EE200AA4B6F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5FD3159C28F87BFD00169E23 /* CategorySummary Cells */,
-				5FD3159D28F87C0900169E23 /* CategoryItem Cells */,
+				5F97FD65292042A600DEEC20 /* Category Cells */,
+				5F97FD5629201D9900DEEC20 /* Profile Cells */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -167,6 +177,42 @@
 				5F8BE2FD28B7F9FA00441353 /* TruckerTracker.xcdatamodeld */,
 			);
 			path = TruckerTracker;
+			sourceTree = "<group>";
+		};
+		5F97FD5629201D9900DEEC20 /* Profile Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5F97FD60292026B900DEEC20 /* ProfileSettingsCell */,
+				5F97FD5729201DB100DEEC20 /* ProfileHeaderView */,
+			);
+			path = "Profile Cells";
+			sourceTree = "<group>";
+		};
+		5F97FD5729201DB100DEEC20 /* ProfileHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				5F97FD5C29201FB800DEEC20 /* ProfileHeaderView.swift */,
+				5F97FD5D29201FB800DEEC20 /* ProfileHeaderView.xib */,
+			);
+			path = ProfileHeaderView;
+			sourceTree = "<group>";
+		};
+		5F97FD60292026B900DEEC20 /* ProfileSettingsCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F97FD66292045D400DEEC20 /* ProfileSettingsCell.swift */,
+				5F97FD67292045D400DEEC20 /* ProfileSettingsCell.xib */,
+			);
+			path = ProfileSettingsCell;
+			sourceTree = "<group>";
+		};
+		5F97FD65292042A600DEEC20 /* Category Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5FD3159C28F87BFD00169E23 /* CategorySummary */,
+				5FD3159D28F87C0900169E23 /* CategoryItem */,
+			);
+			path = "Category Cells";
 			sourceTree = "<group>";
 		};
 		5FA602CB29071AA100319E18 /* RouteCell */ = {
@@ -259,6 +305,7 @@
 				5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */,
 				5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */,
 				5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */,
+				5F97FD6A29205D9B00DEEC20 /* UICollectionViewCell+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,17 +344,17 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		5FD3159C28F87BFD00169E23 /* CategorySummary Cells */ = {
+		5FD3159C28F87BFD00169E23 /* CategorySummary */ = {
 			isa = PBXGroup;
 			children = (
 				5FD315A728FDCA3100169E23 /* GrossMilesCell */,
 				5F7B12C628E88BA900AA4B6F /* ExpensesCell */,
 				5F7B12CB28E891A900AA4B6F /* FuelCell */,
 			);
-			path = "CategorySummary Cells";
+			path = CategorySummary;
 			sourceTree = "<group>";
 		};
-		5FD3159D28F87C0900169E23 /* CategoryItem Cells */ = {
+		5FD3159D28F87C0900169E23 /* CategoryItem */ = {
 			isa = PBXGroup;
 			children = (
 				5FD315AC28FDD45900169E23 /* ItemDetailCell */,
@@ -317,7 +364,7 @@
 				5FA602DF2907488E00319E18 /* DocHeaderView */,
 				5FA602D5290730A300319E18 /* DocumentCell */,
 			);
-			path = "CategoryItem Cells";
+			path = CategoryItem;
 			sourceTree = "<group>";
 		};
 		5FD315A728FDCA3100169E23 /* GrossMilesCell */ = {
@@ -407,11 +454,13 @@
 			files = (
 				5F7B12CA28E88BC900AA4B6F /* ExpensesCell.xib in Resources */,
 				5FD315AB28FDCC4600169E23 /* GrossMilesCell.xib in Resources */,
+				5F97FD69292045D400DEEC20 /* ProfileSettingsCell.xib in Resources */,
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5F2EEF892905864500194997 /* ItemPickerCell.xib in Resources */,
 				5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */,
 				5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */,
 				5FA602D4290727AF00319E18 /* AddDocRouteCell.xib in Resources */,
+				5F97FD5F29201FB800DEEC20 /* ProfileHeaderView.xib in Resources */,
 				5FD315B028FDD4AB00169E23 /* ItemDetailCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
 				5FA602D9290730BE00319E18 /* DocumentCell.xib in Resources */,
@@ -428,6 +477,7 @@
 			files = (
 				5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
+				5F97FD6B29205D9B00DEEC20 /* UICollectionViewCell+Ext.swift in Sources */,
 				5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */,
 				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
 				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
@@ -437,10 +487,12 @@
 				5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */,
 				5FD315AF28FDD4AB00169E23 /* ItemDetailCell.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
+				5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */,
 				5F7B12CE28E891C000AA4B6F /* FuelCell.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
 				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
+				5F97FD68292045D400DEEC20 /* ProfileSettingsCell.swift in Sources */,
 				5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */,
 				5FD315AA28FDCC4600169E23 /* GrossMilesCell.swift in Sources */,
 				5F2EEF8B29058EDA00194997 /* ItemPickerType.swift in Sources */,
