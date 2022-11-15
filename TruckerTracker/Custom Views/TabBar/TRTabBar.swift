@@ -24,7 +24,7 @@ enum TRTabBarItem: String {
     var selectedImage: UIImage? {
         switch self {
         case .tracker:
-            return SFSymbols.circleLineFilled
+            return SFSymbols.circleLineFill
         case .newItem:
             return nil
         case .profile:
@@ -63,7 +63,7 @@ class TRTabBar: UITabBar {
         newItemButton.setImage(SFSymbols.plus, for: .normal)
         newItemButton.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
         newItemButton.tintColor = .black
-        newItemButton.layer.cornerRadius = 23
+        newItemButton.roundEdges(by: 23)
         
         newItemButton.addTarget(self, action: #selector(self.addItemButtonAction), for: .touchUpInside)
         self.addSubview(newItemButton)

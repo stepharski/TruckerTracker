@@ -82,7 +82,7 @@ class LocationSearchVC: UIViewController {
     }
     
     func configureMapView() {
-        mapView.layer.cornerRadius = 10
+        mapView.roundEdges(by: 10)
     }
 
     func setMapPin(location: CLLocationCoordinate2D, name: String?) {

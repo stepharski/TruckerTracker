@@ -51,8 +51,8 @@ class TrackerVC: UIViewController {
 
     
     func configureUI() {
-        dateRangePickerView.layer.cornerRadius = 30
-        categoryBackgroundViews.forEach { $0.layer.cornerRadius = 30 }
+        dateRangePickerView.roundEdges()
+        categoryBackgroundViews.forEach { $0.roundEdges() }
         
         totalValueTopConstraint.constant = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhoneZoomed ? 20 : 40
         totalValueBottomConstraint.constant = totalValueTopConstraint.constant
@@ -68,10 +68,9 @@ class TrackerVC: UIViewController {
             let categoryType = TrackerCategoryType.allCases[index]
             let categoryInfoView = TRCategoryInfoView(categoryType: categoryType, withCount: 8800)
             let categoryBackgroundView = categoryBackgroundViews[index]
-            
             categoryBackgroundView.addSubview(categoryInfoView)
-            categoryInfoView.translatesAutoresizingMaskIntoConstraints = false
             
+            categoryInfoView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 categoryInfoView.centerXAnchor.constraint(equalTo: categoryBackgroundView.centerXAnchor),
                 categoryInfoView.centerYAnchor.constraint(equalTo: categoryBackgroundView.centerYAnchor)

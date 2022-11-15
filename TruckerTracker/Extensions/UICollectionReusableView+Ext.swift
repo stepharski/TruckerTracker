@@ -1,13 +1,13 @@
 //
-//  UICollectionViewCell+Ext.swift
+//  UICollectionReusableView+Ext.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 11/12/22.
+//  Created by Stepan Kukharskyi on 11/14/22.
 //
 
 import UIKit
 
-extension UICollectionViewCell {
+extension UICollectionReusableView {
     
     static var nib: UINib {
         return UINib(nibName: identifier, bundle: nil)

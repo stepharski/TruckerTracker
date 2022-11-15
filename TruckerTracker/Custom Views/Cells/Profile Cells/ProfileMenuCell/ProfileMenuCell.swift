@@ -1,14 +1,14 @@
 //
-//  ProfileSettingsCell.swift
+//  ProfileMenuCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 11/12/22.
+//  Created by Stepan Kukharskyi on 11/14/22.
 //
 
 import UIKit
 
-class ProfileSettingsCell: UICollectionViewCell {
-
+class ProfileMenuCell: UICollectionViewCell {
+    
     @IBOutlet private weak var settingImageView: UIImageView!
     @IBOutlet private weak var settingTitle: UILabel!
     @IBOutlet private weak var settingSubtitle: UILabel!
@@ -17,9 +17,10 @@ class ProfileSettingsCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        configureUI()
+        roundEdges()
+        dropShadow()
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -29,19 +30,9 @@ class ProfileSettingsCell: UICollectionViewCell {
     }
     
     
-    public func configure(with image: UIImage, title: String, subtitle: String) {
+    public func configure(with image: UIImage?, title: String, subtitle: String) {
         settingImageView.image = image
         settingTitle.text = title
         settingSubtitle.text = subtitle
-    }
-    
-    private func configureUI() {
-        layer.cornerRadius = 30
-        
-        layer.shadowRadius = 5.0
-        layer.shadowOpacity = 0.5
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
     }
 }

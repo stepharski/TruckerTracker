@@ -25,6 +25,10 @@ extension UIView {
         }
     }
     
+    func roundEdges(by radius: CGFloat = 30) {
+        layer.cornerRadius = radius
+    }
+    
     func applyGradient(colors: [UIColor], locations: [NSNumber]?) {
         assert(colors.count >= 2, "There must be at least 2 colors")
         
@@ -39,5 +43,13 @@ extension UIView {
         gradient.cornerRadius = self.layer.cornerRadius
         gradient.frame = self.bounds
         self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func dropShadow(color: UIColor = .black, size: CGSize = CGSize(width: 3.0, height: 4.0)) {
+        layer.shadowRadius = 5.0
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+        layer.shadowOffset = size
+        layer.shadowColor = color.cgColor
     }
 }

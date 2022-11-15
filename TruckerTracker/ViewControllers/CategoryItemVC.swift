@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - SectionsRows Definition
 private enum SectionType {
     case gross
     case miles
@@ -24,7 +25,7 @@ private enum RowType: String {
     case location, store, type, price, quantity
     
     var title: String {
-        return self.rawValue
+        return self.rawValue.capitalized
     }
 }
 
@@ -33,7 +34,7 @@ private struct Section {
     var rows: [RowType]
 }
 
-
+// MARK: - CategoryItemVC
 class CategoryItemVC: UIViewController {
     
     @IBOutlet weak var itemAmountTextField: UITextField!
@@ -51,15 +52,13 @@ class CategoryItemVC: UIViewController {
         }
     }
     
-    
+    // Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         configureNavBar()
         configureTableView()
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,7 +67,7 @@ class CategoryItemVC: UIViewController {
         applyGradients()
     }
     
-    
+    // @IBAction
     @IBAction func didTapCategoryButton(_ sender: UIButton) {
         guard let index = categoryButtons.firstIndex(of: sender) else { return }
         
@@ -97,14 +96,13 @@ class CategoryItemVC: UIViewController {
     
     func configureUI() {
         deleteButton.isHidden = true
-        tableBackgoundView.layer.cornerRadius = 30
+        tableBackgoundView.roundEdges()
     }
     
     func updateUI() {
         UIView.animate(withDuration: 0.25) {
             self.selectedCategoryImageView.image = self.currentCategory.image
             self.selectedCategoryImageView.tintColor = self.currentCategory.imageTintColor
-            
             self.view.backgroundColor = self.currentCategory == .gross
                                   || self.currentCategory == .miles ? #colorLiteral(red: 0.03529411765, green: 0.09019607843, blue: 0.06666666667, alpha: 1) : #colorLiteral(red: 0.1176470588, green: 0.03137254902, blue: 0.02352941176, alpha: 1)
         }
@@ -178,23 +176,88 @@ class CategoryItemVC: UIViewController {
         let locationSearchVC = storyboard?.instantiateViewController(
             withIdentifier: StoryboardIdentifiers.locationSearchVC) as! LocationSearchVC
         
-//        self.present(locationSearchVC, animated: true)
-        
         navigationController?.pushViewController(locationSearchVC, animated: true)
     }
 }
 
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
-extension CategoryItemVC: UITableViewDelegate, UITableViewDataSource {
+// MARK: - UITableViewDataSource
+extension CategoryItemVC: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].rows.count
     }
+
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = sections[indexPath.section].rows[indexPath.row]
+        switch item {
+
+        case .gross, .miles, .name, .location, .store, .price, .quantity:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemDetailCell.identifier) as! ItemDetailCell
+            cell.itemName = item.title
+            return cell
+
+        case .date, .frequency, .type:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemPickerCell.identifier) as! ItemPickerCell
+            cell.pickerName = item.title
+
+            var pickerValue = ""
+            var pickerType = PickerType.date
+            if item == .date {
+                pickerValue = "\(Date.now.formatted(.dateTime.day().month()))"
+            } else if item == .frequency {
+                pickerType = .frequency
+                pickerValue = "\(pickerType.itemTypes.first?.rawValue.capitalized ?? "Select Frequency")"
+            } else if item == .type {
+                pickerType = .fuel
+                pickerValue = "\(pickerType.itemTypes.first?.rawValue.capitalized ?? "Select Fuel Type")"
+            }
+
+            cell.pickerValue = pickerValue
+            cell.pickerTextFieldPressed = {
+                self.showPickerVC(for: pickerType)
+            }
+
+            return cell
+
+        case .routeFrom, .routeTo:
+            let cell = tableView.dequeueReusableCell(withIdentifier: RouteCell.identifier) as! RouteCell
+            cell.direction = item == .routeFrom ? .from : .to
+
+            cell.dateTextFieldPressed = {
+                self.showPickerVC(for: .date)
+            }
+
+            cell.locationTextFieldPressed = {
+                self.showLocationSearchVC()
+            }
+
+            return cell
+
+        case .addToRoute, .addDocument:
+            let cell = tableView.dequeueReusableCell(withIdentifier: AddDocRouteCell.identifier) as! AddDocRouteCell
+            cell.cellType = item == .addToRoute ? .route : .document
+
+            cell.addButtonPressed = { }
+
+            return cell
+
+        case .document:
+            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier) as! DocumentCell
+            cell.docName = "Document2022.pdf"
+
+            return cell
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension CategoryItemVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch sections[section].type {
@@ -214,69 +277,6 @@ extension CategoryItemVC: UITableViewDelegate, UITableViewDataSource {
             return 35
         default:
             return 0
-        }
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = sections[indexPath.section].rows[indexPath.row]
-        switch item {
-            
-        case .gross, .miles, .name, .location, .store, .price, .quantity:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ItemDetailCell.identifier) as! ItemDetailCell
-            cell.itemName = item.title.capitalized
-            return cell
-            
-        case .date, .frequency, .type:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ItemPickerCell.identifier) as! ItemPickerCell
-            cell.pickerName = item.title.capitalized
-            
-            var pickerValue = ""
-            var pickerType = PickerType.date
-            if item == .date {
-                pickerValue = "\(Date.now.formatted(.dateTime.day().month()))"
-            } else if item == .frequency {
-                pickerType = .frequency
-                pickerValue = "\(pickerType.itemTypes.first?.rawValue.capitalized ?? "Select Frequency")"
-            } else if item == .type {
-                pickerType = .fuel
-                pickerValue = "\(pickerType.itemTypes.first?.rawValue.capitalized ?? "Select Fuel Type")"
-            }
-            
-            cell.pickerValue = pickerValue
-            cell.pickerTextFieldPressed = {
-                self.showPickerVC(for: pickerType)
-            }
-            
-            return cell
-            
-        case .routeFrom, .routeTo:
-            let cell = tableView.dequeueReusableCell(withIdentifier: RouteCell.identifier) as! RouteCell
-            cell.direction = item == .routeFrom ? .from : .to
-            
-            cell.dateTextFieldPressed = {
-                self.showPickerVC(for: .date)
-            }
-            
-            cell.locationTextFieldPressed = {
-                self.showLocationSearchVC()
-            }
-            
-            return cell
-            
-        case .addToRoute, .addDocument:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AddDocRouteCell.identifier) as! AddDocRouteCell
-            cell.cellType = item == .addToRoute ? .route : .document
-            
-            cell.addButtonPressed = { }
-            
-            return cell
-            
-        case .document:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier) as! DocumentCell
-            cell.docName = "Document2022.pdf"
-            
-            return cell
         }
     }
     

@@ -10,62 +10,73 @@ import UIKit
 class ProfileVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
+    let menuItems = ProfileMenuType.allCases
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureNavBar()
         configureCollectionView()
     }
     
+    
+    func configureNavBar() {
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
     
     func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
-        collectionView.register(ProfileSettingsCell.nib, forCellWithReuseIdentifier: ProfileSettingsCell.identifier)
+        collectionView.register(ProfileHeaderView.nib,
+                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                            withReuseIdentifier: ProfileHeaderView.identifier)
+        collectionView.register(ProfileMenuCell.nib, forCellWithReuseIdentifier: ProfileMenuCell.identifier)
     }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension ProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return menuItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileSettingsCell.identifier, for: indexPath)
-        cell.contentView.layer.cornerRadius = 30
-        cell.contentView.layer.borderWidth = 2
-        cell.contentView.layer.borderColor = UIColor.clear.cgColor
-        cell.contentView.layer.masksToBounds = true
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileMenuCell.identifier,
+                                                      for: indexPath) as! ProfileMenuCell
+        let menuItem = menuItems[indexPath.row]
+        cell.configure(with: menuItem.image,
+                       title: menuItem.title,
+                       subtitle: menuItem.subtitle)
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                 withReuseIdentifier: ProfileHeaderView.identifier,
+                                                                 for: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
-        print("Menu tapped")
+        let menuItem = menuItems[indexPath.row].title
+        print("\(menuItem) menu tapped")
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.collectionView.bounds.width, height: 160)
+        return CGSize(width: collectionView.bounds.width, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 165, height: 170)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let padding: CGFloat = 20
-        return UIEdgeInsets(top: padding, left: padding,
-                            bottom: padding, right: padding)
+        let itemPadding: CGFloat = 20
+        return CGSize(width: (collectionView.bounds.width - (3 * itemPadding)) / 2, height: 170)
     }
 }

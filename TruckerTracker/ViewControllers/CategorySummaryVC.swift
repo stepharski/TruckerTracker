@@ -39,7 +39,7 @@ class CategorySummaryVC: UIViewController {
     }
     
     func configureUI() {
-        tableBackgroundView.layer.cornerRadius = 30
+        tableBackgroundView.roundEdges()
         symbolImageView.image = category.image
         symbolImageView.tintColor = category.imageTintColor
     }

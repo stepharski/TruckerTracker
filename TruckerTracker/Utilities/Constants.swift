@@ -8,27 +8,35 @@
 import UIKit
 
 enum SFSymbols {
+    
+    // Navigation
     static let menu = UIImage(systemName: "line.3.horizontal")
     static let share = UIImage(systemName: "square.and.arrow.up")
     static let xmark = UIImage(systemName: "xmark")
     static let arrowBack = UIImage(systemName: "chevron.backward")
+    
+    // TabBar
     static let circleLine = UIImage(systemName: "circle.and.line.horizontal")
-    static let circleLineFilled = UIImage(systemName: "circle.and.line.horizontal.fill")
+    static let circleLineFill = UIImage(systemName: "circle.and.line.horizontal.fill")
     static let plus = UIImage(systemName: "plus")
     static let person = UIImage(systemName: "person")
     static let personFill = UIImage(systemName: "person.fill")
 
+    // Categories
     static let dollar = UIImage(systemName: "dollarsign.circle")
-    static let dollarFilled = UIImage(systemName: "dollarsign.circle.fill")
     static let doubleCircle = UIImage(systemName: "circle.circle")
-    static let doubleCircleFilled = UIImage(systemName: "circle.circle.fill")
     static let minusCircle = UIImage(systemName: "minus.circle")
-    static let minusCircleFilled = UIImage(systemName: "minus.circle.fill")
     static let flame = UIImage(systemName: "flame")
-    static let flameFilled = UIImage(systemName: "flame.fill")
-    
     static let plusSquares = UIImage(systemName: "plus.square.on.square")
     static let docPlus = UIImage(systemName: "doc.fill.badge.plus")
+    
+    // Profile
+    static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")
+    static let personText = UIImage(systemName: "person.text.rectangle")
+    static let folder = UIImage(systemName: "folder")
+    static let crownArrow = UIImage(systemName: "digitalcrown.arrow.clockwise")
+    static let chartBarX = UIImage(systemName: "chart.bar.xaxis")
+    static let pc = UIImage(systemName: "pc")
 }
 
 
