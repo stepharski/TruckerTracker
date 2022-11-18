@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,25 +38,43 @@
                     <color key="textColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8N-nr-HiB">
+                    <rect key="frame" x="184.66666666666666" y="94.666666666666671" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="M8N-nr-HiB" secondAttribute="height" multiplier="1:1" id="XKm-a8-Q1u"/>
+                        <constraint firstAttribute="height" constant="25" id="mio-M6-amE"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                        <imageReference key="image" image="plus" catalog="system" symbolScale="small"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="plusButtonTapped:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="YjL-Qo-5Bx"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <color key="backgroundColor" red="0.1176470588" green="0.22352941179999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="M8N-nr-HiB" firstAttribute="centerX" secondItem="niM-LJ-CIC" secondAttribute="centerX" constant="37" id="XUl-Lf-cts"/>
                 <constraint firstItem="MUG-Ij-Rc6" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="20" id="a28-C3-BUT"/>
                 <constraint firstItem="5bP-B2-kfx" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="20" id="cgX-A6-bMN"/>
                 <constraint firstItem="5bP-B2-kfx" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="f2C-zh-os8"/>
                 <constraint firstItem="MUG-Ij-Rc6" firstAttribute="top" secondItem="5bP-B2-kfx" secondAttribute="bottom" constant="20" id="gL4-IT-OWP"/>
+                <constraint firstItem="M8N-nr-HiB" firstAttribute="centerY" secondItem="niM-LJ-CIC" secondAttribute="centerY" constant="37" id="j5E-y9-zAI"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="MUG-Ij-Rc6" secondAttribute="trailing" constant="20" id="sVp-SN-GdA"/>
             </constraints>
             <connections>
                 <outlet property="avatarBackgroundView" destination="5bP-B2-kfx" id="PRq-eu-Iml"/>
                 <outlet property="avatarImageView" destination="niM-LJ-CIC" id="LPf-HF-NLu"/>
                 <outlet property="nameLabel" destination="MUG-Ij-Rc6" id="N7p-7a-Gim"/>
+                <outlet property="plusButton" destination="M8N-nr-HiB" id="oyo-Ge-hKd"/>
             </connections>
             <point key="canvasLocation" x="127.69230769230769" y="20.616113744075829"/>
         </collectionReusableView>
     </objects>
     <resources>
         <image name="driverAvatar" width="225" height="225"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>

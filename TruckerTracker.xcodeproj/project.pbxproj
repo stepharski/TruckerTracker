@@ -184,8 +184,8 @@
 		5F97FD5629201D9900DEEC20 /* Profile Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5F97FD7029233D1500DEEC20 /* ProfileMenuCell */,
 				5F97FD5729201DB100DEEC20 /* ProfileHeaderView */,
+				5F97FD7029233D1500DEEC20 /* ProfileMenuCell */,
 			);
 			path = "Profile Cells";
 			sourceTree = "<group>";

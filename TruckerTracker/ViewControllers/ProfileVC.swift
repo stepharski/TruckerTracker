@@ -23,8 +23,11 @@ class ProfileVC: UIViewController {
     
     
     func configureNavBar() {
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.1960784314, blue: 0.168627451, alpha: 1)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     func configureCollectionView() {
