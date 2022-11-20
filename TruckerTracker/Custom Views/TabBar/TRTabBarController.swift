@@ -23,7 +23,8 @@ class TRTabBarController: UITabBarController {
         
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.1960784314, blue: 0.168627451, alpha: 1)
+        appearance.backgroundColor = .white.withAlphaComponent(0.01)
+        
         self.tabBar.standardAppearance = appearance
         self.tabBar.scrollEdgeAppearance = appearance
     }
