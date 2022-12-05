@@ -22,6 +22,17 @@ class ProfileVC: UIViewController {
     }
     
     
+    // Navigation
+    func showMenuVC(for menuType: ProfileMenuType) {
+        let profileMenuVC = self.storyboard?
+            .instantiateViewController(withIdentifier: StoryboardIdentifiers.profileMenuVC) as! ProfileMenuVC
+        
+        profileMenuVC.menuType = menuType
+        navigationController?.pushViewController(profileMenuVC, animated: true)
+    }
+    
+    
+    // UI Configuration
     func configureNavBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -33,7 +44,6 @@ class ProfileVC: UIViewController {
     func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
         collectionView.register(ProfileHeaderView.nib,
                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                             withReuseIdentifier: ProfileHeaderView.identifier)
@@ -67,8 +77,7 @@ extension ProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let menuItem = menuItems[indexPath.row].title
-        print("\(menuItem) menu tapped")
+        showMenuVC(for: menuItems[indexPath.row])
     }
 }
 

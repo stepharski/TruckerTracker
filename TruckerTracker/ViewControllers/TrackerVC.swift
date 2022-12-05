@@ -32,6 +32,7 @@ class TrackerVC: UIViewController {
     }
     
     
+    // UI Configuration
     func configureNavBar() {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -113,6 +114,7 @@ class TrackerVC: UIViewController {
     }
     
     
+    // Navigation
     func showCategorySummaryVC(for category: TrackerCategoryType) {
         let categorySummaryVC = self.storyboard?
             .instantiateViewController(withIdentifier: StoryboardIdentifiers.categorySummaryVC) as! CategorySummaryVC

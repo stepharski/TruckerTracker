@@ -36,6 +36,7 @@ enum SFSymbols {
     static let folder = UIImage(systemName: "folder")
     static let crownArrow = UIImage(systemName: "digitalcrown.arrow.clockwise")
     static let chartBarX = UIImage(systemName: "chart.bar.xaxis")
+    static let envelope = UIImage(systemName: "envelope")
     static let pc = UIImage(systemName: "pc")
 }
 
@@ -45,6 +46,7 @@ enum StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
     static let trackerVC = "TrackerVC"
     static let profileVC = "ProfileVC"
+    static let profileMenuVC = "ProfileMenuVC"
     static let categoryItemVC = "CategoryItemVC"
     static let categorySummaryVC = "CategorySummaryVC"
     static let locationSearchVC = "LocationSearchVC"

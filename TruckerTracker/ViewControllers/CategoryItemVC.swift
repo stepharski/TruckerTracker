@@ -104,7 +104,7 @@ class CategoryItemVC: UIViewController {
             self.selectedCategoryImageView.image = self.currentCategory.image
             self.selectedCategoryImageView.tintColor = self.currentCategory.imageTintColor
             self.view.backgroundColor = self.currentCategory == .gross
-                                  || self.currentCategory == .miles ? #colorLiteral(red: 0.03529411765, green: 0.09019607843, blue: 0.06666666667, alpha: 1) : #colorLiteral(red: 0.1176470588, green: 0.03137254902, blue: 0.02352941176, alpha: 1)
+            || self.currentCategory == .miles ?    #colorLiteral(red: 0.07450980392, green: 0.1333333333, blue: 0.1176470588, alpha: 1) : #colorLiteral(red: 0.2784313725, green: 0.05490196078, blue: 0.02745098039, alpha: 1)
         }
     }
     

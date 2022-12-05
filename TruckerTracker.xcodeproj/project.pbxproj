@@ -10,6 +10,7 @@
 		5F2EEF882905864500194997 /* ItemPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2EEF862905864500194997 /* ItemPickerCell.swift */; };
 		5F2EEF892905864500194997 /* ItemPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2EEF872905864500194997 /* ItemPickerCell.xib */; };
 		5F2EEF8B29058EDA00194997 /* ItemPickerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2EEF8A29058EDA00194997 /* ItemPickerType.swift */; };
+		5F790FF1293D993700A73600 /* ProfileMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF0293D993700A73600 /* ProfileMenuVC.swift */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
 		5F7B12C928E88BC900AA4B6F /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12C728E88BC900AA4B6F /* ExpensesCell.swift */; };
 		5F7B12CA28E88BC900AA4B6F /* ExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7B12C828E88BC900AA4B6F /* ExpensesCell.xib */; };
@@ -57,6 +58,7 @@
 		5F2EEF862905864500194997 /* ItemPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPickerCell.swift; sourceTree = "<group>"; };
 		5F2EEF872905864500194997 /* ItemPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPickerCell.xib; sourceTree = "<group>"; };
 		5F2EEF8A29058EDA00194997 /* ItemPickerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPickerType.swift; sourceTree = "<group>"; };
+		5F790FF0293D993700A73600 /* ProfileMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuVC.swift; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		5F7B12C728E88BC900AA4B6F /* ExpensesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesCell.swift; sourceTree = "<group>"; };
 		5F7B12C828E88BC900AA4B6F /* ExpensesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesCell.xib; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */,
 				5FAEAF5C28F70297005F7C6C /* CategoryItemVC.swift */,
 				5FB92F2F28B921F30037A4AD /* ProfileVC.swift */,
+				5F790FF0293D993700A73600 /* ProfileMenuVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */,
 				5F7B12CE28E891C000AA4B6F /* FuelCell.swift in Sources */,
+				5F790FF1293D993700A73600 /* ProfileMenuVC.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
 				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,

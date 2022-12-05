@@ -19,6 +19,7 @@ class CategorySummaryVC: UIViewController {
     
     var category = TrackerCategoryType.gross
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
