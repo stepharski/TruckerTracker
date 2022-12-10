@@ -52,7 +52,7 @@ class CategoryItemVC: UIViewController {
         }
     }
     
-    // Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,11 +61,6 @@ class CategoryItemVC: UIViewController {
         configureTableView()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        applyGradients()
-    }
     
     // @IBAction
     @IBAction func didTapCategoryButton(_ sender: UIButton) {
@@ -97,6 +92,7 @@ class CategoryItemVC: UIViewController {
     func configureUI() {
         deleteButton.isHidden = true
         tableBackgoundView.roundEdges()
+        tableBackgoundView.applyGradient(colors: [.black.withAlphaComponent(0.5), .clear], locations: [0, 1])
     }
     
     func updateUI() {
@@ -104,19 +100,10 @@ class CategoryItemVC: UIViewController {
             self.selectedCategoryImageView.image = self.currentCategory.image
             self.selectedCategoryImageView.tintColor = self.currentCategory.imageTintColor
             self.view.backgroundColor = self.currentCategory == .gross
-            || self.currentCategory == .miles ?    #colorLiteral(red: 0.07450980392, green: 0.1333333333, blue: 0.1176470588, alpha: 1) : #colorLiteral(red: 0.2784313725, green: 0.05490196078, blue: 0.02745098039, alpha: 1)
+            || self.currentCategory == .miles ? #colorLiteral(red: 0.07058823529, green: 0.1921568627, blue: 0.1647058824, alpha: 1) : #colorLiteral(red: 0.3960784314, green: 0.09411764706, blue: 0.06274509804, alpha: 1)
         }
     }
     
-    func applyGradients() {
-        if let gradientLayer = (tableBackgoundView.layer.sublayers?.compactMap{ $0 as? CAGradientLayer })?.first {
-            gradientLayer.removeFromSuperlayer()
-        }
-        
-        let startGradientColor = self.currentCategory == .gross
-                              || self.currentCategory == .miles ? #colorLiteral(red: 0.137254902, green: 0.1921568627, blue: 0.1764705882, alpha: 1) : #colorLiteral(red: 0.2431372549, green: 0.08235294118, blue: 0.06666666667, alpha: 1)
-        self.tableBackgoundView.applyGradient(colors: [startGradientColor, .black], locations: [0, 1])
-    }
     
     // TableView Configuration
     func configureTableView() {

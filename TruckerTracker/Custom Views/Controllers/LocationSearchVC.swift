@@ -22,7 +22,7 @@ class LocationSearchVC: UIViewController {
     
     let searchBarColor: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
     let searchBarTextColor: UIColor = #colorLiteral(red: 0.1137254902, green: 0.1098039216, blue: 0.1294117647, alpha: 1)
-    let searchBarBackgroundColor: UIColor = #colorLiteral(red: 0.04705882353, green: 0.06274509804, blue: 0.05882352941, alpha: 1)
+    let searchBarBackgroundColor: UIColor = #colorLiteral(red: 0.1215686275, green: 0.1176470588, blue: 0.137254902, alpha: 1)
     
     
     var searchIsActive: Bool = true {

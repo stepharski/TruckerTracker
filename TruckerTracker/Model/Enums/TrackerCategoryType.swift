@@ -25,14 +25,10 @@ enum TrackerCategoryType: String, CaseIterable {
     
     var imageTintColor: UIColor {
         switch self {
-        case .gross:
+        case .gross, .miles:
             return #colorLiteral(red: 0, green: 0.8392156863, blue: 0.4941176471, alpha: 1)
-        case .miles:
-            return #colorLiteral(red: 0.1882352941, green: 0.631372549, blue: 0.4470588235, alpha: 1)
-        case .expenses:
+        case .expenses, .fuel:
             return #colorLiteral(red: 1, green: 0.1607843137, blue: 0.09019607843, alpha: 1)
-        case .fuel:
-            return #colorLiteral(red: 0.8509803922, green: 0.2901960784, blue: 0.2235294118, alpha: 1)
         }
     }
     
