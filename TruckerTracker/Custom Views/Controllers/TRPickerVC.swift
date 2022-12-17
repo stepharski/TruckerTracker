@@ -7,26 +7,27 @@
 
 import UIKit
 
-protocol TRPickerVCDelegate: AnyObject {
-    func didSelectDate(date: Date)
-    func didSelectPickerItem()
+protocol TRPickerDelegate: AnyObject {
+    func didSelectItem(name: String)
 }
 
 class TRPickerVC: UIViewController {
     
-    var picker: PickerType!
-    var toolbar = UIToolbar()
-    var datePicker = UIDatePicker()
-    let pickerView = UIPickerView()
-    let containerView = UIView()
-
     let pickerTintColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
-    let pickerBackgroundColor = #colorLiteral(red: 0.06274509804, green: 0.06274509804, blue: 0.06274509804, alpha: 1)
-    let toolbarBackgroundColor = #colorLiteral(red: 0.07058823529, green: 0.07058823529, blue: 0.07058823529, alpha: 1)
     
-    init(picker: PickerType) {
+    var toolbar = UIToolbar()
+    let containerView = UIView()
+    let pickerView = UIPickerView()
+
+    var pickerItems: [String]!
+    var selectedRow: Int!
+    
+    var delegate: TRPickerDelegate?
+    
+    init(pickerItems: [String], selectedRow: Int) {
         super.init(nibName: nil, bundle: nil)
-        self.picker = picker
+        self.pickerItems = pickerItems
+        self.selectedRow = selectedRow
     }
     
     required init?(coder: NSCoder) {
@@ -37,10 +38,12 @@ class TRPickerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configure()
+        configureContainerView()
+        configureToolbar()
+        configurePickerView()
     }
     
-    
+    // Dismiss on background tap
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
@@ -52,29 +55,12 @@ class TRPickerVC: UIViewController {
         }
     }
     
-    
-    private func configure() {
-        view.backgroundColor = .clear
-        overrideUserInterfaceStyle = .dark
-
-        configureContainerView()
-        configureToolbar()
-
-        switch picker {
-        case .date:
-            configureDatePicker()
-        case .frequency, .fuel:
-            configurePickerView()
-        case .none:
-            break
-        }
-    }
-
+    // Container View
     private func configureContainerView() {
         view.addSubview(containerView)
-        containerView.backgroundColor = pickerBackgroundColor
-        let containerHeight: CGFloat = picker == .date ? 440 : 300
-
+        containerView.backgroundColor = .systemGray5
+        
+        let containerHeight: CGFloat = 300
         containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -84,14 +70,15 @@ class TRPickerVC: UIViewController {
         ])
     }
 
+    // Toolbar
     private func configureToolbar() {
         toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
         containerView.addSubview(toolbar)
 
         toolbar.barStyle = .default
         toolbar.isTranslucent = false
-        toolbar.tintColor = .white
-        toolbar.barTintColor = toolbarBackgroundColor
+        toolbar.tintColor = UIColor.label
+        toolbar.barTintColor = .systemGray5
         toolbar.isUserInteractionEnabled = true
 
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
@@ -107,36 +94,25 @@ class TRPickerVC: UIViewController {
     }
 
     @objc private func doneButtonPressed(_ button: UIBarButtonItem) {
-        //TODO: Pass data
+        selectedRow = pickerView.selectedRow(inComponent: 0)
+        delegate?.didSelectItem(name: pickerItems[selectedRow])
+        
         self.dismiss(animated: true)
     }
 
-    private func configureDatePicker() {
-        containerView.addSubview(datePicker)
-
-        datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .inline
-        datePicker.backgroundColor = .clear
-        datePicker.tintColor = pickerTintColor
-
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            datePicker.topAnchor.constraint(equalTo: toolbar.bottomAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            datePicker.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            datePicker.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        ])
-    }
-
+    // Picker View
     private func configurePickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
-
+        
+        if pickerItems.indices.contains(selectedRow) {
+            pickerView.selectRow(selectedRow, inComponent: 0, animated: true)
+        }
+        
         containerView.addSubview(pickerView)
-        pickerView.backgroundColor = pickerBackgroundColor
+        pickerView.backgroundColor = .clear
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             pickerView.topAnchor.constraint(equalTo: toolbar.bottomAnchor),
             pickerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -153,15 +129,10 @@ extension TRPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return picker.itemTypes.count
+        return pickerItems.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: picker.itemTypes[row].rawValue.capitalized,
-                                  attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(picker.itemTypes[component].rawValue)
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerItems[row]
     }
 }

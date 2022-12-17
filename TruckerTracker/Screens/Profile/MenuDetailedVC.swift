@@ -1,17 +1,17 @@
 //
-//  ProfileMenuVC.swift
+//  MenuDetailedVC.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 12/4/22.
+//  Created by Stepan Kukharskyi on 12/16/22.
 //
 
 import UIKit
 
-class ProfileMenuVC: UIViewController {
+class MenuDetailedVC: UIViewController {
 
-    @IBOutlet weak var menuImageView: UIImageView!
-    @IBOutlet weak var menuDescriptionLabel: UILabel!
-    @IBOutlet weak var menuContainerView: UIView!
+    @IBOutlet var menuImageView: UIImageView!
+    @IBOutlet var menuDescriptionLabel: UILabel!
+    @IBOutlet var menuContainerView: UIView!
     
     var menuType: ProfileMenuType!
     
@@ -29,6 +29,7 @@ class ProfileMenuVC: UIViewController {
         configureNavBar()
         configureHeader()
         configureMenuContainer()
+        addMenuChildVC()
     }
     
     
@@ -54,6 +55,22 @@ class ProfileMenuVC: UIViewController {
         menuContainerView.applyGradient(colors: [#colorLiteral(red: 0.03137254902, green: 0.03921568627, blue: 0.03529411765, alpha: 1), #colorLiteral(red: 0.07450980392, green: 0.2274509804, blue: 0.1960784314, alpha: 1)], locations: [0, 1])
     }
     
+    
+    func addMenuChildVC() {
+        var childVC = UIViewController()
+        
+        switch menuType {
+        case .tools:
+            childVC = ToolsMenuVC()
+        default:
+            break
+        }
+        
+        addChild(childVC)
+        menuContainerView.addSubview(childVC.view)
+        childVC.view.frame = menuContainerView.bounds
+        childVC.didMove(toParent: self)
+    }
     
     // Navigation
     @objc func popVC() {

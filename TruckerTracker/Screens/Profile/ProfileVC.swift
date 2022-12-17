@@ -24,11 +24,11 @@ class ProfileVC: UIViewController {
     
     // Navigation
     func showMenuVC(for menuType: ProfileMenuType) {
-        let profileMenuVC = self.storyboard?
-            .instantiateViewController(withIdentifier: StoryboardIdentifiers.profileMenuVC) as! ProfileMenuVC
+        let menuVC = self.storyboard?
+            .instantiateViewController(withIdentifier: StoryboardIdentifiers.menuDetailedVC) as! MenuDetailedVC
         
-        profileMenuVC.menuType = menuType
-        navigationController?.pushViewController(profileMenuVC, animated: true)
+        menuVC.menuType = menuType
+        navigationController?.pushViewController(menuVC, animated: true)
     }
     
     

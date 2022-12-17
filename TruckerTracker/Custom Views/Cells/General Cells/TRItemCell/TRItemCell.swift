@@ -1,16 +1,16 @@
 //
-//  ItemDetailCell.swift
+//  TRItemCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 10/17/22.
+//  Created by Stepan Kukharskyi on 12/15/22.
 //
 
 import UIKit
 
-class ItemDetailCell: UITableViewCell {
+class TRItemCell: UITableViewCell {
 
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var valueTextField: UITextField!
+    @IBOutlet private var nameLabel: UILabel!
+    @IBOutlet private var valueLabel: UILabel!
     
     var itemName: String? {
         didSet {
@@ -20,13 +20,15 @@ class ItemDetailCell: UITableViewCell {
     
     var itemValue: String? {
         didSet {
-            valueTextField.text = itemValue
+            valueLabel.text = itemValue
         }
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        selectionStyle = .none
         backgroundColor = .clear
     }
 }

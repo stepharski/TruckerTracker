@@ -37,12 +37,12 @@ private struct Section {
 // MARK: - CategoryItemVC
 class CategoryItemVC: UIViewController {
     
-    @IBOutlet weak var itemAmountTextField: UITextField!
-    @IBOutlet weak var selectedCategoryImageView: UIImageView!
+    @IBOutlet var itemAmountTextField: UITextField!
+    @IBOutlet var selectedCategoryImageView: UIImageView!
     @IBOutlet var categoryButtons: [UIButton]!
-    @IBOutlet weak var tableBackgoundView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet var tableBackgoundView: UIView!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var deleteButton: UIButton!
     
     private var sections = [Section]()
     var currentCategory: TrackerCategoryType = .gross {
@@ -113,8 +113,7 @@ class CategoryItemVC: UIViewController {
         tableView.sectionHeaderTopPadding = 0
         tableView.estimatedSectionHeaderHeight = 0.0
         
-        tableView.register(ItemDetailCell.nib, forCellReuseIdentifier: ItemDetailCell.identifier)
-        tableView.register(ItemPickerCell.nib, forCellReuseIdentifier: ItemPickerCell.identifier)
+        tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)
         tableView.register(RouteCell.nib, forCellReuseIdentifier: RouteCell.identifier)
         tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
         tableView.register(AddDocRouteCell.nib, forCellReuseIdentifier: AddDocRouteCell.identifier)
@@ -151,12 +150,22 @@ class CategoryItemVC: UIViewController {
     }
     
     // Navigation
-    func showPickerVC(for pickerType: PickerType) {
-        let pickerVC = TRPickerVC(picker: pickerType)
-        pickerVC.modalPresentationStyle = .overCurrentContext
-        pickerVC.modalTransitionStyle = .coverVertical
-
-        self.present(pickerVC, animated: true)
+    func showDatePickerVC() {
+        let datePickerVC = DatePickerVC()
+        datePickerVC.modalPresentationStyle = .pageSheet
+        datePickerVC.sheetPresentationController?.detents = [.medium()]
+        datePickerVC.sheetPresentationController?.largestUndimmedDetentIdentifier = .large
+        
+        present(datePickerVC, animated: true)
+    }
+    
+    func showPickerVC(for pickerItems: [String], at selectedRow: Int) {
+            let pickerVC = TRPickerVC(pickerItems: pickerItems,
+                                      selectedRow: selectedRow)
+            pickerVC.modalPresentationStyle = .overCurrentContext
+            pickerVC.modalTransitionStyle = .coverVertical
+        
+            present(pickerVC, animated: true)
     }
     
     func showLocationSearchVC() {
@@ -184,32 +193,11 @@ extension CategoryItemVC: UITableViewDataSource {
         let item = sections[indexPath.section].rows[indexPath.row]
         switch item {
 
-        case .gross, .miles, .name, .location, .store, .price, .quantity:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ItemDetailCell.identifier) as! ItemDetailCell
+        case .gross, .miles,
+                .name, .date, .frequency,
+                .location, .store, .type, .price, .quantity:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TRItemCell.identifier) as! TRItemCell
             cell.itemName = item.title
-            return cell
-
-        case .date, .frequency, .type:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ItemPickerCell.identifier) as! ItemPickerCell
-            cell.pickerName = item.title
-
-            var pickerValue = ""
-            var pickerType = PickerType.date
-            if item == .date {
-                pickerValue = "\(Date.now.formatted(.dateTime.day().month()))"
-            } else if item == .frequency {
-                pickerType = .frequency
-                pickerValue = "\(pickerType.itemTypes.first?.rawValue.capitalized ?? "Select Frequency")"
-            } else if item == .type {
-                pickerType = .fuel
-                pickerValue = "\(pickerType.itemTypes.first?.rawValue.capitalized ?? "Select Fuel Type")"
-            }
-
-            cell.pickerValue = pickerValue
-            cell.pickerTextFieldPressed = {
-                self.showPickerVC(for: pickerType)
-            }
-
             return cell
 
         case .routeFrom, .routeTo:
@@ -217,7 +205,7 @@ extension CategoryItemVC: UITableViewDataSource {
             cell.direction = item == .routeFrom ? .from : .to
 
             cell.dateTextFieldPressed = {
-                self.showPickerVC(for: .date)
+                self.showDatePickerVC()
             }
 
             cell.locationTextFieldPressed = {
@@ -280,6 +268,39 @@ extension CategoryItemVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedRow = sections[indexPath.section].rows[indexPath.row]
+        
+        switch selectedRow {
+        case .miles, .gross,
+                .name, .store,
+                .price, .quantity:
+            //TODO: Show TextField + Keyboard
+            print(selectedRow)
+            return
+            
+        case .date:
+            showDatePickerVC()
+            
+        case .frequency, .type:
+            print(selectedRow)
+            showPickerVC(for: [], at: 0)
+            
+        case .location:
+            showLocationSearchVC()
+            
+        case .document:
+            // TODO: Show DocumentDetailVC
+            print(selectedRow)
+            return
+            
+        case .addDocument, .addToRoute:
+            // TODO: Show AddToVC
+            print(selectedRow)
+            return
+            
+        case .routeFrom, .routeTo:
+            print(selectedRow)
+            return
+        }
     }
 }

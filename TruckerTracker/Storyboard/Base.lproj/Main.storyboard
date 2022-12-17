@@ -434,9 +434,10 @@ last week</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-j0-hmi">
                                 <rect key="frame" x="15" y="243" width="363" height="575"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PCM-U0-rEL">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PCM-U0-rEL">
                                         <rect key="frame" x="10" y="10" width="343" height="505"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="V3n-3G-TKx" userLabel="Action Buttons Stack">
                                         <rect key="frame" x="29" y="525" width="305" height="50"/>
@@ -648,30 +649,30 @@ last week</string>
             </objects>
             <point key="canvasLocation" x="1059" y="1013"/>
         </scene>
-        <!--Profile MenuVC-->
+        <!--Menu DetailedVC-->
         <scene sceneID="gnG-sa-xzM">
             <objects>
-                <viewController storyboardIdentifier="ProfileMenuVC" id="lIF-of-ieL" customClass="ProfileMenuVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuDetailedVC" id="lIF-of-ieL" customClass="MenuDetailedVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gNd-tM-Rfd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrench.and.screwdriver" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QZZ-eK-Vqz">
-                                <rect key="frame" x="166.66666666666666" y="78.333333333333329" width="60" height="62"/>
-                                <color key="tintColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <rect key="frame" x="166.66666666666666" y="68.333333333333329" width="60" height="62"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="46A-vP-sD1"/>
                                     <constraint firstAttribute="width" secondItem="QZZ-eK-Vqz" secondAttribute="height" multiplier="1:1" id="ceN-ab-3ct"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure app appearance and workflow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXw-Vy-qeJ">
-                                <rect key="frame" x="20" y="154" width="353" height="43"/>
+                                <rect key="frame" x="20" y="144" width="353" height="43"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdZ-ZY-5sS">
-                                <rect key="frame" x="20" y="227" width="353" height="571"/>
+                                <rect key="frame" x="20" y="217" width="353" height="581"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -680,7 +681,7 @@ last week</string>
                         <constraints>
                             <constraint firstItem="r3p-SO-db8" firstAttribute="trailing" secondItem="NdZ-ZY-5sS" secondAttribute="trailing" constant="20" id="2sx-iW-TtC"/>
                             <constraint firstItem="ZXw-Vy-qeJ" firstAttribute="leading" secondItem="r3p-SO-db8" secondAttribute="leading" constant="20" id="Bbo-TO-RPQ"/>
-                            <constraint firstItem="QZZ-eK-Vqz" firstAttribute="top" secondItem="r3p-SO-db8" secondAttribute="top" constant="20" id="EN0-vQ-Ui5"/>
+                            <constraint firstItem="QZZ-eK-Vqz" firstAttribute="top" secondItem="r3p-SO-db8" secondAttribute="top" constant="10" id="EN0-vQ-Ui5"/>
                             <constraint firstItem="r3p-SO-db8" firstAttribute="bottom" secondItem="NdZ-ZY-5sS" secondAttribute="bottom" constant="20" id="H3P-Iq-Das"/>
                             <constraint firstItem="NdZ-ZY-5sS" firstAttribute="top" secondItem="ZXw-Vy-qeJ" secondAttribute="bottom" constant="30" id="ZfR-PO-bn8"/>
                             <constraint firstItem="NdZ-ZY-5sS" firstAttribute="leading" secondItem="r3p-SO-db8" secondAttribute="leading" constant="20" id="fo0-BQ-Cq9"/>
@@ -690,9 +691,9 @@ last week</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="menuContainerView" destination="NdZ-ZY-5sS" id="X8Y-i8-UKW"/>
-                        <outlet property="menuDescriptionLabel" destination="ZXw-Vy-qeJ" id="IEq-iK-n4k"/>
-                        <outlet property="menuImageView" destination="QZZ-eK-Vqz" id="XTY-Hn-EXp"/>
+                        <outlet property="menuContainerView" destination="NdZ-ZY-5sS" id="fIf-SH-TlZ"/>
+                        <outlet property="menuDescriptionLabel" destination="ZXw-Vy-qeJ" id="Ybq-wc-Jzh"/>
+                        <outlet property="menuImageView" destination="QZZ-eK-Vqz" id="ovM-qA-wEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3m-6Q-WNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

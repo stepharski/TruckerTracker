@@ -45,10 +45,10 @@ enum SFSymbols {
 enum StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
     static let trackerVC = "TrackerVC"
-    static let profileVC = "ProfileVC"
-    static let profileMenuVC = "ProfileMenuVC"
-    static let categoryItemVC = "CategoryItemVC"
     static let categorySummaryVC = "CategorySummaryVC"
+    static let profileVC = "ProfileVC"
+    static let menuDetailedVC = "MenuDetailedVC"
+    static let categoryItemVC = "CategoryItemVC"
     static let locationSearchVC = "LocationSearchVC"
 }
 

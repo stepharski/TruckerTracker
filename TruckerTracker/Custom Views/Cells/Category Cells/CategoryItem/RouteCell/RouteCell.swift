@@ -41,6 +41,7 @@ class RouteCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        selectionStyle = .none
         backgroundColor = .clear
         dateTextField.delegate = self
         locationTextField.delegate = self
