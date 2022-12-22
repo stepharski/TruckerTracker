@@ -53,7 +53,12 @@ class DriverMenuVC: UIViewController {
     
     var isOwnerOperator = true {
         didSet {
-            currentPayRate = isOwnerOperator ? ownerOperatorRate : companyDriverRate
+            if isTeamDriver {
+                currentPayRate = isOwnerOperator ? ownerOperatorRate / 2 : companyDriverRate / 2
+            } else {
+                currentPayRate = isOwnerOperator ? ownerOperatorRate : companyDriverRate
+            }
+            
             tableView.reloadSections([2], with: .none)
         }
     }
