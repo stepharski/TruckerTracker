@@ -60,7 +60,7 @@ class ToolsMenuVC: UIViewController {
         configureResetButton()
     }
     
-    
+    // Config
     private func configureTools() {
         tools = [
             Tool(type: .units,
@@ -91,7 +91,7 @@ class ToolsMenuVC: UIViewController {
     
     @objc func resetButtonTapped() { }
     
-    
+    // UI
     private func layoutUI() {
         view.addSubviews(tableView, resetButton)
         tableView.translatesAutoresizingMaskIntoConstraints = false

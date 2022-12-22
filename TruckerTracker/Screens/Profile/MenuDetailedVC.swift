@@ -62,6 +62,8 @@ class MenuDetailedVC: UIViewController {
         switch menuType {
         case .tools:
             childVC = ToolsMenuVC()
+        case .driver:
+            childVC = DriverMenuVC()
         default:
             break
         }

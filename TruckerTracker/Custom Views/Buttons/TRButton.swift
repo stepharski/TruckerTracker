@@ -55,7 +55,7 @@ class TRButton: UIButton {
     }
     
     func set(title: String, type: TRButtonType) {
-        var attTitle = AttributedString.init(title)
+        var attTitle = AttributedString(title)
         attTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         configuration?.attributedTitle = attTitle

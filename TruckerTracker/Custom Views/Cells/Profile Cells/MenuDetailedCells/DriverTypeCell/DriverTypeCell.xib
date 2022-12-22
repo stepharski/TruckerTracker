@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="DriverTypeCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DriverTypeCell" customModule="TruckerTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="220"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="220"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-VW-AP3">
+                        <rect key="frame" x="5" y="20" width="36.666666666666664" height="19.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                        <color key="textColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bd-jE-7NG">
+                        <rect key="frame" x="55" y="65" width="80" height="45"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="QxO-Mx-tUq"/>
+                            <constraint firstAttribute="width" constant="80" id="g4H-XG-kBx"/>
+                        </constraints>
+                        <color key="tintColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Single" cornerStyle="capsule">
+                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="baseForegroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="didTapTeamTypeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Zdx-Zx-18I"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5v-bQ-Mlo">
+                        <rect key="frame" x="215" y="65" width="80" height="45"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="Fir-Tw-owi"/>
+                            <constraint firstAttribute="width" constant="80" id="Slq-7O-XpS"/>
+                        </constraints>
+                        <color key="tintColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Team" cornerStyle="capsule">
+                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="baseForegroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="didTapTeamTypeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YPo-zW-c45"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7t-sl-1M8">
+                        <rect key="frame" x="40" y="135" width="110" height="65"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="4hV-N6-pMB"/>
+                            <constraint firstAttribute="height" constant="65" id="Phe-5a-SP5"/>
+                        </constraints>
+                        <color key="tintColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Company" subtitle="Driver" cornerStyle="capsule" titleAlignment="center">
+                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <fontDescription key="subtitleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="baseForegroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="didTapOwnerTypeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SzZ-MW-hYh"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8Q-J3-gow">
+                        <rect key="frame" x="200" y="135" width="110" height="65"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="2dz-Zg-qrP"/>
+                            <constraint firstAttribute="height" constant="65" id="90j-KN-Hqe"/>
+                        </constraints>
+                        <color key="tintColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Owner" subtitle="Operator" cornerStyle="capsule" titleAlignment="center">
+                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <fontDescription key="subtitleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="baseForegroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="didTapOwnerTypeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NNK-zd-Gzc"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJj-73-tDQ" userLabel="UnderlineView">
+                        <rect key="frame" x="5" y="219" width="340" height="1"/>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="As9-r9-N7V"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PGv-VW-AP3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="2hs-5S-yOo"/>
+                    <constraint firstItem="l7t-sl-1M8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="9UE-u6-F0a"/>
+                    <constraint firstAttribute="bottom" secondItem="aJj-73-tDQ" secondAttribute="bottom" id="BjE-H8-s1H"/>
+                    <constraint firstItem="Y8Q-J3-gow" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="l7t-sl-1M8" secondAttribute="trailing" constant="10" id="J6U-JB-37p"/>
+                    <constraint firstItem="aJj-73-tDQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Nfx-wC-nhB"/>
+                    <constraint firstAttribute="trailing" secondItem="aJj-73-tDQ" secondAttribute="trailing" constant="5" id="SLM-9c-hW8"/>
+                    <constraint firstItem="d5v-bQ-Mlo" firstAttribute="centerX" secondItem="Y8Q-J3-gow" secondAttribute="centerX" id="TaI-tC-uPV"/>
+                    <constraint firstItem="Y8Q-J3-gow" firstAttribute="top" secondItem="d5v-bQ-Mlo" secondAttribute="bottom" constant="25" id="Up0-5A-0fg"/>
+                    <constraint firstItem="d5v-bQ-Mlo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6bd-jE-7NG" secondAttribute="trailing" constant="10" id="api-G8-RLZ"/>
+                    <constraint firstItem="PGv-VW-AP3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="blu-Uu-dO8"/>
+                    <constraint firstItem="6bd-jE-7NG" firstAttribute="centerX" secondItem="l7t-sl-1M8" secondAttribute="centerX" id="bwG-Xp-aLD"/>
+                    <constraint firstItem="l7t-sl-1M8" firstAttribute="top" secondItem="6bd-jE-7NG" secondAttribute="bottom" constant="25" id="lzS-0b-BSe"/>
+                    <constraint firstAttribute="bottom" secondItem="Y8Q-J3-gow" secondAttribute="bottom" constant="20" id="r7g-m6-ell"/>
+                    <constraint firstAttribute="trailing" secondItem="Y8Q-J3-gow" secondAttribute="trailing" constant="40" id="wcA-BY-aGo"/>
+                    <constraint firstAttribute="bottom" secondItem="l7t-sl-1M8" secondAttribute="bottom" constant="20" id="zht-Qm-o3g"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.1058823529" green="0.1843137255" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="companyDriverButton" destination="l7t-sl-1M8" id="9pO-LB-4mu"/>
+                <outlet property="ownerOperatorButton" destination="Y8Q-J3-gow" id="rYo-Xn-7cd"/>
+                <outlet property="singleButton" destination="6bd-jE-7NG" id="y8F-lk-Vm8"/>
+                <outlet property="teamButton" destination="d5v-bQ-Mlo" id="Zb4-Eu-zs5"/>
+            </connections>
+            <point key="canvasLocation" x="120" y="21"/>
+        </tableViewCell>
+    </objects>
+</document>

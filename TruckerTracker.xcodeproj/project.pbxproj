@@ -15,6 +15,9 @@
 		5F791011294CE58B00A73600 /* MenuDetailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791010294CE58B00A73600 /* MenuDetailedVC.swift */; };
 		5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791012294CEC2900A73600 /* FrequencyType.swift */; };
 		5F791015294CECF700A73600 /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791014294CECF700A73600 /* FuelType.swift */; };
+		5F791017294D756600A73600 /* DriverMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791016294D756600A73600 /* DriverMenuVC.swift */; };
+		5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F79101A294D7ACE00A73600 /* DriverTypeCell.swift */; };
+		5F79101D294D7ACE00A73600 /* DriverTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F79101B294D7ACE00A73600 /* DriverTypeCell.xib */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
 		5F7B12C928E88BC900AA4B6F /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12C728E88BC900AA4B6F /* ExpensesCell.swift */; };
 		5F7B12CA28E88BC900AA4B6F /* ExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7B12C828E88BC900AA4B6F /* ExpensesCell.xib */; };
@@ -26,6 +29,9 @@
 		5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2FD28B7F9FA00441353 /* TruckerTracker.xcdatamodeld */; };
 		5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8BE30028B7F9FB00441353 /* Assets.xcassets */; };
 		5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8BE30228B7F9FB00441353 /* LaunchScreen.storyboard */; };
+		5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6A82952CEC6004C5D2A /* DriverPayRateCell.swift */; };
+		5F97B6AB2952CEC6004C5D2A /* DriverPayRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F97B6A92952CEC6004C5D2A /* DriverPayRateCell.xib */; };
+		5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6AD2953F8FB004C5D2A /* TRSlider.swift */; };
 		5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */; };
 		5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */; };
 		5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5C29201FB800DEEC20 /* ProfileHeaderView.swift */; };
@@ -65,6 +71,9 @@
 		5F791010294CE58B00A73600 /* MenuDetailedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailedVC.swift; sourceTree = "<group>"; };
 		5F791012294CEC2900A73600 /* FrequencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyType.swift; sourceTree = "<group>"; };
 		5F791014294CECF700A73600 /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
+		5F791016294D756600A73600 /* DriverMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverMenuVC.swift; sourceTree = "<group>"; };
+		5F79101A294D7ACE00A73600 /* DriverTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTypeCell.swift; sourceTree = "<group>"; };
+		5F79101B294D7ACE00A73600 /* DriverTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverTypeCell.xib; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		5F7B12C728E88BC900AA4B6F /* ExpensesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesCell.swift; sourceTree = "<group>"; };
 		5F7B12C828E88BC900AA4B6F /* ExpensesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesCell.xib; sourceTree = "<group>"; };
@@ -78,6 +87,9 @@
 		5F8BE30028B7F9FB00441353 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F8BE30328B7F9FB00441353 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F8BE30528B7F9FB00441353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F97B6A82952CEC6004C5D2A /* DriverPayRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverPayRateCell.swift; sourceTree = "<group>"; };
+		5F97B6A92952CEC6004C5D2A /* DriverPayRateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverPayRateCell.xib; sourceTree = "<group>"; };
+		5F97B6AD2953F8FB004C5D2A /* TRSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRSlider.swift; sourceTree = "<group>"; };
 		5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Ext.swift"; sourceTree = "<group>"; };
 		5F97FD5C29201FB800DEEC20 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -123,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */,
+				5F791016294D756600A73600 /* DriverMenuVC.swift */,
 			);
 			path = MenuChildVCs;
 			sourceTree = "<group>";
@@ -178,6 +191,24 @@
 				5F791005294B8F7F00A73600 /* TRItemCell.xib */,
 			);
 			path = TRItemCell;
+			sourceTree = "<group>";
+		};
+		5F791018294D7A8D00A73600 /* DriverTypeCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F79101A294D7ACE00A73600 /* DriverTypeCell.swift */,
+				5F79101B294D7ACE00A73600 /* DriverTypeCell.xib */,
+			);
+			path = DriverTypeCell;
+			sourceTree = "<group>";
+		};
+		5F791019294D7AA300A73600 /* MenuDetailedCells */ = {
+			isa = PBXGroup;
+			children = (
+				5F791018294D7A8D00A73600 /* DriverTypeCell */,
+				5F97B6A72952CE81004C5D2A /* DriverPayRateCell */,
+			);
+			path = MenuDetailedCells;
 			sourceTree = "<group>";
 		};
 		5F7B12B928E63EE200AA4B6F /* Cells */ = {
@@ -240,11 +271,29 @@
 			path = TruckerTracker;
 			sourceTree = "<group>";
 		};
+		5F97B6A72952CE81004C5D2A /* DriverPayRateCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F97B6A82952CEC6004C5D2A /* DriverPayRateCell.swift */,
+				5F97B6A92952CEC6004C5D2A /* DriverPayRateCell.xib */,
+			);
+			path = DriverPayRateCell;
+			sourceTree = "<group>";
+		};
+		5F97B6AC2953F8DD004C5D2A /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				5F97B6AD2953F8FB004C5D2A /* TRSlider.swift */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
 		5F97FD5629201D9900DEEC20 /* Profile Cells */ = {
 			isa = PBXGroup;
 			children = (
 				5F97FD5729201DB100DEEC20 /* ProfileHeaderView */,
 				5F97FD7029233D1500DEEC20 /* ProfileMenuCell */,
+				5F791019294D7AA300A73600 /* MenuDetailedCells */,
 			);
 			path = "Profile Cells";
 			sourceTree = "<group>";
@@ -328,6 +377,7 @@
 				5FB92F4128C970FD0037A4AD /* TabBar */,
 				5F790FF8294451D300A73600 /* Buttons */,
 				5FB92F4228C971250037A4AD /* Views */,
+				5F97B6AC2953F8DD004C5D2A /* Slider */,
 				5F7B12B928E63EE200AA4B6F /* Cells */,
 			);
 			path = "Custom Views";
@@ -504,7 +554,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F79101D294D7ACE00A73600 /* DriverTypeCell.xib in Resources */,
 				5F7B12CA28E88BC900AA4B6F /* ExpensesCell.xib in Resources */,
+				5F97B6AB2952CEC6004C5D2A /* DriverPayRateCell.xib in Resources */,
 				5FD315AB28FDCC4600169E23 /* GrossMilesCell.xib in Resources */,
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */,
@@ -530,6 +582,7 @@
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */,
 				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
+				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
 				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
 				5F7B12C928E88BC900AA4B6F /* ExpensesCell.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
@@ -540,6 +593,7 @@
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
 				5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */,
 				5F7B12CE28E891C000AA4B6F /* FuelCell.swift in Sources */,
+				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
 				5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
 				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
@@ -551,12 +605,14 @@
 				5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */,
 				5F97FD7329233D3D00DEEC20 /* ProfileMenuCell.swift in Sources */,
 				5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */,
+				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
 				5FA602E1290748CC00319E18 /* DocumentsHeaderView.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */,
 				5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */,
 				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
+				5F791017294D756600A73600 /* DriverMenuVC.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5FD315A628F882AD00169E23 /* CategorySummaryVC.swift in Sources */,
 				5F791002294B71FC00A73600 /* DatePickerVC.swift in Sources */,
