@@ -1,13 +1,13 @@
 //
-//  TRCategoryInfoView.swift
+//  CategoryInfoView.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 9/7/22.
+//  Created by Stepan Kukharskyi on 12/24/22.
 //
 
 import UIKit
 
-class TRCategoryInfoView: UIView {
+class CategoryInfoView: UIView {
 
     let symbolImageView = UIImageView()
     let countLabel = UILabel()
@@ -36,7 +36,7 @@ class TRCategoryInfoView: UIView {
     }
 
 
-    func configureCountLabel() {
+    private func configureCountLabel() {
         self.addSubview(countLabel)
 
         countLabel.textColor = #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
@@ -53,7 +53,7 @@ class TRCategoryInfoView: UIView {
         ])
     }
 
-    func configureTitleLabel() {
+    private func configureTitleLabel() {
         self.addSubview(titleLabel)
 
         titleLabel.textColor = #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 0.8)
@@ -69,7 +69,7 @@ class TRCategoryInfoView: UIView {
         ])
     }
 
-    func configureSymbolImageView() {
+    private func configureSymbolImageView() {
         self.addSubview(symbolImageView)
         
         let imageHeight: CGFloat = 40

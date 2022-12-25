@@ -38,6 +38,12 @@ enum SFSymbols {
     static let chartBarX = UIImage(systemName: "chart.bar.xaxis")
     static let envelope = UIImage(systemName: "envelope")
     static let pc = UIImage(systemName: "pc")
+    
+    // Compact arrows
+    static let arrowCompactUp = UIImage(systemName: "chevron.compact.up")
+    static let arrowCompactDown = UIImage(systemName: "chevron.compact.down")
+    static let arrowCompactLeft = UIImage(systemName: "chevron.compact.left")
+    static let arrowCompactRight = UIImage(systemName: "chevron.compact.right")
 }
 
 

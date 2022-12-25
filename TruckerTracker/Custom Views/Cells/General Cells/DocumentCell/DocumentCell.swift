@@ -9,13 +9,14 @@ import UIKit
 
 class DocumentCell: UITableViewCell {
 
-    @IBOutlet private weak var docNameLabel: UILabel!
+    @IBOutlet private var docNameLabel: UILabel!
     
     var docName: String? {
         didSet {
             docNameLabel.text = docName
         }
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

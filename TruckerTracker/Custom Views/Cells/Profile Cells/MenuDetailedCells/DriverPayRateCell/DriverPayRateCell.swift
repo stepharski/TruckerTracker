@@ -48,8 +48,8 @@ class DriverPayRateCell: UITableViewCell {
     
     
     func configureSlider() {
+        slider.value = payRate
         slider.minimumValue = minPayRate
         slider.maximumValue = maxPayRate
-        slider.value = payRate
     }
 }

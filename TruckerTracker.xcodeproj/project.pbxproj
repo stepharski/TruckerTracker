@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
+		5F71DC7F295771EC003111AF /* CategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7E295771EC003111AF /* CategoryInfoView.swift */; };
+		5F71DC8129577231003111AF /* DateRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8029577231003111AF /* DateRangeView.swift */; };
+		5F71DC832957803A003111AF /* PeriodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8229578039003111AF /* PeriodType.swift */; };
+		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */; };
 		5F790FFA2944521F00A73600 /* TRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF92944521F00A73600 /* TRButton.swift */; };
 		5F791002294B71FC00A73600 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791001294B71FC00A73600 /* DatePickerVC.swift */; };
@@ -32,6 +37,7 @@
 		5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6A82952CEC6004C5D2A /* DriverPayRateCell.swift */; };
 		5F97B6AB2952CEC6004C5D2A /* DriverPayRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F97B6A92952CEC6004C5D2A /* DriverPayRateCell.xib */; };
 		5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6AD2953F8FB004C5D2A /* TRSlider.swift */; };
+		5F97B6B02954F417004C5D2A /* DocumentsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6AF2954F417004C5D2A /* DocumentsMenuVC.swift */; };
 		5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */; };
 		5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */; };
 		5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5C29201FB800DEEC20 /* ProfileHeaderView.swift */; };
@@ -55,7 +61,6 @@
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
 		5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */; };
 		5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */; };
-		5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */; };
 		5FD315A628F882AD00169E23 /* CategorySummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */; };
 		5FD315AA28FDCC4600169E23 /* GrossMilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315A828FDCC4600169E23 /* GrossMilesCell.swift */; };
 		5FD315AB28FDCC4600169E23 /* GrossMilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD315A928FDCC4600169E23 /* GrossMilesCell.xib */; };
@@ -63,6 +68,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
+		5F71DC7E295771EC003111AF /* CategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfoView.swift; sourceTree = "<group>"; };
+		5F71DC8029577231003111AF /* DateRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeView.swift; sourceTree = "<group>"; };
+		5F71DC8229578039003111AF /* PeriodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodType.swift; sourceTree = "<group>"; };
+		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsMenuVC.swift; sourceTree = "<group>"; };
 		5F790FF92944521F00A73600 /* TRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRButton.swift; sourceTree = "<group>"; };
 		5F791001294B71FC00A73600 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
@@ -90,6 +100,7 @@
 		5F97B6A82952CEC6004C5D2A /* DriverPayRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverPayRateCell.swift; sourceTree = "<group>"; };
 		5F97B6A92952CEC6004C5D2A /* DriverPayRateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverPayRateCell.xib; sourceTree = "<group>"; };
 		5F97B6AD2953F8FB004C5D2A /* TRSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRSlider.swift; sourceTree = "<group>"; };
+		5F97B6AF2954F417004C5D2A /* DocumentsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsMenuVC.swift; sourceTree = "<group>"; };
 		5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Ext.swift"; sourceTree = "<group>"; };
 		5F97FD5C29201FB800DEEC20 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -113,7 +124,6 @@
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5FB92F3D28C368CC0037A4AD /* TrackerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerVC.swift; sourceTree = "<group>"; };
 		5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryType.swift; sourceTree = "<group>"; };
-		5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRCategoryInfoView.swift; sourceTree = "<group>"; };
 		5FD315A528F882AD00169E23 /* CategorySummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySummaryVC.swift; sourceTree = "<group>"; };
 		5FD315A828FDCC4600169E23 /* GrossMilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossMilesCell.swift; sourceTree = "<group>"; };
 		5FD315A928FDCC4600169E23 /* GrossMilesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrossMilesCell.xib; sourceTree = "<group>"; };
@@ -131,11 +141,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F71DC7B29574A28003111AF /* ExpandFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				5F71DC7C29574A98003111AF /* ExpandFooterView.swift */,
+			);
+			path = ExpandFooterView;
+			sourceTree = "<group>";
+		};
 		5F790FF22944448C00A73600 /* MenuChildVCs */ = {
 			isa = PBXGroup;
 			children = (
 				5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */,
 				5F791016294D756600A73600 /* DriverMenuVC.swift */,
+				5F97B6AF2954F417004C5D2A /* DocumentsMenuVC.swift */,
 			);
 			path = MenuChildVCs;
 			sourceTree = "<group>";
@@ -180,6 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				5F791003294B8F6500A73600 /* TRItemCell */,
+				5FA602D5290730A300319E18 /* DocumentCell */,
+				5FA602DF2907488E00319E18 /* DocHeaderView */,
+				5F71DC7B29574A28003111AF /* ExpandFooterView */,
 			);
 			path = "General Cells";
 			sourceTree = "<group>";
@@ -262,7 +284,7 @@
 				5FB92F3828BD7CBD0037A4AD /* Extensions */,
 				5FB92F3528BC18E20037A4AD /* Utilities */,
 				5FB92F3228B922080037A4AD /* Custom Views */,
-				5FB92F3128B921FD0037A4AD /* Screens */,
+				5FB92F3128B921FD0037A4AD /* Controllers */,
 				5FB92F3428B9226E0037A4AD /* Storyboard */,
 				5FB92F3328B922320037A4AD /* Supporting Files */,
 				5F8BE30528B7F9FB00441353 /* Info.plist */,
@@ -360,14 +382,14 @@
 			path = DocHeaderView;
 			sourceTree = "<group>";
 		};
-		5FB92F3128B921FD0037A4AD /* Screens */ = {
+		5FB92F3128B921FD0037A4AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5F790FF5294449F300A73600 /* Home */,
 				5F790FF6294449FF00A73600 /* NewEdit Item */,
 				5F790FF729444A1D00A73600 /* Profile */,
 			);
-			path = Screens;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		5FB92F3228B922080037A4AD /* Custom Views */ = {
@@ -413,6 +435,7 @@
 		5FB92F3828BD7CBD0037A4AD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5F71DC8429578138003111AF /* Date+Ext.swift */,
 				5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */,
 				5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */,
 				5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */,
@@ -433,7 +456,8 @@
 		5FB92F4228C971250037A4AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5FB92F4D28C984D30037A4AD /* TRCategoryInfoView.swift */,
+				5F71DC8029577231003111AF /* DateRangeView.swift */,
+				5F71DC7E295771EC003111AF /* CategoryInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +475,7 @@
 			children = (
 				5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */,
 				5F791012294CEC2900A73600 /* FrequencyType.swift */,
+				5F71DC8229578039003111AF /* PeriodType.swift */,
 				5F791014294CECF700A73600 /* FuelType.swift */,
 				5F97FD6E2923394C00DEEC20 /* ProfileMenuType.swift */,
 			);
@@ -472,8 +497,6 @@
 			children = (
 				5FA602CB29071AA100319E18 /* RouteCell */,
 				5FA602D02907273F00319E18 /* AddDocRouteCell */,
-				5FA602DF2907488E00319E18 /* DocHeaderView */,
-				5FA602D5290730A300319E18 /* DocumentCell */,
 			);
 			path = CategoryItem;
 			sourceTree = "<group>";
@@ -580,9 +603,9 @@
 			files = (
 				5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
-				5FB92F4E28C984D30037A4AD /* TRCategoryInfoView.swift in Sources */,
 				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
+				5F71DC8129577231003111AF /* DateRangeView.swift in Sources */,
 				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
 				5F7B12C928E88BC900AA4B6F /* ExpensesCell.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
@@ -594,6 +617,9 @@
 				5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */,
 				5F7B12CE28E891C000AA4B6F /* FuelCell.swift in Sources */,
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
+				5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */,
+				5F97B6B02954F417004C5D2A /* DocumentsMenuVC.swift in Sources */,
+				5F71DC7F295771EC003111AF /* CategoryInfoView.swift in Sources */,
 				5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
 				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
@@ -603,6 +629,7 @@
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5FD315AA28FDCC4600169E23 /* GrossMilesCell.swift in Sources */,
 				5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */,
+				5F71DC832957803A003111AF /* PeriodType.swift in Sources */,
 				5F97FD7329233D3D00DEEC20 /* ProfileMenuCell.swift in Sources */,
 				5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */,
 				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
@@ -613,6 +640,7 @@
 				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5F791017294D756600A73600 /* DriverMenuVC.swift in Sources */,
+				5F71DC8529578138003111AF /* Date+Ext.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5FD315A628F882AD00169E23 /* CategorySummaryVC.swift in Sources */,
 				5F791002294B71FC00A73600 /* DatePickerVC.swift in Sources */,

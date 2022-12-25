@@ -110,13 +110,11 @@ class CategoryItemVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.sectionHeaderTopPadding = 0
-        tableView.estimatedSectionHeaderHeight = 0.0
-        
-        tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)
         tableView.register(RouteCell.nib, forCellReuseIdentifier: RouteCell.identifier)
+        tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)
         tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
         tableView.register(AddDocRouteCell.nib, forCellReuseIdentifier: AddDocRouteCell.identifier)
+        tableView.register(DocumentsHeaderView.self, forHeaderFooterViewReuseIdentifier: DocumentsHeaderView.identifier)
         updateSectionsRows()
     }
     
@@ -237,8 +235,11 @@ extension CategoryItemVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch sections[section].type {
         case .documents:
-            return DocumentsHeaderView(frame: CGRect(x: 0, y: 0,
-                                                     width: tableView.frame.width, height: 30))
+            let headerView = DocumentsHeaderView(frame: CGRect(x: 0, y: 0,
+                                                               width: tableView.frame.width, height: 35))
+            headerView.title = "Documents"
+
+            return headerView
         default:
             return nil
         }
@@ -249,9 +250,9 @@ extension CategoryItemVC: UITableViewDelegate {
         case .route:
             return 10
         case .documents:
-            return 35
+            return 20
         default:
-            return 0
+            return CGFloat.leastNonzeroMagnitude
         }
     }
     

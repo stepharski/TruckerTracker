@@ -91,11 +91,10 @@ class DriverMenuVC: UIViewController {
         ])
     }
     
-    // Config
+    // Configuration
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 50
         tableView.backgroundColor = .clear
         
         tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)

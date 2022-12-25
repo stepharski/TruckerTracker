@@ -67,7 +67,7 @@ class TrackerVC: UIViewController {
         
         for index in categoryBackgroundViews.indices {
             let categoryType = TrackerCategoryType.allCases[index]
-            let categoryInfoView = TRCategoryInfoView(categoryType: categoryType, withCount: 8800)
+            let categoryInfoView = CategoryInfoView(categoryType: categoryType, withCount: 8800)
             let categoryBackgroundView = categoryBackgroundViews[index]
             categoryBackgroundView.addSubview(categoryInfoView)
             
