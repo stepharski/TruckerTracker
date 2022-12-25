@@ -8,19 +8,17 @@
 import UIKit
 
 class TrackerVC: UIViewController {
-
-    @IBOutlet weak var totalValueTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var totalValueBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var dateRangePickerView: UIView!
+    @IBOutlet var dateContainerView: UIView!
     @IBOutlet var categoryBackgroundViews: [UIView]!
     
+    let dateRangeView = DateRangeView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureNavBar()
-        configureUI()
+        configureDateRangeView()
         configureCategoryViews()
         bindTapGestureToCategories()
     }
@@ -49,21 +47,21 @@ class TrackerVC: UIViewController {
             target: self,
             action: #selector(shareReport))
     }
-
     
-    func configureUI() {
-        dateRangePickerView.roundEdges()
-        categoryBackgroundViews.forEach { $0.roundEdges() }
-        
-        totalValueTopConstraint.constant = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhoneZoomed ? 20 : 40
-        totalValueBottomConstraint.constant = totalValueTopConstraint.constant
+    func configureDateRangeView() {
+        dateRangeView.itemName = "load"
+        dateRangeView.numberOfItems = 5
+        dateContainerView.roundEdges()
+        dateContainerView.addSubview(dateRangeView)
+        dateRangeView.pinToEdges(of: dateContainerView)
     }
-    
     
     func configureCategoryViews() {
         guard categoryBackgroundViews.count == TrackerCategoryType.allCases.count else {
             return
         }
+        
+        categoryBackgroundViews.forEach { $0.roundEdges() }
         
         for index in categoryBackgroundViews.indices {
             let categoryType = TrackerCategoryType.allCases[index]
@@ -79,9 +77,8 @@ class TrackerVC: UIViewController {
         }
     }
     
-    
     func applyGradients() {
-        dateRangePickerView.applyGradient(colors: [#colorLiteral(red: 0.1529411765, green: 0.3294117647, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.09411764706, green: 0.09411764706, blue: 0.09411764706, alpha: 1)], locations: [0, 1])
+        dateContainerView.applyGradient(colors: [#colorLiteral(red: 0.1529411765, green: 0.3294117647, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.09411764706, green: 0.09411764706, blue: 0.09411764706, alpha: 1)], locations: [0, 1])
         
         guard categoryBackgroundViews.count == TrackerCategoryType.allCases.count else {
             return
@@ -94,7 +91,7 @@ class TrackerVC: UIViewController {
         }
     }
     
-    
+    // Gestures
     func bindTapGestureToCategories() {
         categoryBackgroundViews.forEach {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCategory(_:)))

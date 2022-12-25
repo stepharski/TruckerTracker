@@ -40,7 +40,7 @@ class CategoryInfoView: UIView {
         self.addSubview(countLabel)
 
         countLabel.textColor = #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
-        countLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        countLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         
         let centerYPadding: CGFloat = DeviceTypes.isiPhoneSE ? 10 : 20
         
@@ -63,9 +63,9 @@ class CategoryInfoView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: countLabel.bottomAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: countLabel.centerXAnchor),
-            titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: 5),
-            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: self.trailingAnchor, constant: -5)
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: self.trailingAnchor)
         ])
     }
 

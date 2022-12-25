@@ -9,23 +9,26 @@ import UIKit
 
 class CategorySummaryVC: UIViewController {
 
-    @IBOutlet weak var totalSumLabel: UILabel!
-    @IBOutlet weak var leadingStatiscitcsLabel: UILabel!
-    @IBOutlet weak var trailingStatiscticsLabel: UILabel!
-    @IBOutlet weak var symbolImageView: UIImageView!
+    @IBOutlet var totalSumLabel: UILabel!
+    @IBOutlet var symbolImageView: UIImageView!
+    @IBOutlet var leadingStatiscitcsLabel: UILabel!
+    @IBOutlet var trailingStatiscticsLabel: UILabel!
     
-    @IBOutlet weak var tableBackgroundView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var dateContainerView: UIView!
+    @IBOutlet var tableBackgroundView: UIView!
+    @IBOutlet var tableView: UITableView!
     
+    let dateRangeView = DateRangeView()
     var category = TrackerCategoryType.gross
     
-    
+    // Lide cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureUI()
         configureNavBar()
         configureTableView()
+        configureImageViews()
+        configureDateRangeView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -34,13 +37,12 @@ class CategorySummaryVC: UIViewController {
         applyGradients()
     }
 
-    
+    // UI
     func configureNavBar() {
         navigationItem.title = category.title.capitalized
     }
     
-    func configureUI() {
-        tableBackgroundView.roundEdges()
+    func configureImageViews() {
         symbolImageView.image = category.image
         symbolImageView.tintColor = category.imageTintColor
     }
@@ -50,9 +52,19 @@ class CategorySummaryVC: UIViewController {
         tableBackgroundView.applyGradient(colors: category.contrastGradientColors, locations: category.gradientLocations)
     }
     
+    func configureDateRangeView() {
+        dateRangeView.numberOfItems = 7
+        dateRangeView.itemName = category.itemName
+        dateContainerView.backgroundColor = .clear
+        dateContainerView.addSubview(dateRangeView)
+        dateRangeView.pinToEdges(of: dateContainerView)
+    }
+    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableBackgroundView.roundEdges()
         
         switch category {
         case .gross, .miles:
@@ -64,7 +76,7 @@ class CategorySummaryVC: UIViewController {
         }
     }
     
-    
+    // Navigation
     func presentCategoryItemNavController() {
         let categoryItemVC = self.storyboard?.instantiateViewController(
             withIdentifier: StoryboardIdentifiers.categoryItemVC) as! CategoryItemVC

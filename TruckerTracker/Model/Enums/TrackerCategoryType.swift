@@ -10,6 +10,17 @@ import UIKit
 enum TrackerCategoryType: String, CaseIterable {
     case gross, miles, expenses, fuel
     
+    var itemName: String {
+        switch self {
+        case .gross:
+            return "load"
+        case .miles:
+            return "trip"
+        case .expenses, .fuel:
+            return "transaction"
+        }
+    }
+    
     var image: UIImage? {
         switch self {
         case .gross:
@@ -25,10 +36,12 @@ enum TrackerCategoryType: String, CaseIterable {
     
     var imageTintColor: UIColor {
         switch self {
-        case .gross, .miles:
+        case .gross:
+            return #colorLiteral(red: 0, green: 0.9019607843, blue: 0.3921568627, alpha: 1)
+        case .miles:
             return #colorLiteral(red: 0, green: 0.8392156863, blue: 0.4941176471, alpha: 1)
         case .expenses, .fuel:
-            return #colorLiteral(red: 1, green: 0.1607843137, blue: 0.09019607843, alpha: 1)
+            return #colorLiteral(red: 1, green: 0.09803921569, blue: 0.01568627451, alpha: 1)
         }
     }
     

@@ -18,8 +18,17 @@ class DateRangeView: UIView {
     var startDate: Date = Date()
     var endDate: Date = Date(timeIntervalSinceNow: 60*60*24*7)
     
-    var numberOfItems: Int = 15
-    var itemName: String = "Document"
+    var numberOfItems: Int = 15 {
+        didSet {
+            updateNumberOfItemsLabel()
+        }
+    }
+    
+    var itemName: String = "Document" {
+        didSet {
+            updateNumberOfItemsLabel()
+        }
+    }
     
     
     override init(frame: CGRect) {
@@ -63,7 +72,7 @@ class DateRangeView: UIView {
         
         NSLayoutConstraint.activate([
             dateRangelabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            dateRangelabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -7),
+            dateRangelabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10),
             
             numberOfItemsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             numberOfItemsLabel.topAnchor.constraint(equalTo: dateRangelabel.bottomAnchor, constant: 3)
