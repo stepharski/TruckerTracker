@@ -98,7 +98,7 @@ class ToolsMenuVC: UIViewController {
         
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
-            resetButton.heightAnchor.constraint(equalToConstant: 50),
+            resetButton.heightAnchor.constraint(equalToConstant: 45),
             resetButton.widthAnchor.constraint(equalToConstant: 200),
             resetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             resetButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: padding),

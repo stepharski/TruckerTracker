@@ -79,7 +79,7 @@ class DriverMenuVC: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
-            saveButton.heightAnchor.constraint(equalToConstant: 50),
+            saveButton.heightAnchor.constraint(equalToConstant: 45),
             saveButton.widthAnchor.constraint(equalToConstant: 200),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: padding),

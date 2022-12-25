@@ -66,6 +66,8 @@ class MenuDetailedVC: UIViewController {
             childVC = DriverMenuVC()
         case .documents:
             childVC = DocumentsMenuVC()
+        case .recurring:
+            childVC = RecurringMenuVC()
         default:
             break
         }

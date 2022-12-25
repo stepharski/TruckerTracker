@@ -25,7 +25,7 @@ enum ProfileMenuType: String, CaseIterable {
         case .documents:
             return "Uploaded documents"
         case .recurring:
-            return "Scheduled transactions"
+            return "Scheduled expenses"
         case .data:
             return "Export or Reset"
         case .contact:
@@ -59,7 +59,7 @@ enum ProfileMenuType: String, CaseIterable {
         case .documents:
             return "Manage uploaded files \n grouped by type"
         case .recurring:
-            return "Schedule or edit \n transactions that repeat"
+            return "Schedule or edit \n expenses that repeat"
         case .data:
             return "Synchronize \n your information"
         case .contact:

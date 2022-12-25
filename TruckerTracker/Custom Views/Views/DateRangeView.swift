@@ -18,7 +18,7 @@ class DateRangeView: UIView {
     var startDate: Date = Date()
     var endDate: Date = Date(timeIntervalSinceNow: 60*60*24*7)
     
-    var numberOfItems: Int = 0
+    var numberOfItems: Int = 15
     var itemName: String = "Document"
     
     

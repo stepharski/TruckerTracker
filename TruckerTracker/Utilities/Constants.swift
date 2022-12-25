@@ -24,11 +24,13 @@ enum SFSymbols {
 
     // Categories
     static let dollar = UIImage(systemName: "dollarsign.circle")
-    static let doubleCircle = UIImage(systemName: "circle.circle")
     static let minusCircle = UIImage(systemName: "minus.circle")
-    static let flame = UIImage(systemName: "flame")
+    static let speedometer = UIImage(systemName: "speedometer")
+    static let fuelPumpCircle = UIImage(systemName: "fuelpump.circle")
+    
     static let plusSquares = UIImage(systemName: "plus.square.on.square")
     static let docPlus = UIImage(systemName: "doc.fill.badge.plus")
+
     
     // Profile
     static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")

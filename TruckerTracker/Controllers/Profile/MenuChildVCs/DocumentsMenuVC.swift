@@ -60,7 +60,7 @@ class DocumentsMenuVC: UIViewController {
             dateRangeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dateRangeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            addDocButton.heightAnchor.constraint(equalToConstant: 50),
+            addDocButton.heightAnchor.constraint(equalToConstant: 45),
             addDocButton.widthAnchor.constraint(equalToConstant: 200),
             addDocButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addDocButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: padding),
@@ -143,13 +143,14 @@ extension DocumentsMenuVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier,
                                                  for: indexPath) as! DocumentCell
+        let randomInt = Int.random(in: 1...1000)
         switch sections[indexPath.section].type {
         case .rateConfirmations:
-            cell.docName = "LoadConfirmation\(indexPath.row)"
+            cell.docName = "LoadConfirmation\(randomInt)"
         case . fuelReceipts:
-            cell.docName = "FuelReceipt\(indexPath.row)"
+            cell.docName = "FuelReceipt\(randomInt)"
         case .others:
-            cell.docName = "Document\(indexPath.row)"
+            cell.docName = "Document\(randomInt)"
         }
         
         return cell

@@ -15,11 +15,11 @@ enum TrackerCategoryType: String, CaseIterable {
         case .gross:
             return SFSymbols.dollar
         case .miles:
-            return SFSymbols.doubleCircle
+            return SFSymbols.speedometer
         case .expenses:
             return SFSymbols.minusCircle
         case .fuel:
-            return SFSymbols.flame
+            return SFSymbols.fuelPumpCircle
         }
     }
     

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Button type
 enum TRButtonType {
     case light, dark, red
     
@@ -31,8 +32,14 @@ enum TRButtonType {
     }
 }
 
+// TRButton
 class TRButton: UIButton {
     
+    // Font attributes
+    private let titleFontSize: CGFloat = 16
+    private let titleFontWeight: UIFont.Weight = .semibold
+    
+    // Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -47,7 +54,7 @@ class TRButton: UIButton {
         set(title: title, type: type)
     }
     
-    
+    // Configuration
     private func configure() {
         configuration = .filled()
         configuration?.cornerStyle = .capsule
@@ -56,7 +63,7 @@ class TRButton: UIButton {
     
     func set(title: String, type: TRButtonType) {
         var attTitle = AttributedString(title)
-        attTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        attTitle.font = UIFont.systemFont(ofSize: titleFontSize, weight: titleFontWeight)
         
         configuration?.attributedTitle = attTitle
         configuration?.baseBackgroundColor = type.backgroundColor
