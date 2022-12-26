@@ -60,37 +60,6 @@ class ToolsMenuVC: UIViewController {
         configureResetButton()
     }
     
-    // Config
-    private func configureTools() {
-        tools = [
-            Tool(type: .units,
-                 items: [.imperial, .metric],
-                 selectedItem: .imperial),
-            Tool(type: .currency,
-                 items: [.usd, .euro],
-                 selectedItem: .usd),
-            Tool(type: .weekStartsOn,
-                 items: [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday],
-                 selectedItem: .monday)
-        ]
-    }
-    
-    private func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 50
-        tableView.backgroundColor = .clear
-        
-        tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)
-    }
-    
-    private func configureResetButton() {
-        resetButton.dropShadow()
-        resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
-    }
-    
-    @objc func resetButtonTapped() { }
-    
     // UI
     private func layoutUI() {
         view.addSubviews(tableView, resetButton)
@@ -110,6 +79,37 @@ class ToolsMenuVC: UIViewController {
         ])
     }
     
+    // Configuration
+    private func configureTools() {
+        tools = [
+            Tool(type: .units,
+                 items: [.imperial, .metric],
+                 selectedItem: .imperial),
+            Tool(type: .currency,
+                 items: [.usd, .euro],
+                 selectedItem: .usd),
+            Tool(type: .weekStartsOn,
+                 items: [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday],
+                 selectedItem: .monday)
+        ]
+    }
+    
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        tableView.alwaysBounceVertical = false
+        
+        tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)
+    }
+    
+    private func configureResetButton() {
+        resetButton.dropShadow()
+        resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func resetButtonTapped() { }
+    
     // Navigation
     private func showPickerVC(for tool: Tool) {
         guard let selectedRow = tool.items.firstIndex(of: tool.selectedItem) else {
@@ -128,8 +128,19 @@ class ToolsMenuVC: UIViewController {
     }
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
-extension ToolsMenuVC: UITableViewDelegate, UITableViewDataSource {
+// MARK: - UITableViewDelegate
+extension ToolsMenuVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showPickerVC(for: tools[indexPath.row])
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension ToolsMenuVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tools.count
     }
@@ -144,15 +155,9 @@ extension ToolsMenuVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showPickerVC(for: tools[indexPath.row])
-    }
 }
 
 // MARK: - TRPickerDelegate
 extension ToolsMenuVC: TRPickerDelegate {
-    func didSelectItem(name: String) {
-        print(name)
-    }
+    func didSelectItem(name: String) { }
 }

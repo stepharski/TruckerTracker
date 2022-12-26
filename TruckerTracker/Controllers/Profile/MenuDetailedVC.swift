@@ -30,6 +30,7 @@ class MenuDetailedVC: UIViewController {
         configureHeader()
         configureMenuContainer()
         addMenuChildVC()
+        dismissKeyboardOnTouchOutside()
     }
     
     
@@ -68,6 +69,8 @@ class MenuDetailedVC: UIViewController {
             childVC = DocumentsMenuVC()
         case .recurring:
             childVC = RecurringMenuVC()
+        case .contact:
+            childVC = ContactMenuVC()
         default:
             break
         }

@@ -96,6 +96,7 @@ class DriverMenuVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
+        tableView.alwaysBounceVertical = false
         
         tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)
         tableView.register(DriverTypeCell.nib, forCellReuseIdentifier: DriverTypeCell.identifier)
