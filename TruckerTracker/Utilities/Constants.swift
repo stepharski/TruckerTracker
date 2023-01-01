@@ -46,6 +46,11 @@ enum SFSymbols {
     static let arrowCompactDown = UIImage(systemName: "chevron.compact.down")
     static let arrowCompactLeft = UIImage(systemName: "chevron.compact.left")
     static let arrowCompactRight = UIImage(systemName: "chevron.compact.right")
+    
+    // Sync benefits
+    static let repeatArrows = UIImage(systemName: "repeat")
+    static let macStudio = UIImage(systemName: "macstudio")
+    static let macPro = UIImage(systemName: "macpro.gen1")
 }
 
 

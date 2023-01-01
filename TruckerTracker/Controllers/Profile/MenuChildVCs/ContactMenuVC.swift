@@ -65,6 +65,7 @@ class ContactMenuVC: UIViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
         
@@ -72,7 +73,6 @@ class ContactMenuVC: UIViewController {
     }
     
     private func configureSendButton() {
-        sendButton.dropShadow(color: .white.withAlphaComponent(0.25))
         sendButton.addTarget(self, action: #selector(sendButtonPressed), for: .touchUpInside)
     }
     

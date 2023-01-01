@@ -104,7 +104,6 @@ class ToolsMenuVC: UIViewController {
     }
     
     private func configureResetButton() {
-        resetButton.dropShadow()
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
     }
     

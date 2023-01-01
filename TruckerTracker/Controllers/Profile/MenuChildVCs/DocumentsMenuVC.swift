@@ -88,11 +88,10 @@ class DocumentsMenuVC: UIViewController {
         tableView.backgroundColor = .clear
         tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
         tableView.register(ExpandFooterView.self, forHeaderFooterViewReuseIdentifier: ExpandFooterView.identifier)
-        tableView.register(DocumentsHeaderView.self, forHeaderFooterViewReuseIdentifier: DocumentsHeaderView.identifier)
+        tableView.register(TRHeaderView.self, forHeaderFooterViewReuseIdentifier: TRHeaderView.identifier)
     }
     
     func configureAddDocButton() {
-        addDocButton.dropShadow(color: .white.withAlphaComponent(0.25))
         addDocButton.addTarget(self, action: #selector(addDocButtonPressed), for: .touchUpInside)
     }
     
@@ -102,9 +101,11 @@ class DocumentsMenuVC: UIViewController {
 // MARK: - UITableViewDelegate
 extension DocumentsMenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: DocumentsHeaderView.identifier)
-                                                                                    as! DocumentsHeaderView
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TRHeaderView.identifier)
+                                                                                    as! TRHeaderView
         headerView.title = sections[section].type.name
+        headerView.titleColor = .fadedWhite
+        
         return headerView
     }
 

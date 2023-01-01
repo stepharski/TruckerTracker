@@ -12,4 +12,8 @@ extension Date {
     func convertToMonthDayFormat() -> String {
         return formatted(.dateTime.month().day())
     }
+    
+    func convertToMonthDayYearFormat() -> String {
+        return formatted(.dateTime.month().day().year())
+    }
 }

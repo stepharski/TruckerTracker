@@ -30,11 +30,22 @@ enum TRButtonType {
             return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
         }
     }
+    
+    var shadowColor: UIColor {
+        switch self {
+        case .light:
+            return .white.withAlphaComponent(0.25)
+        case .dark:
+            return .black.withAlphaComponent(0.5)
+        case .red:
+            return .red.withAlphaComponent(0.25)
+        }
+    }
 }
 
 // TRButton
 class TRButton: UIButton {
-    
+
     // Font attributes
     private let titleFontSize: CGFloat = 16
     private let titleFontWeight: UIFont.Weight = .semibold
@@ -51,6 +62,7 @@ class TRButton: UIButton {
     
     convenience init(title: String, type: TRButtonType) {
         self.init(frame: .zero)
+
         set(title: title, type: type)
     }
     
@@ -68,5 +80,7 @@ class TRButton: UIButton {
         configuration?.attributedTitle = attTitle
         configuration?.baseBackgroundColor = type.backgroundColor
         configuration?.baseForegroundColor = type.foregroundColor
+        
+        dropShadow(color: type.shadowColor)
     }
 }

@@ -20,6 +20,7 @@ class CategoryInfoView: UIView {
         configureCountLabel()
         configureTitleLabel()
         configureSymbolImageView()
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
     required init?(coder: NSCoder) {
@@ -72,7 +73,7 @@ class CategoryInfoView: UIView {
     private func configureSymbolImageView() {
         self.addSubview(symbolImageView)
         
-        let imageHeight: CGFloat = 40
+        let imageHeight: CGFloat = 45
         let imageBottomConstraint: CGFloat = DeviceTypes.isiPhoneSE ? 10 : 20
         
         symbolImageView.contentMode = .scaleAspectFit

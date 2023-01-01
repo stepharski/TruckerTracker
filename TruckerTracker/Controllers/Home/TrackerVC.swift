@@ -69,7 +69,6 @@ class TrackerVC: UIViewController {
             let categoryBackgroundView = categoryBackgroundViews[index]
             categoryBackgroundView.addSubview(categoryInfoView)
             
-            categoryInfoView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 categoryInfoView.centerXAnchor.constraint(equalTo: categoryBackgroundView.centerXAnchor),
                 categoryInfoView.centerYAnchor.constraint(equalTo: categoryBackgroundView.centerYAnchor)

@@ -63,7 +63,6 @@ class RecurringMenuVC: UIViewController {
     
     // Configuration
     func configureAddButton() {
-        addButton.dropShadow(color: .white.withAlphaComponent(0.25))
         addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
     }
     

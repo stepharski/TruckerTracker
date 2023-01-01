@@ -114,7 +114,7 @@ class CategoryItemVC: UIViewController {
         tableView.register(TRItemCell.nib, forCellReuseIdentifier: TRItemCell.identifier)
         tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
         tableView.register(AddDocRouteCell.nib, forCellReuseIdentifier: AddDocRouteCell.identifier)
-        tableView.register(DocumentsHeaderView.self, forHeaderFooterViewReuseIdentifier: DocumentsHeaderView.identifier)
+        tableView.register(TRHeaderView.self, forHeaderFooterViewReuseIdentifier: TRHeaderView.identifier)
         updateSectionsRows()
     }
     
@@ -235,9 +235,10 @@ extension CategoryItemVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch sections[section].type {
         case .documents:
-            let headerView = DocumentsHeaderView(frame: CGRect(x: 0, y: 0,
+            let headerView = TRHeaderView(frame: CGRect(x: 0, y: 0,
                                                                width: tableView.frame.width, height: 35))
             headerView.title = "Documents"
+            headerView.titleColor = .fadedWhite
 
             return headerView
         default:

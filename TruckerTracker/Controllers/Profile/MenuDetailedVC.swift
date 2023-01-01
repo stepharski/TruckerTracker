@@ -71,6 +71,8 @@ class MenuDetailedVC: UIViewController {
             childVC = RecurringMenuVC()
         case .contact:
             childVC = ContactMenuVC()
+        case .data:
+            childVC = DataMenuVC()
         default:
             break
         }

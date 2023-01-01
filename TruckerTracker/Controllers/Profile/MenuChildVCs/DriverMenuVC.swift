@@ -104,7 +104,6 @@ class DriverMenuVC: UIViewController {
     }
     
     func configureSaveButton() {
-        saveButton.dropShadow(color: .white.withAlphaComponent(0.25))
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
     }
     
