@@ -9,11 +9,11 @@ import UIKit
 
 //MARK: - HeaderTitleColorType
 enum HeaderTitleColorType {
-    case white, fadedWhite
+    case lightWhite, fadedWhite
     
     var color: UIColor {
         switch self {
-        case .white:
+        case .lightWhite:
             return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
         case .fadedWhite:
             return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 0.8)
@@ -34,12 +34,13 @@ class TRHeaderView: UITableViewHeaderFooterView {
         }
     }
     
-    var titleColor: HeaderTitleColorType = .white {
+    var titleColor: HeaderTitleColorType = .lightWhite {
         didSet {
             titleLabel.textColor = titleColor.color
         }
     }
     
+    var labelCenterYPadding: CGFloat = 5
     
     
     lazy private var titleLabel: UILabel = {
@@ -51,9 +52,9 @@ class TRHeaderView: UITableViewHeaderFooterView {
         
         let padding: CGFloat = 5
         NSLayoutConstraint.activate([
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: padding),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding)
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYPadding)
         ])
         
         return label
