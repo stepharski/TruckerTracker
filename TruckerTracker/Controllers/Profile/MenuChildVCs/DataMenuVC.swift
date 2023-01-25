@@ -212,7 +212,7 @@ extension DataMenuVC: TRSegmentedControlDelegate {
 extension DataMenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TRHeaderView.identifier)
-                                                                                    as! TRHeaderView
+                                                                                        as! TRHeaderView
         
         headerView.labelCenterYPadding = 1
         headerView.titleColor = .lightWhite

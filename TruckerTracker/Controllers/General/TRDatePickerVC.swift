@@ -1,22 +1,26 @@
 //
-//  DatePickerVC.swift
+//  TRDatePickerVC.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 12/15/22.
+//  Created by Stepan Kukharskyi on 1/20/23.
 //
 
 import UIKit
 
-protocol DatePickerVCDelegeate: AnyObject {
+// MARK: - TRDatePickerVCDelegeate
+protocol TRDatePickerVCDelegeate: AnyObject {
     func didSelect(date: Date)
 }
 
-class DatePickerVC: UIViewController {
+// MARK: - TRDatePickerVC
+class TRDatePickerVC: UIViewController {
     
     let pickerTintColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
     
     var toolbar = UIToolbar()
     var datePicker = UIDatePicker()
+    
+    weak var delegate: TRDatePickerVCDelegeate!
     
     
     override func viewDidLoad() {

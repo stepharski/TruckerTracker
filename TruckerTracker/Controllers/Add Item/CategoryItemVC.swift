@@ -149,7 +149,7 @@ class CategoryItemVC: UIViewController {
     
     // Navigation
     func showDatePickerVC() {
-        let datePickerVC = DatePickerVC()
+        let datePickerVC = TRDatePickerVC()
         datePickerVC.modalPresentationStyle = .pageSheet
         datePickerVC.sheetPresentationController?.detents = [.medium()]
         datePickerVC.sheetPresentationController?.largestUndimmedDetentIdentifier = .large

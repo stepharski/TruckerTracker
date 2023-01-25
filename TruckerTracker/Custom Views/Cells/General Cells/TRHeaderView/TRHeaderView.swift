@@ -7,9 +7,9 @@
 
 import UIKit
 
-//MARK: - HeaderTitleColorType
+//MARK: - HeaderTitleTypes
 enum HeaderTitleColorType {
-    case lightWhite, fadedWhite
+    case lightWhite, fadedWhite, dark
     
     var color: UIColor {
         switch self {
@@ -17,6 +17,21 @@ enum HeaderTitleColorType {
             return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
         case .fadedWhite:
             return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 0.8)
+        case .dark:
+            return .label
+        }
+    }
+}
+
+enum HeaderTitleFontSizeType {
+    case regular, large
+    
+    var size: CGFloat {
+        switch self {
+        case .regular:
+            return 16
+        case .large:
+            return 17
         }
     }
 }
@@ -28,35 +43,62 @@ class TRHeaderView: UITableViewHeaderFooterView {
         return String(describing: self)
     }
     
+    private var titleLabel = UILabel()
+    
     var title: String = "" {
         didSet {
             titleLabel.text = title
         }
     }
     
-    var titleColor: HeaderTitleColorType = .lightWhite {
+    var titleColor: HeaderTitleColorType! {
         didSet {
             titleLabel.textColor = titleColor.color
         }
     }
     
-    var labelCenterYPadding: CGFloat = 5
+    var titleSize: HeaderTitleFontSizeType! {
+        didSet {
+            titleLabel.font = UIFont.systemFont(ofSize: titleSize.size, weight: .medium)
+        }
+    }
+    
+    var labelCenterYPadding: CGFloat = 5 {
+        didSet {
+            updateUI()
+        }
+    }
+    
+//    lazy var titleLabel
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        
+        configureTitleLabel()
+        updateUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
-    lazy private var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(label)
+    func configureTitleLabel() {
+        titleSize = .regular
+        titleColor = .lightWhite
+        titleLabel.textAlignment = .left
+    }
+    
+    func updateUI() {
+        titleLabel.removeFromSuperview()
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         let padding: CGFloat = 5
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYPadding)
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYPadding)
         ])
-        
-        return label
-    }()
+    }
 }

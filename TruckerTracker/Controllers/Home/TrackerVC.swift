@@ -49,6 +49,7 @@ class TrackerVC: UIViewController {
     }
     
     func configureDateRangeView() {
+        dateRangeView.delegate = self
         dateRangeView.itemName = "load"
         dateRangeView.numberOfItems = 5
         dateContainerView.roundEdges()
@@ -119,6 +120,12 @@ class TrackerVC: UIViewController {
         navigationController?.pushViewController(categorySummaryVC, animated: true)
     }
     
+    func showPeriodSelectorVC() {
+        let periodSelectorVC = TRPeriodSelectorVC()
+        
+        present(periodSelectorVC, animated: true)
+    }
+    
     
     @objc func openMenu() {
         // TODO: Open MenuVC
@@ -126,5 +133,20 @@ class TrackerVC: UIViewController {
     
     @objc func shareReport() {
         // TODO: Share report
+    }
+}
+
+//MARK: - DateRangeViewDelegate
+extension TrackerVC: DateRangeViewDelegate {
+    func didTapDateRange() {
+        showPeriodSelectorVC()
+    }
+    
+    func didTapPreviousButton() {
+        print("didTapPreviousButton")
+    }
+    
+    func didTapNextButton() {
+        print("didTapNextButton")
     }
 }

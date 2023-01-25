@@ -9,6 +9,12 @@ import UIKit
 
 extension UIView {
     
+    func addSubviews(_ views: UIView...) {
+        for view in views {
+            addSubview(view)
+        }
+    }
+    
     func pinToEdges(of superView: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -17,12 +23,6 @@ extension UIView {
             trailingAnchor.constraint(equalTo: superView.trailingAnchor),
             bottomAnchor.constraint(equalTo: superView.bottomAnchor)
         ])
-    }
-    
-    func addSubviews(_ views: UIView...) {
-        for view in views {
-            addSubview(view)
-        }
     }
     
     func roundEdges(by radius: CGFloat = 30) {

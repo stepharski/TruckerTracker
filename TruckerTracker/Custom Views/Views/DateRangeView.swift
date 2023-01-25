@@ -7,7 +7,17 @@
 
 import UIKit
 
+// MARK: - DateRangeViewDelegate
+protocol DateRangeViewDelegate: AnyObject {
+    func didTapPreviousButton()
+    func didTapNextButton()
+    func didTapDateRange()
+}
+
+// MARK: - DateRangeView
 class DateRangeView: UIView {
+    
+    weak var delegate: DateRangeViewDelegate?
 
     private let nextButton = UIButton()
     private let previousButton = UIButton()
@@ -54,7 +64,7 @@ class DateRangeView: UIView {
     }
     
     @objc private func didTapBackground() {
-        //TODO: Show dateRangePicker
+        delegate?.didTapDateRange()
     }
     
     // Labels
@@ -114,7 +124,11 @@ class DateRangeView: UIView {
         previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
     }
     
-    @objc private func nextButtonTapped() { }
+    @objc private func nextButtonTapped() {
+        delegate?.didTapNextButton()
+    }
     
-    @objc private func previousButtonTapped() { }
+    @objc private func previousButtonTapped() {
+        delegate?.didTapPreviousButton()
+    }
 }

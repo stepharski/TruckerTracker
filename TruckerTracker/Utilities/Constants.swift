@@ -7,7 +7,11 @@
 
 import UIKit
 
-enum SFSymbols {
+struct Constants {
+    static let minimumDaysInFirstWeek = 4
+}
+
+struct SFSymbols {
     
     // Navigation
     static let menu = UIImage(systemName: "line.3.horizontal")
@@ -21,7 +25,7 @@ enum SFSymbols {
     static let plus = UIImage(systemName: "plus")
     static let person = UIImage(systemName: "person")
     static let personFill = UIImage(systemName: "person.fill")
-
+    
     // Categories
     static let dollar = UIImage(systemName: "dollarsign.circle")
     static let minusCircle = UIImage(systemName: "minus.circle")
@@ -30,7 +34,7 @@ enum SFSymbols {
     
     static let plusSquares = UIImage(systemName: "plus.square.on.square")
     static let docPlus = UIImage(systemName: "doc.fill.badge.plus")
-
+    
     
     // Profile
     static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")
@@ -55,7 +59,7 @@ enum SFSymbols {
 
 
 
-enum StoryboardIdentifiers {
+struct StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
     static let trackerVC = "TrackerVC"
     static let categorySummaryVC = "CategorySummaryVC"
@@ -66,7 +70,7 @@ enum StoryboardIdentifiers {
 }
 
 
-enum ScreenSize {
+struct ScreenSize {
     static let width        = UIScreen.main.bounds.size.width
     static let height       = UIScreen.main.bounds.size.height
     static let maxLength    = max(ScreenSize.width, ScreenSize.height)
@@ -74,7 +78,7 @@ enum ScreenSize {
 }
 
 
-enum DeviceTypes {
+struct DeviceTypes {
     static let idiom                    = UIDevice.current.userInterfaceIdiom
     static let nativeScale              = UIScreen.main.nativeScale
     static let scale                    = UIScreen.main.scale
