@@ -16,4 +16,11 @@ extension Calendar {
         
         return currentCalendar
     }
+    
+    func isLeapYear(_ year: Int) -> Bool {
+        let isLeapYear = ((year % 4 == 0) && (year % 100 != 0)
+                                          || (year % 400 == 0))
+        
+        return isLeapYear
+    }
 }

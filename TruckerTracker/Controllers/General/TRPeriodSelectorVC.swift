@@ -176,7 +176,7 @@ class TRPeriodSelectorVC: UIViewController {
         switch selectedPeriod.type {
         case .week:
             // number of weeks in leap year
-            (1...53).forEach { component1.append("Week \($0)") }
+            (1...52).forEach { component1.append("Week \($0)") }
             
         case .month:
             // number of months in year
@@ -206,7 +206,7 @@ class TRPeriodSelectorVC: UIViewController {
         var selectedIndexes = [Int]()
         
         let calendar = Calendar.getCurrent()
-        let date = selectedPeriod.interval.start
+        let date = selectedPeriod.interval.middleDate()
 
         switch selectedPeriod.type {
         case .week:
@@ -246,8 +246,8 @@ class TRPeriodSelectorVC: UIViewController {
         if component == 0 {
             switch selectedPeriod.type {
             case .week:
-                dateComponents = DateComponents(weekOfYear: row + 1,
-                                                yearForWeekOfYear: selectedPeriod.interval.start.getYear())
+                let year = selectedPeriod.interval.middleDate().getYear()
+                dateComponents = DateComponents(weekOfYear: row + 1, yearForWeekOfYear: year)
                 
             case .month:
                 dateComponents = DateComponents(year: selectedPeriod.interval.start.getYear(), month: row + 1)
@@ -279,6 +279,7 @@ class TRPeriodSelectorVC: UIViewController {
             }
         }
 
+        // gives year 2024
         if let date = calendar.date(from: dateComponents) {
             selectedPeriod.interval = date.getDateInterval(in: selectedPeriod.type)
         }

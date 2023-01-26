@@ -75,6 +75,7 @@
 		5FA551AF29805BC900D3596F /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551AE29805BC900D3596F /* Period.swift */; };
 		5FA551B129805C6500D3596F /* PeriodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B029805C6500D3596F /* PeriodType.swift */; };
 		5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */; };
+		5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */; };
 		5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602CC29071B1B00319E18 /* RouteCell.swift */; };
 		5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602CD29071B1B00319E18 /* RouteCell.xib */; };
 		5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */; };
@@ -166,6 +167,7 @@
 		5FA551AE29805BC900D3596F /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		5FA551B029805C6500D3596F /* PeriodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodType.swift; sourceTree = "<group>"; };
 		5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
+		5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInterval+Ext.swift"; sourceTree = "<group>"; };
 		5FA602CC29071B1B00319E18 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		5FA602CD29071B1B00319E18 /* RouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCell.xib; sourceTree = "<group>"; };
 		5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocRouteCell.swift; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 				5FA55197297B082A00D3596F /* String+Ext.swift */,
 				5F71DC8429578138003111AF /* Date+Ext.swift */,
 				5FA551AB2980371600D3596F /* Calendar+Ext.swift */,
+				5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */,
 				5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */,
 			);
 			path = Extensions;
@@ -845,6 +848,7 @@
 				5FA5519C297B1AA800D3596F /* PeriodTypeCell.swift in Sources */,
 				5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */,
 				5F97FD7329233D3D00DEEC20 /* ProfileMenuCell.swift in Sources */,
+				5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */,
 				5F2B800B295A02480044E004 /* ContactMenuVC.swift in Sources */,
 				5FB92F3E28C368CC0037A4AD /* TrackerVC.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
