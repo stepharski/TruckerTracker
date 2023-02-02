@@ -76,6 +76,8 @@
 		5FA551B129805C6500D3596F /* PeriodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B029805C6500D3596F /* PeriodType.swift */; };
 		5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */; };
 		5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */; };
+		5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C129870D7700D3596F /* CustomPeriodCell.swift */; };
+		5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551C229870D7700D3596F /* CustomPeriodCell.xib */; };
 		5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602CC29071B1B00319E18 /* RouteCell.swift */; };
 		5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602CD29071B1B00319E18 /* RouteCell.xib */; };
 		5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */; };
@@ -168,6 +170,8 @@
 		5FA551B029805C6500D3596F /* PeriodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodType.swift; sourceTree = "<group>"; };
 		5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInterval+Ext.swift"; sourceTree = "<group>"; };
+		5FA551C129870D7700D3596F /* CustomPeriodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPeriodCell.swift; sourceTree = "<group>"; };
+		5FA551C229870D7700D3596F /* CustomPeriodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPeriodCell.xib; sourceTree = "<group>"; };
 		5FA602CC29071B1B00319E18 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		5FA602CD29071B1B00319E18 /* RouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCell.xib; sourceTree = "<group>"; };
 		5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocRouteCell.swift; sourceTree = "<group>"; };
@@ -516,8 +520,9 @@
 		5FA5519E297B1B0500D3596F /* PeriodSelector Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5FA5519F297B2B2C00D3596F /* PeriodPickerCell */,
 				5FA55199297B18D400D3596F /* PeriodTypeCell */,
+				5FA5519F297B2B2C00D3596F /* PeriodPickerCell */,
+				5FA551BB2982AD8500D3596F /* CustomPeriodCell */,
 			);
 			path = "PeriodSelector Cells";
 			sourceTree = "<group>";
@@ -559,6 +564,23 @@
 			path = "UI+Ext";
 			sourceTree = "<group>";
 		};
+		5FA551BB2982AD8500D3596F /* CustomPeriodCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FA551C129870D7700D3596F /* CustomPeriodCell.swift */,
+				5FA551C229870D7700D3596F /* CustomPeriodCell.xib */,
+			);
+			path = CustomPeriodCell;
+			sourceTree = "<group>";
+		};
+		5FA551C02982B19400D3596F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		5FA602CB29071AA100319E18 /* RouteCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,7 +611,7 @@
 		5FB92F3128B921FD0037A4AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */,
+				5FA551C02982B19400D3596F /* TabBar */,
 				5F790FF5294449F300A73600 /* Home */,
 				5F790FF6294449FF00A73600 /* Add Item */,
 				5F790FF729444A1D00A73600 /* Profile */,
@@ -794,6 +816,7 @@
 				5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
 				5F2B8010295A05DD0044E004 /* ContactCell.xib in Resources */,
+				5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */,
 				5F2B802E295F8DAA0044E004 /* ExportPeriodCell.xib in Resources */,
 				5F791007294B8F7F00A73600 /* TRItemCell.xib in Resources */,
 				5FA602D9290730BE00319E18 /* DocumentCell.xib in Resources */,
@@ -865,6 +888,7 @@
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5F2B8020295E2DC30044E004 /* SyncInfoCell.swift in Sources */,
 				5FD315A628F882AD00169E23 /* CategorySummaryVC.swift in Sources */,
+				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,
 				5FA55194297AE44900D3596F /* TRPeriodSelectorVC.swift in Sources */,
 				5FA551AC2980371600D3596F /* Calendar+Ext.swift in Sources */,
 				5FA551A2297B2B4900D3596F /* PeriodPickerCell.swift in Sources */,

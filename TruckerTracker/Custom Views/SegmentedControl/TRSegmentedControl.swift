@@ -16,7 +16,7 @@ class TRSegmentedControl: UIView {
     
     private var buttons = [UIButton]()
     
-    weak var delegate: TRSegmentedControlDelegate!
+    weak var delegate: TRSegmentedControlDelegate?
     
     // Life cycle
     override init(frame: CGRect) {
@@ -71,7 +71,7 @@ class TRSegmentedControl: UIView {
         guard let index = buttons.firstIndex(of: sender) else { return }
         
         buttons.forEach { $0.isSelected = $0 == sender }
-        delegate.didSelectItem(at: index)
+        delegate?.didSelectItem(at: index)
     }
     
     private func configureStackView() {

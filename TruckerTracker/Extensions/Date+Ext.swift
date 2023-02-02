@@ -42,8 +42,11 @@ extension Date {
         case .month:
             component = .month
             
-        case .year, .sinceYouStarted:
+        case .year:
             component = .year
+            
+        case .sinceYouStarted:
+            break
         }
         
         return calendar.dateInterval(of: component, for: self) ?? DateInterval()

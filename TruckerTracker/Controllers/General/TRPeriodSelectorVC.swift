@@ -162,8 +162,8 @@ class TRPeriodSelectorVC: UIViewController {
         
         tableView.register(TRHeaderView.self, forHeaderFooterViewReuseIdentifier: TRHeaderView.identifier)
         tableView.register(PeriodPickerCell.nib, forCellReuseIdentifier: PeriodPickerCell.identifier)
+        tableView.register(CustomPeriodCell.nib, forCellReuseIdentifier: CustomPeriodCell.identifier)
         tableView.register(PeriodTypeCell.nib, forCellReuseIdentifier: PeriodTypeCell.identifier)
-        
     }
     
     // MARK: - Picker Logic
@@ -317,8 +317,13 @@ extension TRPeriodSelectorVC: UITableViewDataSource {
                 
                 return cell
             case .customPeriod, .sinceYouStarted:
-                //TODO: Add CustomPeriodCell
-                return UITableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: CustomPeriodCell.identifier)
+                                                                                as! CustomPeriodCell
+                cell.startDate = selectedPeriod.interval.start
+                cell.endDate = selectedPeriod.interval.end
+                cell.delegate = self
+                
+                return cell
             }
         case .types:
             let cell = tableView.dequeueReusableCell(withIdentifier: PeriodTypeCell.identifier)
@@ -369,6 +374,14 @@ extension TRPeriodSelectorVC: UITableViewDelegate {
             break
         case.types :
             selectedPeriod.type = selectedRow
+            
+            if selectedPeriod.type == .sinceYouStarted {
+                let dateComponents = DateComponents(calendar: .getCurrent(), year: UDValues.userSinceYear)
+                let startDate = Calendar.getCurrent().date(from: dateComponents) ?? Date()
+                selectedPeriod.interval = DateInterval(start: startDate, end: Date())
+            } else {
+                selectedPeriod.interval = Date().getDateInterval(in: selectedPeriod.type)
+            }
         }
     }
 }
@@ -376,7 +389,14 @@ extension TRPeriodSelectorVC: UITableViewDelegate {
 // MARK: - PeriodPickerCellDelegate
 extension TRPeriodSelectorVC: PeriodPickerCellDelegate {
     func pickerDidSelect(row: Int, component: Int) {
-//        pickerSelectedRows = [row, component]
         updatePeriodFromPicker(row: row, component: component)
+    }
+}
+
+
+// MARK: - CustomPeriodCellDelegate
+extension TRPeriodSelectorVC: CustomPeriodCellDelegate {
+    func didSelect(startDate: Date, endDate: Date) {
+        selectedPeriod.interval = DateInterval(start: startDate, end: endDate)
     }
 }
