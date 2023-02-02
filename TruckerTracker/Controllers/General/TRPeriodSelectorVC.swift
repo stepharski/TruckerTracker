@@ -39,7 +39,7 @@ class TRPeriodSelectorVC: UIViewController {
     }() {
         didSet {
             updateUI()
-            //TODO: Save to UD
+            UDManager.shared.savePeriod(selectedPeriod)
         }
     }
     
@@ -166,7 +166,6 @@ class TRPeriodSelectorVC: UIViewController {
         tableView.register(PeriodTypeCell.nib, forCellReuseIdentifier: PeriodTypeCell.identifier)
     }
     
-    // MARK: - Picker Logic
     // PickerView components
     func generatePickerComponents() -> [[String]] {
         var pickerData = [[String]]()
@@ -367,21 +366,23 @@ extension TRPeriodSelectorVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedSection = sections[indexPath.section].type
-        let selectedRow = sections[indexPath.section].rows[indexPath.row]
+        let selectedPeriodType = sections[indexPath.section].rows[indexPath.row]
         
-        switch selectedSection {
-        case .period:
-            break
-        case.types :
-            selectedPeriod.type = selectedRow
-            
-            if selectedPeriod.type == .sinceYouStarted {
+        if selectedSection == .types {
+            switch selectedPeriodType {
+            case .week, .month, .year:
+                selectedPeriod.interval = Date().getDateInterval(in: selectedPeriodType)
+                
+            case .customPeriod:
+                selectedPeriod.interval = Date().getDateInterval(in: selectedPeriod.type)
+                
+            case .sinceYouStarted:
                 let dateComponents = DateComponents(calendar: .getCurrent(), year: UDValues.userSinceYear)
                 let startDate = Calendar.getCurrent().date(from: dateComponents) ?? Date()
                 selectedPeriod.interval = DateInterval(start: startDate, end: Date())
-            } else {
-                selectedPeriod.interval = Date().getDateInterval(in: selectedPeriod.type)
             }
+            
+            selectedPeriod.type = selectedPeriodType
         }
     }
 }

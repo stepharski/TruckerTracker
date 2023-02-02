@@ -544,12 +544,12 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		5FA551AD29805B9500D3596F /* Structs */ = {
+		5FA551AD29805B9500D3596F /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
 				5FA551AE29805BC900D3596F /* Period.swift */,
 			);
-			path = Structs;
+			path = DataTypes;
 			sourceTree = "<group>";
 		};
 		5FA551B829806E1A00D3596F /* UI+Ext */ = {
@@ -694,7 +694,7 @@
 		5FB92F4728C984140037A4AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5FA551AD29805B9500D3596F /* Structs */,
+				5FA551AD29805B9500D3596F /* DataTypes */,
 				5FB92F4828C9841A0037A4AD /* Enums */,
 			);
 			path = Model;
