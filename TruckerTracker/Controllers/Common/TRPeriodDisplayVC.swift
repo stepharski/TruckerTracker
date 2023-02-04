@@ -57,6 +57,12 @@ class TRPeriodDisplayVC: UIViewController {
         updateNumberOfItemsLabel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkPeriodForUpdate()
+    }
+    
     // Background tap
     private func addTapToBackground() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapBackground))
@@ -133,5 +139,13 @@ class TRPeriodDisplayVC: UIViewController {
         period.interval = period.interval.previousInterval()
         UDManager.shared.savePeriod(period)
         delegate?.displayDidUpdate(period: period)
+    }
+    
+    // Update
+    func checkPeriodForUpdate() {
+        if period.interval != UDManager.shared.getPeriod().interval {
+            period = UDManager.shared.getPeriod()
+            delegate?.displayDidUpdate(period: period)
+        }
     }
 }

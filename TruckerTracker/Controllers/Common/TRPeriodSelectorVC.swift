@@ -381,20 +381,22 @@ extension TRPeriodSelectorVC: UITableViewDelegate {
         let selectedPeriodType = sections[indexPath.section].rows[indexPath.row]
         
         if selectedSection == .types {
+            var newInterval = DateInterval()
+            
             switch selectedPeriodType {
             case .week, .month, .year:
-                selectedPeriod.interval = Date().getDateInterval(in: selectedPeriodType)
+                newInterval = Date().getDateInterval(in: selectedPeriodType)
                 
             case .customPeriod:
-                selectedPeriod.interval = Date().getDateInterval(in: selectedPeriod.type)
+                newInterval = Date().getDateInterval(in: selectedPeriod.type)
                 
             case .sinceYouStarted:
                 let dateComponents = DateComponents(calendar: .getCurrent(), year: UDValues.userSinceYear)
                 let startDate = Calendar.getCurrent().date(from: dateComponents) ?? Date()
-                selectedPeriod.interval = DateInterval(start: startDate, end: Date())
+                newInterval = DateInterval(start: startDate, end: Date())
             }
             
-            selectedPeriod.type = selectedPeriodType
+            selectedPeriod = Period(type: selectedPeriodType, interval: newInterval)
         }
     }
 }

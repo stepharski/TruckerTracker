@@ -126,6 +126,7 @@ extension TrackerVC: TRPeriodDisplayVCDelegate {
 
     func displayDidUpdate(period: Period) {
         //TODO: Fetch data for new period
+        print("TrackerFetchDataDisplay")
     }
 }
 
@@ -134,5 +135,6 @@ extension TrackerVC: TRPeriodSelectorVCDelegate {
     func selectorDidUpdate(period: Period) {
         periodDisplayVC.period = period
         //TODO: Fetch data for new period
+        print("TrackerFetchDataSelector")
     }
 }

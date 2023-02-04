@@ -14,12 +14,12 @@ class CategorySummaryVC: UIViewController {
     @IBOutlet var leadingStatiscitcsLabel: UILabel!
     @IBOutlet var trailingStatiscticsLabel: UILabel!
     
-    @IBOutlet var dateContainerView: UIView!
+    @IBOutlet var periodContainerView: UIView!
     @IBOutlet var tableBackgroundView: UIView!
     @IBOutlet var tableView: UITableView!
     
-    let dateRangeView = DateRangeView()
     var category = TrackerCategoryType.gross
+    var periodDisplayVC = TRPeriodDisplayVC()
     
     // Lide cycle
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class CategorySummaryVC: UIViewController {
         configureNavBar()
         configureTableView()
         configureImageViews()
-        configureDateRangeView()
+        addPeriodDisplayChildVC()
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,12 +52,17 @@ class CategorySummaryVC: UIViewController {
         tableBackgroundView.applyGradient(colors: category.contrastGradientColors, locations: category.gradientLocations)
     }
     
-    func configureDateRangeView() {
-        dateRangeView.numberOfItems = 7
-        dateRangeView.itemName = category.itemName
-        dateContainerView.backgroundColor = .clear
-        dateContainerView.addSubview(dateRangeView)
-        dateRangeView.pinToEdges(of: dateContainerView)
+    func addPeriodDisplayChildVC() {
+        periodDisplayVC.delegate = self
+        periodDisplayVC.itemName = category.itemName
+        
+        addChild(periodDisplayVC)
+        periodContainerView.roundEdges()
+        periodContainerView.backgroundColor = .clear
+        periodContainerView.addSubview(periodDisplayVC.view)
+        
+        periodDisplayVC.view.frame = periodContainerView.bounds
+        periodDisplayVC.didMove(toParent: self)
     }
     
     func configureTableView() {
@@ -82,6 +87,12 @@ class CategorySummaryVC: UIViewController {
             withIdentifier: StoryboardIdentifiers.categoryItemVC) as! CategoryItemVC
         let categoryNavController = UINavigationController(rootViewController: categoryItemVC)
         self.present(categoryNavController, animated: true)
+    }
+    
+    func showPeriodSelectorVC() {
+        let periodSelectorVC = TRPeriodSelectorVC()
+        periodSelectorVC.delegate = self
+        present(periodSelectorVC, animated: true)
     }
 }
 
@@ -121,3 +132,24 @@ extension CategorySummaryVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+//MARK: - TRPeriodDisplayVCDelegate
+extension CategorySummaryVC: TRPeriodDisplayVCDelegate {
+    func didTapPeriodDisplay() {
+        showPeriodSelectorVC()
+    }
+
+    func displayDidUpdate(period: Period) {
+        //TODO: Fetch data for new period
+        print("CategorySummaryFetchDataDisplay")
+    }
+}
+
+// MARK: - TRPeriodSelectorVCDelegate
+extension CategorySummaryVC: TRPeriodSelectorVCDelegate {
+    func selectorDidUpdate(period: Period) {
+        periodDisplayVC.period = period
+        //TODO: Fetch data for new period
+        print("CategorySummaryFetchDataSelector")
+    }
+}

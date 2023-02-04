@@ -205,8 +205,8 @@ last week</string>
                     </view>
                     <navigationItem key="navigationItem" id="POW-kD-baw"/>
                     <connections>
-                        <outlet property="dateContainerView" destination="RO1-Hd-xgF" id="rxc-9X-Gci"/>
                         <outlet property="leadingStatiscitcsLabel" destination="ST1-bJ-iUb" id="H7h-KL-vg6"/>
+                        <outlet property="periodContainerView" destination="RO1-Hd-xgF" id="k7h-Ot-nJr"/>
                         <outlet property="symbolImageView" destination="olW-A2-FH6" id="AIz-K1-wpd"/>
                         <outlet property="tableBackgroundView" destination="bmO-Jq-Nyz" id="bkc-2I-loX"/>
                         <outlet property="tableView" destination="rCB-ze-Ldx" id="PZh-RJ-Qqp"/>
