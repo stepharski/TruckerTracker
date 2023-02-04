@@ -19,7 +19,7 @@ class CategorySummaryVC: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var category = TrackerCategoryType.gross
-    var periodDisplayVC = TRPeriodDisplayVC()
+    let periodDisplayVC = TRPeriodDisplayVC()
     
     // Lide cycle
     override func viewDidLoad() {
@@ -52,6 +52,7 @@ class CategorySummaryVC: UIViewController {
         tableBackgroundView.applyGradient(colors: category.contrastGradientColors, locations: category.gradientLocations)
     }
     
+    // Configuration
     func addPeriodDisplayChildVC() {
         periodDisplayVC.delegate = self
         periodDisplayVC.itemName = category.itemName

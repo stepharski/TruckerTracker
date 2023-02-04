@@ -12,7 +12,7 @@ class TrackerVC: UIViewController {
     @IBOutlet var periodContainerView: UIView!
     @IBOutlet var categoryBackgroundViews: [UIView]!
     
-    var periodDisplayVC = TRPeriodDisplayVC()
+    let periodDisplayVC = TRPeriodDisplayVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()

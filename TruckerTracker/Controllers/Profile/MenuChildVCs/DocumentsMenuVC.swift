@@ -31,7 +31,9 @@ private struct Section {
 // MARK: - DocumentsMenuVC
 class DocumentsMenuVC: UIViewController {
 
-    let dateRangeView = DateRangeView()
+    let periodContainerView = UIView()
+    let periodDisplayVC = TRPeriodDisplayVC()
+    
     let tableView = UITableView(frame: .zero, style: .grouped)
     let addDocButton = TRButton(title: "ADD DOCUMENT", type: .light)
     
@@ -45,27 +47,29 @@ class DocumentsMenuVC: UIViewController {
         configureSections()
         configureTableView()
         configureAddDocButton()
+        addPeriodDisplayChildVC()
     }
 
     
     // UI
     func layoutUI() {
-        view.addSubviews(dateRangeView, tableView, addDocButton)
+        view.addSubviews(periodContainerView, tableView, addDocButton)
         
+        periodContainerView.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
-            dateRangeView.heightAnchor.constraint(equalToConstant: 60),
-            dateRangeView.topAnchor.constraint(equalTo: view.topAnchor),
-            dateRangeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dateRangeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            periodContainerView.heightAnchor.constraint(equalToConstant: 60),
+            periodContainerView.topAnchor.constraint(equalTo: view.topAnchor),
+            periodContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            periodContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             addDocButton.heightAnchor.constraint(equalToConstant: 45),
             addDocButton.widthAnchor.constraint(equalToConstant: 200),
             addDocButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addDocButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: padding),
             
-            tableView.topAnchor.constraint(equalTo: dateRangeView.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: periodContainerView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding / 2),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding / 2),
             tableView.bottomAnchor.constraint(equalTo: addDocButton.topAnchor, constant: -padding)
@@ -77,6 +81,19 @@ class DocumentsMenuVC: UIViewController {
         sections = [Section(type: .rateConfirmations, isExpanded: false),
                     Section(type: .fuelReceipts, isExpanded: false),
                     Section(type: .others, isExpanded: false)]
+    }
+    
+    func addPeriodDisplayChildVC() {
+        periodDisplayVC.delegate = self
+        periodDisplayVC.itemName = "Document"
+        
+        addChild(periodDisplayVC)
+        periodContainerView.roundEdges()
+        periodContainerView.backgroundColor = .clear
+        periodContainerView.addSubview(periodDisplayVC.view)
+        
+        periodDisplayVC.view.frame = periodContainerView.bounds
+        periodDisplayVC.didMove(toParent: self)
     }
     
     func configureTableView() {
@@ -96,6 +113,13 @@ class DocumentsMenuVC: UIViewController {
     }
     
     @objc func addDocButtonPressed() { }
+    
+    // Navigation
+    func showPeriodSelectorVC() {
+        let periodSelectorVC = TRPeriodSelectorVC()
+        periodSelectorVC.delegate = self
+        present(periodSelectorVC, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -156,5 +180,25 @@ extension DocumentsMenuVC: UITableViewDataSource {
         
         return cell
     }
-    
+}
+
+//MARK: - TRPeriodDisplayVCDelegate
+extension DocumentsMenuVC: TRPeriodDisplayVCDelegate {
+    func didTapPeriodDisplay() {
+        showPeriodSelectorVC()
+    }
+
+    func displayDidUpdate(period: Period) {
+        //TODO: Fetch data for new period
+        print("DocumentsMenuFetchDataDisplay")
+    }
+}
+
+// MARK: - TRPeriodSelectorVCDelegate
+extension DocumentsMenuVC: TRPeriodSelectorVCDelegate {
+    func selectorDidUpdate(period: Period) {
+        periodDisplayVC.period = period
+        //TODO: Fetch data for new period
+        print("DocumentsMenuFetchDataSelector")
+    }
 }
