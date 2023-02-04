@@ -68,8 +68,7 @@ class TRHeaderView: UITableViewHeaderFooterView {
             updateUI()
         }
     }
-    
-//    lazy var titleLabel
+
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

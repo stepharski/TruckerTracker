@@ -7,6 +7,11 @@
 
 import UIKit
 
+// MARK: - TRPeriodSelectorVCDelegate
+protocol TRPeriodSelectorVCDelegate: AnyObject {
+    func selectorDidUpdate(period: Period)
+}
+
 // MARK: - SectionsRows Definition
 private enum SectionType: String {
     case period, types
@@ -25,6 +30,8 @@ private struct Section {
 // MARK: - TRPeriodSelectorVC
 class TRPeriodSelectorVC: UIViewController {
     
+    weak var delegate: TRPeriodSelectorVCDelegate?
+    
     let containerView = UIView()
     let closeButton = UIButton()
     let periodLabel = UILabel()
@@ -40,6 +47,7 @@ class TRPeriodSelectorVC: UIViewController {
         didSet {
             updateUI()
             UDManager.shared.savePeriod(selectedPeriod)
+            delegate?.selectorDidUpdate(period: selectedPeriod)
         }
     }
     
@@ -189,7 +197,11 @@ class TRPeriodSelectorVC: UIViewController {
         }
         
         // number of years
-        ((UDValues.userSinceYear - 3)...(UDValues.userSinceYear + 3)).forEach {
+        let userSinceYear = UDValues.userSinceYear
+        let selectedYear = selectedPeriod.interval.start.getYear()
+        let pickerMiddleYear = selectedYear < userSinceYear ? selectedYear
+                                                            : userSinceYear
+        ((pickerMiddleYear - 5)...(pickerMiddleYear + 5)).forEach {
             component2.append("\($0)")
         }
         

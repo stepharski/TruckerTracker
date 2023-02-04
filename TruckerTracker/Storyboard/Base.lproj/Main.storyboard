@@ -92,7 +92,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tracker" id="qSN-TD-ugg"/>
                     <connections>
-                        <outlet property="dateContainerView" destination="ap8-VV-W12" id="vhf-rJ-HqL"/>
+                        <outlet property="periodContainerView" destination="ap8-VV-W12" id="FND-xr-OsV"/>
                         <outletCollection property="categoryBackgroundViews" destination="6s2-vM-WLs" collectionClass="NSMutableArray" id="OUS-iP-9KV"/>
                         <outletCollection property="categoryBackgroundViews" destination="sMg-x9-th6" collectionClass="NSMutableArray" id="kt8-57-yn9"/>
                         <outletCollection property="categoryBackgroundViews" destination="cD6-Xu-8s3" collectionClass="NSMutableArray" id="R1o-jE-Rsi"/>

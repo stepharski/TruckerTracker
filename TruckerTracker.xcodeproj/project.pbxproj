@@ -78,6 +78,7 @@
 		5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */; };
 		5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C129870D7700D3596F /* CustomPeriodCell.swift */; };
 		5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551C229870D7700D3596F /* CustomPeriodCell.xib */; };
+		5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */; };
 		5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602CC29071B1B00319E18 /* RouteCell.swift */; };
 		5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602CD29071B1B00319E18 /* RouteCell.xib */; };
 		5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */; };
@@ -172,6 +173,7 @@
 		5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInterval+Ext.swift"; sourceTree = "<group>"; };
 		5FA551C129870D7700D3596F /* CustomPeriodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPeriodCell.swift; sourceTree = "<group>"; };
 		5FA551C229870D7700D3596F /* CustomPeriodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPeriodCell.xib; sourceTree = "<group>"; };
+		5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPeriodDisplayVC.swift; sourceTree = "<group>"; };
 		5FA602CC29071B1B00319E18 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		5FA602CD29071B1B00319E18 /* RouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCell.xib; sourceTree = "<group>"; };
 		5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocRouteCell.swift; sourceTree = "<group>"; };
@@ -498,14 +500,15 @@
 			path = ProfileMenuCell;
 			sourceTree = "<group>";
 		};
-		5FA55192297AE36D00D3596F /* General */ = {
+		5FA55192297AE36D00D3596F /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */,
 				5FA55195297AE46400D3596F /* TRDatePickerVC.swift */,
+				5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */,
 				5FA55193297AE44900D3596F /* TRPeriodSelectorVC.swift */,
 			);
-			path = General;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		5FA55199297B18D400D3596F /* PeriodTypeCell */ = {
@@ -581,6 +584,18 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		5FA551C7298C818000D3596F /* Foundation+Ext */ = {
+			isa = PBXGroup;
+			children = (
+				5FA55197297B082A00D3596F /* String+Ext.swift */,
+				5F71DC8429578138003111AF /* Date+Ext.swift */,
+				5FA551AB2980371600D3596F /* Calendar+Ext.swift */,
+				5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */,
+				5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */,
+			);
+			path = "Foundation+Ext";
+			sourceTree = "<group>";
+		};
 		5FA602CB29071AA100319E18 /* RouteCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,7 +630,7 @@
 				5F790FF5294449F300A73600 /* Home */,
 				5F790FF6294449FF00A73600 /* Add Item */,
 				5F790FF729444A1D00A73600 /* Profile */,
-				5FA55192297AE36D00D3596F /* General */,
+				5FA55192297AE36D00D3596F /* Common */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -665,11 +680,7 @@
 			isa = PBXGroup;
 			children = (
 				5FA551B829806E1A00D3596F /* UI+Ext */,
-				5FA55197297B082A00D3596F /* String+Ext.swift */,
-				5F71DC8429578138003111AF /* Date+Ext.swift */,
-				5FA551AB2980371600D3596F /* Calendar+Ext.swift */,
-				5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */,
-				5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */,
+				5FA551C7298C818000D3596F /* Foundation+Ext */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -882,6 +893,7 @@
 				5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */,
 				5FA551B129805C6500D3596F /* PeriodType.swift in Sources */,
 				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
+				5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5F791017294D756600A73600 /* DriverMenuVC.swift in Sources */,
 				5F71DC8529578138003111AF /* Date+Ext.swift in Sources */,

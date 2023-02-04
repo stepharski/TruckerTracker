@@ -9,16 +9,16 @@ import UIKit
 
 class TrackerVC: UIViewController {
     
-    @IBOutlet var dateContainerView: UIView!
+    @IBOutlet var periodContainerView: UIView!
     @IBOutlet var categoryBackgroundViews: [UIView]!
     
-    let dateRangeView = DateRangeView()
+    var periodDisplayVC = TRPeriodDisplayVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureNavBar()
-        configureDateRangeView()
+        addPeriodDisplayChildVC()
         configureCategoryViews()
         bindTapGestureToCategories()
     }
@@ -34,27 +34,18 @@ class TrackerVC: UIViewController {
     func configureNavBar() {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: SFSymbols.menu,
-            style: .plain,
-            target: self,
-            action: #selector(openMenu))
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: SFSymbols.share,
-            style: .plain,
-            target: self,
-            action: #selector(shareReport))
     }
     
-    func configureDateRangeView() {
-        dateRangeView.delegate = self
-        dateRangeView.itemName = "load"
-        dateRangeView.numberOfItems = 5
-        dateContainerView.roundEdges()
-        dateContainerView.addSubview(dateRangeView)
-        dateRangeView.pinToEdges(of: dateContainerView)
+    func addPeriodDisplayChildVC() {
+        periodDisplayVC.delegate = self
+        periodDisplayVC.itemName = "Load"
+        
+        addChild(periodDisplayVC)
+        periodContainerView.roundEdges()
+        periodContainerView.addSubview(periodDisplayVC.view)
+        
+        periodDisplayVC.view.frame = periodContainerView.bounds
+        periodDisplayVC.didMove(toParent: self)
     }
     
     func configureCategoryViews() {
@@ -78,7 +69,7 @@ class TrackerVC: UIViewController {
     }
     
     func applyGradients() {
-        dateContainerView.applyGradient(colors: [#colorLiteral(red: 0.1529411765, green: 0.3294117647, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.09411764706, green: 0.09411764706, blue: 0.09411764706, alpha: 1)], locations: [0, 1])
+        periodContainerView.applyGradient(colors: [#colorLiteral(red: 0.1529411765, green: 0.3294117647, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.09411764706, green: 0.09411764706, blue: 0.09411764706, alpha: 1)], locations: [0, 1])
         
         guard categoryBackgroundViews.count == TrackerCategoryType.allCases.count else {
             return
@@ -122,31 +113,26 @@ class TrackerVC: UIViewController {
     
     func showPeriodSelectorVC() {
         let periodSelectorVC = TRPeriodSelectorVC()
-        
+        periodSelectorVC.delegate = self
         present(periodSelectorVC, animated: true)
-    }
-    
-    
-    @objc func openMenu() {
-        // TODO: Open MenuVC
-    }
-    
-    @objc func shareReport() {
-        // TODO: Share report
     }
 }
 
-//MARK: - DateRangeViewDelegate
-extension TrackerVC: DateRangeViewDelegate {
-    func didTapDateRange() {
+//MARK: - TRPeriodDisplayVCDelegate
+extension TrackerVC: TRPeriodDisplayVCDelegate {
+    func didTapPeriodDisplay() {
         showPeriodSelectorVC()
     }
-    
-    func didTapPreviousButton() {
-        print("didTapPreviousButton")
+
+    func displayDidUpdate(period: Period) {
+        //TODO: Fetch data for new period
     }
-    
-    func didTapNextButton() {
-        print("didTapNextButton")
+}
+
+// MARK: - TRPeriodSelectorVCDelegate
+extension TrackerVC: TRPeriodSelectorVCDelegate {
+    func selectorDidUpdate(period: Period) {
+        periodDisplayVC.period = period
+        //TODO: Fetch data for new period
     }
 }
