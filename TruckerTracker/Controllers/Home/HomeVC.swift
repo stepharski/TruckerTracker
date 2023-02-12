@@ -15,6 +15,7 @@ class HomeVC: UIViewController {
     
     var segmentedControl: TRSegmentedControl!
     var selectedItemType: ItemType = .load
+    let itemTypes = ItemType.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,9 @@ class HomeVC: UIViewController {
     }
     
     @objc func segmentChanged(_ sender: TRSegmentedControl) {
-        // TODO: Update tableView
+        if itemTypes.indices.contains(sender.selectedIndex) {
+            selectedItemType = itemTypes[sender.selectedIndex]
+        }
     }
     
     func addSwipeGestures() {
@@ -71,17 +74,16 @@ class HomeVC: UIViewController {
     }
     
     @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        let segmentTypes = ItemType.allCases
         var currentSegment = selectedItemType.index
         
-        if sender.direction == .left && currentSegment < (segmentTypes.count - 1) {
+        if sender.direction == .left && currentSegment < (itemTypes.count - 1) {
             currentSegment += 1
-            selectedItemType = segmentTypes[currentSegment]
+            selectedItemType = itemTypes[currentSegment]
             segmentedControl.selectSegment(at: currentSegment)
             
         } else if sender.direction == .right && currentSegment > 0 {
             currentSegment -= 1
-            selectedItemType = segmentTypes[currentSegment]
+            selectedItemType = itemTypes[currentSegment]
             segmentedControl.selectSegment(at: currentSegment)
         }
     }
