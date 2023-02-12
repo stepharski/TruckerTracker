@@ -45,9 +45,10 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    func dropShadow(color: UIColor = .black, size: CGSize = CGSize(width: 3.0, height: 4.0)) {
+    func dropShadow(color: UIColor = .black, opacity: Float = 0.5,
+                    size: CGSize = CGSize(width: 3.0, height: 4.0)) {
         layer.shadowRadius = 5.0
-        layer.shadowOpacity = 0.5
+        layer.shadowOpacity = opacity
         layer.masksToBounds = false
         layer.shadowOffset = size
         layer.shadowColor = color.cgColor

@@ -654,19 +654,30 @@ last week</string>
                                     <constraint firstItem="niz-iu-8ol" firstAttribute="centerX" secondItem="1AM-ff-xYA" secondAttribute="centerX" id="wKG-0W-ADa"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1y-fh-q2m">
+                                <rect key="frame" x="20" y="250" width="353" height="60"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="hdG-YP-BLo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="03N-4G-5yh"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="1AM-ff-xYA" firstAttribute="top" secondItem="Vxb-5P-HUb" secondAttribute="top" id="OHX-1K-hCv"/>
+                            <constraint firstItem="a1y-fh-q2m" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" constant="20" id="R0Q-ss-DCM"/>
+                            <constraint firstItem="03N-4G-5yh" firstAttribute="trailing" secondItem="a1y-fh-q2m" secondAttribute="trailing" constant="20" id="ozr-3l-7aO"/>
                             <constraint firstItem="1AM-ff-xYA" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" id="tFf-ve-8BN"/>
                             <constraint firstItem="03N-4G-5yh" firstAttribute="trailing" secondItem="1AM-ff-xYA" secondAttribute="trailing" id="vBH-R6-cAq"/>
                             <constraint firstItem="niz-iu-8ol" firstAttribute="top" secondItem="03N-4G-5yh" secondAttribute="top" id="vLl-TO-sfo"/>
+                            <constraint firstItem="a1y-fh-q2m" firstAttribute="top" secondItem="1AM-ff-xYA" secondAttribute="bottom" constant="20" id="xPC-XL-ymO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="headerView" destination="1AM-ff-xYA" id="4F6-PT-jOm"/>
                         <outlet property="incomeAmountLabel" destination="niz-iu-8ol" id="L5f-tz-fHn"/>
+                        <outlet property="periodContainerView" destination="a1y-fh-q2m" id="aja-J0-CvB"/>
                         <outlet property="segmentedControlView" destination="iMQ-O7-d9r" id="pGq-9i-4jB"/>
                     </connections>
                 </viewController>
@@ -679,8 +690,11 @@ last week</string>
         <image name="dollarsign.circle" catalog="system" width="128" height="123"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="wrench.and.screwdriver" catalog="system" width="128" height="119"/>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

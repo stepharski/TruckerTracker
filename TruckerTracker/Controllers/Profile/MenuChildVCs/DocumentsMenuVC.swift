@@ -181,8 +181,8 @@ extension DocumentsMenuVC: UITableViewDataSource {
     }
 }
 
-//MARK: - TRPeriodDisplayVCDelegate
-extension DocumentsMenuVC: TRPeriodDisplayVCDelegate {
+//MARK: - PeriodDisplayDelegate
+extension DocumentsMenuVC: PeriodDisplayDelegate {
     func didTapPeriodDisplay() {
         showPeriodSelectorVC()
     }
@@ -193,8 +193,8 @@ extension DocumentsMenuVC: TRPeriodDisplayVCDelegate {
     }
 }
 
-// MARK: - TRPeriodSelectorVCDelegate
-extension DocumentsMenuVC: TRPeriodSelectorVCDelegate {
+// MARK: - PeriodSelectorDelegate
+extension DocumentsMenuVC: PeriodSelectorDelegate {
     func selectorDidUpdate(period: Period) {
         periodDisplayVC.period = period
         //TODO: Fetch data for new period

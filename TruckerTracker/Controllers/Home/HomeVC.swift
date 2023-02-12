@@ -12,24 +12,33 @@ class HomeVC: UIViewController {
     @IBOutlet var headerView: UIView!
     @IBOutlet var incomeAmountLabel: UILabel!
     @IBOutlet var segmentedControlView: UIView!
+    @IBOutlet var periodContainerView: UIView!
     
     var segmentedControl: TRSegmentedControl!
-    var selectedItemType: ItemType = .load
-    let itemTypes = ItemType.allCases
     
+    let itemTypes = ItemType.allCases
+    var selectedItemType: ItemType = .load {
+        didSet { periodDisplayVC.itemName = selectedItemType.subtitle }}
+    
+    let periodDisplayVC = TRPeriodDisplayVC()
+    
+    
+    // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureNavBar()
         addSwipeGestures()
         configureSegmentedControl()
+        addPeriodDisplayChildVC()
     }
     
     override func viewDidLayoutSubviews() {
         configureHeader()
     }
     
-    // Configuration
+    
+    // UI Configuration
     func configureNavBar() {
         navigationItem.title = "Income"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor:
@@ -40,7 +49,9 @@ class HomeVC: UIViewController {
         headerView.dropShadow()
         headerView.applyGradient(colors: AppColors.headerColors, locations: [0, 1])
     }
+
     
+    // Segmented Control
     func configureSegmentedControl() {
         let titles = ["$1,600", "$4,200", "$3,120"]
         var subtitles = [String]()
@@ -61,6 +72,21 @@ class HomeVC: UIViewController {
         }
     }
     
+    // Period
+    func addPeriodDisplayChildVC() {
+        periodDisplayVC.delegate = self
+        periodDisplayVC.itemName = selectedItemType.subtitle
+        
+        addChild(periodDisplayVC)
+        periodContainerView.roundEdges()
+        periodContainerView.dropShadow(opacity: 0.1)
+        periodContainerView.addSubview(periodDisplayVC.view)
+        
+        periodDisplayVC.view.frame = periodContainerView.bounds
+        periodDisplayVC.didMove(toParent: self)
+    }
+    
+    // Gestures
     func addSwipeGestures() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         swipeLeft.direction = .left
@@ -86,5 +112,36 @@ class HomeVC: UIViewController {
             selectedItemType = itemTypes[currentSegment]
             segmentedControl.selectSegment(at: currentSegment)
         }
+    }
+    
+    // Navigation
+    func showPeriodSelectorVC() {
+        let periodSelectorVC = TRPeriodSelectorVC()
+        periodSelectorVC.delegate = self
+        present(periodSelectorVC, animated: true)
+    }
+}
+
+
+// MARK: - PeriodDisplayDelegate
+extension HomeVC: PeriodDisplayDelegate {
+    func didTapPeriodDisplay() {
+        showPeriodSelectorVC()
+    }
+    
+    func displayDidUpdate(period: Period) {
+        //TODO: Fetch data for new period
+        print("HomeFetchDataDisplay")
+    }
+}
+
+
+// MARK: - PeriodSelectorDelegate
+extension HomeVC: PeriodSelectorDelegate {
+    func selectorDidUpdate(period: Period) {
+        periodDisplayVC.period = period
+        
+        //TODO: Fetch data for new period
+        print("HomeFetchDataSelector")
     }
 }

@@ -118,8 +118,8 @@ class TrackerVC: UIViewController {
     }
 }
 
-//MARK: - TRPeriodDisplayVCDelegate
-extension TrackerVC: TRPeriodDisplayVCDelegate {
+//MARK: - PeriodDisplayDelegate
+extension TrackerVC: PeriodDisplayDelegate {
     func didTapPeriodDisplay() {
         showPeriodSelectorVC()
     }
@@ -130,8 +130,8 @@ extension TrackerVC: TRPeriodDisplayVCDelegate {
     }
 }
 
-// MARK: - TRPeriodSelectorVCDelegate
-extension TrackerVC: TRPeriodSelectorVCDelegate {
+// MARK: - PeriodSelectorDelegate
+extension TrackerVC: PeriodSelectorDelegate {
     func selectorDidUpdate(period: Period) {
         periodDisplayVC.period = period
         //TODO: Fetch data for new period

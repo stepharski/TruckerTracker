@@ -7,8 +7,8 @@
 
 import UIKit
 
-// MARK: - TRPeriodSelectorVCDelegate
-protocol TRPeriodSelectorVCDelegate: AnyObject {
+// MARK: - PeriodSelectorDelegate
+protocol PeriodSelectorDelegate: AnyObject {
     func selectorDidUpdate(period: Period)
 }
 
@@ -30,7 +30,7 @@ private struct Section {
 // MARK: - TRPeriodSelectorVC
 class TRPeriodSelectorVC: UIViewController {
     
-    weak var delegate: TRPeriodSelectorVCDelegate?
+    weak var delegate: PeriodSelectorDelegate?
     
     let containerView = UIView()
     let closeButton = UIButton()

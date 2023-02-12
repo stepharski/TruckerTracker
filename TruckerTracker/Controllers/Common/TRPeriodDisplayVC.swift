@@ -7,8 +7,8 @@
 
 import UIKit
 
-// MARK: - TRPeriodDisplayVCDelegate
-protocol TRPeriodDisplayVCDelegate: AnyObject {
+// MARK: - PeriodDisplayDelegate
+protocol PeriodDisplayDelegate: AnyObject {
     func didTapPeriodDisplay()
     func displayDidUpdate(period: Period)
 }
@@ -16,7 +16,7 @@ protocol TRPeriodDisplayVCDelegate: AnyObject {
 // MARK: - TRPeriodDisplayVC
 class TRPeriodDisplayVC: UIViewController {
     
-    weak var delegate: TRPeriodDisplayVCDelegate?
+    weak var delegate: PeriodDisplayDelegate?
 
     private let nextButton = UIButton()
     private let previousButton = UIButton()
@@ -32,13 +32,13 @@ class TRPeriodDisplayVC: UIViewController {
         }
     }
     
-    var numberOfItems: Int = 5 {
+    var numberOfItems: Int = 0 {
         didSet {
             updateNumberOfItemsLabel()
         }
     }
     
-    var itemName: String = "Document" {
+    var itemName: String = "item" {
         didSet {
             updateNumberOfItemsLabel()
         }
@@ -77,7 +77,7 @@ class TRPeriodDisplayVC: UIViewController {
     private func configureLabels() {
         [periodlabel, numberOfItemsLabel].forEach {
             view.addSubview($0)
-            $0.textColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
+            $0.textColor = .label
             $0.textAlignment = .center
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -106,7 +106,7 @@ class TRPeriodDisplayVC: UIViewController {
     private func configureButtons() {
         [nextButton, previousButton].forEach {
             view.addSubview($0)
-            $0.imageView?.tintColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
+            $0.imageView?.tintColor = .label
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         

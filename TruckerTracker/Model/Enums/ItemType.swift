@@ -33,4 +33,15 @@ enum ItemType: String, CaseIterable {
             return 2
         }
     }
+    
+    var subtitle: String {
+        switch self {
+        case .expense:
+            return "charge"
+        case .load:
+            return "trip"
+        case .fuel:
+            return "transaction"
+        }
+    }
 }
