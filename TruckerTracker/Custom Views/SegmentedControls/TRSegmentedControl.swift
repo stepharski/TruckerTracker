@@ -37,10 +37,8 @@ class TRSegmentedControl: UIControl {
     var titles = [String]()
     var subtitles = [String]()
     
+    var selectedIndex: Int = 0
     var selectorType: SegmentSelectorType = .underline
-
-    var selectedIndex: Int = 0 {
-        didSet { moveSelector(to: selectedIndex)} }
     
     var textColor: UIColor = AppColors.textColor.withAlphaComponent(0.75)
     var selectedTextColor: UIColor = AppColors.textColor
@@ -60,12 +58,24 @@ class TRSegmentedControl: UIControl {
     
     
     // Configure
-    func configure(with titles: [String], subtitles: [String], type: SegmentSelectorType) {
+    func configure(with titles: [String], subtitles: [String],
+                   type: SegmentSelectorType, selectedIndex: Int) {
         self.titles = titles
         self.subtitles = subtitles
         self.selectorType = type
+        self.selectedIndex = selectedIndex
         
         setupButtons()
+    }
+    
+    func selectSegment(at index: Int) {
+        guard titles.indices.contains(index) else { return }
+        
+        selectedIndex = index
+        moveSelector(to: index)
+        for (btnIndex, button) in buttons.enumerated() {
+            button.isSelected = btnIndex == index
+        }
     }
     
     // Buttons
@@ -150,24 +160,28 @@ class TRSegmentedControl: UIControl {
         selectorView.translatesAutoresizingMaskIntoConstraints = false
         
         let selectorWidth = frame.width / CGFloat(titles.count)
+        let leadingConstant = frame.width
+                                / CGFloat(titles.count)
+                                * CGFloat(selectedIndex)
+                                + selectorType.padding
 
         switch selectorType {
         case .underline:
             let selectorHeight: CGFloat = 2
             NSLayoutConstraint.activate([
-                selectorView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                selectorView.widthAnchor.constraint(equalToConstant: selectorWidth),
                 selectorView.heightAnchor.constraint(equalToConstant: selectorHeight),
-                selectorView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+                selectorView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                selectorView.widthAnchor.constraint(equalToConstant: selectorWidth),
+                selectorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leadingConstant)
             ])
 
         case .capsule:
             let padding: CGFloat = selectorType.padding
             NSLayoutConstraint.activate([
-                selectorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-                selectorView.widthAnchor.constraint(equalToConstant: selectorWidth - (2 * padding)),
                 selectorView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-                selectorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding)
+                selectorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
+                selectorView.widthAnchor.constraint(equalToConstant: selectorWidth - (2 * padding)),
+                selectorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leadingConstant)
             ])
 
             selectorView.roundEdges(by: 25)

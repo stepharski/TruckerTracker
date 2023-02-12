@@ -22,4 +22,15 @@ enum ItemType: String, CaseIterable {
             return self.rawValue
         }
     }
+    
+    var index: Int {
+        switch self {
+        case .expense:
+            return 0
+        case .load:
+            return 1
+        case .fuel:
+            return 2
+        }
+    }
 }

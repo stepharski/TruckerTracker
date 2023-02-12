@@ -13,17 +13,22 @@ class HomeVC: UIViewController {
     @IBOutlet var incomeAmountLabel: UILabel!
     @IBOutlet var segmentedControlView: UIView!
     
+    var segmentedControl: TRSegmentedControl!
+    var selectedItemType: ItemType = .load
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureNavBar()
-        configureHeader()
+        addSwipeGestures()
         configureSegmentedControl()
-        
     }
     
+    override func viewDidLayoutSubviews() {
+        configureHeader()
+    }
     
-    // Setup
+    // Configuration
     func configureNavBar() {
         navigationItem.title = "Income"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor:
@@ -36,17 +41,48 @@ class HomeVC: UIViewController {
     }
     
     func configureSegmentedControl() {
-        let titles = ["$1,600", "$14,200", "$3,120"]
-        let subtitles = ["expenses", "loads", "fuel"]
+        let titles = ["$1,600", "$4,200", "$3,120"]
+        var subtitles = [String]()
+        ItemType.allCases.forEach { subtitles.append($0.pluralTitle) }
         
-        let segmentedControl = TRSegmentedControl(frame: segmentedControlView.bounds)
+        segmentedControl = TRSegmentedControl(frame: segmentedControlView.bounds)
         segmentedControlView.addSubview(segmentedControl)
         segmentedControl.pinToEdges(of: segmentedControlView)
-        segmentedControl.configure(with: titles, subtitles: subtitles, type: .underline)
+        
+        segmentedControl.configure(with: titles, subtitles: subtitles,
+                                   type: .underline, selectedIndex: selectedItemType.index)
         segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
     }
     
     @objc func segmentChanged(_ sender: TRSegmentedControl) {
-        print(sender.selectedIndex)
+        // TODO: Update tableView
+    }
+    
+    func addSwipeGestures() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeLeft.direction = .left
+        swipeLeft.cancelsTouchesInView = false
+        view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeRight.direction = .right
+        swipeRight.cancelsTouchesInView = false
+        view.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
+        let segmentTypes = ItemType.allCases
+        var currentSegment = selectedItemType.index
+        
+        if sender.direction == .left && currentSegment < (segmentTypes.count - 1) {
+            currentSegment += 1
+            selectedItemType = segmentTypes[currentSegment]
+            segmentedControl.selectSegment(at: currentSegment)
+            
+        } else if sender.direction == .right && currentSegment > 0 {
+            currentSegment -= 1
+            selectedItemType = segmentTypes[currentSegment]
+            segmentedControl.selectSegment(at: currentSegment)
+        }
     }
 }
