@@ -100,7 +100,6 @@ class DocumentsMenuVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         tableView.rowHeight = 40
         tableView.backgroundColor = .clear
         tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)

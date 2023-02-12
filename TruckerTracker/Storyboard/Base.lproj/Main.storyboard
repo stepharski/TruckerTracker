@@ -618,13 +618,70 @@ last week</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wle-3K-iGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3" y="232"/>
+            <point key="canvasLocation" x="-868" y="232"/>
+        </scene>
+        <!--HomeVC-->
+        <scene sceneID="yPR-W2-pFH">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" id="rbm-zM-uSE" customClass="HomeVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vxb-5P-HUb">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AM-ff-xYA">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="230"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5,050" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niz-iu-8ol">
+                                        <rect key="frame" x="154.66666666666666" y="59" width="84" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iMQ-O7-d9r">
+                                        <rect key="frame" x="0.0" y="160" width="393" height="70"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="TVK-QJ-Y41"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18431372549019609" green="0.59999999999999998" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iMQ-O7-d9r" secondAttribute="trailing" id="CjP-I4-Nks"/>
+                                    <constraint firstItem="iMQ-O7-d9r" firstAttribute="leading" secondItem="1AM-ff-xYA" secondAttribute="leading" id="YAQ-bu-gde"/>
+                                    <constraint firstAttribute="height" constant="230" id="dgh-bk-6X6"/>
+                                    <constraint firstAttribute="bottom" secondItem="iMQ-O7-d9r" secondAttribute="bottom" id="jO1-fg-Tr9"/>
+                                    <constraint firstItem="niz-iu-8ol" firstAttribute="centerX" secondItem="1AM-ff-xYA" secondAttribute="centerX" id="wKG-0W-ADa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="03N-4G-5yh"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <constraints>
+                            <constraint firstItem="1AM-ff-xYA" firstAttribute="top" secondItem="Vxb-5P-HUb" secondAttribute="top" id="OHX-1K-hCv"/>
+                            <constraint firstItem="1AM-ff-xYA" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" id="tFf-ve-8BN"/>
+                            <constraint firstItem="03N-4G-5yh" firstAttribute="trailing" secondItem="1AM-ff-xYA" secondAttribute="trailing" id="vBH-R6-cAq"/>
+                            <constraint firstItem="niz-iu-8ol" firstAttribute="top" secondItem="03N-4G-5yh" secondAttribute="top" id="vLl-TO-sfo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="headerView" destination="1AM-ff-xYA" id="4F6-PT-jOm"/>
+                        <outlet property="incomeAmountLabel" destination="niz-iu-8ol" id="L5f-tz-fHn"/>
+                        <outlet property="segmentedControlView" destination="iMQ-O7-d9r" id="pGq-9i-4jB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iaZ-Mv-R38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="73" y="-480"/>
         </scene>
     </scenes>
     <resources>
         <image name="dollarsign.circle" catalog="system" width="128" height="123"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="wrench.and.screwdriver" catalog="system" width="128" height="119"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

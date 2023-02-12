@@ -21,30 +21,32 @@ class TRTabBarController: UITabBarController {
     func configureTabBar() {
         delegate = self
         
+        
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white.withAlphaComponent(0.01)
-        
+
+        self.tabBar.tintColor = .label
         self.tabBar.standardAppearance = appearance
         self.tabBar.scrollEdgeAppearance = appearance
     }
     
     func createTabBarItems() {
         
-        let trackerVC = storyboard?.instantiateViewController(withIdentifier:
-                                                        StoryboardIdentifiers.trackerVC) as! TrackerVC
+        let homeVC = storyboard?.instantiateViewController(withIdentifier:
+                                            StoryboardIdentifiers.homeVC) as! HomeVC
         let categoryItemVC = storyboard?.instantiateViewController(withIdentifier:
-                                                        StoryboardIdentifiers.categoryItemVC) as! CategoryItemVC
+                                            StoryboardIdentifiers.categoryItemVC) as! CategoryItemVC
         let profileVC = storyboard?.instantiateViewController(withIdentifier:
-                                                        StoryboardIdentifiers.profileVC) as! ProfileVC
+                                            StoryboardIdentifiers.profileVC) as! ProfileVC
         
-        let trackerNavController = UINavigationController(rootViewController: trackerVC)
+        let homeNavController = UINavigationController(rootViewController: homeVC)
         let categoryitemNavController = UINavigationController(rootViewController: categoryItemVC)
         let profileNavController = UINavigationController(rootViewController: profileVC)
 
-        trackerNavController.tabBarItem = UITabBarItem(title: nil,
-                                                    image: TRTabBarItem.tracker.image,
-                                                    selectedImage: TRTabBarItem.tracker.selectedImage)
+        homeVC.tabBarItem = UITabBarItem(title: nil,
+                                         image: TRTabBarItem.home.image,
+                                         selectedImage: TRTabBarItem.home.selectedImage)
         categoryitemNavController.tabBarItem = UITabBarItem(title: nil,
                                                        image: TRTabBarItem.newItem.image,
                                                        selectedImage: TRTabBarItem.newItem.selectedImage)
@@ -52,7 +54,7 @@ class TRTabBarController: UITabBarController {
                                                        image: TRTabBarItem.profile.image,
                                                        selectedImage: TRTabBarItem.profile.selectedImage)
 
-        viewControllers = [trackerNavController, categoryitemNavController, profileNavController]
+        viewControllers = [homeNavController, categoryitemNavController, profileNavController]
     }
     
     func testCreateTabbarItems() {

@@ -8,7 +8,13 @@
 import UIKit
 
 struct Constants {
-    static let minimumDaysInFirstWeek = 4
+    static let minimumDaysInFirstWeek: Int = 4
+}
+
+struct AppColors {
+    static let textColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
+    static let headerColors = [#colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1), #colorLiteral(red: 0.1098039216, green: 0.1568627451, blue: 0.1411764706, alpha: 1)]
+    static let negativeIncomeColors = [#colorLiteral(red: 0.7450980392, green: 0.1333333333, blue: 0.07843137255, alpha: 1), #colorLiteral(red: 0.2549019608, green: 0.0431372549, blue: 0.02352941176, alpha: 1)]
 }
 
 struct SFSymbols {
@@ -20,14 +26,14 @@ struct SFSymbols {
     static let arrowBack = UIImage(systemName: "chevron.backward")
     
     // TabBar
-    static let circleLine = UIImage(systemName: "circle.and.line.horizontal")
-    static let circleLineFill = UIImage(systemName: "circle.and.line.horizontal.fill")
+    static let house = UIImage(systemName: "house")
+    static let houseFill = UIImage(systemName: "house.fill")
     static let plus = UIImage(systemName: "plus")
     static let person = UIImage(systemName: "person")
     static let personFill = UIImage(systemName: "person.fill")
     
     // Categories
-    static let dollar = UIImage(systemName: "dollarsign.circle")
+    static let dollarCircle = UIImage(systemName: "dollarsign.circle")
     static let minusCircle = UIImage(systemName: "minus.circle")
     static let speedometer = UIImage(systemName: "speedometer")
     static let fuelPumpCircle = UIImage(systemName: "fuelpump.circle")
@@ -61,6 +67,7 @@ struct SFSymbols {
 
 struct StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
+    static let homeVC = "HomeVC"
     static let trackerVC = "TrackerVC"
     static let categorySummaryVC = "CategorySummaryVC"
     static let profileVC = "ProfileVC"

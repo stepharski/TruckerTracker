@@ -102,7 +102,7 @@ private struct Section {
 //MARK: - DataMenuVC
 class DataMenuVC: UIViewController {
     
-    let segmentControl = TRSegmentedControl()
+    let segmentedControl = TRSegmentedControl()
     let tableView = UITableView()
     var actionButton = TRButton()
     
@@ -135,23 +135,23 @@ class DataMenuVC: UIViewController {
     
     // UI
     private func layoutUI() {
-        view.addSubviews(segmentControl, tableView, actionButton)
+        view.addSubviews(segmentedControl, tableView, actionButton)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
-        let segmentControlPadding: CGFloat = 10
+        let segmentedControlPadding: CGFloat = 10
         let tableViewPadding: CGFloat = 20
         NSLayoutConstraint.activate([
-            segmentControl.heightAnchor.constraint(equalToConstant: 35),
-            segmentControl.topAnchor.constraint(equalTo: view.topAnchor, constant: segmentControlPadding),
-            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: segmentControlPadding),
-            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -segmentControlPadding),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 35),
+            segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: segmentedControlPadding),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: segmentedControlPadding),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -segmentedControlPadding),
             
             actionButton.heightAnchor.constraint(equalToConstant: 45),
             actionButton.widthAnchor.constraint(equalToConstant: 200),
             actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             actionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: tableViewPadding),
             
-            tableView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -tableViewPadding),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: tableViewPadding / 2),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -tableViewPadding / 2)
@@ -175,8 +175,8 @@ class DataMenuVC: UIViewController {
         var titles = [String]()
         MenuType.allCases.forEach { titles.append($0.title) }
         
-        segmentControl.createButtons(with: titles, selectedIndex: 1)
-        segmentControl.delegate = self
+//        segmentedControl.createButtons(with: titles, selectedIndex: 1)
+//        segmentedControl.delegate = self
     }
     
     func configureTableView() {
@@ -201,12 +201,6 @@ class DataMenuVC: UIViewController {
     @objc func actionButtonPressed() { }
 }
 
-// MARK: - TRSegmentedControlDelegate
-extension DataMenuVC: TRSegmentedControlDelegate {
-    func didSelectItem(at index: Int) {
-        selectedMenu = MenuType.allCases[index]
-    }
-}
 
 // MARK: - UITableViewDelegate
 extension DataMenuVC: UITableViewDelegate {

@@ -24,7 +24,7 @@ enum TrackerCategoryType: String, CaseIterable {
     var image: UIImage? {
         switch self {
         case .gross:
-            return SFSymbols.dollar
+            return SFSymbols.dollarCircle
         case .miles:
             return SFSymbols.speedometer
         case .expenses:
