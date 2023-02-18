@@ -69,8 +69,8 @@
             <connections>
                 <outlet property="amountLabel" destination="SrP-tj-YZc" id="Zxt-qT-bzv"/>
                 <outlet property="dateLabel" destination="uxg-XU-RMV" id="M2Z-mM-mvk"/>
-                <outlet property="fuelTypeImageView" destination="65l-rd-S19" id="hhO-Yi-pyE"/>
-                <outlet property="fuelTypeLabel" destination="DPy-o2-gh9" id="Efh-Pb-zs9"/>
+                <outlet property="fuelImageView" destination="65l-rd-S19" id="iiu-bf-TYg"/>
+                <outlet property="fuelTitleLabel" destination="DPy-o2-gh9" id="KoJ-RH-3Pr"/>
                 <outlet property="locationLabel" destination="Ne8-c5-GJv" id="gQC-Pl-zly"/>
             </connections>
             <point key="canvasLocation" x="62.595419847328245" y="19.718309859154932"/>

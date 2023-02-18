@@ -5,17 +5,26 @@
 //  Created by Stepan Kukharskyi on 12/16/22.
 //
 
-import Foundation
+import UIKit
 
 enum FrequencyType: String {
-    case never, day, week, month, year
+    case oneTime, day, week, month, year
     
     var title: String {
         switch self {
-        case .never:
-            return self.rawValue.capitalized
+        case .oneTime:
+            return "One time"
         default:
             return "Every " + self.rawValue
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .oneTime:
+            return SFSymbols.creditCard
+        default:
+            return SFSymbols.repeatArrows
         }
     }
 }

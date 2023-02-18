@@ -25,7 +25,7 @@ class RecurringExpenseCell: UITableViewCell {
         }
     }
     
-    var frequency: FrequencyType = .never {
+    var frequency: FrequencyType = .oneTime {
         didSet {
             frequencyLabel.text = frequency.title
         }

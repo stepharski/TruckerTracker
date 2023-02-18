@@ -5,12 +5,26 @@
 //  Created by Stepan Kukharskyi on 12/16/22.
 //
 
-import Foundation
+import UIKit
 
 enum FuelType: String {
-    case diesel, def, gas
+    case diesel, def, both
     
     var title: String {
-        return self.rawValue.capitalized
+        switch self {
+        case .diesel, .def:
+            return self.rawValue.capitalized
+        case .both:
+            return "Diesel & Def"
+        }
+    }
+    
+    var symbol: UIImage? {
+        switch self {
+        case .diesel, .both:
+            return SFSymbols.fuelPumpFill
+        case .def:
+            return SFSymbols.dropFill
+        }
     }
 }

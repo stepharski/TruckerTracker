@@ -19,26 +19,58 @@ class HomeVC: UIViewController {
     var segmentedControl: TRSegmentedControl!
     
     let segments = ItemType.allCases
+    var previousSelectedSegment: ItemType = .load {
+        willSet(newValue) { updateTableView(isNextSegment: previousSelectedSegment.index
+                                                                < newValue.index)}}
     var selectedSegment: ItemType = .load {
-        didSet {
-            periodDisplayVC.itemName = selectedSegment.subtitle
-            tableView.reloadData()
-        }}
+        willSet(newValue) { guard newValue != selectedSegment else { return }}
+        didSet { updatePeriodDisplay()
+                previousSelectedSegment = selectedSegment }}
+    
+    var expenses: [Expense] = []
+    var loads: [Load] = []
+    var fuelings: [Fuel] = []
     
     
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        generateTestData()
         configureNavBar()
         addSwipeGestures()
         configureSegmentedControl()
         addPeriodDisplayChildVC()
+        updatePeriodDisplay()
         configureTableView()
     }
     
     override func viewDidLayoutSubviews() {
         configureHeader()
+    }
+    
+    
+    // Test data
+    func generateTestData() {
+        for i in 0..<5 {
+            expenses.append(Expense(id: "expense\(i)",
+                                    date: Date(),
+                                    amount: 380,
+                                    name: "Trailer rent",
+                                    frequency: .week))
+            
+            loads.append(Load(id: "load\(i)",
+                              date: Date(),
+                              amount: 3200,
+                              distance: 964,
+                              startLocation: "Chicago, IL",
+                              endLocation: "Atlanta, GA"))
+            
+            fuelings.append(Fuel(id: "fuel\(i)",
+                                 date: Date(),
+                                 amount: 540,
+                                 type: .both))
+        }
     }
     
     // UI Configuration
@@ -55,8 +87,22 @@ class HomeVC: UIViewController {
 
     
     // Segmented Control
+    func getSegmentTitles() -> [String] {
+        var expensesAmount = 0
+        var loadsAmount = 0
+        var fuelingsAmount = 0
+        
+        expenses.forEach { expensesAmount += $0.amount }
+        loads.forEach { loadsAmount += $0.amount }
+        fuelings.forEach { fuelingsAmount += $0.amount }
+        
+        return ["\(expensesAmount.formattedWithSeparator())",
+                "\(loadsAmount.formattedWithSeparator())",
+                "\(fuelingsAmount.formattedWithSeparator())"]
+    }
+    
     func configureSegmentedControl() {
-        let titles = ["$1,600", "$14,200", "$3,120"]
+        let titles = getSegmentTitles()
         var subtitles = [String]()
         ItemType.allCases.forEach { subtitles.append($0.pluralTitle) }
         
@@ -75,6 +121,7 @@ class HomeVC: UIViewController {
         }
     }
     
+    
     // Period
     func addPeriodDisplayChildVC() {
         periodDisplayVC.delegate = self
@@ -87,6 +134,19 @@ class HomeVC: UIViewController {
         
         periodDisplayVC.view.frame = periodContainerView.bounds
         periodDisplayVC.didMove(toParent: self)
+    }
+    
+    func updatePeriodDisplay() {
+        periodDisplayVC.itemName = selectedSegment.subtitle
+        
+        switch selectedSegment {
+        case .expense:
+            periodDisplayVC.numberOfItems = expenses.count
+        case .load:
+            periodDisplayVC.numberOfItems = loads.count
+        case .fuel:
+            periodDisplayVC.numberOfItems = fuelings.count
+        }
     }
     
     // Gestures
@@ -133,6 +193,11 @@ class HomeVC: UIViewController {
         tableView.register(LoadCell.nib, forCellReuseIdentifier: LoadCell.identifier)
         tableView.register(FuelCell.nib, forCellReuseIdentifier: FuelCell.identifier)
     }
+    
+    func updateTableView(isNextSegment: Bool) {
+        tableView.reloadSections(IndexSet(integer: 0),
+                                 with: isNextSegment ? .left : .right)
+    }
 }
 
 
@@ -174,25 +239,50 @@ extension HomeVC: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension HomeVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        switch selectedSegment {
+        case .expense:
+            return expenses.count
+        case .load:
+            return loads.count
+        case .fuel:
+            return fuelings.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch selectedSegment {
         case .expense:
+            guard !expenses.isEmpty else {
+                // TODO: Show Empty State View
+                return UITableViewCell() }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseCell.identifier)
                                                                         as! ExpenseCell
+            let viewModel = ExpenseCellViewModel(expenses[indexPath.row])
+            cell.configure(with: viewModel)
             return cell
             
         case .load:
+            guard !loads.isEmpty else {
+                // TODO: Show Empty State View
+                return UITableViewCell() }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier)
                                                                         as! LoadCell
+            let viewModel = LoadCellViewModel(loads[indexPath.row])
+            cell.configure(with: viewModel)
             return cell
             
         case .fuel:
+            guard !fuelings.isEmpty else {
+                // TODO: Show Empty State View
+                return UITableViewCell() }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: FuelCell.identifier)
                                                                         as! FuelCell
+            let viewModel = FuelCellViewModel(fuelings[indexPath.row])
+            cell.configure(with: viewModel)
             return cell
         }
     }

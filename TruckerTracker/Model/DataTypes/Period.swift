@@ -8,6 +8,7 @@
 import Foundation
 
 struct Period: Codable {
+    
     var type: PeriodType
     var interval: DateInterval
     

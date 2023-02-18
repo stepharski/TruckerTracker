@@ -32,6 +32,14 @@ struct SFSymbols {
     static let person = UIImage(systemName: "person")
     static let personFill = UIImage(systemName: "person.fill")
     
+    // Frequency
+    static let repeatArrows = UIImage(systemName: "repeat")
+    static let creditCard = UIImage(systemName: "creditcard")
+    
+    // Fuel
+    static let fuelPumpFill = UIImage(systemName: "fuelpump.fill")
+    static let dropFill = UIImage(systemName: "drop.fill")
+    
     // Categories
     static let dollarCircle = UIImage(systemName: "dollarsign.circle")
     static let minusCircle = UIImage(systemName: "minus.circle")
@@ -58,7 +66,6 @@ struct SFSymbols {
     static let arrowCompactRight = UIImage(systemName: "chevron.compact.right")
     
     // Sync benefits
-    static let repeatArrows = UIImage(systemName: "repeat")
     static let macStudio = UIImage(systemName: "macstudio")
     static let macPro = UIImage(systemName: "macpro.gen1")
 }
