@@ -13,14 +13,14 @@ class HomeVC: UIViewController {
     @IBOutlet var incomeAmountLabel: UILabel!
     @IBOutlet var segmentedControlView: UIView!
     @IBOutlet var periodContainerView: UIView!
-    
-    var segmentedControl: TRSegmentedControl!
-    
-    let itemTypes = ItemType.allCases
-    var selectedItemType: ItemType = .load {
-        didSet { periodDisplayVC.itemName = selectedItemType.subtitle }}
+    @IBOutlet var tableView: UITableView!
     
     let periodDisplayVC = TRPeriodDisplayVC()
+    var segmentedControl: TRSegmentedControl!
+    
+    let segments = ItemType.allCases
+    var selectedSegment: ItemType = .load {
+        didSet { periodDisplayVC.itemName = selectedSegment.subtitle }}
     
     
     // Life cycle
@@ -31,12 +31,12 @@ class HomeVC: UIViewController {
         addSwipeGestures()
         configureSegmentedControl()
         addPeriodDisplayChildVC()
+        configureTableView()
     }
     
     override func viewDidLayoutSubviews() {
         configureHeader()
     }
-    
     
     // UI Configuration
     func configureNavBar() {
@@ -46,14 +46,14 @@ class HomeVC: UIViewController {
     }
     
     func configureHeader() {
-        headerView.dropShadow()
+        headerView.dropShadow(opacity: 0.3)
         headerView.applyGradient(colors: AppColors.headerColors, locations: [0, 1])
     }
 
     
     // Segmented Control
     func configureSegmentedControl() {
-        let titles = ["$1,600", "$4,200", "$3,120"]
+        let titles = ["$1,600", "$14,200", "$3,120"]
         var subtitles = [String]()
         ItemType.allCases.forEach { subtitles.append($0.pluralTitle) }
         
@@ -62,20 +62,20 @@ class HomeVC: UIViewController {
         segmentedControl.pinToEdges(of: segmentedControlView)
         
         segmentedControl.configure(with: titles, subtitles: subtitles,
-                                   type: .underline, selectedIndex: selectedItemType.index)
+                                   type: .underline, selectedIndex: selectedSegment.index)
         segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
     }
     
     @objc func segmentChanged(_ sender: TRSegmentedControl) {
-        if itemTypes.indices.contains(sender.selectedIndex) {
-            selectedItemType = itemTypes[sender.selectedIndex]
+        if segments.indices.contains(sender.selectedIndex) {
+            selectedSegment = segments[sender.selectedIndex]
         }
     }
     
     // Period
     func addPeriodDisplayChildVC() {
         periodDisplayVC.delegate = self
-        periodDisplayVC.itemName = selectedItemType.subtitle
+        periodDisplayVC.itemName = selectedSegment.subtitle
         
         addChild(periodDisplayVC)
         periodContainerView.roundEdges()
@@ -100,16 +100,16 @@ class HomeVC: UIViewController {
     }
     
     @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        var currentSegment = selectedItemType.index
+        var currentSegment = selectedSegment.index
         
-        if sender.direction == .left && currentSegment < (itemTypes.count - 1) {
+        if sender.direction == .left && currentSegment < (segments.count - 1) {
             currentSegment += 1
-            selectedItemType = itemTypes[currentSegment]
+            selectedSegment = segments[currentSegment]
             segmentedControl.selectSegment(at: currentSegment)
             
         } else if sender.direction == .right && currentSegment > 0 {
             currentSegment -= 1
-            selectedItemType = itemTypes[currentSegment]
+            selectedSegment = segments[currentSegment]
             segmentedControl.selectSegment(at: currentSegment)
         }
     }
@@ -119,6 +119,14 @@ class HomeVC: UIViewController {
         let periodSelectorVC = TRPeriodSelectorVC()
         periodSelectorVC.delegate = self
         present(periodSelectorVC, animated: true)
+    }
+    
+    // TableView
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(LoadCell.nib, forCellReuseIdentifier: LoadCell.identifier)
     }
 }
 
@@ -135,7 +143,6 @@ extension HomeVC: PeriodDisplayDelegate {
     }
 }
 
-
 // MARK: - PeriodSelectorDelegate
 extension HomeVC: PeriodSelectorDelegate {
     func selectorDidUpdate(period: Period) {
@@ -144,4 +151,40 @@ extension HomeVC: PeriodSelectorDelegate {
         //TODO: Fetch data for new period
         print("HomeFetchDataSelector")
     }
+}
+
+
+// MARK: - UITableViewDelegate
+extension HomeVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch selectedSegment {
+        case .expense, .fuel:
+            return 80
+        case .load:
+            return 100 + 15
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension HomeVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch selectedSegment {
+        case .expense:
+            return UITableViewCell()
+        case .load:
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier) as! LoadCell
+            
+            return cell
+        case .fuel:
+            return UITableViewCell()
+        }
+    }
+    
+    
 }
