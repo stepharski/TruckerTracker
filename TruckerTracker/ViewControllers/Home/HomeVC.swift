@@ -20,7 +20,10 @@ class HomeVC: UIViewController {
     
     let segments = ItemType.allCases
     var selectedSegment: ItemType = .load {
-        didSet { periodDisplayVC.itemName = selectedSegment.subtitle }}
+        didSet {
+            periodDisplayVC.itemName = selectedSegment.subtitle
+            tableView.reloadData()
+        }}
     
     
     // Life cycle
@@ -126,6 +129,7 @@ class HomeVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.register(ExpenseCell.nib, forCellReuseIdentifier: ExpenseCell.identifier)
         tableView.register(LoadCell.nib, forCellReuseIdentifier: LoadCell.identifier)
     }
 }
@@ -159,9 +163,9 @@ extension HomeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedSegment {
         case .expense, .fuel:
-            return 80
+            return 80 + 15
         case .load:
-            return 100 + 15
+            return 95 + 15
         }
     }
 }
@@ -176,15 +180,17 @@ extension HomeVC: UITableViewDataSource {
         
         switch selectedSegment {
         case .expense:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseCell.identifier)
+                                                                        as! ExpenseCell
+            
+            return cell
         case .load:
-            let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier) as! LoadCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier)
+                                                                        as! LoadCell
             
             return cell
         case .fuel:
             return UITableViewCell()
         }
     }
-    
-    
 }

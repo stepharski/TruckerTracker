@@ -64,7 +64,7 @@ class TRTabBar: UITabBar {
         newItemButton.setImage(SFSymbols.plus, for: .normal)
         newItemButton.backgroundColor = .label
         newItemButton.tintColor = .systemGray6
-        newItemButton.roundEdges(by: 25)
+        newItemButton.roundEdges(by: 27)
         
         newItemButton.addTarget(self, action: #selector(self.addItemButtonAction), for: .touchUpInside)
         self.addSubview(newItemButton)

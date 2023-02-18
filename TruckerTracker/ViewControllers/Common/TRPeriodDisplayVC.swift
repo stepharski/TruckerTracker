@@ -24,27 +24,21 @@ class TRPeriodDisplayVC: UIViewController {
     private let periodlabel = UILabel()
     private let numberOfItemsLabel = UILabel()
     
+    let periodFontSize: CGFloat = 17
+    let numberOfItemFontSize: CGFloat = 14
+    
     lazy var period: Period = {
         return UDManager.shared.getPeriod()
-    }() {
-        didSet {
-            updatePeriodLabel()
-        }
-    }
+    }() { didSet { updatePeriodLabel() }}
     
     var numberOfItems: Int = 0 {
-        didSet {
-            updateNumberOfItemsLabel()
-        }
-    }
+        didSet { updateNumberOfItemsLabel() }}
     
     var itemName: String = "item" {
-        didSet {
-            updateNumberOfItemsLabel()
-        }
-    }
+        didSet { updateNumberOfItemsLabel() }}
     
     
+    // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,8 +76,8 @@ class TRPeriodDisplayVC: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        periodlabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        numberOfItemsLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        periodlabel.font = UIFont.systemFont(ofSize: periodFontSize, weight: .semibold)
+        numberOfItemsLabel.font = UIFont.systemFont(ofSize: numberOfItemFontSize, weight: .semibold)
         
         NSLayoutConstraint.activate([
             periodlabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),

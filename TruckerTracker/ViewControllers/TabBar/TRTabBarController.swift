@@ -21,7 +21,6 @@ class TRTabBarController: UITabBarController {
     func configureTabBar() {
         delegate = self
         
-        
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white.withAlphaComponent(0.01)
@@ -55,10 +54,6 @@ class TRTabBarController: UITabBarController {
                                                        selectedImage: TRTabBarItem.profile.selectedImage)
 
         viewControllers = [homeNavController, categoryitemNavController, profileNavController]
-    }
-    
-    func testCreateTabbarItems() {
-        
     }
         
     func handleTabBarItemTap() {
