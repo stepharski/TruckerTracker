@@ -131,6 +131,7 @@ class HomeVC: UIViewController {
         
         tableView.register(ExpenseCell.nib, forCellReuseIdentifier: ExpenseCell.identifier)
         tableView.register(LoadCell.nib, forCellReuseIdentifier: LoadCell.identifier)
+        tableView.register(FuelCell.nib, forCellReuseIdentifier: FuelCell.identifier)
     }
 }
 
@@ -182,15 +183,17 @@ extension HomeVC: UITableViewDataSource {
         case .expense:
             let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseCell.identifier)
                                                                         as! ExpenseCell
-            
             return cell
+            
         case .load:
             let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier)
                                                                         as! LoadCell
-            
             return cell
+            
         case .fuel:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: FuelCell.identifier)
+                                                                        as! FuelCell
+            return cell
         }
     }
 }

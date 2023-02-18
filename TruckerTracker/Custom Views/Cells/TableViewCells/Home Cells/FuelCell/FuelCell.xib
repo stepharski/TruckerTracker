@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FuelCell" customModule="TruckerTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apr 04" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxg-XU-RMV">
+                        <rect key="frame" x="20.000000000000004" y="10" width="46.333333333333343" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fuelpump.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="65l-rd-S19">
+                        <rect key="frame" x="30.666666666666671" y="40" width="25" height="25.333333333333343"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="xRh-Cx-qbM"/>
+                            <constraint firstAttribute="width" secondItem="65l-rd-S19" secondAttribute="height" multiplier="1:1" id="z7a-Og-4dx"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago, IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-c5-GJv">
+                        <rect key="frame" x="75.666666666666671" y="28" width="76.000000000000014" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diesel &amp; Def" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPy-o2-gh9">
+                        <rect key="frame" x="75.666666666666671" y="50" width="93.000000000000014" height="20"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$540" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrP-tj-YZc">
+                        <rect key="frame" x="292" y="50" width="43" height="20"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uxg-XU-RMV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2mm-ZH-tJM"/>
+                    <constraint firstItem="uxg-XU-RMV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="AZo-v2-oGU"/>
+                    <constraint firstItem="65l-rd-S19" firstAttribute="centerX" secondItem="uxg-XU-RMV" secondAttribute="centerX" id="FTU-Bl-qfL"/>
+                    <constraint firstAttribute="bottom" secondItem="65l-rd-S19" secondAttribute="bottom" constant="15" id="KDt-st-y96"/>
+                    <constraint firstItem="DPy-o2-gh9" firstAttribute="top" secondItem="Ne8-c5-GJv" secondAttribute="bottom" constant="5" id="NJX-w2-AOJ"/>
+                    <constraint firstItem="Ne8-c5-GJv" firstAttribute="leading" secondItem="DPy-o2-gh9" secondAttribute="leading" id="Xrq-Oh-NDI"/>
+                    <constraint firstItem="DPy-o2-gh9" firstAttribute="leading" secondItem="65l-rd-S19" secondAttribute="trailing" constant="20" id="fcq-b1-ceS"/>
+                    <constraint firstAttribute="bottom" secondItem="DPy-o2-gh9" secondAttribute="bottom" constant="10" id="hH6-L6-3gP"/>
+                    <constraint firstAttribute="bottom" secondItem="SrP-tj-YZc" secondAttribute="bottom" constant="10" id="s4Q-jy-mNE"/>
+                    <constraint firstAttribute="trailing" secondItem="SrP-tj-YZc" secondAttribute="trailing" constant="15" id="vrp-Ag-MTk"/>
+                    <constraint firstItem="SrP-tj-YZc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DPy-o2-gh9" secondAttribute="trailing" constant="15" id="vxx-yy-rFx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountLabel" destination="SrP-tj-YZc" id="Zxt-qT-bzv"/>
+                <outlet property="dateLabel" destination="uxg-XU-RMV" id="M2Z-mM-mvk"/>
+                <outlet property="fuelTypeImageView" destination="65l-rd-S19" id="hhO-Yi-pyE"/>
+                <outlet property="fuelTypeLabel" destination="DPy-o2-gh9" id="Efh-Pb-zs9"/>
+                <outlet property="locationLabel" destination="Ne8-c5-GJv" id="gQC-Pl-zly"/>
+            </connections>
+            <point key="canvasLocation" x="62.595419847328245" y="19.718309859154932"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="fuelpump.fill" catalog="system" width="128" height="125"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

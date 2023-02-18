@@ -1,19 +1,19 @@
 //
-//  ExpenseCell.swift
+//  FuelCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 2/17/23.
+//  Created by Stepan Kukharskyi on 2/18/23.
 //
 
 import UIKit
 
-class ExpenseCell: UITableViewCell {
+class FuelCell: UITableViewCell {
 
     @IBOutlet private var dateLabel: UILabel!
-    @IBOutlet private var frequencyImageView: UIImageView!
+    @IBOutlet private var locationLabel: UILabel!
     
-    @IBOutlet private var frequencyLabel: UILabel!
-    @IBOutlet private var nameLabel: UILabel!
+    @IBOutlet private var fuelTypeImageView: UIImageView!
+    @IBOutlet private var fuelTypeLabel: UILabel!
     
     @IBOutlet private var amountLabel: UILabel!
     
