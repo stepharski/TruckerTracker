@@ -34,26 +34,26 @@ class TRTabBarController: UITabBarController {
         
         let homeVC = storyboard?.instantiateViewController(withIdentifier:
                                             StoryboardIdentifiers.homeVC) as! HomeVC
-        let categoryItemVC = storyboard?.instantiateViewController(withIdentifier:
-                                            StoryboardIdentifiers.categoryItemVC) as! CategoryItemVC
+        let itemVC = storyboard?.instantiateViewController(withIdentifier:
+                                            StoryboardIdentifiers.itemVC) as! ItemVC
         let profileVC = storyboard?.instantiateViewController(withIdentifier:
                                             StoryboardIdentifiers.profileVC) as! ProfileVC
         
         let homeNavController = UINavigationController(rootViewController: homeVC)
-        let categoryitemNavController = UINavigationController(rootViewController: categoryItemVC)
+        let itemNavController = UINavigationController(rootViewController: itemVC)
         let profileNavController = UINavigationController(rootViewController: profileVC)
 
         homeVC.tabBarItem = UITabBarItem(title: nil,
                                          image: TRTabBarItem.home.image,
                                          selectedImage: TRTabBarItem.home.selectedImage)
-        categoryitemNavController.tabBarItem = UITabBarItem(title: nil,
-                                                       image: TRTabBarItem.newItem.image,
-                                                       selectedImage: TRTabBarItem.newItem.selectedImage)
+        itemNavController.tabBarItem = UITabBarItem(title: nil,
+                                           image: TRTabBarItem.newItem.image,
+                                           selectedImage: TRTabBarItem.newItem.selectedImage)
         profileNavController.tabBarItem = UITabBarItem(title: nil,
-                                                       image: TRTabBarItem.profile.image,
-                                                       selectedImage: TRTabBarItem.profile.selectedImage)
+                                           image: TRTabBarItem.profile.image,
+                                           selectedImage: TRTabBarItem.profile.selectedImage)
 
-        viewControllers = [homeNavController, categoryitemNavController, profileNavController]
+        viewControllers = [homeNavController, itemNavController, profileNavController]
     }
         
     func handleTabBarItemTap() {
@@ -65,12 +65,12 @@ class TRTabBarController: UITabBarController {
     }
     
     func presentNewItemNavController() {
-        let categoryItemVC = storyboard?.instantiateViewController(
-            withIdentifier: StoryboardIdentifiers.categoryItemVC) as! CategoryItemVC
-        let categoryItemNavController = UINavigationController(rootViewController: categoryItemVC)
-        categoryItemNavController.modalPresentationCapturesStatusBarAppearance = true
+        let itemVC = storyboard?.instantiateViewController(withIdentifier:
+                                            StoryboardIdentifiers.itemVC) as! ItemVC
+        let itemNavController = UINavigationController(rootViewController: itemVC)
+        itemNavController.modalPresentationCapturesStatusBarAppearance = true
 
-        self.present(categoryItemNavController, animated: true)
+        self.present(itemNavController, animated: true)
     }
 }
 

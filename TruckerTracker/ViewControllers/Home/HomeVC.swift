@@ -19,13 +19,14 @@ class HomeVC: UIViewController {
     var segmentedControl: TRSegmentedControl!
     
     let segments = ItemType.allCases
-    var previousSelectedSegment: ItemType = .load {
-        willSet(newValue) { updateTableView(isNextSegment: previousSelectedSegment.index
-                                                                < newValue.index)}}
+    var previousSelectedSegment: ItemType = .load
+    
     var selectedSegment: ItemType = .load {
-        willSet(newValue) { guard newValue != selectedSegment else { return }}
-        didSet { updatePeriodDisplay()
-                previousSelectedSegment = selectedSegment }}
+        didSet {
+            guard selectedSegment != previousSelectedSegment else { return }
+            updatePeriodDisplay()
+            updateTableView()
+            previousSelectedSegment = selectedSegment }}
     
     var expenses: [Expense] = []
     var loads: [Load] = []
@@ -36,6 +37,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addObserver()
         generateTestData()
         configureNavBar()
         addSwipeGestures()
@@ -47,6 +49,10 @@ class HomeVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         configureHeader()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -71,6 +77,18 @@ class HomeVC: UIViewController {
                                  amount: 540,
                                  type: .both))
         }
+    }
+    
+    
+    // Observer
+    func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground),
+                                           name: UIApplication.willEnterForegroundNotification,
+                                           object: nil)
+    }
+    
+    @objc func appWillEnterForeground() {
+        segmentedControl.selectSegment(at: selectedSegment.index)
     }
     
     // UI Configuration
@@ -122,33 +140,6 @@ class HomeVC: UIViewController {
     }
     
     
-    // Period
-    func addPeriodDisplayChildVC() {
-        periodDisplayVC.delegate = self
-        periodDisplayVC.itemName = selectedSegment.subtitle
-        
-        addChild(periodDisplayVC)
-        periodContainerView.roundEdges()
-        periodContainerView.dropShadow(opacity: 0.1)
-        periodContainerView.addSubview(periodDisplayVC.view)
-        
-        periodDisplayVC.view.frame = periodContainerView.bounds
-        periodDisplayVC.didMove(toParent: self)
-    }
-    
-    func updatePeriodDisplay() {
-        periodDisplayVC.itemName = selectedSegment.subtitle
-        
-        switch selectedSegment {
-        case .expense:
-            periodDisplayVC.numberOfItems = expenses.count
-        case .load:
-            periodDisplayVC.numberOfItems = loads.count
-        case .fuel:
-            periodDisplayVC.numberOfItems = fuelings.count
-        }
-    }
-    
     // Gestures
     func addSwipeGestures() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
@@ -177,12 +168,42 @@ class HomeVC: UIViewController {
         }
     }
     
+    
+    // Period
+    func addPeriodDisplayChildVC() {
+        periodDisplayVC.delegate = self
+        periodDisplayVC.itemName = selectedSegment.subtitle
+        
+        addChild(periodDisplayVC)
+        periodContainerView.roundEdges()
+        periodContainerView.dropShadow(opacity: 0.1)
+        periodContainerView.addSubview(periodDisplayVC.view)
+        
+        periodDisplayVC.view.frame = periodContainerView.bounds
+        periodDisplayVC.didMove(toParent: self)
+    }
+    
+    func updatePeriodDisplay() {
+        periodDisplayVC.itemName = selectedSegment.subtitle
+        
+        switch selectedSegment {
+        case .expense:
+            periodDisplayVC.numberOfItems = expenses.count
+        case .load:
+            periodDisplayVC.numberOfItems = loads.count
+        case .fuel:
+            periodDisplayVC.numberOfItems = fuelings.count
+        }
+    }
+    
+    
     // Navigation
     func showPeriodSelectorVC() {
         let periodSelectorVC = TRPeriodSelectorVC()
         periodSelectorVC.delegate = self
         present(periodSelectorVC, animated: true)
     }
+    
     
     // TableView
     func configureTableView() {
@@ -194,7 +215,8 @@ class HomeVC: UIViewController {
         tableView.register(FuelCell.nib, forCellReuseIdentifier: FuelCell.identifier)
     }
     
-    func updateTableView(isNextSegment: Bool) {
+    func updateTableView() {
+        let isNextSegment = selectedSegment.index > previousSelectedSegment.index
         tableView.reloadSections(IndexSet(integer: 0),
                                  with: isNextSegment ? .left : .right)
     }

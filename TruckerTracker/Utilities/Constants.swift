@@ -75,11 +75,10 @@ struct SFSymbols {
 struct StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
     static let homeVC = "HomeVC"
-    static let trackerVC = "TrackerVC"
-    static let categorySummaryVC = "CategorySummaryVC"
+    static let itemVC = "ItemVC"
     static let profileVC = "ProfileVC"
     static let menuDetailedVC = "MenuDetailedVC"
-    static let categoryItemVC = "CategoryItemVC"
+    
     static let locationSearchVC = "LocationSearchVC"
 }
 

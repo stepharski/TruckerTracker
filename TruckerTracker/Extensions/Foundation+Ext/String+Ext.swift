@@ -16,4 +16,18 @@ extension String {
                 : $0 + String($1)
         }
     }
+    
+    
+    func count(of subString: String) -> Int {
+        return self.components(separatedBy: subString).count - 1
+    }
+    
+    
+    func numberOfCharacters(after subString: String) -> Int {
+        guard let range = self.range(of: subString) else {
+            return 0
+        }
+        
+        return self.distance(from: range.upperBound, to: self.endIndex)
+    }
 }
