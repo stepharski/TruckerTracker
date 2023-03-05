@@ -19,14 +19,8 @@ class HomeVC: UIViewController {
     var segmentedControl: TRSegmentedControl!
     
     let segments = ItemType.allCases
-    var previousSelectedSegment: ItemType = .load
-    
     var selectedSegment: ItemType = .load {
-        didSet {
-            guard selectedSegment != previousSelectedSegment else { return }
-            updatePeriodDisplay()
-            updateTableView()
-            previousSelectedSegment = selectedSegment }}
+        didSet { updatePeriodDisplay() }}
     
     var expenses: [Expense] = []
     var loads: [Load] = []
@@ -134,9 +128,12 @@ class HomeVC: UIViewController {
     }
     
     @objc func segmentChanged(_ sender: TRSegmentedControl) {
-        if segments.indices.contains(sender.selectedIndex) {
-            selectedSegment = segments[sender.selectedIndex]
-        }
+        guard segments.indices.contains(sender.selectedIndex)
+                && selectedSegment.index != sender.selectedIndex else { return }
+        
+        let isNextSegment = sender.selectedIndex > selectedSegment.index
+        selectedSegment = segments[sender.selectedIndex]
+        updateTableView(animateLeft: isNextSegment)
     }
     
     
@@ -160,11 +157,13 @@ class HomeVC: UIViewController {
             currentSegment += 1
             selectedSegment = segments[currentSegment]
             segmentedControl.selectSegment(at: currentSegment)
+            updateTableView(animateLeft: true)
             
         } else if sender.direction == .right && currentSegment > 0 {
             currentSegment -= 1
             selectedSegment = segments[currentSegment]
             segmentedControl.selectSegment(at: currentSegment)
+            updateTableView(animateLeft: false)
         }
     }
     
@@ -215,10 +214,9 @@ class HomeVC: UIViewController {
         tableView.register(FuelCell.nib, forCellReuseIdentifier: FuelCell.identifier)
     }
     
-    func updateTableView() {
-        let isNextSegment = selectedSegment.index > previousSelectedSegment.index
+    func updateTableView(animateLeft: Bool) {
         tableView.reloadSections(IndexSet(integer: 0),
-                                 with: isNextSegment ? .left : .right)
+                                 with: animateLeft ? .left : .right)
     }
 }
 

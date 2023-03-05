@@ -11,21 +11,12 @@ import UIKit
 enum SegmentSelectorType {
     case underline, capsule
     
-    var selectorColor: UIColor {
-        switch self {
-        case .underline:
-            return AppColors.textColor
-        case .capsule:
-            return .systemGray6.withAlphaComponent(0.25)
-        }
-    }
-    
     var padding: CGFloat {
         switch self {
         case .underline:
             return 0
         case .capsule:
-            return 10
+            return 5
         }
     }
 }
@@ -38,13 +29,20 @@ class TRSegmentedControl: UIControl {
     var subtitles = [String]()
     
     var selectedIndex: Int = 0
-    var selectorType: SegmentSelectorType = .underline
+    var selectorColor: UIColor = AppColors.textColor
     
     var textColor: UIColor = AppColors.textColor.withAlphaComponent(0.75)
     var selectedTextColor: UIColor = AppColors.textColor
     
+    var titleFontSize: CGFloat = 18
+    var titleFontWeight: UIFont.Weight = .semibold
+    
+    var subtitleFontSize: CGFloat = 15
+    var subtitleFontWeight: UIFont.Weight = .medium
+    
     private var buttons = [UIButton]()
     private var selectorView = UIView()
+    private var selectorType: SegmentSelectorType = .underline
     
     
     // Life cycle
@@ -58,7 +56,7 @@ class TRSegmentedControl: UIControl {
     
     
     // Configure
-    func configure(with titles: [String], subtitles: [String],
+    func configure(with titles: [String], subtitles: [String] = [],
                    type: SegmentSelectorType, selectedIndex: Int) {
         self.titles = titles
         self.subtitles = subtitles
@@ -92,13 +90,15 @@ class TRSegmentedControl: UIControl {
             config.titleAlignment = .center
             
             var attTitle = AttributedString(title)
-            attTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            attTitle.font = UIFont.systemFont(ofSize: titleFontSize,
+                                              weight: titleFontWeight)
             attTitle.foregroundColor = textColor
             config.attributedTitle = attTitle
             
             if subtitles.indices.contains(index) {
                 var attsubtitle = AttributedString(subtitles[index])
-                attsubtitle.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+                attsubtitle.font = UIFont.systemFont(ofSize: subtitleFontSize,
+                                                     weight: subtitleFontWeight)
                 attsubtitle.foregroundColor = textColor
                 config.attributedSubtitle = attsubtitle
             }
@@ -117,8 +117,7 @@ class TRSegmentedControl: UIControl {
             let button = UIButton(configuration: config)
             button.configurationUpdateHandler = handler
             button.isSelected = index == selectedIndex
-            button.addTarget(self, action: #selector(buttonTapped(sender:)),
-                                                         for: .touchUpInside)
+            button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
             addSubview(button)
             button.tag = index
             buttons.append(button)
@@ -156,7 +155,7 @@ class TRSegmentedControl: UIControl {
         selectorView.removeFromSuperview()
 
         addSubview(selectorView)
-        selectorView.backgroundColor = selectorType.selectorColor
+        selectorView.backgroundColor = selectorColor
         selectorView.translatesAutoresizingMaskIntoConstraints = false
         
         let selectorWidth = frame.width / CGFloat(titles.count)
@@ -184,7 +183,7 @@ class TRSegmentedControl: UIControl {
                 selectorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leadingConstant)
             ])
 
-            selectorView.roundEdges(by: 25)
+            selectorView.roundEdges(by: (bounds.height - (2 * padding)) / 2)
         }
     }
     

@@ -10,6 +10,13 @@ import UIKit
 class ItemVC: UIViewController {
 
     @IBOutlet var amountTextField: CurrencyTextField!
+    @IBOutlet var segmentedControlView: UIView!
+    
+    var amount: Double = 0
+    var segmentedControl: TRSegmentedControl!
+    
+    let segments = ItemType.allCases
+    var selectedSegment: ItemType = .load
     
     
     // Life cycle
@@ -18,6 +25,7 @@ class ItemVC: UIViewController {
         
         configureNavBar()
         configureTextField()
+        configureSegmentedControl()
     }
     
     // Navigation Bar
@@ -40,7 +48,34 @@ class ItemVC: UIViewController {
     // Amount TextField
     func configureTextField() {
         amountTextField.amountDidChange = { amount in
-            // TODO: Handle callback
+            self.amount = amount
         }
+    }
+    
+    // Segmented control
+    func configureSegmentedControl() {
+        var titles = [String]()
+        segments.forEach { titles.append($0.title.capitalized) }
+        
+        segmentedControl = TRSegmentedControl(frame: segmentedControlView.bounds)
+        segmentedControl.backgroundColor = .systemGray6
+        segmentedControlView.addSubview(segmentedControl)
+        segmentedControl.pinToEdges(of: segmentedControlView)
+        
+        segmentedControl.titleFontSize = 17
+        segmentedControl.titleFontWeight = .medium
+        segmentedControl.textColor = .label
+        segmentedControl.selectedTextColor = .label
+        segmentedControl.selectorColor = .label.withAlphaComponent(0.1)
+        segmentedControl.configure(with: titles, type: .capsule, selectedIndex: selectedSegment.index)
+        
+        segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func segmentChanged(_ sender: TRSegmentedControl) {
+        guard segments.indices.contains(sender.selectedIndex)
+            && selectedSegment.index != sender.selectedIndex else { return }
+        
+        selectedSegment = segments[sender.selectedIndex]
     }
 }
