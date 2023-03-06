@@ -11,12 +11,16 @@ class ItemVC: UIViewController {
 
     @IBOutlet var amountTextField: CurrencyTextField!
     @IBOutlet var segmentedControlView: UIView!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var saveButton: UIButton!
+    @IBOutlet var deleteButton: UIButton!
     
     var amount: Double = 0
-    var segmentedControl: TRSegmentedControl!
+    var isNewItem: Bool = true
     
     let segments = ItemType.allCases
     var selectedSegment: ItemType = .load
+    var segmentedControl: TRSegmentedControl!
     
     
     // Life cycle
@@ -26,11 +30,13 @@ class ItemVC: UIViewController {
         configureNavBar()
         configureTextField()
         configureSegmentedControl()
+        configureTableView()
+        configureActionButtons()
     }
     
     // Navigation Bar
     func configureNavBar() {
-        navigationItem.title = "New Item"
+        navigationItem.title = isNewItem ? "New Item" : "Edit Item"
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
         
@@ -62,11 +68,11 @@ class ItemVC: UIViewController {
         segmentedControlView.addSubview(segmentedControl)
         segmentedControl.pinToEdges(of: segmentedControlView)
         
-        segmentedControl.titleFontSize = 17
+        segmentedControl.titleFontSize = 16
         segmentedControl.titleFontWeight = .medium
         segmentedControl.textColor = .label
         segmentedControl.selectedTextColor = .label
-        segmentedControl.selectorColor = .label.withAlphaComponent(0.1)
+        segmentedControl.selectorColor = .label.withAlphaComponent(0.075)
         segmentedControl.configure(with: titles, type: .capsule, selectedIndex: selectedSegment.index)
         
         segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
@@ -77,5 +83,17 @@ class ItemVC: UIViewController {
             && selectedSegment.index != sender.selectedIndex else { return }
         
         selectedSegment = segments[sender.selectedIndex]
+    }
+    
+    //TableView
+    func configureTableView() {
+        //TODO: Configure tableView
+    }
+    
+    // Action buttons
+    func configureActionButtons() {
+        deleteButton.isHidden = isNewItem
+        saveButton.dropShadow(opacity: 0.25)
+        deleteButton.dropShadow(opacity: 0.25)
     }
 }
