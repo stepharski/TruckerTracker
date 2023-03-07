@@ -100,9 +100,9 @@ class HomeVC: UIViewController {
     
     // Segmented Control
     func getSegmentTitles() -> [String] {
-        var expensesAmount = 0
-        var loadsAmount = 0
-        var fuelingsAmount = 0
+        var expensesAmount: Double = 0
+        var loadsAmount: Double = 0
+        var fuelingsAmount: Double = 0
         
         expenses.forEach { expensesAmount += $0.amount }
         loads.forEach { loadsAmount += $0.amount }

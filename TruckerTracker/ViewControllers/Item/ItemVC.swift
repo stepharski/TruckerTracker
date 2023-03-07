@@ -22,6 +22,8 @@ class ItemVC: UIViewController {
     var selectedSegment: ItemType = .load
     var segmentedControl: TRSegmentedControl!
     
+    var loadViewModel = LoadViewModel(Load.getDefault())
+    
     
     // Life cycle
     override func viewDidLoad() {

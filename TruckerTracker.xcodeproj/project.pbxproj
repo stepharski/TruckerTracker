@@ -107,6 +107,7 @@
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
 		5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */; };
 		5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */; };
+		5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryType.swift; sourceTree = "<group>"; };
 		5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPickerVC.swift; sourceTree = "<group>"; };
+		5FEC7BB429B792080091F8FB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -659,9 +661,8 @@
 		5FA551E729A13D8600D3596F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */,
-				5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */,
-				5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */,
+				5FEC7BB129B791460091F8FB /* Home */,
+				5FEC7BB029B791330091F8FB /* Items */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -805,6 +806,24 @@
 			path = CategoryItem;
 			sourceTree = "<group>";
 		};
+		5FEC7BB029B791330091F8FB /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				5FEC7BB429B792080091F8FB /* LoadViewModel.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		5FEC7BB129B791460091F8FB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */,
+				5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */,
+				5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -934,6 +953,7 @@
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
 				5FA551E029A0901900D3596F /* ExpenseCell.swift in Sources */,
 				5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */,
+				5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */,
 				5FA55198297B082A00D3596F /* String+Ext.swift in Sources */,
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */,

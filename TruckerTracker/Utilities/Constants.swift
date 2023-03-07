@@ -36,9 +36,15 @@ struct SFSymbols {
     static let repeatArrows = UIImage(systemName: "repeat")
     static let creditCard = UIImage(systemName: "creditcard")
     
+    // Miles
+    static let roadLanes = UIImage(systemName: "road.lanes")
+    static let roadLanesEmpty = UIImage(systemName: "road.lane.arrowtriangle.2.inward")
+    
     // Fuel
     static let fuelPumpFill = UIImage(systemName: "fuelpump.fill")
     static let dropFill = UIImage(systemName: "drop.fill")
+    
+    
     
     // Categories
     static let dollarCircle = UIImage(systemName: "dollarsign.circle")
