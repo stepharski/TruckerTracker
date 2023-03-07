@@ -1,13 +1,13 @@
 //
-//  ItemVC.swift
+//  ItemViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 2/18/23.
+//  Created by Stepan Kukharskyi on 3/7/23.
 //
 
 import UIKit
 
-class ItemVC: UIViewController {
+class ItemViewController: UIViewController {
 
     @IBOutlet var amountTextField: CurrencyTextField!
     @IBOutlet var segmentedControlView: UIView!
@@ -34,6 +34,7 @@ class ItemVC: UIViewController {
         configureSegmentedControl()
         configureTableView()
         configureActionButtons()
+        dismissKeyboardOnTouchOutside()
     }
     
     // Navigation Bar
@@ -89,7 +90,10 @@ class ItemVC: UIViewController {
     
     //TableView
     func configureTableView() {
-        //TODO: Configure tableView
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(DistanceCell.nib, forCellReuseIdentifier: DistanceCell.identifier)
     }
     
     // Action buttons
@@ -97,5 +101,82 @@ class ItemVC: UIViewController {
         deleteButton.isHidden = isNewItem
         saveButton.dropShadow(opacity: 0.25)
         deleteButton.dropShadow(opacity: 0.25)
+    }
+
+}
+
+// MARK: - UITableViewDelegate
+extension ItemViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch selectedSegment {
+        case .expense:
+            return
+            
+        case .load:
+            let item = loadViewModel.items[indexPath.section]
+            
+            switch item.type {
+            case .tripDistance, .emptyDistance:
+                guard let distanceCell = tableView.cellForRow(at: indexPath)
+                                                            as? DistanceCell else { return }
+                distanceCell.activateTextField()
+            default:
+                return
+            }
+            
+        case .fuel:
+            return
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension ItemViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch selectedSegment {
+        case .expense:
+            return 0
+        case .load:
+            return loadViewModel.items.count
+        case .fuel:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch selectedSegment {
+        case .expense:
+            return 0
+        case .load:
+            return loadViewModel.items[section].rowCount
+        case .fuel:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch selectedSegment {
+        case .expense:
+            return UITableViewCell()
+            
+        case .load:
+            let item = loadViewModel.items[indexPath.section]
+            
+            switch item.type {
+            case .tripDistance, .emptyDistance:
+                let cell = tableView.dequeueReusableCell(withIdentifier: DistanceCell.identifier) as! DistanceCell
+                cell.item = item
+                return cell
+            default:
+                return UITableViewCell()
+            }
+            
+        case .fuel:
+            return UITableViewCell()
+        }
     }
 }

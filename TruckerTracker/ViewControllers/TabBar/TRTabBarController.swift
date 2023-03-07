@@ -33,9 +33,9 @@ class TRTabBarController: UITabBarController {
     func createTabBarItems() {
         
         let homeVC = storyboard?.instantiateViewController(withIdentifier:
-                                            StoryboardIdentifiers.homeVC) as! HomeVC
+                        StoryboardIdentifiers.homeViewController) as! HomeViewController
         let itemVC = storyboard?.instantiateViewController(withIdentifier:
-                                            StoryboardIdentifiers.itemVC) as! ItemVC
+                        StoryboardIdentifiers.itemViewController) as! ItemViewController
         let profileVC = storyboard?.instantiateViewController(withIdentifier:
                                             StoryboardIdentifiers.profileVC) as! ProfileVC
         
@@ -66,7 +66,7 @@ class TRTabBarController: UITabBarController {
     
     func presentNewItemNavController() {
         let itemVC = storyboard?.instantiateViewController(withIdentifier:
-                                            StoryboardIdentifiers.itemVC) as! ItemVC
+                        StoryboardIdentifiers.itemViewController) as! ItemViewController
         let itemNavController = UINavigationController(rootViewController: itemVC)
         itemNavController.modalPresentationCapturesStatusBarAppearance = true
 

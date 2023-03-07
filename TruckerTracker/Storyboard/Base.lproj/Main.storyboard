@@ -413,18 +413,19 @@
             </objects>
             <point key="canvasLocation" x="-868" y="232"/>
         </scene>
-        <!--ItemVC-->
+        <!--Item View Controller-->
         <scene sceneID="5SX-rQ-ti8">
             <objects>
-                <viewController storyboardIdentifier="ItemVC" id="Wai-9V-eie" customClass="ItemVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemViewController" id="Wai-9V-eie" customClass="ItemViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mYE-l0-vcv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEV-wX-T4D" customClass="CurrencyTextField" customModule="TruckerTracker" customModuleProvider="target">
-                                <rect key="frame" x="15" y="69" width="363" height="50"/>
+                                <rect key="frame" x="46.666666666666657" y="69" width="300" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D3S-sW-La1"/>
+                                    <constraint firstAttribute="width" constant="300" id="sAf-Ud-Kvp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -436,12 +437,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLC-os-kHT">
-                                <rect key="frame" x="20" y="166" width="353" height="50"/>
+                                <rect key="frame" x="20" y="156" width="353" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wG6-FX-n6Q"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8D2-rZ-aWN">
+                                <rect key="frame" x="20" y="226" width="353" height="532"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ron-qE-eKh" userLabel="Action Buttons Stack">
                                 <rect key="frame" x="44" y="773" width="305" height="45"/>
                                 <subviews>
@@ -471,18 +478,15 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8D2-rZ-aWN">
-                                <rect key="frame" x="20" y="231" width="353" height="527"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zpd-PH-6oD"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="8D2-rZ-aWN" firstAttribute="top" secondItem="vLC-os-kHT" secondAttribute="bottom" constant="15" id="4gF-4g-hxc"/>
-                            <constraint firstItem="VEV-wX-T4D" firstAttribute="leading" secondItem="zpd-PH-6oD" secondAttribute="leading" constant="15" id="6HB-Vy-X2Q"/>
+                            <constraint firstItem="8D2-rZ-aWN" firstAttribute="top" secondItem="vLC-os-kHT" secondAttribute="bottom" constant="20" id="4gF-4g-hxc"/>
+                            <constraint firstItem="VEV-wX-T4D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zpd-PH-6oD" secondAttribute="leading" constant="15" id="6HB-Vy-X2Q"/>
                             <constraint firstItem="zpd-PH-6oD" firstAttribute="bottom" secondItem="ron-qE-eKh" secondAttribute="bottom" id="6ZI-ql-QCY"/>
-                            <constraint firstItem="zpd-PH-6oD" firstAttribute="trailing" secondItem="VEV-wX-T4D" secondAttribute="trailing" constant="15" id="7cY-1a-2Jh"/>
+                            <constraint firstItem="zpd-PH-6oD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VEV-wX-T4D" secondAttribute="trailing" constant="15" id="7cY-1a-2Jh"/>
+                            <constraint firstItem="VEV-wX-T4D" firstAttribute="centerX" secondItem="mYE-l0-vcv" secondAttribute="centerX" id="DJ3-lO-cZl"/>
                             <constraint firstItem="vLC-os-kHT" firstAttribute="leading" secondItem="zpd-PH-6oD" secondAttribute="leading" constant="20" id="LK2-c2-GNB"/>
                             <constraint firstItem="zpd-PH-6oD" firstAttribute="trailing" secondItem="vLC-os-kHT" secondAttribute="trailing" constant="20" id="P4U-a5-VA9"/>
                             <constraint firstItem="ron-qE-eKh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zpd-PH-6oD" secondAttribute="leading" constant="20" id="RAi-5k-TRp"/>
@@ -494,25 +498,25 @@
                             <constraint firstItem="8D2-rZ-aWN" firstAttribute="leading" secondItem="zpd-PH-6oD" secondAttribute="leading" constant="20" id="jxI-1p-kOe"/>
                             <constraint firstItem="VV0-Hj-LRr" firstAttribute="centerX" secondItem="mYE-l0-vcv" secondAttribute="centerX" id="mfg-al-qgZ"/>
                             <constraint firstItem="ron-qE-eKh" firstAttribute="top" secondItem="8D2-rZ-aWN" secondAttribute="bottom" constant="15" id="oXg-tV-Drl"/>
-                            <constraint firstItem="vLC-os-kHT" firstAttribute="top" secondItem="VV0-Hj-LRr" secondAttribute="bottom" constant="30" id="q3H-lA-Ngb"/>
+                            <constraint firstItem="vLC-os-kHT" firstAttribute="top" secondItem="VV0-Hj-LRr" secondAttribute="bottom" constant="20" id="q3H-lA-Ngb"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="amountTextField" destination="VEV-wX-T4D" id="5hE-an-gqb"/>
-                        <outlet property="deleteButton" destination="tFN-z4-qXh" id="7BX-Rf-buX"/>
-                        <outlet property="saveButton" destination="t1K-gx-4eo" id="CTe-ah-uec"/>
-                        <outlet property="segmentedControlView" destination="vLC-os-kHT" id="z4m-f8-7Sn"/>
-                        <outlet property="tableView" destination="8D2-rZ-aWN" id="TFp-6H-y5H"/>
+                        <outlet property="amountTextField" destination="VEV-wX-T4D" id="g6i-IC-kTB"/>
+                        <outlet property="deleteButton" destination="tFN-z4-qXh" id="g6X-nP-onG"/>
+                        <outlet property="saveButton" destination="t1K-gx-4eo" id="EyB-RL-5xP"/>
+                        <outlet property="segmentedControlView" destination="vLC-os-kHT" id="sYU-RQ-Sh3"/>
+                        <outlet property="tableView" destination="8D2-rZ-aWN" id="jwA-3f-QhS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yKv-iz-1U6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="73" y="232"/>
         </scene>
-        <!--HomeVC-->
+        <!--Home View Controller-->
         <scene sceneID="yPR-W2-pFH">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" id="rbm-zM-uSE" customClass="HomeVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="rbm-zM-uSE" customClass="HomeViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vxb-5P-HUb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -572,11 +576,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerView" destination="1AM-ff-xYA" id="4F6-PT-jOm"/>
-                        <outlet property="incomeAmountLabel" destination="niz-iu-8ol" id="L5f-tz-fHn"/>
-                        <outlet property="periodContainerView" destination="a1y-fh-q2m" id="aja-J0-CvB"/>
-                        <outlet property="segmentedControlView" destination="iMQ-O7-d9r" id="pGq-9i-4jB"/>
-                        <outlet property="tableView" destination="Edw-bi-FtK" id="RrM-bX-mqI"/>
+                        <outlet property="headerView" destination="1AM-ff-xYA" id="3ti-D3-8BY"/>
+                        <outlet property="incomeAmountLabel" destination="niz-iu-8ol" id="OM6-ep-4Eq"/>
+                        <outlet property="periodContainerView" destination="a1y-fh-q2m" id="EPb-E3-yWK"/>
+                        <outlet property="segmentedControlView" destination="iMQ-O7-d9r" id="c1N-cP-6sp"/>
+                        <outlet property="tableView" destination="Edw-bi-FtK" id="zJY-Na-LYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaZ-Mv-R38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -590,9 +594,6 @@
         <image name="wrench.and.screwdriver" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

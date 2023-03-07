@@ -21,7 +21,7 @@ struct LoadCellViewModel {
         let currencySymbol = UDManager.shared.getCurrencyType().symbol
         amount = "\(currencySymbol)\(model.amount.formattedWithSeparator())"
         
-        let distanceSymbol = UDManager.shared.getDistanceType().symbol
+        let distanceSymbol = UDManager.shared.getDistanceType().abbreviation
         distance = "\(model.distance.formattedWithSeparator()) \(distanceSymbol)"
         
         startLocation = model.startLocation

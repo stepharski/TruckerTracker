@@ -1,13 +1,13 @@
 //
-//  HomeVC.swift
+//  HomeViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 2/9/23.
+//  Created by Stepan Kukharskyi on 3/7/23.
 //
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeViewController: UIViewController {
 
     @IBOutlet var headerView: UIView!
     @IBOutlet var incomeAmountLabel: UILabel!
@@ -222,7 +222,7 @@ class HomeVC: UIViewController {
 
 
 // MARK: - PeriodDisplayDelegate
-extension HomeVC: PeriodDisplayDelegate {
+extension HomeViewController: PeriodDisplayDelegate {
     func didTapPeriodDisplay() {
         showPeriodSelectorVC()
     }
@@ -234,7 +234,7 @@ extension HomeVC: PeriodDisplayDelegate {
 }
 
 // MARK: - PeriodSelectorDelegate
-extension HomeVC: PeriodSelectorDelegate {
+extension HomeViewController: PeriodSelectorDelegate {
     func selectorDidUpdate(period: Period) {
         periodDisplayVC.period = period
         
@@ -245,7 +245,7 @@ extension HomeVC: PeriodSelectorDelegate {
 
 
 // MARK: - UITableViewDelegate
-extension HomeVC: UITableViewDelegate {
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedSegment {
         case .expense, .fuel:
@@ -257,7 +257,7 @@ extension HomeVC: UITableViewDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension HomeVC: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedSegment {
         case .expense:

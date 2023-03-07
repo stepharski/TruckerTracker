@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F28CF8529A1A0F80068C425 /* ItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F28CF8429A1A0F80068C425 /* ItemVC.swift */; };
 		5F28CF8729A1A8F00068C425 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F28CF8629A1A8F00068C425 /* CurrencyTextField.swift */; };
 		5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */; };
 		5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */; };
@@ -76,7 +75,6 @@
 		5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C129870D7700D3596F /* CustomPeriodCell.swift */; };
 		5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551C229870D7700D3596F /* CustomPeriodCell.xib */; };
 		5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */; };
-		5FA551CE2995818800D3596F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551CD2995818800D3596F /* HomeVC.swift */; };
 		5FA551D2299596A300D3596F /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551D1299596A300D3596F /* ItemType.swift */; };
 		5FA551DB29A0797600D3596F /* LoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551D929A0797600D3596F /* LoadCell.swift */; };
 		5FA551DC29A0797600D3596F /* LoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551DA29A0797600D3596F /* LoadCell.xib */; };
@@ -108,10 +106,13 @@
 		5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */; };
 		5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */; };
 		5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadViewModel.swift */; };
+		5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */; };
+		5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */; };
+		5FEC7BC329B7DD380091F8FB /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC129B7DD380091F8FB /* DistanceCell.swift */; };
+		5FEC7BC429B7DD380091F8FB /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F28CF8429A1A0F80068C425 /* ItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVC.swift; sourceTree = "<group>"; };
 		5F28CF8629A1A8F00068C425 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringMenuVC.swift; sourceTree = "<group>"; };
 		5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpenseCell.swift; sourceTree = "<group>"; };
@@ -182,7 +183,6 @@
 		5FA551C129870D7700D3596F /* CustomPeriodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPeriodCell.swift; sourceTree = "<group>"; };
 		5FA551C229870D7700D3596F /* CustomPeriodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPeriodCell.xib; sourceTree = "<group>"; };
 		5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPeriodDisplayVC.swift; sourceTree = "<group>"; };
-		5FA551CD2995818800D3596F /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		5FA551D1299596A300D3596F /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		5FA551D929A0797600D3596F /* LoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCell.swift; sourceTree = "<group>"; };
 		5FA551DA29A0797600D3596F /* LoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadCell.xib; sourceTree = "<group>"; };
@@ -214,6 +214,10 @@
 		5FB92F4928C984460037A4AD /* TrackerCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryType.swift; sourceTree = "<group>"; };
 		5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPickerVC.swift; sourceTree = "<group>"; };
 		5FEC7BB429B792080091F8FB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
+		5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5FEC7BC129B7DD380091F8FB /* DistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
+		5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +234,7 @@
 		5F28CF8329A1A0A80068C425 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				5F28CF8429A1A0F80068C425 /* ItemVC.swift */,
+				5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -338,7 +342,7 @@
 		5F790FF5294449F300A73600 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5FA551CD2995818800D3596F /* HomeVC.swift */,
+				5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -606,6 +610,7 @@
 			children = (
 				5F790FFB2947E9CB00A73600 /* General Cells */,
 				5FA551D729A075DE00D3596F /* Home Cells */,
+				5FEC7BBA29B7D55E0091F8FB /* Item Cells */,
 				5F97FD65292042A600DEEC20 /* Category Cells */,
 				5F791019294D7AA300A73600 /* MenuDetailedCells */,
 			);
@@ -824,6 +829,23 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		5FEC7BBA29B7D55E0091F8FB /* Item Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5FEC7BC029B7DCEF0091F8FB /* Distance Cell */,
+			);
+			path = "Item Cells";
+			sourceTree = "<group>";
+		};
+		5FEC7BC029B7DCEF0091F8FB /* Distance Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5FEC7BC129B7DD380091F8FB /* DistanceCell.swift */,
+				5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */,
+			);
+			path = "Distance Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -886,6 +908,7 @@
 				5F79101D294D7ACE00A73600 /* DriverTypeCell.xib in Resources */,
 				5F2B8021295E2DC30044E004 /* SyncInfoCell.xib in Resources */,
 				5FA551E129A0901900D3596F /* ExpenseCell.xib in Resources */,
+				5FEC7BC429B7DD380091F8FB /* DistanceCell.xib in Resources */,
 				5F2B80092958CC5C0044E004 /* RecurringExpenseCell.xib in Resources */,
 				5F97B6AB2952CEC6004C5D2A /* DriverPayRateCell.xib in Resources */,
 				5FA551E629A0989F00D3596F /* FuelCell.xib in Resources */,
@@ -921,9 +944,9 @@
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
+				5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */,
 				5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */,
 				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
-				5FA551CE2995818800D3596F /* HomeVC.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
 				5FA551F529A150E500D3596F /* ExpenseCellViewModel.swift in Sources */,
 				5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */,
@@ -967,6 +990,8 @@
 				5FA551F229A1500B00D3596F /* Expense.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
 				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
+				5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */,
+				5FEC7BC329B7DD380091F8FB /* DistanceCell.swift in Sources */,
 				5F2B8013295A12A00044E004 /* TRTextField.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */,
@@ -984,7 +1009,6 @@
 				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,
 				5FA55194297AE44900D3596F /* TRPeriodSelectorVC.swift in Sources */,
 				5FA551F029A1493C00D3596F /* Load.swift in Sources */,
-				5F28CF8529A1A0F80068C425 /* ItemVC.swift in Sources */,
 				5FA551AC2980371600D3596F /* Calendar+Ext.swift in Sources */,
 				5FA551A2297B2B4900D3596F /* PeriodPickerCell.swift in Sources */,
 				5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */,
@@ -1147,6 +1171,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1175,6 +1200,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

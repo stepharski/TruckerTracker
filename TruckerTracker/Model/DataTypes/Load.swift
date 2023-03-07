@@ -12,14 +12,14 @@ class Load {
     let id: String
     let date: Date
     let amount: Double
-    let distance: Double
-    var emptyDistance: Double?
+    let distance: Int
+    var emptyDistance: Int?
     let startLocation: String
     let endLocation: String
     var documents: [String]?
     
     
-    init(id: String, date: Date, amount: Double, distance: Double, emptyDistance: Double? = nil, startLocation: String, endLocation: String, documents: [String]? = nil) {
+    init(id: String, date: Date, amount: Double, distance: Int, emptyDistance: Int? = nil, startLocation: String, endLocation: String, documents: [String]? = nil) {
         self.id = id
         self.date = date
         self.amount = amount
@@ -34,7 +34,7 @@ class Load {
         let id: String = UUID().uuidString
         let date: Date = Date()
         let amount: Double = 0
-        let distance: Double = 0
+        let distance: Int = 0
         let startLocation: String = ""
         let endLocation: String = ""
         

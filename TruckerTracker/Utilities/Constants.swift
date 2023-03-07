@@ -80,8 +80,8 @@ struct SFSymbols {
 
 struct StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
-    static let homeVC = "HomeVC"
-    static let itemVC = "ItemVC"
+    static let homeViewController = "HomeViewController"
+    static let itemViewController = "ItemViewController"
     static let profileVC = "ProfileVC"
     static let menuDetailedVC = "MenuDetailedVC"
     

@@ -10,7 +10,7 @@ import Foundation
 enum DistanceType: String, Codable {
     case miles, kilometers
     
-    var symbol: String {
+    var abbreviation: String {
         switch self {
         case .miles:
             return "mi"

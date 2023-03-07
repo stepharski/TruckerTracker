@@ -9,8 +9,8 @@ import UIKit
 
 // MARK: - LoadViewModelItemType
 enum LoadViewModelItemType {
-    case tripMiles
-    case emptyMiles
+    case tripDistance
+    case emptyDistance
     case date
     case startLocation
     case endLocation
@@ -34,8 +34,8 @@ class LoadViewModel {
     init(_ load: Load?) {
         let model = load ?? Load.getDefault()
         
-        items.append(LoadViewModelTripMilesItem(miles: model.distance))
-        items.append(LoadViewModelEmptyMilesItem(miles: model.emptyDistance ?? 0))
+        items.append(LoadViewModelTripDistanceItem(distance: model.distance))
+        items.append(LoadViewModelEmptyDistanceItem(distance: model.emptyDistance ?? 0))
         items.append(LoadViewModelDateItem(date: model.date))
         items.append(LoadViewModelStartLocationItem(startLocation: model.startLocation))
         items.append(LoadViewModelEndLocationItem(endLocation: model.endLocation))
@@ -44,26 +44,34 @@ class LoadViewModel {
 }
 
 // Trip miles
-class LoadViewModelTripMilesItem: LoadViewModelItem {
-    var type: LoadViewModelItemType = .tripMiles
+class LoadViewModelTripDistanceItem: LoadViewModelItem {
+    var type: LoadViewModelItemType = .tripDistance
     var image: UIImage? = SFSymbols.roadLanes
-    var title: String = "Trip miles"
-    var miles: Double
+    var title: String = "Trip distance"
+    var distance: Int
     
-    init(miles: Double) {
-        self.miles = miles
+    var distanceAbbreviation: String {
+        return UDManager.shared.getDistanceType().abbreviation
+    }
+    
+    init(distance: Int) {
+        self.distance = distance
     }
 }
 
 // Empty miles
-class LoadViewModelEmptyMilesItem: LoadViewModelItem {
-    var type: LoadViewModelItemType = .emptyMiles
+class LoadViewModelEmptyDistanceItem: LoadViewModelItem {
+    var type: LoadViewModelItemType = .emptyDistance
     var image: UIImage? = SFSymbols.roadLanesEmpty
-    var title: String = "Empty miles"
-    var miles: Double
+    var title: String = "Empty distance"
+    var distance: Int
     
-    init(miles: Double) {
-        self.miles = miles
+    var distanceAbbreviation: String {
+        return UDManager.shared.getDistanceType().abbreviation
+    }
+    
+    init(distance: Int) {
+        self.distance = distance
     }
 }
 
