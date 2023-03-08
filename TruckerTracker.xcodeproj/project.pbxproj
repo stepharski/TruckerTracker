@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F28CF8729A1A8F00068C425 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F28CF8629A1A8F00068C425 /* CurrencyTextField.swift */; };
 		5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */; };
 		5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */; };
 		5F2B80092958CC5C0044E004 /* RecurringExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B80072958CC5C0044E004 /* RecurringExpenseCell.xib */; };
@@ -110,10 +109,10 @@
 		5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */; };
 		5FEC7BC329B7DD380091F8FB /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC129B7DD380091F8FB /* DistanceCell.swift */; };
 		5FEC7BC429B7DD380091F8FB /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */; };
+		5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F28CF8629A1A8F00068C425 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringMenuVC.swift; sourceTree = "<group>"; };
 		5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpenseCell.swift; sourceTree = "<group>"; };
 		5F2B80072958CC5C0044E004 /* RecurringExpenseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecurringExpenseCell.xib; sourceTree = "<group>"; };
@@ -218,6 +217,7 @@
 		5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5FEC7BC129B7DD380091F8FB /* DistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
 		5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
+		5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				5F2B8012295A12A00044E004 /* TRTextField.swift */,
-				5F28CF8629A1A8F00068C425 /* CurrencyTextField.swift */,
+				5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -965,7 +965,6 @@
 				5F97B6B02954F417004C5D2A /* DocumentsMenuVC.swift in Sources */,
 				5F71DC7F295771EC003111AF /* CategoryInfoView.swift in Sources */,
 				5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */,
-				5F28CF8729A1A8F00068C425 /* CurrencyTextField.swift in Sources */,
 				5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
 				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
@@ -1001,6 +1000,7 @@
 				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
 				5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
+				5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */,
 				5F791017294D756600A73600 /* DriverMenuVC.swift in Sources */,
 				5F71DC8529578138003111AF /* Date+Ext.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,

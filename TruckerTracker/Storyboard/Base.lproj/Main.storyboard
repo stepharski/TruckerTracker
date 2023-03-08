@@ -421,7 +421,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEV-wX-T4D" customClass="CurrencyTextField" customModule="TruckerTracker" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEV-wX-T4D" customClass="AmountTextField" customModule="TruckerTracker" customModuleProvider="target">
                                 <rect key="frame" x="46.666666666666657" y="69" width="300" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D3S-sW-La1"/>
@@ -502,7 +502,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="amountTextField" destination="VEV-wX-T4D" id="g6i-IC-kTB"/>
+                        <outlet property="amountTextField" destination="VEV-wX-T4D" id="TUm-J2-Jjl"/>
                         <outlet property="deleteButton" destination="tFN-z4-qXh" id="g6X-nP-onG"/>
                         <outlet property="saveButton" destination="t1K-gx-4eo" id="EyB-RL-5xP"/>
                         <outlet property="segmentedControlView" destination="vLC-os-kHT" id="sYU-RQ-Sh3"/>

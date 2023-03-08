@@ -9,6 +9,10 @@ import Foundation
 
 extension String {
     
+    var digits: String {
+        return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
+    
     func camelCaseToWords() -> String {
         return unicodeScalars.dropFirst().reduce(String(prefix(1))) {
             return CharacterSet.uppercaseLetters.contains($1)

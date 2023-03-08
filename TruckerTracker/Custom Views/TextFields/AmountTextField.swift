@@ -1,33 +1,43 @@
 //
-//  CurrencyTextField.swift
+//  AmountTextField.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 2/18/23.
+//  Created by Stepan Kukharskyi on 3/8/23.
 //
 
 import UIKit
 
-class CurrencyTextField: UITextField {
+class AmountTextField: UITextField {
 
     private var amount = "0"
     private var formatter = NumberFormatter()
     
     var maxDigits: Int = 10
-    var amountFontSize: CGFloat = 36
-    var currencyFontSize: CGFloat = 24
+    
+    var amountAttrFontSize: CGFloat = 36
+    var currencyAttrFontSize: CGFloat = 24
+    
+    var containsCurrency: Bool = false {
+        didSet { updateTextField(with: amount) }
+    }
+    
+    var maxCursorPosition: Int {
+        return containsCurrency ? 3 : 1
+    }
     
     lazy var currencySign: String = {
         return UDManager.shared.getCurrencyType().symbol
     }()
     
     var amountDidChange: ((Double) -> Void)?
-
+    
+    
     // Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -44,7 +54,7 @@ class CurrencyTextField: UITextField {
         }
     }
     
-    // Enables editing only at the end position
+    // Moves cursor to the end position
     override func caretRect(for position: UITextPosition) -> CGRect {
         let endPosition = self.endOfDocument
         return super.caretRect(for: endPosition)
@@ -53,22 +63,30 @@ class CurrencyTextField: UITextField {
     // Deletion
     override func deleteBackward() {
         amount = amount.count < 2 ? "0" : String(amount.dropLast())
-        attributedText = addCurrency(to: amount)
+        updateTextField(with: amount)
         amountDidChange?(Double(amount) ?? 0)
     }
     
     // Configuration
     private func setup() {
-        tintColor = .clear
+        tintColor = textColor
         keyboardType = .decimalPad
         formatter.locale = .current
-        attributedText = addCurrency(to: amount)
+        updateTextField(with: amount)
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
-
+    
     // Handle entry
     @objc func textFieldDidChange() {
-        guard let text = self.text, let lastEntry = text.last else { return }
+        guard let text = self.text, var lastEntry = text.last,
+                    let selectedRange = selectedTextRange else { return }
+        
+        let cursorPosition = offset(from: beginningOfDocument, to: selectedRange.start)
+        
+        // Beginnig of document
+        if cursorPosition <= maxCursorPosition, let firstCharacter = text.digits.first {
+            lastEntry = firstCharacter
+        }
         
         let decimalSeparator = formatter.decimalSeparator ?? "."
         let allowedCharacters = "0123456789\(decimalSeparator)"
@@ -86,16 +104,25 @@ class CurrencyTextField: UITextField {
             }
         }
         
-        attributedText = addCurrency(to: amount)
+        updateTextField(with: amount)
         amountDidChange?(Double(amount) ?? 0)
+    }
+    
+    // Update text field
+    func updateTextField(with amount: String) {
+        if containsCurrency {
+            attributedText = addCurrency(to: amount)
+        } else {
+            text = amount
+        }
     }
     
     // Format entry
     func addCurrency(to amount: String) -> NSMutableAttributedString {
         let currencyAttributes = [NSAttributedString.Key.font:
-                                UIFont.systemFont(ofSize: currencyFontSize, weight: .semibold)]
+                                UIFont.systemFont(ofSize: currencyAttrFontSize, weight: .semibold)]
         let amountAttributes = [NSAttributedString.Key.font:
-                                UIFont.systemFont(ofSize: amountFontSize, weight: .semibold)]
+                                UIFont.systemFont(ofSize: amountAttrFontSize, weight: .semibold)]
         
         let currencyString = NSMutableAttributedString(string: "\(currencySign) ",
                                                    attributes: currencyAttributes)

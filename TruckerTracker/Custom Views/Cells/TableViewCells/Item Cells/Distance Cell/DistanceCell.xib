@@ -34,7 +34,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eyE-b4-3yr">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eyE-b4-3yr" customClass="AmountTextField" customModule="TruckerTracker" customModuleProvider="target">
                                 <rect key="frame" x="119" y="11.666666666666664" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -76,7 +76,7 @@
             <connections>
                 <outlet property="distanceAbbreviationLabel" destination="Ald-Oz-vZ2" id="PJ5-HA-UOb"/>
                 <outlet property="distanceImageView" destination="ukP-wx-D4R" id="jB5-7R-W9G"/>
-                <outlet property="distanceTextField" destination="eyE-b4-3yr" id="1Fu-h3-mGy"/>
+                <outlet property="distanceTextField" destination="eyE-b4-3yr" id="VKC-iR-lK1"/>
                 <outlet property="distanceTitleLabel" destination="93t-KK-hx3" id="Sei-PA-EyH"/>
             </connections>
             <point key="canvasLocation" x="62.595419847328245" y="19.718309859154932"/>

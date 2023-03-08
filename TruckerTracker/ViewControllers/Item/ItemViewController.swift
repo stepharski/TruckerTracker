@@ -9,7 +9,7 @@ import UIKit
 
 class ItemViewController: UIViewController {
 
-    @IBOutlet var amountTextField: CurrencyTextField!
+    @IBOutlet var amountTextField: AmountTextField!
     @IBOutlet var segmentedControlView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var saveButton: UIButton!
@@ -56,6 +56,7 @@ class ItemViewController: UIViewController {
     
     // Amount TextField
     func configureTextField() {
+        amountTextField.containsCurrency = true
         amountTextField.amountDidChange = { amount in
             self.amount = amount
         }

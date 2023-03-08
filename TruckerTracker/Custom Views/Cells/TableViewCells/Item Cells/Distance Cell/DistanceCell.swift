@@ -11,7 +11,7 @@ class DistanceCell: UITableViewCell {
 
     @IBOutlet private var distanceImageView: UIImageView!
     @IBOutlet private var distanceTitleLabel: UILabel!
-    @IBOutlet private var distanceTextField: UITextField!
+    @IBOutlet private var distanceTextField: AmountTextField!
     @IBOutlet private var distanceAbbreviationLabel: UILabel!
     
     var item: LoadViewModelItem? {
@@ -31,7 +31,7 @@ class DistanceCell: UITableViewCell {
         }
     }
     
-    
+    // Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -40,8 +40,11 @@ class DistanceCell: UITableViewCell {
         backgroundColor = .clear
     }
     
-    private func configureTextField() {
-        distanceTextField.keyboardType = .numberPad
+    // TextField
+    func configureTextField() {
+        distanceTextField.amountDidChange = { amount in
+            // TODO: Update VM
+        }
     }
     
     func activateTextField() {
