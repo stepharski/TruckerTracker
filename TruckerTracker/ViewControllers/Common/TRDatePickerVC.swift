@@ -15,12 +15,18 @@ protocol TRDatePickerVCDelegeate: AnyObject {
 // MARK: - TRDatePickerVC
 class TRDatePickerVC: UIViewController {
     
-    let pickerTintColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
+    let pickerTintColor: UIColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
+    let toolbarColor: UIColor = .systemGray5
+    let pickerBackgroundColor: UIColor = .systemGray6
     
-    var toolbar = UIToolbar()
-    var datePicker = UIDatePicker()
+    private var toolbar = UIToolbar()
+    private var datePicker = UIDatePicker()
     
     weak var delegate: TRDatePickerVCDelegeate!
+    
+    var pickerDate: Date? {
+        didSet { datePicker.date = pickerDate ?? Date() }
+    }
     
     
     override func viewDidLoad() {
@@ -38,7 +44,7 @@ class TRDatePickerVC: UIViewController {
         toolbar.barStyle = .default
         toolbar.isTranslucent = false
         toolbar.tintColor = UIColor.label
-        toolbar.barTintColor = .systemGray4
+        toolbar.barTintColor = toolbarColor
         toolbar.isUserInteractionEnabled = true
 
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
@@ -54,7 +60,7 @@ class TRDatePickerVC: UIViewController {
     }
 
     @objc private func doneButtonPressed(_ button: UIBarButtonItem) {
-        //TODO: Pass data
+        delegate?.didSelect(date: datePicker.date)
         self.dismiss(animated: true)
     }
     
@@ -65,7 +71,7 @@ class TRDatePickerVC: UIViewController {
 
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
-        datePicker.backgroundColor = .systemGray5
+        datePicker.backgroundColor = pickerBackgroundColor
         datePicker.tintColor = pickerTintColor
 
         datePicker.translatesAutoresizingMaskIntoConstraints = false

@@ -42,8 +42,16 @@ class DistanceCell: UITableViewCell {
     
     // TextField
     func configureTextField() {
+        distanceTextField.isDecimalPad = false
+        
         distanceTextField.amountDidChange = { amount in
-            // TODO: Update VM
+            // Update VM
+            if let tripDistanceItem = self.item as? LoadViewModelTripDistanceItem {
+                tripDistanceItem.distance = Int(amount)
+                
+            } else if let emptyDistanceItem = self.item as? LoadViewModelEmptyDistanceItem {
+                emptyDistanceItem.distance = Int(amount)
+            }
         }
     }
     

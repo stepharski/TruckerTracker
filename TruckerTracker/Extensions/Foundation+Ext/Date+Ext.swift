@@ -9,6 +9,7 @@ import Foundation
 
 extension Date {
     
+    // Convert
     func convertToYearFormat() -> String {
         return formatted(.dateTime.year())
     }
@@ -25,10 +26,15 @@ extension Date {
         return formatted(.dateTime.month().day().year(.twoDigits))
     }
     
-    
+    // Add
     func addNumberOfYears(_ years: Int) -> Date {
         return Date(timeInterval: TimeInterval(years*(60*60*24*365)), since: self)
     }
+    
+    func addNumberOfDays(_ days: Int) -> Date {
+        return Date(timeInterval: TimeInterval(days * (60*60*24)), since: self)
+    }
+    
     
     // Returns date interval for specific date in given period type
     func getDateInterval(in type: PeriodType) -> DateInterval {

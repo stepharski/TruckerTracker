@@ -95,6 +95,7 @@ class ItemViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(DistanceCell.nib, forCellReuseIdentifier: DistanceCell.identifier)
+        tableView.register(DateCell.nib, forCellReuseIdentifier: DateCell.identifier)
     }
     
     // Action buttons
@@ -104,14 +105,50 @@ class ItemViewController: UIViewController {
         deleteButton.dropShadow(opacity: 0.25)
     }
 
+    // Navigation
+    func showDatePickerVC(for date: Date) {
+        let datePickerVC = TRDatePickerVC()
+        datePickerVC.delegate = self
+        datePickerVC.pickerDate = date
+        datePickerVC.modalPresentationStyle = .pageSheet
+        datePickerVC.sheetPresentationController?.detents = [.medium()]
+        datePickerVC.sheetPresentationController?.largestUndimmedDetentIdentifier = .large
+        
+        present(datePickerVC, animated: true)
+    }
+}
+
+// MARK: - TRDatePickerVCDelegeate
+extension ItemViewController: TRDatePickerVCDelegeate {
+    func didSelect(date: Date) {
+        var dateSectionIndex = 0
+        
+        switch selectedSegment {
+        case .expense:
+            return
+        case .load:
+            for (index, item) in loadViewModel.items.enumerated() {
+                if let dateItem = item as? LoadViewModelDateItem {
+                    dateItem.date = date
+                    dateSectionIndex = index
+                }
+            }
+        case .fuel:
+            return
+        }
+        
+        tableView.reloadSections(IndexSet(integer: dateSectionIndex), with: .automatic)
+    }
 }
 
 // MARK: - UITableViewDelegate
 extension ItemViewController: UITableViewDelegate {
+    // height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
+    // selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch selectedSegment {
         case .expense:
@@ -119,12 +156,18 @@ extension ItemViewController: UITableViewDelegate {
             
         case .load:
             let item = loadViewModel.items[indexPath.section]
-            
             switch item.type {
+                
             case .tripDistance, .emptyDistance:
                 guard let distanceCell = tableView.cellForRow(at: indexPath)
                                                             as? DistanceCell else { return }
                 distanceCell.activateTextField()
+                
+            case .date:
+                if let dateItem = item as? LoadViewModelDateItem {
+                    showDatePickerVC(for: dateItem.date)
+                }
+                
             default:
                 return
             }
@@ -137,6 +180,7 @@ extension ItemViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension ItemViewController: UITableViewDataSource {
+    // number of sections
     func numberOfSections(in tableView: UITableView) -> Int {
         switch selectedSegment {
         case .expense:
@@ -148,6 +192,7 @@ extension ItemViewController: UITableViewDataSource {
         }
     }
     
+    // number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedSegment {
         case .expense:
@@ -159,6 +204,7 @@ extension ItemViewController: UITableViewDataSource {
         }
     }
     
+    // cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch selectedSegment {
         case .expense:
@@ -169,9 +215,17 @@ extension ItemViewController: UITableViewDataSource {
             
             switch item.type {
             case .tripDistance, .emptyDistance:
-                let cell = tableView.dequeueReusableCell(withIdentifier: DistanceCell.identifier) as! DistanceCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: DistanceCell.identifier)
+                                                                            as! DistanceCell
                 cell.item = item
                 return cell
+                
+            case .date:
+                let cell = tableView.dequeueReusableCell(withIdentifier: DateCell.identifier)
+                                                                            as! DateCell
+                cell.item = item
+                return cell
+                
             default:
                 return UITableViewCell()
             }

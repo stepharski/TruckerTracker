@@ -110,6 +110,8 @@
 		5FEC7BC329B7DD380091F8FB /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC129B7DD380091F8FB /* DistanceCell.swift */; };
 		5FEC7BC429B7DD380091F8FB /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */; };
 		5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */; };
+		5FEC7BCE29B9276E0091F8FB /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BCC29B9276E0091F8FB /* DateCell.swift */; };
+		5FEC7BCF29B9276E0091F8FB /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FEC7BCD29B9276E0091F8FB /* DateCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -218,6 +220,8 @@
 		5FEC7BC129B7DD380091F8FB /* DistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
 		5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
 		5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
+		5FEC7BCC29B9276E0091F8FB /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		5FEC7BCD29B9276E0091F8FB /* DateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -833,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				5FEC7BC029B7DCEF0091F8FB /* Distance Cell */,
+				5FEC7BCB29B926EA0091F8FB /* Date Cell */,
 			);
 			path = "Item Cells";
 			sourceTree = "<group>";
@@ -844,6 +849,15 @@
 				5FEC7BC229B7DD380091F8FB /* DistanceCell.xib */,
 			);
 			path = "Distance Cell";
+			sourceTree = "<group>";
+		};
+		5FEC7BCB29B926EA0091F8FB /* Date Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5FEC7BCC29B9276E0091F8FB /* DateCell.swift */,
+				5FEC7BCD29B9276E0091F8FB /* DateCell.xib */,
+			);
+			path = "Date Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -928,6 +942,7 @@
 				5F791007294B8F7F00A73600 /* TRItemCell.xib in Resources */,
 				5FA551DC29A0797600D3596F /* LoadCell.xib in Resources */,
 				5FA602D9290730BE00319E18 /* DocumentCell.xib in Resources */,
+				5FEC7BCF29B9276E0091F8FB /* DateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1024,7 @@
 				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,
 				5FA55194297AE44900D3596F /* TRPeriodSelectorVC.swift in Sources */,
 				5FA551F029A1493C00D3596F /* Load.swift in Sources */,
+				5FEC7BCE29B9276E0091F8FB /* DateCell.swift in Sources */,
 				5FA551AC2980371600D3596F /* Calendar+Ext.swift in Sources */,
 				5FA551A2297B2B4900D3596F /* PeriodPickerCell.swift in Sources */,
 				5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */,

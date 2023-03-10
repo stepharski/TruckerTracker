@@ -21,6 +21,10 @@ class AmountTextField: UITextField {
         didSet { updateTextField(with: amount) }
     }
     
+    var isDecimalPad: Bool = true {
+        didSet { keyboardType = isDecimalPad ? .decimalPad : .numberPad }
+    }
+    
     var maxCursorPosition: Int {
         return containsCurrency ? 3 : 1
     }
@@ -69,8 +73,8 @@ class AmountTextField: UITextField {
     
     // Configuration
     private func setup() {
+        isDecimalPad = true
         tintColor = textColor
-        keyboardType = .decimalPad
         formatter.locale = .current
         updateTextField(with: amount)
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
