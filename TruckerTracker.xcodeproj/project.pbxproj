@@ -26,6 +26,10 @@
 		5F2B802E295F8DAA0044E004 /* ExportPeriodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B802C295F8DAA0044E004 /* ExportPeriodCell.xib */; };
 		5F2B8032295F99D50044E004 /* ExportCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8030295F99D50044E004 /* ExportCategoriesCell.swift */; };
 		5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B8031295F99D50044E004 /* ExportCategoriesCell.xib */; };
+		5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782829BBC573007C3B65 /* LoadLocationCell.swift */; };
+		5F39782B29BBC573007C3B65 /* LoadLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39782929BBC573007C3B65 /* LoadLocationCell.xib */; };
+		5F39782D29C12567007C3B65 /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782C29C12567007C3B65 /* LocationType.swift */; };
+		5F39782F29C2B3BF007C3B65 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782E29C2B3BF007C3B65 /* TRError.swift */; };
 		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
 		5F71DC7F295771EC003111AF /* CategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7E295771EC003111AF /* CategoryInfoView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
@@ -134,6 +138,10 @@
 		5F2B802C295F8DAA0044E004 /* ExportPeriodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportPeriodCell.xib; sourceTree = "<group>"; };
 		5F2B8030295F99D50044E004 /* ExportCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportCategoriesCell.swift; sourceTree = "<group>"; };
 		5F2B8031295F99D50044E004 /* ExportCategoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportCategoriesCell.xib; sourceTree = "<group>"; };
+		5F39782829BBC573007C3B65 /* LoadLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationCell.swift; sourceTree = "<group>"; };
+		5F39782929BBC573007C3B65 /* LoadLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadLocationCell.xib; sourceTree = "<group>"; };
+		5F39782C29C12567007C3B65 /* LocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
+		5F39782E29C2B3BF007C3B65 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
 		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
 		5F71DC7E295771EC003111AF /* CategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfoView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -320,6 +328,15 @@
 				5F2B8031295F99D50044E004 /* ExportCategoriesCell.xib */,
 			);
 			path = ExportCategoriesCell;
+			sourceTree = "<group>";
+		};
+		5F39782729BBC532007C3B65 /* LoadLocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F39782829BBC573007C3B65 /* LoadLocationCell.swift */,
+				5F39782929BBC573007C3B65 /* LoadLocationCell.xib */,
+			);
+			path = LoadLocationCell;
 			sourceTree = "<group>";
 		};
 		5F71DC7B29574A28003111AF /* ExpandFooterView */ = {
@@ -753,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB92F3628BC18ED0037A4AD /* Constants.swift */,
+				5F39782E29C2B3BF007C3B65 /* TRError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -802,6 +820,7 @@
 				5FA551D1299596A300D3596F /* ItemType.swift */,
 				5FA551EB29A1431900D3596F /* UnitsType.swift */,
 				5FA551ED29A1459C00D3596F /* CurrencyType.swift */,
+				5F39782C29C12567007C3B65 /* LocationType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -838,6 +857,7 @@
 			children = (
 				5FEC7BC029B7DCEF0091F8FB /* Distance Cell */,
 				5FEC7BCB29B926EA0091F8FB /* Date Cell */,
+				5F39782729BBC532007C3B65 /* LoadLocationCell */,
 			);
 			path = "Item Cells";
 			sourceTree = "<group>";
@@ -940,6 +960,7 @@
 				5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */,
 				5F2B802E295F8DAA0044E004 /* ExportPeriodCell.xib in Resources */,
 				5F791007294B8F7F00A73600 /* TRItemCell.xib in Resources */,
+				5F39782B29BBC573007C3B65 /* LoadLocationCell.xib in Resources */,
 				5FA551DC29A0797600D3596F /* LoadCell.xib in Resources */,
 				5FA602D9290730BE00319E18 /* DocumentCell.xib in Resources */,
 				5FEC7BCF29B9276E0091F8FB /* DateCell.xib in Resources */,
@@ -963,6 +984,7 @@
 				5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */,
 				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
+				5F39782D29C12567007C3B65 /* LocationType.swift in Sources */,
 				5FA551F529A150E500D3596F /* ExpenseCellViewModel.swift in Sources */,
 				5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */,
 				5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */,
@@ -972,6 +994,7 @@
 				5FA551EA29A141ED00D3596F /* LoadCellViewModel.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
+				5F39782F29C2B3BF007C3B65 /* TRError.swift in Sources */,
 				5F2B802D295F8DAA0044E004 /* ExportPeriodCell.swift in Sources */,
 				5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */,
 				5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */,
@@ -995,6 +1018,7 @@
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */,
 				5FA551F929A1563800D3596F /* Fuel.swift in Sources */,
+				5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */,
 				5FA5519C297B1AA800D3596F /* PeriodTypeCell.swift in Sources */,
 				5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */,
 				5F97FD7329233D3D00DEEC20 /* ProfileMenuCell.swift in Sources */,

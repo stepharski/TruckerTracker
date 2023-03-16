@@ -38,7 +38,10 @@ class Load {
         let startLocation: String = ""
         let endLocation: String = ""
         
+        // Test purpose
+        let documents = ["LoadConfiramtion1"]
+        
         return Load(id: id, date: date, amount: amount, distance: distance,
-                    startLocation: startLocation, endLocation: endLocation)
+                    startLocation: startLocation, endLocation: endLocation, documents: documents)
     }
 }

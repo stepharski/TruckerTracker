@@ -222,7 +222,7 @@ extension CategoryItemVC: UITableViewDataSource {
 
         case .document:
             let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier) as! DocumentCell
-            cell.docName = "Document2022.pdf"
+            cell.documentName = "Document2022.pdf"
 
             return cell
         }

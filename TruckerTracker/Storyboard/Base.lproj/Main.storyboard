@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vqz-P0-wp0">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -449,6 +448,10 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8N5-Mz-dBk">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ron-qE-eKh" userLabel="Action Buttons Stack">
                                 <rect key="frame" x="44" y="773" width="305" height="45"/>
                                 <subviews>
@@ -499,9 +502,12 @@
                             <constraint firstItem="VV0-Hj-LRr" firstAttribute="centerX" secondItem="mYE-l0-vcv" secondAttribute="centerX" id="mfg-al-qgZ"/>
                             <constraint firstItem="ron-qE-eKh" firstAttribute="top" secondItem="8D2-rZ-aWN" secondAttribute="bottom" constant="15" id="oXg-tV-Drl"/>
                             <constraint firstItem="vLC-os-kHT" firstAttribute="top" secondItem="VV0-Hj-LRr" secondAttribute="bottom" constant="20" id="q3H-lA-Ngb"/>
+                            <constraint firstItem="8N5-Mz-dBk" firstAttribute="centerX" secondItem="mYE-l0-vcv" secondAttribute="centerX" id="s7K-fi-VHl"/>
+                            <constraint firstItem="8N5-Mz-dBk" firstAttribute="centerY" secondItem="mYE-l0-vcv" secondAttribute="centerY" id="zef-GF-0TD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="8N5-Mz-dBk" id="NEM-iE-D3j"/>
                         <outlet property="amountTextField" destination="VEV-wX-T4D" id="TUm-J2-Jjl"/>
                         <outlet property="deleteButton" destination="tFN-z4-qXh" id="g6X-nP-onG"/>
                         <outlet property="saveButton" destination="t1K-gx-4eo" id="EyB-RL-5xP"/>

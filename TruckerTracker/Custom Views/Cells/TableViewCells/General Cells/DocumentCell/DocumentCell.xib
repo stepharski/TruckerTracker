@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,37 +18,42 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fS1-y8-v7t">
-                        <rect key="frame" x="5" y="19.333333333333329" width="20" height="19.666666666666671"/>
-                        <color key="tintColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <rect key="frame" x="10" y="12.33333333333333" width="20" height="19.666666666666671"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="p2U-AW-feY"/>
                             <constraint firstAttribute="width" constant="20" id="ymn-Wf-1vZ"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadConfirmation2022.pdf" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VG1-0f-fii">
-                        <rect key="frame" x="35" y="19" width="280" height="20"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                        <color key="textColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <rect key="frame" x="40" y="12" width="275" height="20"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="VG1-0f-fii" secondAttribute="trailing" constant="5" id="4rx-NX-jtR"/>
-                    <constraint firstAttribute="bottom" secondItem="fS1-y8-v7t" secondAttribute="bottom" constant="5" id="H4P-H0-Xg4"/>
+                    <constraint firstItem="fS1-y8-v7t" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="M7B-tz-3IZ"/>
                     <constraint firstItem="VG1-0f-fii" firstAttribute="leading" secondItem="fS1-y8-v7t" secondAttribute="trailing" constant="10" id="SVP-Cq-L6b"/>
-                    <constraint firstItem="fS1-y8-v7t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="gYC-S0-1rM"/>
-                    <constraint firstAttribute="bottom" secondItem="VG1-0f-fii" secondAttribute="bottom" constant="5" id="qc9-sk-7o3"/>
+                    <constraint firstItem="VG1-0f-fii" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Wdc-XH-zWR"/>
+                    <constraint firstItem="fS1-y8-v7t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gYC-S0-1rM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" red="0.1058823529" green="0.1843137255" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" systemColor="systemGray6Color"/>
             <connections>
-                <outlet property="docNameLabel" destination="VG1-0f-fii" id="Y9b-Lh-2y4"/>
+                <outlet property="documentLabel" destination="VG1-0f-fii" id="AcD-dS-JxM"/>
             </connections>
             <point key="canvasLocation" x="129" y="21"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

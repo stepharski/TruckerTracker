@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ItemViewController: UIViewController {
 
     @IBOutlet var amountTextField: AmountTextField!
     @IBOutlet var segmentedControlView: UIView!
+    
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var deleteButton: UIButton!
@@ -21,6 +24,9 @@ class ItemViewController: UIViewController {
     let segments = ItemType.allCases
     var selectedSegment: ItemType = .load
     var segmentedControl: TRSegmentedControl!
+    
+    var locationManager: CLLocationManager?
+    var locationType: LocationType = .loadStart
     
     var loadViewModel = LoadViewModel(Load.getDefault())
     
@@ -96,6 +102,16 @@ class ItemViewController: UIViewController {
         
         tableView.register(DistanceCell.nib, forCellReuseIdentifier: DistanceCell.identifier)
         tableView.register(DateCell.nib, forCellReuseIdentifier: DateCell.identifier)
+        tableView.register(LoadLocationCell.nib, forCellReuseIdentifier: LoadLocationCell.identifier)
+        tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
+    }
+    
+    func createSectionHeader(with title: String) -> TRHeaderView {
+        let headerView = TRHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width,
+                                                            height: 35))
+        headerView.title = title
+        headerView.titleColor = .fadedWhite
+        return headerView
     }
     
     // Action buttons
@@ -115,6 +131,121 @@ class ItemViewController: UIViewController {
         datePickerVC.sheetPresentationController?.largestUndimmedDetentIdentifier = .large
         
         present(datePickerVC, animated: true)
+    }
+    
+    // Location Manager
+    func requestUserLocation() {
+        if locationManager != nil {
+            locationManager?.requestLocation()
+        } else {
+            locationManager = CLLocationManager()
+            locationManager?.delegate = self
+            locationManager?.requestWhenInUseAuthorization()
+        }
+    }
+    
+    // Get City,ST from location
+    func getLocationInfo(from location: CLLocation) async throws -> String {
+        let geocoder = CLGeocoder()
+        let placemarks = try await geocoder.reverseGeocodeLocation(location)
+        
+        guard let placemark = placemarks.first else {
+            throw TRError.noLocationFound
+        }
+        
+        let city = placemark.locality ?? "Nowhereville"
+        let state = placemark.administrativeArea ?? "NA"
+        
+        return "\(city), \(state)"
+    }
+    
+    // Update VM location
+    func updateViewModelLocation(with locationInfo: String) {
+        var locationSectionIndex = 0
+        
+        switch locationType {
+        case .loadStart:
+            for (index, item) in loadViewModel.items.enumerated() {
+                if let locationItem = item as? LoadViewModelStartLocationItem {
+                    locationItem.startLocation = locationInfo
+                    locationSectionIndex = index
+                }
+            }
+        case .loadEnd:
+            for (index, item) in loadViewModel.items.enumerated() {
+                if let locationItem = item as? LoadViewModelEndLocationItem {
+                    locationItem.endLocation = locationInfo
+                    locationSectionIndex = index
+                }
+            }
+        case .fuel:
+            //TODO: Update FuelVM
+            return
+        }
+        
+        tableView.reloadSections(IndexSet(integer: locationSectionIndex), with: .automatic)
+    }
+}
+
+
+// MARK: CLLocationManagerDelegate
+extension ItemViewController: CLLocationManagerDelegate {
+    // Check status
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedWhenInUse {
+            locationManager?.requestLocation()
+        }
+        
+        //TODO: Handle erorrs
+        switch manager.authorizationStatus {
+        case .denied:
+            print("denied")
+        case .notDetermined:
+            print("notDetermined")
+        case .authorizedWhenInUse:
+            print("authorizedWhenInUse")
+        case .restricted:
+            print("restricted")
+        default:
+            print("default")
+        }
+    }
+    
+    // Handle location info
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            let clLocation = CLLocation(latitude: latitude, longitude: longitude)
+            
+            activityIndicator.startAnimating()
+            Task {
+                do {
+                    let locationInfo = try await getLocationInfo(from: clLocation)
+                    updateViewModelLocation(with: locationInfo)
+                } catch {
+                    //TODO: Handle error
+                    print("Error: \(error.localizedDescription)")
+                }
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    // Handle error
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        //TODO: Handle error
+        if let error = error as? CLError {
+            switch error.code {
+            case .network:
+                print("network")
+            case .denied:
+                print("denied error")
+            default:
+                print("default error")
+            }
+        }
     }
 }
 
@@ -141,14 +272,51 @@ extension ItemViewController: TRDatePickerVCDelegeate {
     }
 }
 
+
 // MARK: - UITableViewDelegate
 extension ItemViewController: UITableViewDelegate {
-    // height
+    // Header
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        switch selectedSegment {
+//        case .expense:
+//            return nil
+//
+//        case .load:
+//            let item = loadViewModel.items[section]
+//            switch item.type {
+//            case .documents:
+//                return createSectionHeader(with: "Documents")
+//            default:
+//                return nil
+//            }
+//
+//        case .fuel:
+//            return nil
+//        }
+//    }
+    
+    
+    // Height for row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        switch selectedSegment {
+        case .expense:
+            return 0
+            
+        case .load:
+            let item = loadViewModel.items[indexPath.section]
+            switch item.type {
+            case .startLocation, .endLocation:
+                return 65
+            default:
+                return 50
+            }
+            
+        case .fuel:
+            return 0
+        }
     }
     
-    // selection
+    // Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch selectedSegment {
         case .expense:
@@ -159,13 +327,19 @@ extension ItemViewController: UITableViewDelegate {
             switch item.type {
                 
             case .tripDistance, .emptyDistance:
-                guard let distanceCell = tableView.cellForRow(at: indexPath)
-                                                            as? DistanceCell else { return }
-                distanceCell.activateTextField()
+                if let distanceCell = tableView.cellForRow(at: indexPath) as? DistanceCell {
+                    distanceCell.activateTextField()
+                }
                 
             case .date:
                 if let dateItem = item as? LoadViewModelDateItem {
                     showDatePickerVC(for: dateItem.date)
+                }
+                
+            case .startLocation, .endLocation:
+                if let locationCell = tableView.cellForRow(at: indexPath)
+                                                    as? LoadLocationCell {
+                    locationCell.activateTextField()
                 }
                 
             default:
@@ -180,7 +354,7 @@ extension ItemViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension ItemViewController: UITableViewDataSource {
-    // number of sections
+    // Number of sections
     func numberOfSections(in tableView: UITableView) -> Int {
         switch selectedSegment {
         case .expense:
@@ -192,7 +366,7 @@ extension ItemViewController: UITableViewDataSource {
         }
     }
     
-    // number of rows
+    // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedSegment {
         case .expense:
@@ -204,7 +378,7 @@ extension ItemViewController: UITableViewDataSource {
         }
     }
     
-    // cell for row
+    // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch selectedSegment {
         case .expense:
@@ -226,8 +400,22 @@ extension ItemViewController: UITableViewDataSource {
                 cell.item = item
                 return cell
                 
-            default:
-                return UITableViewCell()
+            case .startLocation, .endLocation:
+                let cell = tableView.dequeueReusableCell(withIdentifier: LoadLocationCell.identifier)
+                                                                        as! LoadLocationCell
+                cell.item = item
+                cell.didTapGetCurrentLocation = { locationType in
+                    self.locationType = locationType
+                    self.requestUserLocation()
+                }
+                return cell
+                
+            case .documents:
+                let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier)
+                                                                            as! DocumentCell
+                let documentItem = item as? LoadViewModelDocumentsItem
+                cell.documentName = documentItem?.documents[indexPath.row]
+                return cell
             }
             
         case .fuel:

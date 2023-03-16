@@ -9,18 +9,14 @@ import UIKit
 
 class DocumentCell: UITableViewCell {
 
-    @IBOutlet private var docNameLabel: UILabel!
+    @IBOutlet private var documentLabel: UILabel!
     
-    var docName: String? {
-        didSet {
-            docNameLabel.text = docName
-        }
+    var documentName: String? {
+        didSet { documentLabel.text = documentName }
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         selectionStyle = .none
         backgroundColor = .clear
     }

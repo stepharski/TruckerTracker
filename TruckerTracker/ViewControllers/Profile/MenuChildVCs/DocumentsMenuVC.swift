@@ -170,11 +170,11 @@ extension DocumentsMenuVC: UITableViewDataSource {
         let randomInt = Int.random(in: 1...1000)
         switch sections[indexPath.section].type {
         case .rateConfirmations:
-            cell.docName = "LoadConfirmation\(randomInt)"
+            cell.documentName = "LoadConfirmation\(randomInt)"
         case . fuelReceipts:
-            cell.docName = "FuelReceipt\(randomInt)"
+            cell.documentName = "FuelReceipt\(randomInt)"
         case .others:
-            cell.docName = "Document\(randomInt)"
+            cell.documentName = "Document\(randomInt)"
         }
         
         return cell
