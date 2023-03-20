@@ -29,7 +29,7 @@
 		5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782829BBC573007C3B65 /* LoadLocationCell.swift */; };
 		5F39782B29BBC573007C3B65 /* LoadLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39782929BBC573007C3B65 /* LoadLocationCell.xib */; };
 		5F39782D29C12567007C3B65 /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782C29C12567007C3B65 /* LocationType.swift */; };
-		5F39782F29C2B3BF007C3B65 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782E29C2B3BF007C3B65 /* TRError.swift */; };
+		5F39783429C7FA21007C3B65 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783329C7FA21007C3B65 /* TRError.swift */; };
 		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
 		5F71DC7F295771EC003111AF /* CategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7E295771EC003111AF /* CategoryInfoView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
@@ -141,7 +141,7 @@
 		5F39782829BBC573007C3B65 /* LoadLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationCell.swift; sourceTree = "<group>"; };
 		5F39782929BBC573007C3B65 /* LoadLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadLocationCell.xib; sourceTree = "<group>"; };
 		5F39782C29C12567007C3B65 /* LocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
-		5F39782E29C2B3BF007C3B65 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
+		5F39783329C7FA21007C3B65 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
 		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
 		5F71DC7E295771EC003111AF /* CategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfoView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -770,7 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB92F3628BC18ED0037A4AD /* Constants.swift */,
-				5F39782E29C2B3BF007C3B65 /* TRError.swift */,
+				5F39783329C7FA21007C3B65 /* TRError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -994,7 +994,7 @@
 				5FA551EA29A141ED00D3596F /* LoadCellViewModel.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
-				5F39782F29C2B3BF007C3B65 /* TRError.swift in Sources */,
+				5F39783429C7FA21007C3B65 /* TRError.swift in Sources */,
 				5F2B802D295F8DAA0044E004 /* ExportPeriodCell.swift in Sources */,
 				5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */,
 				5F97FD5E29201FB800DEEC20 /* ProfileHeaderView.swift in Sources */,

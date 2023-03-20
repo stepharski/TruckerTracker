@@ -156,7 +156,7 @@ class ItemViewController: UIViewController {
         let placemarks = try await geocoder.reverseGeocodeLocation(location)
         
         guard let placemark = placemarks.first else {
-            throw TRError.noLocationFound
+            throw TRError.defaultLocationError
         }
         
         let city = placemark.locality ?? "Nowhereville"
@@ -204,9 +204,9 @@ extension ItemViewController: CLLocationManagerDelegate {
         case .authorizedWhenInUse, .authorizedAlways:
             locationManager?.requestLocation()
         case .denied:
-            displayLocationError(with: "Please grant location permissions in Settings to use this feature.")
+            displayLocationError(with: TRError.permissionLocationError.rawValue)
         default:
-            displayLocationError(with: "An error occurred while retrieving location.")
+            displayLocationError(with: TRError.defaultLocationError.rawValue)
         }
     }
     
@@ -219,7 +219,6 @@ extension ItemViewController: CLLocationManagerDelegate {
             let clLocation = CLLocation(latitude: latitude, longitude: longitude)
             
             activityIndicator.startAnimating()
-            
             Task {
                 do {
                     let locationInfo = try await getLocationInfo(from: clLocation)
@@ -227,14 +226,16 @@ extension ItemViewController: CLLocationManagerDelegate {
                     activityIndicator.stopAnimating()
                 } catch {
                     activityIndicator.stopAnimating()
-                    if let error = error as? CLError {
+                    if let error = error as? TRError {
+                        displayLocationError(with: error.rawValue)
+                    } else if let error = error as? CLError {
                         switch error.code {
                         case .network:
-                            displayLocationError(with: "Please check your internet connection and try again.")
+                            displayLocationError(with: TRError.networkError.rawValue)
                         case .denied:
-                            displayLocationError(with: "Please grant location permissions in Settings to use this feature.")
+                            displayLocationError(with: TRError.permissionLocationError.rawValue)
                         default:
-                            displayLocationError(with: "An error occurred while retrieving location.")
+                            displayLocationError(with: TRError.defaultLocationError.rawValue)
                         }
                     }
                 }
@@ -247,11 +248,11 @@ extension ItemViewController: CLLocationManagerDelegate {
         if let error = error as? CLError {
             switch error.code {
             case .network:
-                displayLocationError(with: "Please check your internet connection and try again.")
+                displayLocationError(with: TRError.networkError.rawValue)
             case .denied:
-                displayLocationError(with: "Please grant location permissions in Settings to use this feature.")
+                displayLocationError(with: TRError.permissionLocationError.rawValue)
             default:
-                displayLocationError(with: "An error occurred while retrieving location.")
+                displayLocationError(with: TRError.defaultLocationError.rawValue)
             }
         }
     }
