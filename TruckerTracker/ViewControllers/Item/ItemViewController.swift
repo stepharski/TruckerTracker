@@ -144,6 +144,12 @@ class ItemViewController: UIViewController {
         }
     }
     
+    func displayLocationError(with message: String) {
+        if self.isViewLoaded && self.view.window != nil {
+            self.showAlert(title: "Location Error", message: message)
+        }
+    }
+    
     // Get City,ST from location
     func getLocationInfo(from location: CLLocation) async throws -> String {
         let geocoder = CLGeocoder()
@@ -192,22 +198,15 @@ class ItemViewController: UIViewController {
 extension ItemViewController: CLLocationManagerDelegate {
     // Check status
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if manager.authorizationStatus == .authorizedWhenInUse {
-            locationManager?.requestLocation()
-        }
-        
-        //TODO: Handle erorrs
         switch manager.authorizationStatus {
-        case .denied:
-            print("denied")
         case .notDetermined:
-            print("notDetermined")
-        case .authorizedWhenInUse:
-            print("authorizedWhenInUse")
-        case .restricted:
-            print("restricted")
+            return
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager?.requestLocation()
+        case .denied:
+            displayLocationError(with: "Please grant location permissions in Settings to use this feature.")
         default:
-            print("default")
+            displayLocationError(with: "An error occurred while retrieving location.")
         }
     }
     
@@ -220,30 +219,39 @@ extension ItemViewController: CLLocationManagerDelegate {
             let clLocation = CLLocation(latitude: latitude, longitude: longitude)
             
             activityIndicator.startAnimating()
+            
             Task {
                 do {
                     let locationInfo = try await getLocationInfo(from: clLocation)
                     updateViewModelLocation(with: locationInfo)
+                    activityIndicator.stopAnimating()
                 } catch {
-                    //TODO: Handle error
-                    print("Error: \(error.localizedDescription)")
+                    activityIndicator.stopAnimating()
+                    if let error = error as? CLError {
+                        switch error.code {
+                        case .network:
+                            displayLocationError(with: "Please check your internet connection and try again.")
+                        case .denied:
+                            displayLocationError(with: "Please grant location permissions in Settings to use this feature.")
+                        default:
+                            displayLocationError(with: "An error occurred while retrieving location.")
+                        }
+                    }
                 }
-                activityIndicator.stopAnimating()
             }
         }
     }
     
     // Handle error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        //TODO: Handle error
         if let error = error as? CLError {
             switch error.code {
             case .network:
-                print("network")
+                displayLocationError(with: "Please check your internet connection and try again.")
             case .denied:
-                print("denied error")
+                displayLocationError(with: "Please grant location permissions in Settings to use this feature.")
             default:
-                print("default error")
+                displayLocationError(with: "An error occurred while retrieving location.")
             }
         }
     }

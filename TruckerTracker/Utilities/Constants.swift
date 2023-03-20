@@ -45,7 +45,6 @@ struct SFSymbols {
     static let dropFill = UIImage(systemName: "drop.fill")
     
     
-    
     // Categories
     static let dollarCircle = UIImage(systemName: "dollarsign.circle")
     static let minusCircle = UIImage(systemName: "minus.circle")
