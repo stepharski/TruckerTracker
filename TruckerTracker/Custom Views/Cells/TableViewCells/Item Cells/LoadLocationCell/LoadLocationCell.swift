@@ -17,7 +17,7 @@ class LoadLocationCell: UITableViewCell {
         didSet { locationTextField.text = location }
     }
     
-    var didTapGetCurrentLocation: ((LocationType) -> Void)?
+    var didTapGetCurrentLocation: ((LoadLocationType) -> Void)?
     
     var item: LoadViewModelItem? {
         didSet {
@@ -46,10 +46,10 @@ class LoadLocationCell: UITableViewCell {
     // @IBAction
     @IBAction private func getCurrentLocation(_ sender: UIButton) {
         if item is LoadViewModelStartLocationItem {
-            didTapGetCurrentLocation?(.loadStart)
+            didTapGetCurrentLocation?(.start)
             
         } else if item is LoadViewModelEndLocationItem {
-            didTapGetCurrentLocation?(.loadEnd)
+            didTapGetCurrentLocation?(.end)
         }
     }
     

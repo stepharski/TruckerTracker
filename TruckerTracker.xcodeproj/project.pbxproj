@@ -28,10 +28,10 @@
 		5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B8031295F99D50044E004 /* ExportCategoriesCell.xib */; };
 		5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782829BBC573007C3B65 /* LoadLocationCell.swift */; };
 		5F39782B29BBC573007C3B65 /* LoadLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39782929BBC573007C3B65 /* LoadLocationCell.xib */; };
-		5F39782D29C12567007C3B65 /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782C29C12567007C3B65 /* LocationType.swift */; };
 		5F39783429C7FA21007C3B65 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783329C7FA21007C3B65 /* TRError.swift */; };
+		5F39783929C8071C007C3B65 /* AddDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783829C8071C007C3B65 /* AddDocumentView.swift */; };
+		5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */; };
 		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
-		5F71DC7F295771EC003111AF /* CategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7E295771EC003111AF /* CategoryInfoView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */; };
 		5F790FFA2944521F00A73600 /* TRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF92944521F00A73600 /* TRButton.swift */; };
@@ -94,13 +94,8 @@
 		5FA551F929A1563800D3596F /* Fuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F829A1563800D3596F /* Fuel.swift */; };
 		5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */; };
 		5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FC29A164D400D3596F /* Numeric+Ext.swift */; };
-		5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602CC29071B1B00319E18 /* RouteCell.swift */; };
-		5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602CD29071B1B00319E18 /* RouteCell.xib */; };
-		5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */; };
-		5FA602D4290727AF00319E18 /* AddDocRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602D2290727AF00319E18 /* AddDocRouteCell.xib */; };
 		5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA602D6290730BE00319E18 /* DocumentCell.swift */; };
 		5FA602D9290730BE00319E18 /* DocumentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA602D7290730BE00319E18 /* DocumentCell.xib */; };
-		5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEAF5C28F70297005F7C6C /* CategoryItemVC.swift */; };
 		5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */; };
 		5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2928B920540037A4AD /* TRTabBar.swift */; };
 		5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2F28B921F30037A4AD /* ProfileVC.swift */; };
@@ -140,10 +135,10 @@
 		5F2B8031295F99D50044E004 /* ExportCategoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportCategoriesCell.xib; sourceTree = "<group>"; };
 		5F39782829BBC573007C3B65 /* LoadLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationCell.swift; sourceTree = "<group>"; };
 		5F39782929BBC573007C3B65 /* LoadLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadLocationCell.xib; sourceTree = "<group>"; };
-		5F39782C29C12567007C3B65 /* LocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
 		5F39783329C7FA21007C3B65 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
+		5F39783829C8071C007C3B65 /* AddDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocumentView.swift; sourceTree = "<group>"; };
+		5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTableViewController.swift; sourceTree = "<group>"; };
 		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
-		5F71DC7E295771EC003111AF /* CategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfoView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsMenuVC.swift; sourceTree = "<group>"; };
 		5F790FF92944521F00A73600 /* TRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRButton.swift; sourceTree = "<group>"; };
@@ -208,13 +203,8 @@
 		5FA551F829A1563800D3596F /* Fuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuel.swift; sourceTree = "<group>"; };
 		5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCellViewModel.swift; sourceTree = "<group>"; };
 		5FA551FC29A164D400D3596F /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
-		5FA602CC29071B1B00319E18 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
-		5FA602CD29071B1B00319E18 /* RouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCell.xib; sourceTree = "<group>"; };
-		5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocRouteCell.swift; sourceTree = "<group>"; };
-		5FA602D2290727AF00319E18 /* AddDocRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDocRouteCell.xib; sourceTree = "<group>"; };
 		5FA602D6290730BE00319E18 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
 		5FA602D7290730BE00319E18 /* DocumentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentCell.xib; sourceTree = "<group>"; };
-		5FAEAF5C28F70297005F7C6C /* CategoryItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemVC.swift; sourceTree = "<group>"; };
 		5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBarController.swift; sourceTree = "<group>"; };
 		5FB92F2928B920540037A4AD /* TRTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBar.swift; sourceTree = "<group>"; };
 		5FB92F2F28B921F30037A4AD /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -247,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */,
+				5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -371,7 +362,6 @@
 		5F790FF6294449FF00A73600 /* Add Item */ = {
 			isa = PBXGroup;
 			children = (
-				5FAEAF5C28F70297005F7C6C /* CategoryItemVC.swift */,
 				5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */,
 			);
 			path = "Add Item";
@@ -509,14 +499,6 @@
 			path = ProfileHeaderView;
 			sourceTree = "<group>";
 		};
-		5F97FD65292042A600DEEC20 /* Category Cells */ = {
-			isa = PBXGroup;
-			children = (
-				5FD3159D28F87C0900169E23 /* CategoryItem */,
-			);
-			path = "Category Cells";
-			sourceTree = "<group>";
-		};
 		5F97FD7029233D1500DEEC20 /* ProfileMenuCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,7 +614,6 @@
 				5F790FFB2947E9CB00A73600 /* General Cells */,
 				5FA551D729A075DE00D3596F /* Home Cells */,
 				5FEC7BBA29B7D55E0091F8FB /* Item Cells */,
-				5F97FD65292042A600DEEC20 /* Category Cells */,
 				5F791019294D7AA300A73600 /* MenuDetailedCells */,
 			);
 			path = TableViewCells;
@@ -691,24 +672,6 @@
 				5FEC7BB029B791330091F8FB /* Items */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		5FA602CB29071AA100319E18 /* RouteCell */ = {
-			isa = PBXGroup;
-			children = (
-				5FA602CC29071B1B00319E18 /* RouteCell.swift */,
-				5FA602CD29071B1B00319E18 /* RouteCell.xib */,
-			);
-			path = RouteCell;
-			sourceTree = "<group>";
-		};
-		5FA602D02907273F00319E18 /* AddDocRouteCell */ = {
-			isa = PBXGroup;
-			children = (
-				5FA602D1290727AF00319E18 /* AddDocRouteCell.swift */,
-				5FA602D2290727AF00319E18 /* AddDocRouteCell.xib */,
-			);
-			path = AddDocRouteCell;
 			sourceTree = "<group>";
 		};
 		5FA602D5290730A300319E18 /* DocumentCell */ = {
@@ -795,7 +758,7 @@
 		5FB92F4228C971250037A4AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F71DC7E295771EC003111AF /* CategoryInfoView.swift */,
+				5F39783829C8071C007C3B65 /* AddDocumentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -820,18 +783,8 @@
 				5FA551D1299596A300D3596F /* ItemType.swift */,
 				5FA551EB29A1431900D3596F /* UnitsType.swift */,
 				5FA551ED29A1459C00D3596F /* CurrencyType.swift */,
-				5F39782C29C12567007C3B65 /* LocationType.swift */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		5FD3159D28F87C0900169E23 /* CategoryItem */ = {
-			isa = PBXGroup;
-			children = (
-				5FA602CB29071AA100319E18 /* RouteCell */,
-				5FA602D02907273F00319E18 /* AddDocRouteCell */,
-			);
-			path = CategoryItem;
 			sourceTree = "<group>";
 		};
 		5FEC7BB029B791330091F8FB /* Items */ = {
@@ -948,10 +901,8 @@
 				5FA551E629A0989F00D3596F /* FuelCell.xib in Resources */,
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5FA5519D297B1AA800D3596F /* PeriodTypeCell.xib in Resources */,
-				5FA602CF29071B1B00319E18 /* RouteCell.xib in Resources */,
 				5FA551A3297B2B4900D3596F /* PeriodPickerCell.xib in Resources */,
 				5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */,
-				5FA602D4290727AF00319E18 /* AddDocRouteCell.xib in Resources */,
 				5F97FD7429233D3D00DEEC20 /* ProfileMenuCell.xib in Resources */,
 				5F97FD5F29201FB800DEEC20 /* ProfileHeaderView.xib in Resources */,
 				5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */,
@@ -977,14 +928,13 @@
 				5FB92F4A28C984460037A4AD /* TrackerCategoryType.swift in Sources */,
 				5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */,
 				5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */,
+				5F39783929C8071C007C3B65 /* AddDocumentView.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
 				5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */,
 				5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */,
-				5FAEAF5D28F70297005F7C6C /* CategoryItemVC.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
-				5F39782D29C12567007C3B65 /* LocationType.swift in Sources */,
 				5FA551F529A150E500D3596F /* ExpenseCellViewModel.swift in Sources */,
 				5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */,
 				5FB92F3028B921F30037A4AD /* ProfileVC.swift in Sources */,
@@ -1001,7 +951,6 @@
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
 				5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */,
 				5F97B6B02954F417004C5D2A /* DocumentsMenuVC.swift in Sources */,
-				5F71DC7F295771EC003111AF /* CategoryInfoView.swift in Sources */,
 				5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */,
 				5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
@@ -1012,7 +961,6 @@
 				5F791011294CE58B00A73600 /* MenuDetailedVC.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
 				5FA551E029A0901900D3596F /* ExpenseCell.swift in Sources */,
-				5FA602D3290727AF00319E18 /* AddDocRouteCell.swift in Sources */,
 				5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */,
 				5FA55198297B082A00D3596F /* String+Ext.swift in Sources */,
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
@@ -1020,7 +968,6 @@
 				5FA551F929A1563800D3596F /* Fuel.swift in Sources */,
 				5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */,
 				5FA5519C297B1AA800D3596F /* PeriodTypeCell.swift in Sources */,
-				5FA602CE29071B1B00319E18 /* RouteCell.swift in Sources */,
 				5F97FD7329233D3D00DEEC20 /* ProfileMenuCell.swift in Sources */,
 				5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
@@ -1030,6 +977,7 @@
 				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
 				5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */,
 				5FEC7BC329B7DD380091F8FB /* DistanceCell.swift in Sources */,
+				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F2B8013295A12A00044E004 /* TRTextField.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */,

@@ -24,10 +24,12 @@ enum HeaderTitleColorType {
 }
 
 enum HeaderTitleFontSizeType {
-    case regular, large
+    case small, regular, large
     
     var size: CGFloat {
         switch self {
+        case .small:
+            return 14
         case .regular:
             return 16
         case .large:
@@ -63,7 +65,7 @@ class TRHeaderView: UITableViewHeaderFooterView {
         }
     }
     
-    var labelCenterYPadding: CGFloat = 5 {
+    var labelCenterYPadding: CGFloat = 10 {
         didSet {
             updateUI()
         }
@@ -93,7 +95,7 @@ class TRHeaderView: UITableViewHeaderFooterView {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let padding: CGFloat = 5
+        let padding: CGFloat = 10
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),

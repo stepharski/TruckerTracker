@@ -39,21 +39,17 @@ struct SFSymbols {
     // Miles
     static let roadLanes = UIImage(systemName: "road.lanes")
     static let roadLanesEmpty = UIImage(systemName: "road.lane.arrowtriangle.2.inward")
+    static let plusRectOnRect = UIImage(systemName: "plus.rectangle.on.rectangle")
     
     // Fuel
     static let fuelPumpFill = UIImage(systemName: "fuelpump.fill")
     static let dropFill = UIImage(systemName: "drop.fill")
-    
     
     // Categories
     static let dollarCircle = UIImage(systemName: "dollarsign.circle")
     static let minusCircle = UIImage(systemName: "minus.circle")
     static let speedometer = UIImage(systemName: "speedometer")
     static let fuelPumpCircle = UIImage(systemName: "fuelpump.circle")
-    
-    static let plusSquares = UIImage(systemName: "plus.square.on.square")
-    static let docPlus = UIImage(systemName: "doc.fill.badge.plus")
-    
     
     // Profile
     static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")

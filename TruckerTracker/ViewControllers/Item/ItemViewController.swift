@@ -13,8 +13,9 @@ class ItemViewController: UIViewController {
     @IBOutlet var amountTextField: AmountTextField!
     @IBOutlet var segmentedControlView: UIView!
     
+    @IBOutlet var tableContainerView: UIView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var tableView: UITableView!
+    
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var deleteButton: UIButton!
     
@@ -26,9 +27,15 @@ class ItemViewController: UIViewController {
     var segmentedControl: TRSegmentedControl!
     
     var locationManager: CLLocationManager?
-    var locationType: LocationType = .loadStart
     
     var loadViewModel = LoadViewModel(Load.getDefault())
+    
+    lazy var loadTableVC: LoadTableViewController = {
+        let tableController = LoadTableViewController()
+        tableController.delegate = self
+        self.addChildTableController(tableController)
+        return tableController
+    }()
     
     
     // Life cycle
@@ -38,9 +45,10 @@ class ItemViewController: UIViewController {
         configureNavBar()
         configureTextField()
         configureSegmentedControl()
-        configureTableView()
         configureActionButtons()
         dismissKeyboardOnTouchOutside()
+        
+        addChildTableController(loadTableVC)
     }
     
     // Navigation Bar
@@ -95,25 +103,20 @@ class ItemViewController: UIViewController {
         selectedSegment = segments[sender.selectedIndex]
     }
     
-    //TableView
-    func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(DistanceCell.nib, forCellReuseIdentifier: DistanceCell.identifier)
-        tableView.register(DateCell.nib, forCellReuseIdentifier: DateCell.identifier)
-        tableView.register(LoadLocationCell.nib, forCellReuseIdentifier: LoadLocationCell.identifier)
-        tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
+    // Child VCs
+    func addChildTableController(_ tableController: UITableViewController) {
+        addChild(tableController)
+        tableContainerView.addSubview(tableController.view)
+        tableController.view.frame = tableContainerView.bounds
+        tableController.didMove(toParent: self)
     }
     
-    func createSectionHeader(with title: String) -> TRHeaderView {
-        let headerView = TRHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width,
-                                                            height: 35))
-        headerView.title = title
-        headerView.titleColor = .fadedWhite
-        return headerView
+    func removeChildTableController(_ tableController: UITableViewController) {
+        tableController.willMove(toParent: nil)
+        tableController.view.removeFromSuperview()
+        tableController.removeFromParent()
     }
-    
+
     // Action buttons
     func configureActionButtons() {
         deleteButton.isHidden = isNewItem
@@ -167,34 +170,46 @@ class ItemViewController: UIViewController {
     
     // Update VM location
     func updateViewModelLocation(with locationInfo: String) {
-        var locationSectionIndex = 0
-        
-        switch locationType {
-        case .loadStart:
-            for (index, item) in loadViewModel.items.enumerated() {
-                if let locationItem = item as? LoadViewModelStartLocationItem {
-                    locationItem.startLocation = locationInfo
-                    locationSectionIndex = index
-                }
-            }
-        case .loadEnd:
-            for (index, item) in loadViewModel.items.enumerated() {
-                if let locationItem = item as? LoadViewModelEndLocationItem {
-                    locationItem.endLocation = locationInfo
-                    locationSectionIndex = index
-                }
-            }
+        switch selectedSegment {
+        case .expense:
+            return
+        case .load:
+            loadTableVC.updateLocation(with: locationInfo)
         case .fuel:
-            //TODO: Update FuelVM
             return
         }
-        
-        tableView.reloadSections(IndexSet(integer: locationSectionIndex), with: .automatic)
     }
 }
 
 
-// MARK: CLLocationManagerDelegate
+// MARK: - LoadTableViewControllerDelegate
+extension ItemViewController: LoadTableViewControllerDelegate {
+    func didSelectDateCell(_ date: Date) {
+        showDatePickerVC(for: date)
+    }
+    
+    func didRequestCurrentLocation() {
+        activityIndicator.startAnimating()
+        requestUserLocation()
+    }
+}
+
+// MARK: - DatePickerDelegeate
+extension ItemViewController: TRDatePickerVCDelegeate {
+    func didSelect(date: Date) {
+        switch selectedSegment {
+        case .expense:
+            return
+        case .load:
+            loadTableVC.updateDate(date)
+        case .fuel:
+            return
+        }
+    }
+}
+
+
+// MARK: - CLLocationManagerDelegate
 extension ItemViewController: CLLocationManagerDelegate {
     // Check status
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -204,8 +219,10 @@ extension ItemViewController: CLLocationManagerDelegate {
         case .authorizedWhenInUse, .authorizedAlways:
             locationManager?.requestLocation()
         case .denied:
+            activityIndicator.stopAnimating()
             displayLocationError(with: TRError.permissionLocationError.rawValue)
         default:
+            activityIndicator.stopAnimating()
             displayLocationError(with: TRError.defaultLocationError.rawValue)
         }
     }
@@ -218,7 +235,6 @@ extension ItemViewController: CLLocationManagerDelegate {
             let longitude = location.coordinate.longitude
             let clLocation = CLLocation(latitude: latitude, longitude: longitude)
             
-            activityIndicator.startAnimating()
             Task {
                 do {
                     let locationInfo = try await getLocationInfo(from: clLocation)
@@ -245,6 +261,7 @@ extension ItemViewController: CLLocationManagerDelegate {
     
     // Handle error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        activityIndicator.stopAnimating()
         if let error = error as? CLError {
             switch error.code {
             case .network:
@@ -258,177 +275,3 @@ extension ItemViewController: CLLocationManagerDelegate {
     }
 }
 
-// MARK: - TRDatePickerVCDelegeate
-extension ItemViewController: TRDatePickerVCDelegeate {
-    func didSelect(date: Date) {
-        var dateSectionIndex = 0
-        
-        switch selectedSegment {
-        case .expense:
-            return
-        case .load:
-            for (index, item) in loadViewModel.items.enumerated() {
-                if let dateItem = item as? LoadViewModelDateItem {
-                    dateItem.date = date
-                    dateSectionIndex = index
-                }
-            }
-        case .fuel:
-            return
-        }
-        
-        tableView.reloadSections(IndexSet(integer: dateSectionIndex), with: .automatic)
-    }
-}
-
-
-// MARK: - UITableViewDelegate
-extension ItemViewController: UITableViewDelegate {
-    // Header
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        switch selectedSegment {
-//        case .expense:
-//            return nil
-//
-//        case .load:
-//            let item = loadViewModel.items[section]
-//            switch item.type {
-//            case .documents:
-//                return createSectionHeader(with: "Documents")
-//            default:
-//                return nil
-//            }
-//
-//        case .fuel:
-//            return nil
-//        }
-//    }
-    
-    
-    // Height for row
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch selectedSegment {
-        case .expense:
-            return 0
-            
-        case .load:
-            let item = loadViewModel.items[indexPath.section]
-            switch item.type {
-            case .startLocation, .endLocation:
-                return 65
-            default:
-                return 50
-            }
-            
-        case .fuel:
-            return 0
-        }
-    }
-    
-    // Selection
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch selectedSegment {
-        case .expense:
-            return
-            
-        case .load:
-            let item = loadViewModel.items[indexPath.section]
-            switch item.type {
-                
-            case .tripDistance, .emptyDistance:
-                if let distanceCell = tableView.cellForRow(at: indexPath) as? DistanceCell {
-                    distanceCell.activateTextField()
-                }
-                
-            case .date:
-                if let dateItem = item as? LoadViewModelDateItem {
-                    showDatePickerVC(for: dateItem.date)
-                }
-                
-            case .startLocation, .endLocation:
-                if let locationCell = tableView.cellForRow(at: indexPath)
-                                                    as? LoadLocationCell {
-                    locationCell.activateTextField()
-                }
-                
-            default:
-                return
-            }
-            
-        case .fuel:
-            return
-        }
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension ItemViewController: UITableViewDataSource {
-    // Number of sections
-    func numberOfSections(in tableView: UITableView) -> Int {
-        switch selectedSegment {
-        case .expense:
-            return 0
-        case .load:
-            return loadViewModel.items.count
-        case .fuel:
-            return 0
-        }
-    }
-    
-    // Number of rows
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedSegment {
-        case .expense:
-            return 0
-        case .load:
-            return loadViewModel.items[section].rowCount
-        case .fuel:
-            return 0
-        }
-    }
-    
-    // Cell for row
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch selectedSegment {
-        case .expense:
-            return UITableViewCell()
-            
-        case .load:
-            let item = loadViewModel.items[indexPath.section]
-            
-            switch item.type {
-            case .tripDistance, .emptyDistance:
-                let cell = tableView.dequeueReusableCell(withIdentifier: DistanceCell.identifier)
-                                                                            as! DistanceCell
-                cell.item = item
-                return cell
-                
-            case .date:
-                let cell = tableView.dequeueReusableCell(withIdentifier: DateCell.identifier)
-                                                                            as! DateCell
-                cell.item = item
-                return cell
-                
-            case .startLocation, .endLocation:
-                let cell = tableView.dequeueReusableCell(withIdentifier: LoadLocationCell.identifier)
-                                                                        as! LoadLocationCell
-                cell.item = item
-                cell.didTapGetCurrentLocation = { locationType in
-                    self.locationType = locationType
-                    self.requestUserLocation()
-                }
-                return cell
-                
-            case .documents:
-                let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier)
-                                                                            as! DocumentCell
-                let documentItem = item as? LoadViewModelDocumentsItem
-                cell.documentName = documentItem?.documents[indexPath.row]
-                return cell
-            }
-            
-        case .fuel:
-            return UITableViewCell()
-        }
-    }
-}
