@@ -31,6 +31,8 @@
 		5F39783429C7FA21007C3B65 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783329C7FA21007C3B65 /* TRError.swift */; };
 		5F39783929C8071C007C3B65 /* AddDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783829C8071C007C3B65 /* AddDocumentView.swift */; };
 		5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */; };
+		5F39783F29CC8782007C3B65 /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */; };
+		5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */; };
 		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */; };
@@ -138,6 +140,8 @@
 		5F39783329C7FA21007C3B65 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
 		5F39783829C8071C007C3B65 /* AddDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocumentView.swift; sourceTree = "<group>"; };
 		5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTableViewController.swift; sourceTree = "<group>"; };
+		5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewController.swift; sourceTree = "<group>"; };
+		5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTableViewController.swift; sourceTree = "<group>"; };
 		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsMenuVC.swift; sourceTree = "<group>"; };
@@ -237,7 +241,9 @@
 			isa = PBXGroup;
 			children = (
 				5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */,
+				5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */,
 				5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */,
+				5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -359,12 +365,12 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		5F790FF6294449FF00A73600 /* Add Item */ = {
+		5F790FF6294449FF00A73600 /* Location Search VC */ = {
 			isa = PBXGroup;
 			children = (
 				5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */,
 			);
-			path = "Add Item";
+			path = "Location Search VC";
 			sourceTree = "<group>";
 		};
 		5F790FF729444A1D00A73600 /* Profile */ = {
@@ -508,7 +514,7 @@
 			path = ProfileMenuCell;
 			sourceTree = "<group>";
 		};
-		5FA55192297AE36D00D3596F /* Common */ = {
+		5FA55192297AE36D00D3596F /* TRControllers */ = {
 			isa = PBXGroup;
 			children = (
 				5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */,
@@ -516,7 +522,7 @@
 				5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */,
 				5FA55193297AE44900D3596F /* TRPeriodSelectorVC.swift */,
 			);
-			path = Common;
+			path = TRControllers;
 			sourceTree = "<group>";
 		};
 		5FA55199297B18D400D3596F /* PeriodTypeCell */ = {
@@ -686,12 +692,12 @@
 		5FB92F3128B921FD0037A4AD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F790FF6294449FF00A73600 /* Location Search VC */,
+				5FA55192297AE36D00D3596F /* TRControllers */,
 				5FA551C02982B19400D3596F /* TabBar */,
 				5F790FF5294449F300A73600 /* Home */,
 				5F28CF8329A1A0A80068C425 /* Item */,
-				5F790FF6294449FF00A73600 /* Add Item */,
 				5F790FF729444A1D00A73600 /* Profile */,
-				5FA55192297AE36D00D3596F /* Common */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -956,12 +962,14 @@
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
 				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
 				5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */,
+				5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */,
 				5F2B8024295F737E0044E004 /* TRHeaderView.swift in Sources */,
 				5F2B800F295A05DD0044E004 /* ContactCell.swift in Sources */,
 				5F791011294CE58B00A73600 /* MenuDetailedVC.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
 				5FA551E029A0901900D3596F /* ExpenseCell.swift in Sources */,
 				5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */,
+				5F39783F29CC8782007C3B65 /* ExpenseTableViewController.swift in Sources */,
 				5FA55198297B082A00D3596F /* String+Ext.swift in Sources */,
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */,

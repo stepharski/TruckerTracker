@@ -32,18 +32,29 @@ class ItemViewController: UIViewController {
     var amount: Double = 0
     var isNewItem: Bool = true
     
-    let segments = ItemType.allCases
-    var selectedSegment: ItemType = .load
     var segmentedControl: TRSegmentedControl!
+    let segments = ItemType.allCases
+    var selectedSegment: ItemType = .load {
+        didSet { updateSegmentVC() }
+    }
     
     var locationManager: CLLocationManager?
     let loactionTimeout: Double = 10
     var locationRequestState: LocationRequestState = .notStarted
     
+    lazy var expenseTableVC: ExpenseTableViewController = {
+        let tableController = ExpenseTableViewController()
+        return tableController
+    }()
+    
     lazy var loadTableVC: LoadTableViewController = {
         let tableController = LoadTableViewController()
         tableController.delegate = self
-        self.addChildTableController(tableController)
+        return tableController
+    }()
+    
+    lazy var fuelTableVC: FuelTableViewController = {
+        let tableController = FuelTableViewController()
         return tableController
     }()
     
@@ -54,11 +65,11 @@ class ItemViewController: UIViewController {
         
         configureNavBar()
         configureTextField()
+        updateSegmentVC()
+        addSwipeGestures()
         configureSegmentedControl()
         configureActionButtons()
         dismissKeyboardOnTouchOutside()
-        
-        addChildTableController(loadTableVC)
     }
     
     // Navigation Bar
@@ -113,8 +124,27 @@ class ItemViewController: UIViewController {
         selectedSegment = segments[sender.selectedIndex]
     }
     
+    func updateSegmentVC() {
+        switch selectedSegment {
+        case .expense:
+            removeChildTableController(loadTableVC)
+            removeChildTableController(fuelTableVC)
+            addChildTableController(expenseTableVC)
+        case .load:
+            removeChildTableController(expenseTableVC)
+            removeChildTableController(fuelTableVC)
+            addChildTableController(loadTableVC)
+        case .fuel:
+            removeChildTableController(expenseTableVC)
+            removeChildTableController(loadTableVC)
+            addChildTableController(fuelTableVC)
+        }
+    }
+    
     // Child VCs
     func addChildTableController(_ tableController: UITableViewController) {
+        guard tableController.parent == nil else { return }
+        
         addChild(tableController)
         tableContainerView.addSubview(tableController.view)
         tableController.view.frame = tableContainerView.bounds
@@ -122,11 +152,41 @@ class ItemViewController: UIViewController {
     }
     
     func removeChildTableController(_ tableController: UITableViewController) {
+        guard tableController.parent != nil else { return }
+        
         tableController.willMove(toParent: nil)
         tableController.view.removeFromSuperview()
         tableController.removeFromParent()
     }
 
+    // Gestures
+    func addSwipeGestures() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeLeft.direction = .left
+        swipeLeft.cancelsTouchesInView = false
+        view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeRight.direction = .right
+        swipeRight.cancelsTouchesInView = false
+        view.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
+        var currentSegment = selectedSegment.index
+        
+        if sender.direction == .left && currentSegment < (segments.count - 1) {
+            currentSegment += 1
+            selectedSegment = segments[currentSegment]
+            segmentedControl.selectSegment(at: currentSegment)
+            
+        } else if sender.direction == .right && currentSegment > 0 {
+            currentSegment -= 1
+            selectedSegment = segments[currentSegment]
+            segmentedControl.selectSegment(at: currentSegment)
+        }
+    }
+    
     // Action buttons
     func configureActionButtons() {
         deleteButton.isHidden = isNewItem
