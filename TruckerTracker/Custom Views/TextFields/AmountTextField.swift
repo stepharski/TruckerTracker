@@ -73,11 +73,27 @@ class AmountTextField: UITextField {
     
     // Configuration
     private func setup() {
+        addToolbar()
         isDecimalPad = true
         tintColor = textColor
         formatter.locale = .current
         updateTextField(with: amount)
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    private func addToolbar() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 45))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(image: SFSymbols.checkmark, style: .done, target: self,
+                                                             action: #selector(doneButtonTapped))
+        toolbar.items = [flexSpace, doneButton]
+        toolbar.tintColor = .label
+        toolbar.barTintColor = .systemGray5
+        self.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneButtonTapped() {
+        self.resignFirstResponder()
     }
     
     // Handle entry

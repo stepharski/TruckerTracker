@@ -32,6 +32,9 @@ struct SFSymbols {
     static let person = UIImage(systemName: "person")
     static let personFill = UIImage(systemName: "person.fill")
     
+    // TextField
+    static let checkmark = UIImage(systemName: "checkmark")
+    
     // Frequency
     static let repeatArrows = UIImage(systemName: "repeat")
     static let creditCard = UIImage(systemName: "creditcard")

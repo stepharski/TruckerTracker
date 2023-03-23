@@ -59,7 +59,22 @@ class LoadLocationCell: UITableViewCell {
     }
     
     func configureTextField() {
+        locationTextField.delegate = self
+        locationTextField.tintColor = .label
+        locationTextField.returnKeyType = .done
+        
+        let doneButton = UIButton(type: .system)
+        doneButton.setImage(UIImage(named: "checkmark"), for: .normal)
+        doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        doneButton.sizeToFit()
+
+        locationTextField.inputAccessoryView = doneButton
+        
         locationTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func doneButtonTapped() {
+        
     }
     
     // Update VM
@@ -72,5 +87,13 @@ class LoadLocationCell: UITableViewCell {
         } else if let endLocationItem = item as? LoadViewModelEndLocationItem {
             endLocationItem.endLocation = location
         }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension LoadLocationCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        locationTextField.resignFirstResponder()
+        return true
     }
 }
