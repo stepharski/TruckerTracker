@@ -8,6 +8,16 @@
 import UIKit
 import CoreLocation
 
+//MARK: - LocationRequestState
+enum LocationRequestState {
+    case notStarted
+    case requestingLocation
+    case locationFound
+    case timedOut
+    case error
+}
+
+// MARK: - ItemViewController
 class ItemViewController: UIViewController {
 
     @IBOutlet var amountTextField: AmountTextField!
@@ -27,8 +37,8 @@ class ItemViewController: UIViewController {
     var segmentedControl: TRSegmentedControl!
     
     var locationManager: CLLocationManager?
-    
-    var loadViewModel = LoadViewModel(Load.getDefault())
+    let loactionTimeout: Double = 10
+    var locationRequestState: LocationRequestState = .notStarted
     
     lazy var loadTableVC: LoadTableViewController = {
         let tableController = LoadTableViewController()
@@ -139,11 +149,24 @@ class ItemViewController: UIViewController {
     // Location Manager
     func requestUserLocation() {
         if locationManager != nil {
+            locationRequestState = .requestingLocation
             locationManager?.requestLocation()
+            checkForLocationTimeout()
         } else {
             locationManager = CLLocationManager()
             locationManager?.delegate = self
             locationManager?.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func checkForLocationTimeout() {
+        Timer.scheduledTimer(withTimeInterval: loactionTimeout, repeats: false) { _ in
+            if self.locationRequestState == .requestingLocation {
+                self.locationRequestState = .timedOut
+                self.activityIndicator.stopAnimating()
+                self.locationManager?.stopUpdatingLocation()
+                self.displayLocationError(with: TRError.timeoutError.rawValue)
+            }
         }
     }
     
@@ -153,7 +176,7 @@ class ItemViewController: UIViewController {
         }
     }
     
-    // Get City,ST from location
+    // Location info
     func getLocationInfo(from location: CLLocation) async throws -> String {
         let geocoder = CLGeocoder()
         let placemarks = try await geocoder.reverseGeocodeLocation(location)
@@ -215,13 +238,20 @@ extension ItemViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .notDetermined:
-            return
+            locationRequestState = .notStarted
+            
         case .authorizedWhenInUse, .authorizedAlways:
+            locationRequestState = .requestingLocation
             locationManager?.requestLocation()
+            checkForLocationTimeout()
+            
         case .denied:
+            locationRequestState = .error
             activityIndicator.stopAnimating()
             displayLocationError(with: TRError.permissionLocationError.rawValue)
+            
         default:
+            locationRequestState = .error
             activityIndicator.stopAnimating()
             displayLocationError(with: TRError.defaultLocationError.rawValue)
         }
@@ -238,30 +268,37 @@ extension ItemViewController: CLLocationManagerDelegate {
             Task {
                 do {
                     let locationInfo = try await getLocationInfo(from: clLocation)
+                    
+                    guard locationRequestState != .timedOut else { return }
                     updateViewModelLocation(with: locationInfo)
-                    activityIndicator.stopAnimating()
+                    locationRequestState = .locationFound
                 } catch {
-                    activityIndicator.stopAnimating()
+                    guard locationRequestState != .timedOut else { return }
+                    locationRequestState = .error
+                    
                     if let error = error as? TRError {
                         displayLocationError(with: error.rawValue)
-                    } else if let error = error as? CLError {
-                        switch error.code {
-                        case .network:
-                            displayLocationError(with: TRError.networkError.rawValue)
-                        case .denied:
-                            displayLocationError(with: TRError.permissionLocationError.rawValue)
-                        default:
-                            displayLocationError(with: TRError.defaultLocationError.rawValue)
-                        }
+                    } else if let error = error as? CLError, error.code == .network {
+                        displayLocationError(with: TRError.networkError.rawValue)
+                    } else {
+                        displayLocationError(with: TRError.defaultLocationError.rawValue)
                     }
                 }
+                
+                activityIndicator.stopAnimating()
+                locationManager?.stopUpdatingLocation()
             }
         }
     }
     
     // Handle error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        guard locationRequestState != .timedOut else { return }
+        
+        locationRequestState = .error
         activityIndicator.stopAnimating()
+        locationManager?.stopUpdatingLocation()
+        
         if let error = error as? CLError {
             switch error.code {
             case .network:
