@@ -257,7 +257,7 @@ class ItemViewController: UIViewController {
         case .expense:
             return
         case .load:
-            loadTableVC.updateLocation(with: locationInfo)
+            loadTableVC.updateRequestedLocation(locationInfo)
         case .fuel:
             return
         }

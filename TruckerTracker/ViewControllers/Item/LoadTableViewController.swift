@@ -38,23 +38,61 @@ class LoadTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.sectionHeaderTopPadding = 0
         
-        tableView.register(DistanceCell.nib, forCellReuseIdentifier: DistanceCell.identifier)
-        tableView.register(DateCell.nib, forCellReuseIdentifier: DateCell.identifier)
+        tableView.register(LoadDistanceCell.nib, forCellReuseIdentifier: LoadDistanceCell.identifier)
+        tableView.register(ItemDateCell.nib, forCellReuseIdentifier: ItemDateCell.identifier)
         tableView.register(LoadLocationCell.nib, forCellReuseIdentifier: LoadLocationCell.identifier)
         tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
     }
     
-    // View Model update
-    func updateDate(_ date: Date) {
-        for (index, item) in viewModel.items.enumerated() {
-            if let dateItem = item as? LoadViewModelDateItem {
-                dateItem.date = date
-                tableView.reloadSections(IndexSet(integer: index), with: .automatic)
+    // MARK: - View Model update
+    // Empty distance
+    private func updateEmptyDistance(distance: Int) {
+        for item in viewModel.items {
+            if let emptyDistanceItem = item as? LoadViewModelEmptyDistanceItem {
+                emptyDistanceItem.distance = distance
             }
         }
     }
     
-    func updateLocation(with locationInfo: String) {
+    // Trip distance
+    private func updateTripDistance(distance: Int) {
+        for item in viewModel.items {
+            if let tripDistanceItem = item as? LoadViewModelTripDistanceItem {
+                tripDistanceItem.distance = distance
+            }
+        }
+    }
+    
+    // Date
+    public func updateDate(_ date: Date) {
+        for (index, item) in viewModel.items.enumerated() {
+            if let dateItem = item as? LoadViewModelDateItem {
+                dateItem.date = date
+                tableView.reloadSections(IndexSet(integer: index), with: .none)
+            }
+        }
+    }
+    
+    // Start location
+    private func updateStartLocation(_ location: String) {
+        for item in viewModel.items {
+            if let startLocationItem = item as? LoadViewModelStartLocationItem {
+                startLocationItem.startLocation = location
+            }
+        }
+    }
+    
+    // End location
+    private func updateEndLocation(_ location: String) {
+        for item in viewModel.items {
+            if let endLocationItem = item as? LoadViewModelEndLocationItem {
+                endLocationItem.endLocation = location
+            }
+        }
+    }
+    
+    // Requested location
+    public func updateRequestedLocation(_ locationInfo: String) {
         switch requestedLocation {
         case .start:
             for (index, item) in viewModel.items.enumerated() {
@@ -88,25 +126,47 @@ class LoadTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = viewModel.items[indexPath.section]
         switch item.type {
-        case .tripDistance, .emptyDistance:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DistanceCell.identifier)
-                                                                        as! DistanceCell
+        case .emptyDistance, .tripDistance:
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadDistanceCell.identifier)
+                                                                        as! LoadDistanceCell
             cell.item = item
+            
+            cell.emptyDistanceDidChange = { [weak self] emptyDistance in
+                self?.updateEmptyDistance(distance: emptyDistance)
+            }
+            
+            cell.tripDistanceDidChange = { [weak self] tripDistance in
+                self?.updateTripDistance(distance: tripDistance)
+            }
             return cell
             
         case .date:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DateCell.identifier)
-                                                                        as! DateCell
-            cell.item = item
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemDateCell.identifier)
+                                                                        as! ItemDateCell
+            let dateItem = item as? LoadViewModelDateItem
+            cell.date = dateItem?.date
+            
+            cell.dateDidChange = { [weak self] newDate in
+                self?.updateDate(newDate)
+            }
             return cell
             
         case .startLocation, .endLocation:
             let cell = tableView.dequeueReusableCell(withIdentifier: LoadLocationCell.identifier)
                                                                     as! LoadLocationCell
             cell.item = item
-            cell.didTapGetCurrentLocation = { locationType in
-                self.requestedLocation = locationType
-                self.delegate?.didRequestCurrentLocation()
+            
+            cell.startLocationDidChange = { [weak self] location in
+                self?.updateStartLocation(location)
+            }
+            
+            cell.endLocationDidChange = { [weak self] location in
+                self?.updateEndLocation(location)
+            }
+            
+            cell.didTapGetCurrentLocation = { [weak self] locationType in
+                self?.requestedLocation = locationType
+                self?.delegate?.didRequestCurrentLocation()
             }
             return cell
             
@@ -125,7 +185,7 @@ class LoadTableViewController: UITableViewController {
         let item = viewModel.items[indexPath.section]
         switch item.type {
         case .tripDistance, .emptyDistance:
-            if let distanceCell = tableView.cellForRow(at: indexPath) as? DistanceCell {
+            if let distanceCell = tableView.cellForRow(at: indexPath) as? LoadDistanceCell {
                 distanceCell.activateTextField()
             }
             

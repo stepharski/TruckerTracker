@@ -19,7 +19,9 @@ class Load {
     var documents: [String]?
     
     
-    init(id: String, date: Date, amount: Double, distance: Int, emptyDistance: Int? = nil, startLocation: String, endLocation: String, documents: [String]? = nil) {
+    init(id: String, date: Date, amount: Double, distance: Int,
+         emptyDistance: Int? = nil, startLocation: String,
+         endLocation: String, documents: [String]? = nil) {
         self.id = id
         self.date = date
         self.amount = amount

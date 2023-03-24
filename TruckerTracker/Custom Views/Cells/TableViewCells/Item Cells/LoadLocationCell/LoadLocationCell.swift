@@ -17,6 +17,9 @@ class LoadLocationCell: UITableViewCell {
         didSet { locationTextField.text = location }
     }
     
+    var startLocationDidChange: ((String) -> Void)?
+    var endLocationDidChange: ((String) -> Void)?
+    
     var didTapGetCurrentLocation: ((LoadLocationType) -> Void)?
     
     var item: LoadViewModelItem? {
@@ -77,15 +80,15 @@ class LoadLocationCell: UITableViewCell {
         
     }
     
-    // Update VM
+    // LocationDidChange
     @objc func textFieldDidChange() {
         guard let location = locationTextField.text else { return }
         
-        if let startLocationItem = item as? LoadViewModelStartLocationItem {
-            startLocationItem.startLocation = location
+        if item is LoadViewModelStartLocationItem {
+            startLocationDidChange?(location)
             
-        } else if let endLocationItem = item as? LoadViewModelEndLocationItem {
-            endLocationItem.endLocation = location
+        } else if item is LoadViewModelEndLocationItem {
+            endLocationDidChange?(location)
         }
     }
 }

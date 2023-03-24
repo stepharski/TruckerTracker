@@ -35,6 +35,9 @@ struct SFSymbols {
     // TextField
     static let checkmark = UIImage(systemName: "checkmark")
     
+    // Expense
+    static let scribble = UIImage(systemName: "scribble.variable")
+    
     // Frequency
     static let repeatArrows = UIImage(systemName: "repeat")
     static let creditCard = UIImage(systemName: "creditcard")

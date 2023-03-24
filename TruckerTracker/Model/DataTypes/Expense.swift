@@ -19,7 +19,8 @@ class Expense {
     var documents: [String]?
     
     
-    init(id: String, date: Date, amount: Double, name: String, frequency: FrequencyType, note: String? = nil, documents: [String]? = nil) {
+    init(id: String, date: Date, amount: Double, name: String,
+         frequency: FrequencyType, note: String? = nil, documents: [String]? = nil) {
         self.id = id
         self.date = date
         self.amount = amount
@@ -27,5 +28,19 @@ class Expense {
         self.frequency = frequency
         self.note = note
         self.documents = documents
+    }
+    
+    static func getDefault() -> Expense {
+        let id: String = UUID().uuidString
+        let date: Date = Date()
+        let amount: Double = 0
+        let name: String = ""
+        let frequency: FrequencyType = .oneTime
+        
+        // Test purpose
+        let documents = ["Expense.pdf"]
+        
+        return Expense(id: id, date: date, amount: amount,
+                       name: name, frequency: frequency, documents: documents)
     }
 }
