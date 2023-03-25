@@ -61,34 +61,23 @@ class LoadLocationCell: UITableViewCell {
         locationTextField.becomeFirstResponder()
     }
     
-    func configureTextField() {
+    private func configureTextField() {
         locationTextField.delegate = self
         locationTextField.tintColor = .label
         locationTextField.returnKeyType = .done
-        
-        let doneButton = UIButton(type: .system)
-        doneButton.setImage(UIImage(named: "checkmark"), for: .normal)
-        doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
-        doneButton.sizeToFit()
-
-        locationTextField.inputAccessoryView = doneButton
-        
+        locationTextField.autocapitalizationType = .words
         locationTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
-    @objc func doneButtonTapped() {
-        
-    }
-    
     // LocationDidChange
-    @objc func textFieldDidChange() {
-        guard let location = locationTextField.text else { return }
+    @objc private func textFieldDidChange() {
+        guard let newLocation = locationTextField.text else { return }
         
         if item is LoadViewModelStartLocationItem {
-            startLocationDidChange?(location)
+            startLocationDidChange?(newLocation)
             
         } else if item is LoadViewModelEndLocationItem {
-            endLocationDidChange?(location)
+            endLocationDidChange?(newLocation)
         }
     }
 }

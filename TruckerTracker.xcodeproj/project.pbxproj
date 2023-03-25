@@ -13,7 +13,6 @@
 		5F2B800B295A02480044E004 /* ContactMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B800A295A02480044E004 /* ContactMenuVC.swift */; };
 		5F2B800F295A05DD0044E004 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B800D295A05DD0044E004 /* ContactCell.swift */; };
 		5F2B8010295A05DD0044E004 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B800E295A05DD0044E004 /* ContactCell.xib */; };
-		5F2B8013295A12A00044E004 /* TRTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8012295A12A00044E004 /* TRTextField.swift */; };
 		5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8014295A14D50044E004 /* UIViewController+Ext.swift */; };
 		5F2B8017295A95C10044E004 /* DataMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8016295A95C10044E004 /* DataMenuVC.swift */; };
 		5F2B801A295AA0900044E004 /* TRSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8019295AA0900044E004 /* TRSegmentedControl.swift */; };
@@ -38,6 +37,13 @@
 		5F39784D29CDD3AB007C3B65 /* ItemDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39784B29CDD3AB007C3B65 /* ItemDateCell.xib */; };
 		5F39785129CE20C7007C3B65 /* LoadDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784F29CE20C7007C3B65 /* LoadDistanceCell.swift */; };
 		5F39785229CE20C7007C3B65 /* LoadDistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39785029CE20C7007C3B65 /* LoadDistanceCell.xib */; };
+		5F39785629CE376B007C3B65 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39785429CE376B007C3B65 /* NameCell.swift */; };
+		5F39785729CE376B007C3B65 /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39785529CE376B007C3B65 /* NameCell.xib */; };
+		5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39785829CE3A43007C3B65 /* ContactTextField.swift */; };
+		5F39785F29CE6F79007C3B65 /* ExpenseFrequencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39785D29CE6F79007C3B65 /* ExpenseFrequencyCell.swift */; };
+		5F39786029CE6F79007C3B65 /* ExpenseFrequencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39785E29CE6F79007C3B65 /* ExpenseFrequencyCell.xib */; };
+		5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786229CE8105007C3B65 /* ExpenseNoteCell.swift */; };
+		5F39786529CE8105007C3B65 /* ExpenseNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39786329CE8105007C3B65 /* ExpenseNoteCell.xib */; };
 		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */; };
@@ -123,7 +129,6 @@
 		5F2B800A295A02480044E004 /* ContactMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuVC.swift; sourceTree = "<group>"; };
 		5F2B800D295A05DD0044E004 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		5F2B800E295A05DD0044E004 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
-		5F2B8012295A12A00044E004 /* TRTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextField.swift; sourceTree = "<group>"; };
 		5F2B8014295A14D50044E004 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		5F2B8016295A95C10044E004 /* DataMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMenuVC.swift; sourceTree = "<group>"; };
 		5F2B8019295AA0900044E004 /* TRSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRSegmentedControl.swift; sourceTree = "<group>"; };
@@ -148,6 +153,13 @@
 		5F39784B29CDD3AB007C3B65 /* ItemDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDateCell.xib; sourceTree = "<group>"; };
 		5F39784F29CE20C7007C3B65 /* LoadDistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDistanceCell.swift; sourceTree = "<group>"; };
 		5F39785029CE20C7007C3B65 /* LoadDistanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadDistanceCell.xib; sourceTree = "<group>"; };
+		5F39785429CE376B007C3B65 /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		5F39785529CE376B007C3B65 /* NameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameCell.xib; sourceTree = "<group>"; };
+		5F39785829CE3A43007C3B65 /* ContactTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTextField.swift; sourceTree = "<group>"; };
+		5F39785D29CE6F79007C3B65 /* ExpenseFrequencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFrequencyCell.swift; sourceTree = "<group>"; };
+		5F39785E29CE6F79007C3B65 /* ExpenseFrequencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseFrequencyCell.xib; sourceTree = "<group>"; };
+		5F39786229CE8105007C3B65 /* ExpenseNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseNoteCell.swift; sourceTree = "<group>"; };
+		5F39786329CE8105007C3B65 /* ExpenseNoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseNoteCell.xib; sourceTree = "<group>"; };
 		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsMenuVC.swift; sourceTree = "<group>"; };
@@ -271,8 +283,8 @@
 		5F2B8011295A127B0044E004 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
-				5F2B8012295A12A00044E004 /* TRTextField.swift */,
 				5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */,
+				5F39785829CE3A43007C3B65 /* ContactTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -329,31 +341,58 @@
 			path = ExportCategoriesCell;
 			sourceTree = "<group>";
 		};
-		5F39782729BBC532007C3B65 /* LoadLocationCell */ = {
+		5F39782729BBC532007C3B65 /* LocationCell */ = {
 			isa = PBXGroup;
 			children = (
 				5F39782829BBC573007C3B65 /* LoadLocationCell.swift */,
 				5F39782929BBC573007C3B65 /* LoadLocationCell.xib */,
 			);
-			path = LoadLocationCell;
+			path = LocationCell;
 			sourceTree = "<group>";
 		};
-		5F39784929CDD395007C3B65 /* ItemDateCell */ = {
+		5F39784929CDD395007C3B65 /* DateCell */ = {
 			isa = PBXGroup;
 			children = (
 				5F39784A29CDD3AB007C3B65 /* ItemDateCell.swift */,
 				5F39784B29CDD3AB007C3B65 /* ItemDateCell.xib */,
 			);
-			path = ItemDateCell;
+			path = DateCell;
 			sourceTree = "<group>";
 		};
-		5F39784E29CE20AD007C3B65 /* LoadDistanceCell */ = {
+		5F39784E29CE20AD007C3B65 /* DistanceCell */ = {
 			isa = PBXGroup;
 			children = (
 				5F39784F29CE20C7007C3B65 /* LoadDistanceCell.swift */,
 				5F39785029CE20C7007C3B65 /* LoadDistanceCell.xib */,
 			);
-			path = LoadDistanceCell;
+			path = DistanceCell;
+			sourceTree = "<group>";
+		};
+		5F39785329CE36CF007C3B65 /* NameCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F39785429CE376B007C3B65 /* NameCell.swift */,
+				5F39785529CE376B007C3B65 /* NameCell.xib */,
+			);
+			path = NameCell;
+			sourceTree = "<group>";
+		};
+		5F39785C29CE6F2D007C3B65 /* FrequencyCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F39785D29CE6F79007C3B65 /* ExpenseFrequencyCell.swift */,
+				5F39785E29CE6F79007C3B65 /* ExpenseFrequencyCell.xib */,
+			);
+			path = FrequencyCell;
+			sourceTree = "<group>";
+		};
+		5F39786129CE80DF007C3B65 /* NoteCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F39786229CE8105007C3B65 /* ExpenseNoteCell.swift */,
+				5F39786329CE8105007C3B65 /* ExpenseNoteCell.xib */,
+			);
+			path = NoteCell;
 			sourceTree = "<group>";
 		};
 		5F71DC7B29574A28003111AF /* ExpandFooterView */ = {
@@ -416,8 +455,8 @@
 			children = (
 				5F2B8022295F73550044E004 /* TRHeaderView */,
 				5F791003294B8F6500A73600 /* TRItemCell */,
+				5F39785329CE36CF007C3B65 /* NameCell */,
 				5FA602D5290730A300319E18 /* DocumentCell */,
-				5FA5519E297B1B0500D3596F /* PeriodSelector Cells */,
 				5F71DC7B29574A28003111AF /* ExpandFooterView */,
 			);
 			path = "General Cells";
@@ -641,6 +680,7 @@
 				5FA551D729A075DE00D3596F /* Home Cells */,
 				5FEC7BBA29B7D55E0091F8FB /* Item Cells */,
 				5F791019294D7AA300A73600 /* MenuDetailedCells */,
+				5FA5519E297B1B0500D3596F /* PeriodSelector Cells */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -835,9 +875,11 @@
 		5FEC7BBA29B7D55E0091F8FB /* Item Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5F39784E29CE20AD007C3B65 /* LoadDistanceCell */,
-				5F39784929CDD395007C3B65 /* ItemDateCell */,
-				5F39782729BBC532007C3B65 /* LoadLocationCell */,
+				5F39784929CDD395007C3B65 /* DateCell */,
+				5F39786129CE80DF007C3B65 /* NoteCell */,
+				5F39785C29CE6F2D007C3B65 /* FrequencyCell */,
+				5F39784E29CE20AD007C3B65 /* DistanceCell */,
+				5F39782729BBC532007C3B65 /* LocationCell */,
 			);
 			path = "Item Cells";
 			sourceTree = "<group>";
@@ -910,12 +952,15 @@
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5FA5519D297B1AA800D3596F /* PeriodTypeCell.xib in Resources */,
 				5FA551A3297B2B4900D3596F /* PeriodPickerCell.xib in Resources */,
+				5F39786529CE8105007C3B65 /* ExpenseNoteCell.xib in Resources */,
 				5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */,
+				5F39785729CE376B007C3B65 /* NameCell.xib in Resources */,
 				5F97FD7429233D3D00DEEC20 /* ProfileMenuCell.xib in Resources */,
 				5F97FD5F29201FB800DEEC20 /* ProfileHeaderView.xib in Resources */,
 				5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
 				5F2B8010295A05DD0044E004 /* ContactCell.xib in Resources */,
+				5F39786029CE6F79007C3B65 /* ExpenseFrequencyCell.xib in Resources */,
 				5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */,
 				5F2B802E295F8DAA0044E004 /* ExportPeriodCell.xib in Resources */,
 				5F791007294B8F7F00A73600 /* TRItemCell.xib in Resources */,
@@ -964,6 +1009,7 @@
 				5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */,
 				5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
+				5F39785629CE376B007C3B65 /* NameCell.swift in Sources */,
 				5FA602D8290730BE00319E18 /* DocumentCell.swift in Sources */,
 				5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */,
 				5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */,
@@ -974,6 +1020,7 @@
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
 				5FA551E029A0901900D3596F /* ExpenseCell.swift in Sources */,
 				5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */,
+				5F39785F29CE6F79007C3B65 /* ExpenseFrequencyCell.swift in Sources */,
 				5F39783F29CC8782007C3B65 /* ExpenseTableViewController.swift in Sources */,
 				5FA55198297B082A00D3596F /* String+Ext.swift in Sources */,
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
@@ -985,19 +1032,20 @@
 				5F97FD7329233D3D00DEEC20 /* ProfileMenuCell.swift in Sources */,
 				5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
+				5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */,
 				5F2B800B295A02480044E004 /* ContactMenuVC.swift in Sources */,
 				5FA551F229A1500B00D3596F /* Expense.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
 				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
 				5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */,
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
-				5F2B8013295A12A00044E004 /* TRTextField.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */,
 				5FA551EC29A1431900D3596F /* UnitsType.swift in Sources */,
 				5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */,
 				5FA551B129805C6500D3596F /* PeriodType.swift in Sources */,
 				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
+				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
 				5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */,

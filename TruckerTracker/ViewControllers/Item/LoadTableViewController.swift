@@ -14,8 +14,8 @@ enum LoadLocationType {
 
 // MARK: - LoadTableViewControllerDelegate
 protocol LoadTableViewControllerDelegate: AnyObject {
-    func didRequestCurrentLocation()
-    func didSelectDateCell(_ date: Date)
+    func loadDidRequestUserLocation()
+    func didSelectLoadDateCell(_ date: Date)
 }
 
 // MARK: - LoadTableViewController
@@ -25,12 +25,12 @@ class LoadTableViewController: UITableViewController {
     weak var delegate: LoadTableViewControllerDelegate?
     private var requestedLocation: LoadLocationType = .start
     
-    
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
+
     
     // Configuration
     private func configure() {
@@ -42,6 +42,10 @@ class LoadTableViewController: UITableViewController {
         tableView.register(ItemDateCell.nib, forCellReuseIdentifier: ItemDateCell.identifier)
         tableView.register(LoadLocationCell.nib, forCellReuseIdentifier: LoadLocationCell.identifier)
         tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
+    }
+    
+    func checkTableIsVisible() -> Bool {
+        return self.isViewLoaded && self.view.window != nil
     }
     
     // MARK: - View Model update
@@ -98,14 +102,14 @@ class LoadTableViewController: UITableViewController {
             for (index, item) in viewModel.items.enumerated() {
                 if let locationItem = item as? LoadViewModelStartLocationItem {
                     locationItem.startLocation = locationInfo
-                    tableView.reloadSections(IndexSet(integer: index), with: .automatic)
+                    tableView.reloadSections(IndexSet(integer: index), with: .none)
                 }
             }
         case .end:
             for (index, item) in viewModel.items.enumerated() {
                 if let locationItem = item as? LoadViewModelEndLocationItem {
                     locationItem.endLocation = locationInfo
-                    tableView.reloadSections(IndexSet(integer: index), with: .automatic)
+                    tableView.reloadSections(IndexSet(integer: index), with: .none)
                 }
             }
         }
@@ -166,7 +170,7 @@ class LoadTableViewController: UITableViewController {
             
             cell.didTapGetCurrentLocation = { [weak self] locationType in
                 self?.requestedLocation = locationType
-                self?.delegate?.didRequestCurrentLocation()
+                self?.delegate?.loadDidRequestUserLocation()
             }
             return cell
             
@@ -191,7 +195,7 @@ class LoadTableViewController: UITableViewController {
             
         case .date:
             if let dateItem = item as? LoadViewModelDateItem {
-                delegate?.didSelectDateCell(dateItem.date)
+                delegate?.didSelectLoadDateCell(dateItem.date)
             }
             
         case .startLocation, .endLocation:
@@ -220,7 +224,7 @@ class LoadTableViewController: UITableViewController {
         case .startLocation, .endLocation:
             return 65
         default:
-            return 50
+            return 55
         }
     }
     

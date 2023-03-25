@@ -44,7 +44,11 @@ class LoadDistanceCell: UITableViewCell {
     }
     
     // TextField
-    func configureTextField() {
+    func activateTextField() {
+        distanceTextField.becomeFirstResponder()
+    }
+    
+    private func configureTextField() {
         distanceTextField.isDecimalPad = false
         
         distanceTextField.amountDidChange = { [weak self] amount in
@@ -55,9 +59,5 @@ class LoadDistanceCell: UITableViewCell {
                 self?.emptyDistanceDidChange?(Int(amount))
             }
         }
-    }
-    
-    func activateTextField() {
-        distanceTextField.becomeFirstResponder()
     }
 }

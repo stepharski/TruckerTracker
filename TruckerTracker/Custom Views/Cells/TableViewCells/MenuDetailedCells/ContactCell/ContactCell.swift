@@ -11,7 +11,7 @@ class ContactCell: UITableViewCell {
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var subtitleLabel: UILabel!
-    @IBOutlet private var textField: TRTextField!
+    @IBOutlet private var textField: ContactTextField!
     
     var title: String? {
         didSet {

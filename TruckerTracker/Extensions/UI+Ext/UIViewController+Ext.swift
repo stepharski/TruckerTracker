@@ -9,6 +9,12 @@ import UIKit
 
 extension UIViewController {
     
+    // Visibility
+    var isViewVisible: Bool {
+        return self.isViewLoaded && self.view.window != nil
+    }
+    
+    // Keyboard
     func dismissKeyboardOnTouchOutside() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -19,7 +25,7 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-    
+    // Alert
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "Ok", style: .default, handler: nil)

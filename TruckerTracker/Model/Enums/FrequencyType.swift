@@ -7,8 +7,13 @@
 
 import UIKit
 
-enum FrequencyType: String {
-    case oneTime, day, week, month, year
+enum FrequencyType: String, CaseIterable {
+    case oneTime
+    case day, week, month, year
+    
+    var index: Int? {
+        return FrequencyType.allCases.firstIndex(of: self)
+    }
     
     var title: String {
         switch self {

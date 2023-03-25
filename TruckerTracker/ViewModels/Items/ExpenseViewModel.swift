@@ -44,6 +44,7 @@ class ExpenseViewModel {
 // Name
 class ExpenseViewModelNameItem: ExpenseViewModelItem {
     var type: ExpenseViewModelItemType = .name
+    var image: UIImage? = SFSymbols.scribble
     var name: String
     
     init(name: String) {

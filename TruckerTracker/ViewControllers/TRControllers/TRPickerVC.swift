@@ -7,23 +7,28 @@
 
 import UIKit
 
+// MARK: - TRPickerDelegate
 protocol TRPickerDelegate: AnyObject {
-    func didSelectItem(name: String)
+    func didSelectRow(_ row: Int)
 }
 
+// MARK: - TRPickerVC
 class TRPickerVC: UIViewController {
     
-    let pickerTintColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
+    let pickerTintColor: UIColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
+    let toolbarColor: UIColor = .systemGray5
+    let pickerBackgroundColor: UIColor = .systemGray6
     
-    var toolbar = UIToolbar()
-    let containerView = UIView()
-    let pickerView = UIPickerView()
+    private var toolbar = UIToolbar()
+    private let containerView = UIView()
+    private let pickerView = UIPickerView()
 
     var pickerItems: [String]!
     var selectedRow: Int!
     
     var delegate: TRPickerDelegate?
     
+    // Life cycle
     init(pickerItems: [String], selectedRow: Int) {
         super.init(nibName: nil, bundle: nil)
         self.pickerItems = pickerItems
@@ -58,7 +63,7 @@ class TRPickerVC: UIViewController {
     // Container View
     private func configureContainerView() {
         view.addSubview(containerView)
-        containerView.backgroundColor = .systemGray5
+        containerView.backgroundColor = pickerBackgroundColor
         
         let containerHeight: CGFloat = 300
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +83,7 @@ class TRPickerVC: UIViewController {
         toolbar.barStyle = .default
         toolbar.isTranslucent = false
         toolbar.tintColor = UIColor.label
-        toolbar.barTintColor = .systemGray5
+        toolbar.barTintColor = toolbarColor
         toolbar.isUserInteractionEnabled = true
 
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
@@ -95,7 +100,7 @@ class TRPickerVC: UIViewController {
 
     @objc private func doneButtonPressed(_ button: UIBarButtonItem) {
         selectedRow = pickerView.selectedRow(inComponent: 0)
-        delegate?.didSelectItem(name: pickerItems[selectedRow])
+        delegate?.didSelectRow(selectedRow)
         
         self.dismiss(animated: true)
     }

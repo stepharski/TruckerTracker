@@ -1,13 +1,13 @@
 //
-//  TRTextField.swift
+//  ContactTextField.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 12/26/22.
+//  Created by Stepan Kukharskyi on 3/24/23.
 //
 
 import UIKit
 
-class TRTextField: UITextField {
+class ContactTextField: UITextField {
 
     var textPadding = UIEdgeInsets(top: 8, left: 5,
                                    bottom: 8, right: 5)

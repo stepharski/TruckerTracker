@@ -34,8 +34,9 @@ class ItemViewController: UIViewController {
     
     var segmentedControl: TRSegmentedControl!
     let segments = ItemType.allCases
-    var selectedSegment: ItemType = .load {
-        didSet { updateSegmentVC() }
+    var selectedSegment: ItemType = .expense {
+        didSet { stopLocationUpdates()
+                    updateSegmentVC() }
     }
     
     var locationManager: CLLocationManager?
@@ -44,6 +45,7 @@ class ItemViewController: UIViewController {
     
     lazy var expenseTableVC: ExpenseTableViewController = {
         let tableController = ExpenseTableViewController()
+        tableController.delegate = self
         return tableController
     }()
     
@@ -71,6 +73,7 @@ class ItemViewController: UIViewController {
         configureActionButtons()
         dismissKeyboardOnTouchOutside()
     }
+    
     
     // Navigation Bar
     func configureNavBar() {
@@ -201,9 +204,20 @@ class ItemViewController: UIViewController {
         datePickerVC.pickerDate = date
         datePickerVC.modalPresentationStyle = .pageSheet
         datePickerVC.sheetPresentationController?.detents = [.medium()]
-        datePickerVC.sheetPresentationController?.largestUndimmedDetentIdentifier = .large
         
         present(datePickerVC, animated: true)
+    }
+    
+    func showFrequencyPickerVC(for frequency: FrequencyType) {
+        var pickerItems = [String]()
+        FrequencyType.allCases.forEach { pickerItems.append($0.title) }
+        
+        let pickerVC = TRPickerVC(pickerItems: pickerItems, selectedRow: frequency.index ?? 0)
+        pickerVC.delegate = self
+        pickerVC.modalPresentationStyle = .pageSheet
+        pickerVC.sheetPresentationController?.detents = [.medium()]
+
+        present(pickerVC, animated: true)
     }
     
     // Location Manager
@@ -224,14 +238,21 @@ class ItemViewController: UIViewController {
             if self.locationRequestState == .requestingLocation {
                 self.locationRequestState = .timedOut
                 self.activityIndicator.stopAnimating()
-                self.locationManager?.stopUpdatingLocation()
                 self.displayLocationError(with: TRError.timeoutError.rawValue)
             }
         }
     }
     
+    func stopLocationUpdates() {
+        // TODO: Handle case Load -> Fuel
+        if locationRequestState == .requestingLocation {
+            locationRequestState = .notStarted
+            activityIndicator.stopAnimating()
+        }
+    }
+    
     func displayLocationError(with message: String) {
-        if self.isViewLoaded && self.view.window != nil {
+        if self.isViewVisible {
             self.showAlert(title: "Location Error", message: message)
         }
     }
@@ -253,6 +274,9 @@ class ItemViewController: UIViewController {
     
     // Update VM location
     func updateViewModelLocation(with locationInfo: String) {
+        // TODO: - Handle case Load -> Fuel
+        guard self.isViewVisible else { return }
+        
         switch selectedSegment {
         case .expense:
             return
@@ -265,13 +289,24 @@ class ItemViewController: UIViewController {
 }
 
 
-// MARK: - LoadTableViewControllerDelegate
-extension ItemViewController: LoadTableViewControllerDelegate {
-    func didSelectDateCell(_ date: Date) {
+// MARK: - ExpenseTableViewControllerDelegate
+extension ItemViewController: ExpenseTableViewControllerDelegate {
+    func didSelectExpenseDateCell(_ date: Date) {
         showDatePickerVC(for: date)
     }
     
-    func didRequestCurrentLocation() {
+    func didSelectExpenseFrequencyCell(_ frequency: FrequencyType) {
+        showFrequencyPickerVC(for: frequency)
+    }
+}
+
+// MARK: - LoadTableViewControllerDelegate
+extension ItemViewController: LoadTableViewControllerDelegate {
+    func didSelectLoadDateCell(_ date: Date) {
+        showDatePickerVC(for: date)
+    }
+    
+    func loadDidRequestUserLocation() {
         activityIndicator.startAnimating()
         requestUserLocation()
     }
@@ -282,7 +317,7 @@ extension ItemViewController: TRDatePickerVCDelegeate {
     func didSelect(date: Date) {
         switch selectedSegment {
         case .expense:
-            return
+            expenseTableVC.updateDate(date)
         case .load:
             loadTableVC.updateDate(date)
         case .fuel:
@@ -291,6 +326,15 @@ extension ItemViewController: TRDatePickerVCDelegeate {
     }
 }
 
+// MARK: - TRPickerDelegate
+extension ItemViewController: TRPickerDelegate {
+    func didSelectRow(_ row: Int) {
+        guard FrequencyType.allCases.count > row, expenseTableVC.parent != nil else { return }
+        
+        let selectedFrequency = FrequencyType.allCases[row]
+        expenseTableVC.updateFrequency(selectedFrequency)
+    }
+}
 
 // MARK: - CLLocationManagerDelegate
 extension ItemViewController: CLLocationManagerDelegate {
@@ -346,7 +390,6 @@ extension ItemViewController: CLLocationManagerDelegate {
                 }
                 
                 activityIndicator.stopAnimating()
-                locationManager?.stopUpdatingLocation()
             }
         }
     }
@@ -357,7 +400,6 @@ extension ItemViewController: CLLocationManagerDelegate {
         
         locationRequestState = .error
         activityIndicator.stopAnimating()
-        locationManager?.stopUpdatingLocation()
         
         if let error = error as? CLError {
             switch error.code {

@@ -9,12 +9,14 @@ import UIKit
 
 extension UIView {
     
+    // Subview
     func addSubviews(_ views: UIView...) {
         for view in views {
             addSubview(view)
         }
     }
     
+    // Edges
     func pinToEdges(of superView: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -29,6 +31,7 @@ extension UIView {
         layer.cornerRadius = radius
     }
     
+    // Gradient
     func applyGradient(colors: [UIColor], locations: [NSNumber]?) {
         assert(colors.count >= 2, "There must be at least 2 colors")
         
@@ -45,6 +48,7 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
+    // Shadow
     func dropShadow(color: UIColor = .black, opacity: Float = 0.5,
                     size: CGSize = CGSize(width: 3.0, height: 4.0)) {
         layer.shadowRadius = 5.0

@@ -36,7 +36,7 @@ struct SFSymbols {
     static let checkmark = UIImage(systemName: "checkmark")
     
     // Expense
-    static let scribble = UIImage(systemName: "scribble.variable")
+    static let scribble = UIImage(systemName: "scribble")
     
     // Frequency
     static let repeatArrows = UIImage(systemName: "repeat")

@@ -158,5 +158,5 @@ extension ToolsMenuVC: UITableViewDataSource {
 
 // MARK: - TRPickerDelegate
 extension ToolsMenuVC: TRPickerDelegate {
-    func didSelectItem(name: String) { }
+    func didSelectRow(_ row: Int) { }
 }
