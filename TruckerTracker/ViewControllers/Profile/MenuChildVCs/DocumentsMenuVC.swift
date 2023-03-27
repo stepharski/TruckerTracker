@@ -102,9 +102,9 @@ class DocumentsMenuVC: UIViewController {
         
         tableView.rowHeight = 40
         tableView.backgroundColor = .clear
-        tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
+        tableView.register(AttachmentCell.nib, forCellReuseIdentifier: AttachmentCell.identifier)
         tableView.register(ExpandFooterView.self, forHeaderFooterViewReuseIdentifier: ExpandFooterView.identifier)
-        tableView.register(TRHeaderView.self, forHeaderFooterViewReuseIdentifier: TRHeaderView.identifier)
+        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionTitleHeaderView.identifier)
     }
     
     func configureAddDocButton() {
@@ -124,8 +124,8 @@ class DocumentsMenuVC: UIViewController {
 // MARK: - UITableViewDelegate
 extension DocumentsMenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TRHeaderView.identifier)
-                                                                                    as! TRHeaderView
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                    SectionTitleHeaderView.identifier) as! SectionTitleHeaderView
         headerView.title = sections[section].type.name
         headerView.titleColor = .fadedWhite
         
@@ -165,16 +165,16 @@ extension DocumentsMenuVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier,
-                                                 for: indexPath) as! DocumentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AttachmentCell.identifier,
+                                                 for: indexPath) as! AttachmentCell
         let randomInt = Int.random(in: 1...1000)
         switch sections[indexPath.section].type {
         case .rateConfirmations:
-            cell.documentName = "LoadConfirmation\(randomInt)"
+            cell.title = "LoadConfirmation\(randomInt)"
         case . fuelReceipts:
-            cell.documentName = "FuelReceipt\(randomInt)"
+            cell.title = "FuelReceipt\(randomInt)"
         case .others:
-            cell.documentName = "Document\(randomInt)"
+            cell.title = "Document\(randomInt)"
         }
         
         return cell

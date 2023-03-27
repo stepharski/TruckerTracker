@@ -12,7 +12,6 @@ class Fuel {
     let id: String
     let date: Date
     let amount: Double
-    let type: FuelType
     
     var dieselAmount: Int?
     var dieselGallons: Int?
@@ -26,11 +25,13 @@ class Fuel {
     var documents: [String]?
     
     
-    init(id: String, date: Date, amount: Double, type: FuelType, dieselAmount: Int? = nil, dieselGallons: Int? = nil, dieselPrice: Double? = nil, defAmount: Int? = nil, defGallons: Int? = nil, defPrice: Double? = nil, location: String? = nil, documents: [String]? = nil) {
+    init(id: String, date: Date, amount: Double,
+         dieselAmount: Int? = nil, dieselGallons: Int? = nil, dieselPrice: Double? = nil,
+         defAmount: Int? = nil, defGallons: Int? = nil, defPrice: Double? = nil,
+         location: String? = nil, documents: [String]? = nil) {
         self.id = id
         self.date = date
         self.amount = amount
-        self.type = type
         self.dieselAmount = dieselAmount
         self.dieselGallons = dieselGallons
         self.dieselPrice = dieselPrice
@@ -39,5 +40,13 @@ class Fuel {
         self.defPrice = defPrice
         self.location = location
         self.documents = documents
+    }
+    
+    static func getDefault() -> Fuel {
+        let id: String = UUID().uuidString
+        let date: Date = Date()
+        let amount: Double = 0
+        
+        return Fuel(id: id, date: date, amount: amount)
     }
 }

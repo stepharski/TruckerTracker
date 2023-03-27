@@ -186,7 +186,7 @@ class DataMenuVC: UIViewController {
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
         
-        tableView.register(TRHeaderView.self, forHeaderFooterViewReuseIdentifier: TRHeaderView.identifier)
+        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionTitleHeaderView.identifier)
         tableView.register(SyncInfoCell.nib, forCellReuseIdentifier: SyncInfoCell.identifier)
         tableView.register(ResetOptionCell.nib, forCellReuseIdentifier: ResetOptionCell.identifier)
         tableView.register(ExportPeriodCell.nib, forCellReuseIdentifier: ExportPeriodCell.identifier)
@@ -205,9 +205,8 @@ class DataMenuVC: UIViewController {
 // MARK: - UITableViewDelegate
 extension DataMenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TRHeaderView.identifier)
-                                                                                        as! TRHeaderView
-        
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                    SectionTitleHeaderView.identifier) as! SectionTitleHeaderView
         headerView.labelCenterYPadding = 1
         headerView.titleColor = .lightWhite
         headerView.title = sections[section].type.title

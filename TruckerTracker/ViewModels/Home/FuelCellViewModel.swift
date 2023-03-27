@@ -16,13 +16,14 @@ struct FuelCellViewModel {
     let fuelImage: UIImage?
     
     init(_ model: Fuel) {
-        title = model.type.title
+        // TODO: Update title based on type
+        title = "Diesel"
         date = model.date.convertToMonthDayFormat()
         
         let currencySymbol = UDManager.shared.getCurrencyType().symbol
         amount = "\(currencySymbol)\(model.amount.formattedWithSeparator())"
         
         location = model.location ?? "Nowhereville, NA"
-        fuelImage = model.type.symbol
+        fuelImage = SFSymbols.fuelPumpFill
     }
 }

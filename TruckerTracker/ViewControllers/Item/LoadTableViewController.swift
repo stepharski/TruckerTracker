@@ -38,10 +38,13 @@ class LoadTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.sectionHeaderTopPadding = 0
         
+        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionTitleHeaderView.identifier)
+        tableView.register(AddActionFooterView.self, forHeaderFooterViewReuseIdentifier: AddActionFooterView.identifier)
         tableView.register(LoadDistanceCell.nib, forCellReuseIdentifier: LoadDistanceCell.identifier)
         tableView.register(ItemDateCell.nib, forCellReuseIdentifier: ItemDateCell.identifier)
         tableView.register(LoadLocationCell.nib, forCellReuseIdentifier: LoadLocationCell.identifier)
-        tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
+        tableView.register(AttachmentCell.nib, forCellReuseIdentifier: AttachmentCell.identifier)
+        tableView.register(NoAttachmentCell.nib, forCellReuseIdentifier: NoAttachmentCell.identifier)
     }
     
     func checkTableIsVisible() -> Bool {
@@ -174,12 +177,16 @@ class LoadTableViewController: UITableViewController {
             }
             return cell
             
-        case .documents:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier)
-                                                                        as! DocumentCell
-            let documentItem = item as? LoadViewModelDocumentsItem
-            cell.documentName = documentItem?.documents[indexPath.row]
-            return cell
+        case .attachments:
+            if let attachmentItem = item as? LoadViewModelAttachmentsItem, attachmentItem.hasAttachments {
+                let cell = tableView.dequeueReusableCell(withIdentifier: AttachmentCell.identifier)
+                                                                            as! AttachmentCell
+                cell.title = attachmentItem.attachments[indexPath.row]
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: NoAttachmentCell.identifier) as! NoAttachmentCell
+                return cell
+            }
         }
     }
 
@@ -211,8 +218,8 @@ class LoadTableViewController: UITableViewController {
     // Header height
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch viewModel.items[section].type {
-        case .documents:
-            return 25
+        case .attachments:
+            return 30
         default:
             return 0
         }
@@ -220,9 +227,13 @@ class LoadTableViewController: UITableViewController {
     
     // Row height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch viewModel.items[indexPath.section].type {
+        let item = viewModel.items[indexPath.section]
+        switch item.type {
         case .startLocation, .endLocation:
             return 65
+        case .attachments:
+            guard let attachmentItem = item as? LoadViewModelAttachmentsItem else { return 0 }
+            return attachmentItem.hasAttachments ? 45 : 65
         default:
             return 55
         }
@@ -231,7 +242,7 @@ class LoadTableViewController: UITableViewController {
     // Footer height
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch viewModel.items[section].type {
-        case .documents:
+        case .attachments:
             return 45
         default:
             return 0
@@ -241,11 +252,11 @@ class LoadTableViewController: UITableViewController {
     // Header view
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch viewModel.items[section].type {
-        case .documents:
-            let headerView = TRHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 25))
+        case .attachments:
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionTitleHeaderView.identifier) as! SectionTitleHeaderView
             headerView.titleColor = .dark
             headerView.titleSize = .small
-            headerView.title = "Documents"
+            headerView.title = "Attachments"
             return headerView
         default:
             return nil
@@ -255,12 +266,12 @@ class LoadTableViewController: UITableViewController {
     // Footer view
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         switch viewModel.items[section].type {
-        case .documents:
-            let addDocFooter = AddDocumentView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
-            addDocFooter.didTapAddButton = {
-                //TODO: Add Document
+        case .attachments:
+            let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddActionFooterView.identifier) as! AddActionFooterView
+            footerView.didTapAddButton = {
+                //TODO: Add Attachment
             }
-            return addDocFooter
+            return footerView
         default:
             return nil
         }

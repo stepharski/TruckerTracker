@@ -16,18 +16,18 @@ class Expense {
     let frequency: FrequencyType
     
     var note: String?
-    var documents: [String]?
+    var attachments: [String]?
     
     
     init(id: String, date: Date, amount: Double, name: String,
-         frequency: FrequencyType, note: String? = nil, documents: [String]? = nil) {
+         frequency: FrequencyType, note: String? = nil, attachments: [String]? = nil) {
         self.id = id
         self.date = date
         self.amount = amount
         self.name = name
         self.frequency = frequency
         self.note = note
-        self.documents = documents
+        self.attachments = attachments
     }
     
     static func getDefault() -> Expense {
@@ -37,10 +37,7 @@ class Expense {
         let name: String = ""
         let frequency: FrequencyType = .oneTime
         
-        // Test purpose
-        let documents = ["Expense.pdf"]
-        
         return Expense(id: id, date: date, amount: amount,
-                       name: name, frequency: frequency, documents: documents)
+                       name: name, frequency: frequency)
     }
 }

@@ -34,7 +34,7 @@ class ItemViewController: UIViewController {
     
     var segmentedControl: TRSegmentedControl!
     let segments = ItemType.allCases
-    var selectedSegment: ItemType = .expense {
+    var selectedSegment: ItemType = .load {
         didSet { stopLocationUpdates()
                     updateSegmentVC() }
     }

@@ -68,8 +68,7 @@ class HomeViewController: UIViewController {
             
             fuelings.append(Fuel(id: "fuel\(i)",
                                  date: Date(),
-                                 amount: 540,
-                                 type: .both))
+                                 amount: 540))
         }
     }
     

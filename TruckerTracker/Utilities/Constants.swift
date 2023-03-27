@@ -32,6 +32,9 @@ struct SFSymbols {
     static let person = UIImage(systemName: "person")
     static let personFill = UIImage(systemName: "person.fill")
     
+    // TableView
+    static let plusRectangleFill = UIImage(systemName: "plus.rectangle.fill")
+    
     // TextField
     static let checkmark = UIImage(systemName: "checkmark")
     
@@ -45,7 +48,6 @@ struct SFSymbols {
     // Miles
     static let roadLanes = UIImage(systemName: "road.lanes")
     static let roadLanesEmpty = UIImage(systemName: "road.lane.arrowtriangle.2.inward")
-    static let plusRectOnRect = UIImage(systemName: "plus.rectangle.on.rectangle")
     
     // Fuel
     static let fuelPumpFill = UIImage(systemName: "fuelpump.fill")

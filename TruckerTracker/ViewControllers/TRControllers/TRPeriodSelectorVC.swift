@@ -168,7 +168,7 @@ class TRPeriodSelectorVC: UIViewController {
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
         
-        tableView.register(TRHeaderView.self, forHeaderFooterViewReuseIdentifier: TRHeaderView.identifier)
+        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionTitleHeaderView.identifier)
         tableView.register(PeriodPickerCell.nib, forCellReuseIdentifier: PeriodPickerCell.identifier)
         tableView.register(CustomPeriodCell.nib, forCellReuseIdentifier: CustomPeriodCell.identifier)
         tableView.register(PeriodTypeCell.nib, forCellReuseIdentifier: PeriodTypeCell.identifier)
@@ -355,9 +355,8 @@ extension TRPeriodSelectorVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TRHeaderView.identifier)
-                                                                                        as! TRHeaderView
-        
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                SectionTitleHeaderView.identifier) as! SectionTitleHeaderView
         headerView.labelCenterYPadding = -8
         headerView.titleColor = .dark
         headerView.titleSize = .large

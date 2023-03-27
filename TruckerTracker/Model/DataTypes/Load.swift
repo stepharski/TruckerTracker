@@ -16,12 +16,12 @@ class Load {
     var emptyDistance: Int?
     let startLocation: String
     let endLocation: String
-    var documents: [String]?
+    var attachments: [String]?
     
     
     init(id: String, date: Date, amount: Double, distance: Int,
          emptyDistance: Int? = nil, startLocation: String,
-         endLocation: String, documents: [String]? = nil) {
+         endLocation: String, attachments: [String]? = nil) {
         self.id = id
         self.date = date
         self.amount = amount
@@ -29,7 +29,7 @@ class Load {
         self.emptyDistance = emptyDistance
         self.startLocation = startLocation
         self.endLocation = endLocation
-        self.documents = documents
+        self.attachments = attachments
     }
     
     static func getDefault() -> Load {
@@ -41,9 +41,9 @@ class Load {
         let endLocation: String = ""
         
         // Test purpose
-        let documents = ["LoadConfiramtion1"]
+        let attachments = ["RateConfirmation2023-03-14"]
         
         return Load(id: id, date: date, amount: amount, distance: distance,
-                    startLocation: startLocation, endLocation: endLocation, documents: documents)
+                    startLocation: startLocation, endLocation: endLocation, attachments: attachments)
     }
 }

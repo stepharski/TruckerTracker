@@ -13,7 +13,7 @@ enum ExpenseViewModelItemType {
     case date
     case frequency
     case note
-    case documents
+    case attachments
 }
 
 // MARK: - ExpenseViewModelItem
@@ -37,7 +37,7 @@ class ExpenseViewModel {
         items.append(ExpenseViewModelDateItem(date: model.date))
         items.append(ExpenseViewModelFrequencyItem(frequency: model.frequency))
         items.append(ExpenseViewModelNoteItem(note: model.note ?? ""))
-        items.append(ExpenseViewModelDocumentsItem(documents: model.documents ?? []))
+        items.append(ExpenseViewModelAttachmentsItem(attachments: model.attachments ?? []))
     }
 }
 
@@ -56,10 +56,6 @@ class ExpenseViewModelNameItem: ExpenseViewModelItem {
 class ExpenseViewModelDateItem: ExpenseViewModelItem {
     var type: ExpenseViewModelItemType = .date
     var date: Date
-    
-    var title: String {
-        return Calendar.current.isDateInToday(date) ? "Today" : date.convertToMonthDayFormat()
-    }
     
     init(date: Date) {
         self.date = date
@@ -86,14 +82,14 @@ class ExpenseViewModelNoteItem: ExpenseViewModelItem {
     }
 }
 
-// Documents
-class ExpenseViewModelDocumentsItem: ExpenseViewModelItem {
-    var type: ExpenseViewModelItemType = .documents
-    var rowCount: Int { return documents.count }
-    var sectionTitle: String = "Documents"
-    var documents: [String]
+// Attachments
+class ExpenseViewModelAttachmentsItem: ExpenseViewModelItem {
+    var type: ExpenseViewModelItemType = .attachments
+    var rowCount: Int { return hasAttachments ? attachments.count : 1}
+    var hasAttachments: Bool { return attachments.count > 0 }
+    var attachments: [String]
     
-    init(documents: [String]) {
-        self.documents = documents
+    init(attachments: [String]) {
+        self.attachments = attachments
     }
 }

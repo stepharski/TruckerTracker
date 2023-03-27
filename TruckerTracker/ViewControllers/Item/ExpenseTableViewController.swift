@@ -32,11 +32,14 @@ class ExpenseTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.sectionHeaderTopPadding = 0
         
+        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionTitleHeaderView.identifier)
+        tableView.register(AddActionFooterView.self, forHeaderFooterViewReuseIdentifier: AddActionFooterView.identifier)
         tableView.register(NameCell.nib, forCellReuseIdentifier: NameCell.identifier)
         tableView.register(ItemDateCell.nib, forCellReuseIdentifier: ItemDateCell.identifier)
         tableView.register(ExpenseFrequencyCell.nib, forCellReuseIdentifier: ExpenseFrequencyCell.identifier)
         tableView.register(ExpenseNoteCell.nib, forCellReuseIdentifier: ExpenseNoteCell.identifier)
-        tableView.register(DocumentCell.nib, forCellReuseIdentifier: DocumentCell.identifier)
+        tableView.register(AttachmentCell.nib, forCellReuseIdentifier: AttachmentCell.identifier)
+        tableView.register(NoAttachmentCell.nib, forCellReuseIdentifier: NoAttachmentCell.identifier)
     }
     
     // MARK: - View Model update
@@ -135,12 +138,16 @@ class ExpenseTableViewController: UITableViewController {
             
             return cell
             
-        case .documents:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentCell.identifier)
-                                                                        as! DocumentCell
-            let documentItem = item as? ExpenseViewModelDocumentsItem
-            cell.documentName = documentItem?.documents[indexPath.row]
-            return cell
+        case .attachments:
+            if let attachmentItem = item as? ExpenseViewModelAttachmentsItem, attachmentItem.hasAttachments {
+                let cell = tableView.dequeueReusableCell(withIdentifier: AttachmentCell.identifier)
+                                                                            as! AttachmentCell
+                cell.title = attachmentItem.attachments[indexPath.row]
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: NoAttachmentCell.identifier) as! NoAttachmentCell
+                return cell
+            }
         }
     }
     
@@ -170,7 +177,7 @@ class ExpenseTableViewController: UITableViewController {
                 noteCell.activateTextField()
             }
             
-        case .documents:
+        case .attachments:
             return
         }
     }
@@ -178,8 +185,8 @@ class ExpenseTableViewController: UITableViewController {
     // Header height
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch viewModel.items[section].type {
-        case .documents:
-            return 25
+        case .attachments:
+            return 30
         default:
             return 0
         }
@@ -187,13 +194,20 @@ class ExpenseTableViewController: UITableViewController {
     
     // Row height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        let item = viewModel.items[indexPath.section]
+        switch item.type {
+        case .attachments:
+            guard let attachmentItem = item as? ExpenseViewModelAttachmentsItem else { return 0 }
+            return attachmentItem.hasAttachments ? 45 : 65
+        default:
+            return 55
+        }
     }
     
     // Footer height
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch viewModel.items[section].type {
-        case .documents:
+        case .attachments:
             return 45
         default:
             return 0
@@ -203,11 +217,11 @@ class ExpenseTableViewController: UITableViewController {
     // Header view
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch viewModel.items[section].type {
-        case .documents:
-            let headerView = TRHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 25))
+        case .attachments:
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionTitleHeaderView.identifier) as! SectionTitleHeaderView
             headerView.titleColor = .dark
             headerView.titleSize = .small
-            headerView.title = "Documents"
+            headerView.title = "Attachments"
             return headerView
         default:
             return nil
@@ -217,12 +231,12 @@ class ExpenseTableViewController: UITableViewController {
     // Footer view
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         switch viewModel.items[section].type {
-        case .documents:
-            let addDocFooter = AddDocumentView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
-            addDocFooter.didTapAddButton = {
-                //TODO: Add Document
+        case .attachments:
+            let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddActionFooterView.identifier) as! AddActionFooterView
+            footerView.didTapAddButton = {
+                //TODO: Add Attachment
             }
-            return addDocFooter
+            return footerView
         default:
             return nil
         }

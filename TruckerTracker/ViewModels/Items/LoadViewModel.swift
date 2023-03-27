@@ -14,7 +14,7 @@ enum LoadViewModelItemType {
     case date
     case startLocation
     case endLocation
-    case documents
+    case attachments
 }
 
 // MARK: - LoadViewModelItem
@@ -39,7 +39,7 @@ class LoadViewModel {
         items.append(LoadViewModelDateItem(date: model.date))
         items.append(LoadViewModelStartLocationItem(startLocation: model.startLocation))
         items.append(LoadViewModelEndLocationItem(endLocation: model.endLocation))
-        items.append(LoadViewModelDocumentsItem(documents: model.documents ?? []))
+        items.append(LoadViewModelAttachmentsItem(attachments: model.attachments ?? []))
     }
 }
 
@@ -80,10 +80,6 @@ class LoadViewModelDateItem: LoadViewModelItem {
     var type: LoadViewModelItemType = .date
     var date: Date
     
-    var title: String {
-        return Calendar.current.isDateInToday(date) ? "Today" : date.convertToMonthDayFormat()
-    }
-    
     init(date: Date) {
         self.date = date
     }
@@ -111,14 +107,14 @@ class LoadViewModelEndLocationItem: LoadViewModelItem {
     }
 }
 
-// Documents
-class LoadViewModelDocumentsItem: LoadViewModelItem {
-    var type: LoadViewModelItemType = .documents
-    var rowCount: Int { return documents.count }
-    var sectionTitle: String = "Documents"
-    var documents: [String]
+// Attachments
+class LoadViewModelAttachmentsItem: LoadViewModelItem {
+    var type: LoadViewModelItemType = .attachments
+    var rowCount: Int { return hasAttachments ? attachments.count : 1 }
+    var hasAttachments: Bool { return attachments.count > 0 }
+    var attachments: [String]
     
-    init(documents: [String]) {
-        self.documents = documents
+    init(attachments: [String]) {
+        self.attachments = attachments
     }
 }

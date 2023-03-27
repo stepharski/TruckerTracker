@@ -1,8 +1,8 @@
 //
-//  TRHeaderView.swift
+//  SectionTitleHeaderView.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 12/30/22.
+//  Created by Stepan Kukharskyi on 3/27/23.
 //
 
 import UIKit
@@ -38,8 +38,8 @@ enum HeaderTitleFontSizeType {
     }
 }
 
-//MARK: - TRHeaderView
-class TRHeaderView: UITableViewHeaderFooterView {
+// MARK: - SectionTitleHeaderView
+class SectionTitleHeaderView: UITableViewHeaderFooterView {
 
     static var identifier: String {
         return String(describing: self)
@@ -48,27 +48,19 @@ class TRHeaderView: UITableViewHeaderFooterView {
     private var titleLabel = UILabel()
     
     var title: String = "" {
-        didSet {
-            titleLabel.text = title
-        }
+        didSet { titleLabel.text = title }
     }
     
     var titleColor: HeaderTitleColorType! {
-        didSet {
-            titleLabel.textColor = titleColor.color
-        }
+        didSet { titleLabel.textColor = titleColor.color }
     }
     
     var titleSize: HeaderTitleFontSizeType! {
-        didSet {
-            titleLabel.font = UIFont.systemFont(ofSize: titleSize.size, weight: .medium)
-        }
+        didSet { titleLabel.font = UIFont.systemFont(ofSize: titleSize.size, weight: .medium) }
     }
     
-    var labelCenterYPadding: CGFloat = 10 {
-        didSet {
-            updateUI()
-        }
+    var labelCenterYPadding: CGFloat = 5 {
+        didSet { updateUI() }
     }
 
     
@@ -84,13 +76,13 @@ class TRHeaderView: UITableViewHeaderFooterView {
     }
     
     
-    func configureTitleLabel() {
+    private func configureTitleLabel() {
         titleSize = .regular
         titleColor = .lightWhite
         titleLabel.textAlignment = .left
     }
     
-    func updateUI() {
+    private func updateUI() {
         titleLabel.removeFromSuperview()
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
