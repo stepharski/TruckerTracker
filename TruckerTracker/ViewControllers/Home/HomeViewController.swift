@@ -58,14 +58,14 @@ class HomeViewController: UIViewController {
                                     amount: 380,
                                     name: "Trailer rent",
                                     frequency: .week))
-            
+
             loads.append(Load(id: "load\(i)",
                               date: Date(),
                               amount: 3200,
                               distance: 964,
                               startLocation: "Chicago, IL",
                               endLocation: "Atlanta, GA"))
-            
+
             fuelings.append(Fuel(id: "fuel\(i)",
                                  date: Date(),
                                 dieselAmount: 540))
@@ -202,6 +202,23 @@ class HomeViewController: UIViewController {
         present(periodSelectorVC, animated: true)
     }
     
+    func showItemDetailedVC(for row: Int) {
+        let itemVC = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.itemViewController) as! ItemViewController
+        let itemNavController = UINavigationController(rootViewController: itemVC)
+        
+        switch selectedSegment {
+        case .expense:
+            itemVC.expense = expenses[row]
+            
+        case .load:
+            itemVC.load = loads[row]
+
+        case .fuel:
+            itemVC.fueling = fuelings[row]
+        }
+        
+        self.present(itemNavController, animated: true)
+    }
     
     // TableView
     func configureTableView() {
@@ -214,8 +231,7 @@ class HomeViewController: UIViewController {
     }
     
     func updateTableView(animateLeft: Bool) {
-        tableView.reloadSections(IndexSet(integer: 0),
-                                 with: animateLeft ? .left : .right)
+        tableView.reloadSections(IndexSet(integer: 0), with: animateLeft ? .left : .right)
     }
 }
 
@@ -228,7 +244,6 @@ extension HomeViewController: PeriodDisplayDelegate {
     
     func displayDidUpdate(period: Period) {
         //TODO: Fetch data for new period
-        print("HomeFetchDataDisplay")
     }
 }
 
@@ -236,15 +251,62 @@ extension HomeViewController: PeriodDisplayDelegate {
 extension HomeViewController: PeriodSelectorDelegate {
     func selectorDidUpdate(period: Period) {
         periodDisplayVC.period = period
-        
         //TODO: Fetch data for new period
-        print("HomeFetchDataSelector")
     }
 }
 
+// MARK: - UITableViewDataSource
+extension HomeViewController: UITableViewDataSource {
+    // Number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var numberOfRows = 0
+        
+        switch selectedSegment {
+        case .expense:
+            numberOfRows = expenses.count
+        case .load:
+            numberOfRows = loads.count
+        case .fuel:
+            numberOfRows = fuelings.count
+        }
+        
+        if numberOfRows == 0 {
+            tableView.setEmptyView(title: "No \(selectedSegment.pluralTitle) found.",
+                                   message: "Please, tap the '+' button to add a new \(selectedSegment.title).")
+        } else {
+            tableView.restore()
+        }
+        
+        return numberOfRows
+    }
+    
+    // Cell for row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch selectedSegment {
+        case .expense:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseCell.identifier) as! ExpenseCell
+            let viewModel = ExpenseCellViewModel(expenses[indexPath.row])
+            cell.configure(with: viewModel)
+            return cell
+            
+        case .load:
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier) as! LoadCell
+            let viewModel = LoadCellViewModel(loads[indexPath.row])
+            cell.configure(with: viewModel)
+            return cell
+            
+        case .fuel:
+            let cell = tableView.dequeueReusableCell(withIdentifier: FuelCell.identifier) as! FuelCell
+            let viewModel = FuelCellViewModel(fuelings[indexPath.row])
+            cell.configure(with: viewModel)
+            return cell
+        }
+    }
+}
 
 // MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
+    // Height for row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedSegment {
         case .expense, .fuel:
@@ -253,56 +315,23 @@ extension HomeViewController: UITableViewDelegate {
             return 95 + 15
         }
     }
-}
-
-// MARK: - UITableViewDataSource
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedSegment {
-        case .expense:
-            return expenses.count
-        case .load:
-            return loads.count
-        case .fuel:
-            return fuelings.count
+    
+    // Selection
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        // Shrinking animation
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         }
+        return indexPath
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch selectedSegment {
-        case .expense:
-            guard !expenses.isEmpty else {
-                // TODO: Show Empty State View
-                return UITableViewCell() }
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseCell.identifier)
-                                                                        as! ExpenseCell
-            let viewModel = ExpenseCellViewModel(expenses[indexPath.row])
-            cell.configure(with: viewModel)
-            return cell
-            
-        case .load:
-            guard !loads.isEmpty else {
-                // TODO: Show Empty State View
-                return UITableViewCell() }
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier)
-                                                                        as! LoadCell
-            let viewModel = LoadCellViewModel(loads[indexPath.row])
-            cell.configure(with: viewModel)
-            return cell
-            
-        case .fuel:
-            guard !fuelings.isEmpty else {
-                // TODO: Show Empty State View
-                return UITableViewCell() }
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: FuelCell.identifier)
-                                                                        as! FuelCell
-            let viewModel = FuelCellViewModel(fuelings[indexPath.row])
-            cell.configure(with: viewModel)
-            return cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            cell?.transform = CGAffineTransform.identity
+            self?.showItemDetailedVC(for: indexPath.row)
         }
     }
 }

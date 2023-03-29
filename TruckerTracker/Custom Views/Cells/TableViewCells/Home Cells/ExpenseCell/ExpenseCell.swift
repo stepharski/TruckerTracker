@@ -19,8 +19,10 @@ class ExpenseCell: UITableViewCell {
     // Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .clear
+        
         configureUI()
+        selectionStyle = .none
+        backgroundColor = .clear
     }
 
     override func layoutSubviews() {

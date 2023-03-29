@@ -34,6 +34,7 @@ struct SFSymbols {
     
     // TableView
     static let plusRectangleFill = UIImage(systemName: "plus.rectangle.fill")
+    static let docTextMagGlass = UIImage(systemName: "doc.text.magnifyingglass")
     
     // TextField
     static let checkmark = UIImage(systemName: "checkmark")

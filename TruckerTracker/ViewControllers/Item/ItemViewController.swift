@@ -10,40 +10,67 @@ import CoreLocation
 
 class ItemViewController: UIViewController {
 
-    @IBOutlet var amountTextField: AmountTextField!
-    @IBOutlet var segmentedControlView: UIView!
+    @IBOutlet private var amountTextField: AmountTextField!
+    @IBOutlet private var segmentedControlView: UIView!
     
-    @IBOutlet var tableContainerView: UIView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var tableContainerView: UIView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet var saveButton: UIButton!
-    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet private var saveButton: UIButton!
+    @IBOutlet private var deleteButton: UIButton!
     
-    var amount: Double = 0
-    var isNewItem: Bool = true
+    private var amount: Double = 0
+    private var isNewItem: Bool = true
     
-    var segmentedControl: TRSegmentedControl!
-    let segments = ItemType.allCases
+    private var locationManager = LocationManager.shared
+    
+    private var segmentedControl: TRSegmentedControl!
+    private let segments = ItemType.allCases
     var selectedSegment: ItemType = .load {
         didSet { stopLocationUpdates()
                     updateSegmentVC() }
     }
     
-    var locationManager = LocationManager.shared
+    var expense: Expense? {
+        didSet {
+            if let expense = expense {
+                amount = expense.amount
+                expenseTableVC.viewModel = ExpenseViewModel(expense)
+            }
+        }
+    }
     
-    lazy var expenseTableVC: ExpenseTableViewController = {
+    var load: Load? {
+        didSet {
+            if let load = load {
+                amount = load.amount
+                loadTableVC.viewModel = LoadViewModel(load)
+            }
+        }
+    }
+    
+    var fueling: Fuel? {
+        didSet {
+            if let fueling = fueling {
+                amount = fueling.totalAmount
+                fuelTableVC.viewModel = FuelViewModel(fueling)
+            }
+        }
+    }
+    
+    lazy private var expenseTableVC: ExpenseTableViewController = {
         let tableController = ExpenseTableViewController()
         tableController.delegate = self
         return tableController
     }()
     
-    lazy var loadTableVC: LoadTableViewController = {
+    lazy private var loadTableVC: LoadTableViewController = {
         let tableController = LoadTableViewController()
         tableController.delegate = self
         return tableController
     }()
     
-    lazy var fuelTableVC: FuelTableViewController = {
+    lazy private var fuelTableVC: FuelTableViewController = {
         let tableController = FuelTableViewController()
         tableController.delegate = self
         return tableController
@@ -54,12 +81,14 @@ class ItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkItemModels()
+        
         configureNavBar()
         configureTextField()
-        updateSegmentVC()
-        addSwipeGestures()
-        configureSegmentedControl()
         configureActionButtons()
+        configureSegmentedControl()
+
+        addSwipeGestures()
         dismissKeyboardOnTouchOutside()
     }
     
@@ -88,6 +117,7 @@ class ItemViewController: UIViewController {
     // Amount TextField
     func configureTextField() {
         amountTextField.containsCurrency = true
+        amountTextField.amount = amount.formattedString
         amountTextField.amountDidChange = { [weak self] amount in
             self?.amount = amount
             
@@ -142,6 +172,25 @@ class ItemViewController: UIViewController {
             if fuelTableVC.totalAmount != amount {
                 fuelTableVC.updateFuelAmounts(with: amount)
             }
+        }
+    }
+    
+    // Models
+    func checkItemModels() {
+        isNewItem = false
+        if expense != nil {
+            selectedSegment = .expense
+            
+        } else if load != nil {
+            selectedSegment = .load
+            
+        } else if fueling != nil {
+            selectedSegment = .fuel
+            
+        } else {
+            isNewItem = true
+            load = Load.getEmpty()
+            selectedSegment = .load
         }
     }
     
@@ -244,6 +293,7 @@ class ItemViewController: UIViewController {
     }
     
     func stopLocationUpdates() {
+        guard locationManager.locationRequestState == .requestingLocation else { return }
         locationManager.locationRequestState = .canceled
         locationManager.didFailToReceiveLocation = nil
         locationManager.didReceiveLocationInfo = nil

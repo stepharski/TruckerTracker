@@ -20,11 +20,11 @@ class AmountTextField: UITextField {
         didSet { updateTextField(with: amount) }
     }
     
-    var amountAttrFontSize: CGFloat = 36 {
+    var amountAttrFontSize: CGFloat = 32 {
         didSet { updateTextField(with: amount) }
     }
     
-    var currencyAttrFontSize: CGFloat = 24 {
+    var currencyAttrFontSize: CGFloat = 21 {
         didSet { updateTextField(with: amount) }
     }
     

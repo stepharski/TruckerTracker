@@ -45,7 +45,7 @@
                 <outlet property="attachmentImageView" destination="eCe-DY-INW" id="xUQ-Ey-Ep8"/>
                 <outlet property="attachmentTitle" destination="H9q-BE-z3D" id="hwF-rX-qCM"/>
             </connections>
-            <point key="canvasLocation" x="64" y="20"/>
+            <point key="canvasLocation" x="-176" y="13"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -68,7 +68,6 @@ class TRTabBarController: UITabBarController {
         let itemVC = storyboard?.instantiateViewController(withIdentifier:
                         StoryboardIdentifiers.itemViewController) as! ItemViewController
         let itemNavController = UINavigationController(rootViewController: itemVC)
-        itemNavController.modalPresentationCapturesStatusBarAppearance = true
 
         self.present(itemNavController, animated: true)
     }

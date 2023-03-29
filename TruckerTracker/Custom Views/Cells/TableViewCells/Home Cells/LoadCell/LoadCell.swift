@@ -18,12 +18,15 @@ class LoadCell: UITableViewCell {
     
     @IBOutlet private var startLocationView: UIView!
     @IBOutlet private var endLocationView: UIView!
+
     
     // Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .clear
+        
         configureUI()
+        selectionStyle = .none
+        backgroundColor = .clear
     }
     
     override func layoutSubviews() {

@@ -55,6 +55,8 @@
 		5F39788129D37F6F007C3B65 /* FuelEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39787F29D37F6F007C3B65 /* FuelEntryCell.xib */; };
 		5F39788329D3E24C007C3B65 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788229D3E24C007C3B65 /* Double+Ext.swift */; };
 		5F39788529D481E6007C3B65 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788429D481E6007C3B65 /* LocationManager.swift */; };
+		5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */; };
+		5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */; };
 		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */; };
@@ -179,6 +181,8 @@
 		5F39787F29D37F6F007C3B65 /* FuelEntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelEntryCell.xib; sourceTree = "<group>"; };
 		5F39788229D3E24C007C3B65 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		5F39788429D481E6007C3B65 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsMenuVC.swift; sourceTree = "<group>"; };
@@ -448,6 +452,14 @@
 			path = FuelEntryCell;
 			sourceTree = "<group>";
 		};
+		5F39788829D4BEC2007C3B65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5F71DC7B29574A28003111AF /* ExpandFooterView */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +702,7 @@
 			children = (
 				5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */,
 				5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */,
+				5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */,
 				5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */,
 				5F2B8014295A14D50044E004 /* UIViewController+Ext.swift */,
 				5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */,
@@ -812,6 +825,7 @@
 		5FB92F3228B922080037A4AD /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F39788829D4BEC2007C3B65 /* Views */,
 				5FB92F4128C970FD0037A4AD /* TabBar */,
 				5F2B8018295AA0610044E004 /* SegmentedControl */,
 				5F2B8011295A127B0044E004 /* TextFields */,
@@ -1091,6 +1105,7 @@
 				5F39787629D23790007C3B65 /* NoAttachmentCell.swift in Sources */,
 				5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */,
 				5FA551B129805C6500D3596F /* PeriodType.swift in Sources */,
+				5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */,
 				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
 				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
 				5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */,
@@ -1105,6 +1120,7 @@
 				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,
 				5FA55194297AE44900D3596F /* TRPeriodSelectorVC.swift in Sources */,
 				5FA551F029A1493C00D3596F /* Load.swift in Sources */,
+				5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */,
 				5FA551AC2980371600D3596F /* Calendar+Ext.swift in Sources */,
 				5FA551A2297B2B4900D3596F /* PeriodPickerCell.swift in Sources */,
 				5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */,
