@@ -32,9 +32,14 @@ class FuelViewModel {
     var items = [FuelViewModelItem]()
     
     init(_ fuel: Fuel?) {
-        let model = fuel ?? Fuel.getDefault()
+        let model = fuel ?? Fuel.getEmpty()
         
         items.append(FuelViewModelLocationItem(location: model.location ?? ""))
+        items.append(FuelViewModelDateItem(date: model.date))
+        items.append(FuelViewModelDieselItem(amount: model.dieselAmount))
+        items.append(FuelViewModelDefItem(amount: model.defAmount ?? 0))
+        items.append(FuelViewModelReeferItem(amount: model.reeferAmount ?? 0))
+        items.append(FuelViewModelAttachmentsItem(attachments: model.attachments ?? []))
     }
 }
 
@@ -61,47 +66,44 @@ class FuelViewModelDateItem: FuelViewModelItem {
 // Diesel
 class FuelViewModelDieselItem: FuelViewModelItem {
     var type: FuelViewModelItemType = .diesel
-    var gallons: Double {  return amount / price }
+    var image: UIImage? = SFSymbols.fuelPumpFill
+    var title: String = "Diesel"
     var amount: Double
-    var price: Double
     
-    init(amount: Double, price: Double) {
+    init(amount: Double) {
         self.amount = amount
-        self.price = price
     }
 }
 
 // Def
-class FuelViewModelDefItemType: FuelViewModelItem {
+class FuelViewModelDefItem: FuelViewModelItem {
     var type: FuelViewModelItemType = .def
-    var gallons: Double {  return amount / price }
+    var image: UIImage? = SFSymbols.dropFill
+    var title: String = "DEF"
     var amount: Double
-    var price: Double
     
-    init(amount: Double, price: Double) {
+    init(amount: Double) {
         self.amount = amount
-        self.price = price
     }
 }
 
 // Reefer
-class FuelViewModelReeferItemType: FuelViewModelItem {
+class FuelViewModelReeferItem: FuelViewModelItem {
     var type: FuelViewModelItemType = .reefer
-    var gallons: Double {  return amount / price }
+    var image: UIImage? = SFSymbols.snowflake
+    var title: String = "Reefer"
     var amount: Double
-    var price: Double
     
-    init(amount: Double, price: Double) {
+    init(amount: Double) {
         self.amount = amount
-        self.price = price
     }
 }
 
 // Attachments
-class FuelViewModelAttachemntsItemType: FuelViewModelItem {
+class FuelViewModelAttachmentsItem: FuelViewModelItem {
     var type: FuelViewModelItemType = .attachments
-    var rowCount: Int { return attachments.count }
-    var sectionTitle: String = "Attachments"
+    var rowCount: Int { return hasAttachments ? attachments.count : 1}
+    var hasAttachments: Bool { return attachments.count > 0 }
     var attachments: [String]
     
     init(attachments: [String]) {

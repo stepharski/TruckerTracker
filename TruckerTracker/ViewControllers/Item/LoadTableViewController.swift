@@ -21,7 +21,7 @@ protocol LoadTableViewControllerDelegate: AnyObject {
 // MARK: - LoadTableViewController
 class LoadTableViewController: UITableViewController {
     
-    var viewModel = LoadViewModel(Load.getDefault())
+    var viewModel = LoadViewModel(Load.getEmpty())
     weak var delegate: LoadTableViewControllerDelegate?
     private var requestedLocation: LoadLocationType = .start
     

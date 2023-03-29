@@ -52,12 +52,7 @@ struct SFSymbols {
     // Fuel
     static let fuelPumpFill = UIImage(systemName: "fuelpump.fill")
     static let dropFill = UIImage(systemName: "drop.fill")
-    
-    // Categories
-    static let dollarCircle = UIImage(systemName: "dollarsign.circle")
-    static let minusCircle = UIImage(systemName: "minus.circle")
-    static let speedometer = UIImage(systemName: "speedometer")
-    static let fuelPumpCircle = UIImage(systemName: "fuelpump.circle")
+    static let snowflake = UIImage(systemName: "snowflake")
     
     // Profile
     static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")

@@ -21,8 +21,8 @@
                         <rect key="frame" x="10" y="12.33333333333333" width="20" height="19.666666666666671"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <constraints>
+                            <constraint firstAttribute="width" secondItem="eCe-DY-INW" secondAttribute="height" multiplier="1:1" id="Z5P-FX-HPc"/>
                             <constraint firstAttribute="height" constant="20" id="hEU-oz-NeT"/>
-                            <constraint firstAttribute="width" constant="20" id="tYT-cr-pEl"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attachment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9q-BE-z3D">

@@ -16,7 +16,7 @@ protocol ExpenseTableViewControllerDelegate: AnyObject {
 // MARK: - ExpenseTableViewController
 class ExpenseTableViewController: UITableViewController {
     
-    var viewModel = ExpenseViewModel(Expense.getDefault())
+    var viewModel = ExpenseViewModel(Expense.getEmpty())
     weak var delegate: ExpenseTableViewControllerDelegate?
     
     
@@ -53,7 +53,7 @@ class ExpenseTableViewController: UITableViewController {
     }
     
     // Date
-    func updateDate(_ date: Date) {
+    public func updateDate(_ date: Date) {
         for (index, item) in viewModel.items.enumerated() {
             if let dateItem = item as? ExpenseViewModelDateItem {
                 dateItem.date = date
@@ -63,7 +63,7 @@ class ExpenseTableViewController: UITableViewController {
     }
     
     // Frequency
-    func updateFrequency(_ frequency: FrequencyType) {
+    public func updateFrequency(_ frequency: FrequencyType) {
         for (index, item) in viewModel.items.enumerated() {
             if let frequencyItem = item as? ExpenseViewModelFrequencyItem {
                 frequencyItem.frequency = frequency
@@ -73,7 +73,7 @@ class ExpenseTableViewController: UITableViewController {
     }
     
     // Note
-    func updateNote(_ note: String) {
+    private func updateNote(_ note: String) {
         for item in viewModel.items {
             if let noteItem = item as? ExpenseViewModelNoteItem {
                 noteItem.note = note

@@ -30,7 +30,7 @@ class Expense {
         self.attachments = attachments
     }
     
-    static func getDefault() -> Expense {
+    static func getEmpty() -> Expense {
         let id: String = UUID().uuidString
         let date: Date = Date()
         let amount: Double = 0

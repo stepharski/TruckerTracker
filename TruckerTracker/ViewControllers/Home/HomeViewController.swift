@@ -68,7 +68,7 @@ class HomeViewController: UIViewController {
             
             fuelings.append(Fuel(id: "fuel\(i)",
                                  date: Date(),
-                                 amount: 540))
+                                dieselAmount: 540))
         }
     }
     
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController {
         
         expenses.forEach { expensesAmount += $0.amount }
         loads.forEach { loadsAmount += $0.amount }
-        fuelings.forEach { fuelingsAmount += $0.amount }
+        fuelings.forEach { fuelingsAmount += $0.totalAmount }
         
         return ["\(expensesAmount.formattedWithSeparator())",
                 "\(loadsAmount.formattedWithSeparator())",

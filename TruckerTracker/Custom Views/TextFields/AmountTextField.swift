@@ -9,13 +9,24 @@ import UIKit
 
 class AmountTextField: UITextField {
 
-    private var amount = "0"
+    var maxDigits: Int = 10
     private var formatter = NumberFormatter()
     
-    var maxDigits: Int = 10
+    var amount = "0" {
+        didSet { updateTextField(with: amount) }
+    }
     
-    var amountAttrFontSize: CGFloat = 36
-    var currencyAttrFontSize: CGFloat = 24
+    var fontWeight: UIFont.Weight = .semibold {
+        didSet { updateTextField(with: amount) }
+    }
+    
+    var amountAttrFontSize: CGFloat = 36 {
+        didSet { updateTextField(with: amount) }
+    }
+    
+    var currencyAttrFontSize: CGFloat = 24 {
+        didSet { updateTextField(with: amount) }
+    }
     
     var containsCurrency: Bool = false {
         didSet { updateTextField(with: amount) }
@@ -140,9 +151,9 @@ class AmountTextField: UITextField {
     // Format entry
     func addCurrency(to amount: String) -> NSMutableAttributedString {
         let currencyAttributes = [NSAttributedString.Key.font:
-                                UIFont.systemFont(ofSize: currencyAttrFontSize, weight: .semibold)]
+                                UIFont.systemFont(ofSize: currencyAttrFontSize, weight: fontWeight)]
         let amountAttributes = [NSAttributedString.Key.font:
-                                UIFont.systemFont(ofSize: amountAttrFontSize, weight: .semibold)]
+                                UIFont.systemFont(ofSize: amountAttrFontSize, weight: fontWeight)]
         
         let currencyString = NSMutableAttributedString(string: "\(currencySign) ",
                                                    attributes: currencyAttributes)

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FuelEntryCell" customModule="TruckerTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fuelpump.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1eC-Ne-JgR">
+                        <rect key="frame" x="10" y="7.9999999999999964" width="28" height="28.333333333333332"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="XGS-6Q-aLV"/>
+                            <constraint firstAttribute="width" secondItem="1eC-Ne-JgR" secondAttribute="height" multiplier="1:1" id="j0b-0Y-Qbf"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diesel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjU-nm-53S">
+                        <rect key="frame" x="48" y="12" width="75" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="Qzo-wi-CWV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iov-cD-V4g" customClass="AmountTextField" customModule="TruckerTracker" customModuleProvider="target">
+                        <rect key="frame" x="123" y="12.333333333333334" width="187" height="19.666666666666664"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44w-Av-r3d" userLabel="Underline View">
+                        <rect key="frame" x="10" y="41.666666666666664" width="300" height="0.3333333333333357"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="Fkx-fs-Evi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Iov-cD-V4g" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9vR-WR-SgV"/>
+                    <constraint firstItem="gjU-nm-53S" firstAttribute="leading" secondItem="1eC-Ne-JgR" secondAttribute="trailing" constant="10" id="AVN-K1-CO7"/>
+                    <constraint firstAttribute="bottom" secondItem="44w-Av-r3d" secondAttribute="bottom" constant="2" id="KOS-vz-Gja"/>
+                    <constraint firstItem="Iov-cD-V4g" firstAttribute="leading" secondItem="gjU-nm-53S" secondAttribute="trailing" id="PRf-ox-yZD"/>
+                    <constraint firstItem="1eC-Ne-JgR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TDG-X4-pZO"/>
+                    <constraint firstItem="44w-Av-r3d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="WsO-Sa-Tvj"/>
+                    <constraint firstAttribute="trailing" secondItem="44w-Av-r3d" secondAttribute="trailing" constant="10" id="XUG-uM-XwT"/>
+                    <constraint firstItem="gjU-nm-53S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yb4-Pt-uWM"/>
+                    <constraint firstItem="1eC-Ne-JgR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lWu-ps-w7Y"/>
+                    <constraint firstAttribute="trailing" secondItem="Iov-cD-V4g" secondAttribute="trailing" constant="10" id="mvw-aJ-pEd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="fuelAmountTextField" destination="Iov-cD-V4g" id="8pI-hh-fwg"/>
+                <outlet property="fuelImageView" destination="1eC-Ne-JgR" id="i2P-dU-p8I"/>
+                <outlet property="fuelTitleLabel" destination="gjU-nm-53S" id="QvH-I2-uW9"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="fuelpump.fill" catalog="system" width="128" height="125"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -13,10 +13,6 @@ class LoadLocationCell: UITableViewCell {
     @IBOutlet private var locationTextField: UITextField!
     @IBOutlet private var underlineView: UIView!
     
-    var location: String? {
-        didSet { locationTextField.text = location }
-    }
-    
     var startLocationDidChange: ((String) -> Void)?
     var endLocationDidChange: ((String) -> Void)?
     

@@ -32,7 +32,7 @@ class LoadViewModel {
     var items = [LoadViewModelItem]()
     
     init(_ load: Load?) {
-        let model = load ?? Load.getDefault()
+        let model = load ?? Load.getEmpty()
         
         items.append(LoadViewModelEmptyDistanceItem(distance: model.emptyDistance ?? 0))
         items.append(LoadViewModelTripDistanceItem(distance: model.distance))

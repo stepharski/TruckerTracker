@@ -34,7 +34,7 @@ class ItemViewController: UIViewController {
     
     var segmentedControl: TRSegmentedControl!
     let segments = ItemType.allCases
-    var selectedSegment: ItemType = .load {
+    var selectedSegment: ItemType = .fuel {
         didSet { stopLocationUpdates()
                     updateSegmentVC() }
     }
@@ -57,6 +57,7 @@ class ItemViewController: UIViewController {
     
     lazy var fuelTableVC: FuelTableViewController = {
         let tableController = FuelTableViewController()
+        tableController.delegate = self
         return tableController
     }()
     
@@ -95,8 +96,12 @@ class ItemViewController: UIViewController {
     // Amount TextField
     func configureTextField() {
         amountTextField.containsCurrency = true
-        amountTextField.amountDidChange = { amount in
-            self.amount = amount
+        amountTextField.amountDidChange = { [weak self] amount in
+            self?.amount = amount
+            
+            if let isFuelTableVisible = self?.fuelTableVC.isViewVisible, isFuelTableVisible {
+                self?.fuelTableVC.updateFuelAmounts(with: amount)
+            }
         }
     }
     
@@ -141,6 +146,10 @@ class ItemViewController: UIViewController {
             removeChildTableController(expenseTableVC)
             removeChildTableController(loadTableVC)
             addChildTableController(fuelTableVC)
+            
+            if fuelTableVC.totalAmount != amount {
+                fuelTableVC.updateFuelAmounts(with: amount)
+            }
         }
     }
     
@@ -244,15 +253,14 @@ class ItemViewController: UIViewController {
     }
     
     func stopLocationUpdates() {
-        // TODO: Handle case Load -> Fuel
-        if locationRequestState == .requestingLocation {
-            locationRequestState = .notStarted
-            activityIndicator.stopAnimating()
-        }
+        locationRequestState = .notStarted
+        activityIndicator.stopAnimating()
+        locationManager?.delegate = nil
+        locationManager = nil
     }
     
     func displayLocationError(with message: String) {
-        if self.isViewVisible {
+        if self.isViewVisible, locationRequestState == .error || locationRequestState == .timedOut {
             self.showAlert(title: "Location Error", message: message)
         }
     }
@@ -274,8 +282,7 @@ class ItemViewController: UIViewController {
     
     // Update VM location
     func updateViewModelLocation(with locationInfo: String) {
-        // TODO: - Handle case Load -> Fuel
-        guard self.isViewVisible else { return }
+        guard self.isViewVisible, locationRequestState == .locationFound else { return }
         
         switch selectedSegment {
         case .expense:
@@ -283,7 +290,7 @@ class ItemViewController: UIViewController {
         case .load:
             loadTableVC.updateRequestedLocation(locationInfo)
         case .fuel:
-            return
+            fuelTableVC.updateRequestedLocation(locationInfo)
         }
     }
 }
@@ -312,6 +319,23 @@ extension ItemViewController: LoadTableViewControllerDelegate {
     }
 }
 
+// MARK: - FuelTableViewControllerDelegate
+extension ItemViewController: FuelTableViewControllerDelegate {
+    func didUpdateFuelAmount(_ amount: Double) {
+        self.amount = amount
+        self.amountTextField.amount = amount.formattedString
+    }
+    
+    func fuelDidRequestUserLocation() {
+        activityIndicator.startAnimating()
+        requestUserLocation()
+    }
+    
+    func didSelectFuelDateCell(_ date: Date) {
+        showDatePickerVC(for: date)
+    }
+}
+
 // MARK: - DatePickerDelegeate
 extension ItemViewController: TRDatePickerVCDelegeate {
     func didSelect(date: Date) {
@@ -321,7 +345,7 @@ extension ItemViewController: TRDatePickerVCDelegeate {
         case .load:
             loadTableVC.updateDate(date)
         case .fuel:
-            return
+            fuelTableVC.updateDate(date)
         }
     }
 }
@@ -374,8 +398,8 @@ extension ItemViewController: CLLocationManagerDelegate {
                     let locationInfo = try await getLocationInfo(from: clLocation)
                     
                     guard locationRequestState != .timedOut else { return }
-                    updateViewModelLocation(with: locationInfo)
                     locationRequestState = .locationFound
+                    updateViewModelLocation(with: locationInfo)
                 } catch {
                     guard locationRequestState != .timedOut else { return }
                     locationRequestState = .error

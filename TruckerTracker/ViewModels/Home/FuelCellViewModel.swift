@@ -21,7 +21,7 @@ struct FuelCellViewModel {
         date = model.date.convertToMonthDayFormat()
         
         let currencySymbol = UDManager.shared.getCurrencyType().symbol
-        amount = "\(currencySymbol)\(model.amount.formattedWithSeparator())"
+        amount = "\(currencySymbol)\(model.totalAmount.formattedWithSeparator())"
         
         location = model.location ?? "Nowhereville, NA"
         fuelImage = SFSymbols.fuelPumpFill

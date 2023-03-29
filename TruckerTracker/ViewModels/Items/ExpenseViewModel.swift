@@ -31,7 +31,7 @@ class ExpenseViewModel {
     var items = [ExpenseViewModelItem]()
     
     init(_ expense: Expense?) {
-        let model = expense ?? Expense.getDefault()
+        let model = expense ?? Expense.getEmpty()
         
         items.append(ExpenseViewModelNameItem(name: model.name))
         items.append(ExpenseViewModelDateItem(date: model.date))

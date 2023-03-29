@@ -32,7 +32,7 @@ class Load {
         self.attachments = attachments
     }
     
-    static func getDefault() -> Load {
+    static func getEmpty() -> Load {
         let id: String = UUID().uuidString
         let date: Date = Date()
         let amount: Double = 0
