@@ -8,16 +8,6 @@
 import UIKit
 import CoreLocation
 
-//MARK: - LocationRequestState
-enum LocationRequestState {
-    case notStarted
-    case requestingLocation
-    case locationFound
-    case timedOut
-    case error
-}
-
-// MARK: - ItemViewController
 class ItemViewController: UIViewController {
 
     @IBOutlet var amountTextField: AmountTextField!
@@ -34,14 +24,12 @@ class ItemViewController: UIViewController {
     
     var segmentedControl: TRSegmentedControl!
     let segments = ItemType.allCases
-    var selectedSegment: ItemType = .fuel {
+    var selectedSegment: ItemType = .load {
         didSet { stopLocationUpdates()
                     updateSegmentVC() }
     }
     
-    var locationManager: CLLocationManager?
-    let loactionTimeout: Double = 10
-    var locationRequestState: LocationRequestState = .notStarted
+    var locationManager = LocationManager.shared
     
     lazy var expenseTableVC: ExpenseTableViewController = {
         let tableController = ExpenseTableViewController()
@@ -75,6 +63,10 @@ class ItemViewController: UIViewController {
         dismissKeyboardOnTouchOutside()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopLocationUpdates()
+    }
     
     // Navigation Bar
     func configureNavBar() {
@@ -229,60 +221,44 @@ class ItemViewController: UIViewController {
         present(pickerVC, animated: true)
     }
     
-    // Location Manager
+    // Location
     func requestUserLocation() {
-        if locationManager != nil {
-            locationRequestState = .requestingLocation
-            locationManager?.requestLocation()
-            checkForLocationTimeout()
-        } else {
-            locationManager = CLLocationManager()
-            locationManager?.delegate = self
-            locationManager?.requestWhenInUseAuthorization()
+        activityIndicator.startAnimating()
+        
+        locationManager.didReceiveLocationInfo = { [weak self] location in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.updateViewModelLocation(with: location)
+            }
+
         }
-    }
-    
-    func checkForLocationTimeout() {
-        Timer.scheduledTimer(withTimeInterval: loactionTimeout, repeats: false) { _ in
-            if self.locationRequestState == .requestingLocation {
-                self.locationRequestState = .timedOut
-                self.activityIndicator.stopAnimating()
-                self.displayLocationError(with: TRError.timeoutError.rawValue)
+        
+        locationManager.didFailToReceiveLocation = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.displayLocationError(with: error.rawValue)
             }
         }
+        
+        locationManager.requestUserLocation()
     }
     
     func stopLocationUpdates() {
-        locationRequestState = .notStarted
+        locationManager.locationRequestState = .canceled
+        locationManager.didFailToReceiveLocation = nil
+        locationManager.didReceiveLocationInfo = nil
         activityIndicator.stopAnimating()
-        locationManager?.delegate = nil
-        locationManager = nil
     }
     
     func displayLocationError(with message: String) {
-        if self.isViewVisible, locationRequestState == .error || locationRequestState == .timedOut {
+        if self.isViewVisible {
             self.showAlert(title: "Location Error", message: message)
         }
     }
     
-    // Location info
-    func getLocationInfo(from location: CLLocation) async throws -> String {
-        let geocoder = CLGeocoder()
-        let placemarks = try await geocoder.reverseGeocodeLocation(location)
-        
-        guard let placemark = placemarks.first else {
-            throw TRError.defaultLocationError
-        }
-        
-        let city = placemark.locality ?? "Nowhereville"
-        let state = placemark.administrativeArea ?? "NA"
-        
-        return "\(city), \(state)"
-    }
-    
     // Update VM location
     func updateViewModelLocation(with locationInfo: String) {
-        guard self.isViewVisible, locationRequestState == .locationFound else { return }
+        guard self.isViewVisible else { return }
         
         switch selectedSegment {
         case .expense:
@@ -314,7 +290,6 @@ extension ItemViewController: LoadTableViewControllerDelegate {
     }
     
     func loadDidRequestUserLocation() {
-        activityIndicator.startAnimating()
         requestUserLocation()
     }
 }
@@ -327,7 +302,6 @@ extension ItemViewController: FuelTableViewControllerDelegate {
     }
     
     func fuelDidRequestUserLocation() {
-        activityIndicator.startAnimating()
         requestUserLocation()
     }
     
@@ -359,82 +333,3 @@ extension ItemViewController: TRPickerDelegate {
         expenseTableVC.updateFrequency(selectedFrequency)
     }
 }
-
-// MARK: - CLLocationManagerDelegate
-extension ItemViewController: CLLocationManagerDelegate {
-    // Check status
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .notDetermined:
-            locationRequestState = .notStarted
-            
-        case .authorizedWhenInUse, .authorizedAlways:
-            locationRequestState = .requestingLocation
-            locationManager?.requestLocation()
-            checkForLocationTimeout()
-            
-        case .denied:
-            locationRequestState = .error
-            activityIndicator.stopAnimating()
-            displayLocationError(with: TRError.permissionLocationError.rawValue)
-            
-        default:
-            locationRequestState = .error
-            activityIndicator.stopAnimating()
-            displayLocationError(with: TRError.defaultLocationError.rawValue)
-        }
-    }
-    
-    // Handle location info
-    func locationManager(_ manager: CLLocationManager,
-                         didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            let latitude = location.coordinate.latitude
-            let longitude = location.coordinate.longitude
-            let clLocation = CLLocation(latitude: latitude, longitude: longitude)
-            
-            Task {
-                do {
-                    let locationInfo = try await getLocationInfo(from: clLocation)
-                    
-                    guard locationRequestState != .timedOut else { return }
-                    locationRequestState = .locationFound
-                    updateViewModelLocation(with: locationInfo)
-                } catch {
-                    guard locationRequestState != .timedOut else { return }
-                    locationRequestState = .error
-                    
-                    if let error = error as? TRError {
-                        displayLocationError(with: error.rawValue)
-                    } else if let error = error as? CLError, error.code == .network {
-                        displayLocationError(with: TRError.networkError.rawValue)
-                    } else {
-                        displayLocationError(with: TRError.defaultLocationError.rawValue)
-                    }
-                }
-                
-                activityIndicator.stopAnimating()
-            }
-        }
-    }
-    
-    // Handle error
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        guard locationRequestState != .timedOut else { return }
-        
-        locationRequestState = .error
-        activityIndicator.stopAnimating()
-        
-        if let error = error as? CLError {
-            switch error.code {
-            case .network:
-                displayLocationError(with: TRError.networkError.rawValue)
-            case .denied:
-                displayLocationError(with: TRError.permissionLocationError.rawValue)
-            default:
-                displayLocationError(with: TRError.defaultLocationError.rawValue)
-            }
-        }
-    }
-}
-
