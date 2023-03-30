@@ -309,6 +309,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionButtonsBottomConstraint" destination="6ZI-ql-QCY" id="eMU-g0-sk9"/>
                         <outlet property="activityIndicator" destination="8N5-Mz-dBk" id="NEM-iE-D3j"/>
                         <outlet property="amountTextField" destination="VEV-wX-T4D" id="TUm-J2-Jjl"/>
                         <outlet property="deleteButton" destination="tFN-z4-qXh" id="g6X-nP-onG"/>
@@ -333,7 +334,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="230"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 5,050" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niz-iu-8ol">
-                                        <rect key="frame" x="152.33333333333334" y="59" width="88.666666666666657" height="29"/>
+                                        <rect key="frame" x="152" y="59" width="89" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -385,6 +386,7 @@
                     </view>
                     <connections>
                         <outlet property="headerView" destination="1AM-ff-xYA" id="3ti-D3-8BY"/>
+                        <outlet property="headerViewHeightConstraint" destination="dgh-bk-6X6" id="F3z-74-xLj"/>
                         <outlet property="incomeAmountLabel" destination="niz-iu-8ol" id="OM6-ep-4Eq"/>
                         <outlet property="periodContainerView" destination="a1y-fh-q2m" id="EPb-E3-yWK"/>
                         <outlet property="segmentedControlView" destination="iMQ-O7-d9r" id="c1N-cP-6sp"/>

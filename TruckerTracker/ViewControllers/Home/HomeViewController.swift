@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet var headerView: UIView!
+    @IBOutlet var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var incomeAmountLabel: UILabel!
     @IBOutlet var segmentedControlView: UIView!
     @IBOutlet var periodContainerView: UIView!
@@ -32,10 +33,13 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         addObserver()
-        generateTestData()
-        configureNavBar()
         addSwipeGestures()
+        generateTestData()
+        
+        configureNavBar()
+        updateHeaderHeight()
         configureSegmentedControl()
+        
         addPeriodDisplayChildVC()
         updatePeriodDisplay()
         configureTableView()
@@ -91,6 +95,10 @@ class HomeViewController: UIViewController {
                                                             AppColors.textColor]
     }
     
+    func updateHeaderHeight() {
+        headerViewHeightConstraint.constant = DeviceTypes.isiPhoneSE ? 190 : 230
+    }
+    
     func configureHeader() {
         headerView.dropShadow(opacity: 0.3)
         headerView.applyGradient(colors: AppColors.headerColors, locations: [0, 1])
@@ -140,12 +148,12 @@ class HomeViewController: UIViewController {
     func addSwipeGestures() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         swipeLeft.direction = .left
-        swipeLeft.cancelsTouchesInView = false
+        swipeLeft.cancelsTouchesInView = true
         view.addGestureRecognizer(swipeLeft)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         swipeRight.direction = .right
-        swipeRight.cancelsTouchesInView = false
+        swipeRight.cancelsTouchesInView = true
         view.addGestureRecognizer(swipeRight)
     }
     
@@ -319,8 +327,6 @@ extension HomeViewController: UITableViewDelegate {
     // Selection
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let cell = tableView.cellForRow(at: indexPath)
-        
-        // Shrinking animation
         UIView.animate(withDuration: 0.2) {
             cell?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         }

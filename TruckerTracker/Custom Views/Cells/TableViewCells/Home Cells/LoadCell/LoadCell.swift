@@ -18,7 +18,6 @@ class LoadCell: UITableViewCell {
     
     @IBOutlet private var startLocationView: UIView!
     @IBOutlet private var endLocationView: UIView!
-
     
     // Life cycle
     override func awakeFromNib() {
@@ -31,6 +30,7 @@ class LoadCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0,
                                                              bottom: 15, right: 0))
     }

@@ -54,6 +54,10 @@ class TRSegmentedControl: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupSelector()
+    }
     
     // Configure
     func configure(with titles: [String], subtitles: [String] = [],
@@ -124,7 +128,7 @@ class TRSegmentedControl: UIControl {
         }
         
         setupButtonsStack()
-        setupSelector()
+//        setupSelector()
     }
     
     @objc func buttonTapped(sender: UIButton) {

@@ -21,9 +21,7 @@ enum LocationRequestState {
 // MARK: - LocationManager
 class LocationManager: NSObject {
     
-    static let shared = LocationManager()
     private let locationManager = CLLocationManager()
-    
     var locationRequestState: LocationRequestState = .notStarted
     
     var didReceiveLocationInfo: ((String) -> Void)?

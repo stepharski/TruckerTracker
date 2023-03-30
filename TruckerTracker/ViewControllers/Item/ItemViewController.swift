@@ -18,11 +18,13 @@ class ItemViewController: UIViewController {
     
     @IBOutlet private var saveButton: UIButton!
     @IBOutlet private var deleteButton: UIButton!
+    @IBOutlet private var actionButtonsBottomConstraint: NSLayoutConstraint!
+    
     
     private var amount: Double = 0
     private var isNewItem: Bool = true
     
-    private var locationManager = LocationManager.shared
+    private var locationManager = LocationManager()
     
     private var segmentedControl: TRSegmentedControl!
     private let segments = ItemType.allCases
@@ -245,6 +247,7 @@ class ItemViewController: UIViewController {
         deleteButton.isHidden = isNewItem
         saveButton.dropShadow(opacity: 0.25)
         deleteButton.dropShadow(opacity: 0.25)
+        actionButtonsBottomConstraint.constant = DeviceTypes.isiPhoneSE ? 20 : 0
     }
 
     // Navigation
