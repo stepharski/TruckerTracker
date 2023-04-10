@@ -94,6 +94,12 @@ class ItemViewController: UIViewController {
         dismissKeyboardOnTouchOutside()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if isNewItem { amountTextField.activate() }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopLocationUpdates()

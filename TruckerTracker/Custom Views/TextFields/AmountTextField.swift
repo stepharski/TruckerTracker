@@ -82,6 +82,11 @@ class AmountTextField: UITextField {
         amountDidChange?(Double(amount) ?? 0)
     }
     
+    // Activation
+    func activate() {
+        becomeFirstResponder()
+    }
+    
     // Configuration
     private func setup() {
         addToolbar()
@@ -103,12 +108,12 @@ class AmountTextField: UITextField {
         self.inputAccessoryView = toolbar
     }
     
-    @objc func doneButtonTapped() {
+    @objc private func doneButtonTapped() {
         self.resignFirstResponder()
     }
     
     // Handle entry
-    @objc func textFieldDidChange() {
+    @objc private func textFieldDidChange() {
         guard let text = self.text, var lastEntry = text.last,
                     let selectedRange = selectedTextRange else { return }
         
@@ -140,7 +145,7 @@ class AmountTextField: UITextField {
     }
     
     // Update text field
-    func updateTextField(with amount: String) {
+    private func updateTextField(with amount: String) {
         if containsCurrency {
             attributedText = addCurrency(to: amount)
         } else {
@@ -149,7 +154,7 @@ class AmountTextField: UITextField {
     }
     
     // Format entry
-    func addCurrency(to amount: String) -> NSMutableAttributedString {
+    private func addCurrency(to amount: String) -> NSMutableAttributedString {
         let currencyAttributes = [NSAttributedString.Key.font:
                                 UIFont.systemFont(ofSize: currencyAttrFontSize, weight: fontWeight)]
         let amountAttributes = [NSAttributedString.Key.font:

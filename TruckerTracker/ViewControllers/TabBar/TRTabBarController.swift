@@ -36,12 +36,12 @@ class TRTabBarController: UITabBarController {
                         StoryboardIdentifiers.homeViewController) as! HomeViewController
         let itemVC = storyboard?.instantiateViewController(withIdentifier:
                         StoryboardIdentifiers.itemViewController) as! ItemViewController
-        let profileVC = storyboard?.instantiateViewController(withIdentifier:
-                                            StoryboardIdentifiers.profileVC) as! ProfileVC
+        let settingsVC = storyboard?.instantiateViewController(withIdentifier:
+                        StoryboardIdentifiers.settingsViewController) as! SettingsViewController
         
         let homeNavController = UINavigationController(rootViewController: homeVC)
         let itemNavController = UINavigationController(rootViewController: itemVC)
-        let profileNavController = UINavigationController(rootViewController: profileVC)
+        let settingsNavController = UINavigationController(rootViewController: settingsVC)
 
         homeVC.tabBarItem = UITabBarItem(title: nil,
                                          image: TRTabBarItem.home.image,
@@ -49,11 +49,11 @@ class TRTabBarController: UITabBarController {
         itemNavController.tabBarItem = UITabBarItem(title: nil,
                                            image: TRTabBarItem.newItem.image,
                                            selectedImage: TRTabBarItem.newItem.selectedImage)
-        profileNavController.tabBarItem = UITabBarItem(title: nil,
-                                           image: TRTabBarItem.profile.image,
-                                           selectedImage: TRTabBarItem.profile.selectedImage)
+        settingsNavController.tabBarItem = UITabBarItem(title: nil,
+                                           image: TRTabBarItem.settings.image,
+                                           selectedImage: TRTabBarItem.settings.selectedImage)
 
-        viewControllers = [homeNavController, itemNavController, profileNavController]
+        viewControllers = [homeNavController, itemNavController, settingsNavController]
     }
         
     func handleTabBarItemTap() {

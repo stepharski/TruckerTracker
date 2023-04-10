@@ -9,27 +9,27 @@ import UIKit
 
 // MARK: - TRTabBarItem
 enum TRTabBarItem: String {
-    case home, newItem, profile
+    case home, newItem, settings
 
     var image: UIImage? {
         switch self {
         case .home:
-            return SFSymbols.house
+            return SFSymbols.listRect
         case .newItem:
             return nil
-        case .profile:
-            return SFSymbols.person
+        case .settings:
+            return SFSymbols.wrench
         }
     }
     
     var selectedImage: UIImage? {
         switch self {
         case .home:
-            return SFSymbols.houseFill
+            return SFSymbols.listRect
         case .newItem:
             return nil
-        case .profile:
-            return SFSymbols.personFill
+        case .settings:
+            return SFSymbols.wrenchFill
         }
     }
     

@@ -40,10 +40,7 @@ class Load {
         let startLocation: String = ""
         let endLocation: String = ""
         
-        // Test purpose
-        let attachments = ["RateConfirmation2023-03-14"]
-        
         return Load(id: id, date: date, amount: amount, distance: distance,
-                    startLocation: startLocation, endLocation: endLocation, attachments: attachments)
+                    startLocation: startLocation, endLocation: endLocation)
     }
 }

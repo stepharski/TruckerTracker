@@ -26,11 +26,11 @@ struct SFSymbols {
     static let arrowBack = UIImage(systemName: "chevron.backward")
     
     // TabBar
-    static let house = UIImage(systemName: "house")
-    static let houseFill = UIImage(systemName: "house.fill")
+    static let listRect = UIImage(systemName: "list.bullet.below.rectangle")
     static let plus = UIImage(systemName: "plus")
-    static let person = UIImage(systemName: "person")
-    static let personFill = UIImage(systemName: "person.fill")
+    static let wrench = UIImage(systemName: "wrench")
+    static let wrenchFill = UIImage(systemName: "wrench.fill")
+    
     
     // TableView
     static let plusRectangleFill = UIImage(systemName: "plus.rectangle.fill")
@@ -58,7 +58,7 @@ struct SFSymbols {
     // Profile
     static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")
     static let personText = UIImage(systemName: "person.text.rectangle")
-    static let folder = UIImage(systemName: "folder")
+    static let docOnDoc = UIImage(systemName: "doc.on.doc")
     static let crownArrow = UIImage(systemName: "digitalcrown.arrow.clockwise")
     static let chartBarX = UIImage(systemName: "chart.bar.xaxis")
     static let envelope = UIImage(systemName: "envelope")
@@ -76,12 +76,11 @@ struct SFSymbols {
 }
 
 
-
 struct StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
     static let homeViewController = "HomeViewController"
     static let itemViewController = "ItemViewController"
-    static let profileVC = "ProfileVC"
+    static let settingsViewController = "SettingsViewController"
     static let menuDetailedVC = "MenuDetailedVC"
     
     static let locationSearchVC = "LocationSearchVC"

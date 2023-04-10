@@ -1,16 +1,16 @@
 //
-//  ProfileMenuType.swift
+//  SettingsType.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 11/14/22.
+//  Created by Stepan Kukharskyi on 4/9/23.
 //
 
 import UIKit
 
-enum ProfileMenuType: String, CaseIterable {
+enum SettingsType: String, CaseIterable {
     
-    case tools, driver, documents,
-         recurring, data, contact
+    case tools, driver, attachments
+    case recurring, data, contact
     
     var title: String {
         return self.rawValue.capitalized
@@ -22,8 +22,8 @@ enum ProfileMenuType: String, CaseIterable {
             return "App configuration"
         case .driver:
             return "Personal info"
-        case .documents:
-            return "Uploaded documents"
+        case .attachments:
+            return "Uploaded attachments"
         case .recurring:
             return "Scheduled expenses"
         case .data:
@@ -39,7 +39,7 @@ enum ProfileMenuType: String, CaseIterable {
             return SFSymbols.wrenchScrew
         case .driver:
             return SFSymbols.personText
-        case .documents:
+        case .attachments:
             return SFSymbols.docOnDoc
         case .recurring:
             return SFSymbols.crownArrow
@@ -56,7 +56,7 @@ enum ProfileMenuType: String, CaseIterable {
             return "Configure app \n appearance and workflow"
         case .driver:
             return "Edit driver's \n personal info and type"
-        case .documents:
+        case .attachments:
             return "Manage uploaded files \n grouped by type"
         case .recurring:
             return "Schedule or edit \n expenses that repeat"
@@ -67,3 +67,4 @@ enum ProfileMenuType: String, CaseIterable {
         }
     }
 }
+

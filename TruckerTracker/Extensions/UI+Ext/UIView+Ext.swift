@@ -33,6 +33,8 @@ extension UIView {
     
     // Gradient
     func applyGradient(colors: [UIColor], locations: [NSNumber]?) {
+        guard !(layer.sublayers?.first is CAGradientLayer) else { return }
+        
         assert(colors.count >= 2, "There must be at least 2 colors")
         
         if locations != nil {

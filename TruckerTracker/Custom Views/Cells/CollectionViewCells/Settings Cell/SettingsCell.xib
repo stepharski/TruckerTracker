@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SettingsCell" customModule="TruckerTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="165" height="170"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="165" height="170"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrench.and.screwdriver" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zC2-EW-ixu">
+                        <rect key="frame" x="60" y="37" width="45" height="47"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="kOz-iy-ePQ"/>
+                            <constraint firstAttribute="height" constant="45" id="nPs-ml-1ym"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3L-U3-kXd">
+                        <rect key="frame" x="60" y="97.666666666666671" width="45" height="22"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App configuration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abf-AU-QXN">
+                        <rect key="frame" x="15" y="124.66666666666669" width="135" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemGray6Color"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Abf-AU-QXN" secondAttribute="trailing" constant="15" id="3dR-7g-73n"/>
+                <constraint firstItem="Abf-AU-QXN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="LnO-7W-w8u"/>
+                <constraint firstItem="G3L-U3-kXd" firstAttribute="top" secondItem="zC2-EW-ixu" secondAttribute="bottom" constant="15" id="Vgb-vt-fYq"/>
+                <constraint firstItem="zC2-EW-ixu" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-25" id="ZH2-3s-WAv"/>
+                <constraint firstItem="Abf-AU-QXN" firstAttribute="top" secondItem="G3L-U3-kXd" secondAttribute="bottom" constant="5" id="u5T-PE-ftG"/>
+                <constraint firstItem="G3L-U3-kXd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="xWg-rs-vvu"/>
+                <constraint firstItem="zC2-EW-ixu" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zby-90-1MJ"/>
+            </constraints>
+            <connections>
+                <outlet property="subtitleLabel" destination="Abf-AU-QXN" id="N1n-6b-Oo6"/>
+                <outlet property="titleImageView" destination="zC2-EW-ixu" id="Jn6-0B-M4a"/>
+                <outlet property="titleLabel" destination="G3L-U3-kXd" id="9IK-X8-Vcv"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="20"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="wrench.and.screwdriver" catalog="system" width="128" height="119"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
