@@ -20,6 +20,15 @@ class SettingsViewController: UIViewController {
     let settingsItems = SettingsType.allCases
     let itemPadding: CGFloat = 20
     
+    var avatarImage: UIImage? {
+        didSet { avatarImageView.image = avatarImage }
+    }
+    
+    let imagePicker = ImagePickerManager()
+//    lazy var imagePicker: ImagePickerManager = {
+//        return ImagePickerManager()
+//    }()
+    
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +50,7 @@ class SettingsViewController: UIViewController {
     
     // @IBAction
     @IBAction func plusButtonTapped(_ sender: UIButton) {
-        changeAvatar()
+        changeProfilePicture()
     }
     
 
@@ -73,7 +82,7 @@ class SettingsViewController: UIViewController {
     }
     
     func bindGestureToAvatar() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeAvatar))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfilePicture))
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(tapGesture)
     }
@@ -87,7 +96,9 @@ class SettingsViewController: UIViewController {
         config.baseForegroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
         config.background.strokeColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         config.background.strokeWidth = 1.0
+        
         plusButton.configuration = config
+        plusButton.tintAdjustmentMode = .normal
     }
     
     func configureCollectionView() {
@@ -97,8 +108,12 @@ class SettingsViewController: UIViewController {
     }
     
     // Profile picture
-    @objc func changeAvatar() {
-        print("Change Avatar")
+    @objc func changeProfilePicture() {
+        imagePicker.showImagePicker(in: self) { [weak self] image in
+            guard image != nil else { return }
+            self?.avatarImage = image
+            //TODO: Cache and Save Image
+        }
     }
 }
 

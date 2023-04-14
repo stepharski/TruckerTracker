@@ -23,5 +23,9 @@
 	</dict>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>We need your location so you can save time typing it.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>We need camera permission to set your profile picture.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We need photo library permission to set your profile picture.</string>
 </dict>
 </plist>

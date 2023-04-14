@@ -125,6 +125,7 @@
 		5FDF97C429E33E0A00DCD038 /* SettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97C329E33E0A00DCD038 /* SettingsType.swift */; };
 		5FDF97C829E4B37500DCD038 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97C629E4B37500DCD038 /* SettingsCell.swift */; };
 		5FDF97C929E4B37500DCD038 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97C729E4B37500DCD038 /* SettingsCell.xib */; };
+		5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */; };
 		5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadViewModel.swift */; };
 		5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */; };
 		5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */; };
@@ -252,6 +253,7 @@
 		5FDF97C329E33E0A00DCD038 /* SettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsType.swift; sourceTree = "<group>"; };
 		5FDF97C629E4B37500DCD038 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5FDF97C729E4B37500DCD038 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
+		5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		5FEC7BB429B792080091F8FB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 		5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 			isa = PBXGroup;
 			children = (
 				5F39788429D481E6007C3B65 /* LocationManager.swift */,
+				5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */,
 				5FA551A5297B53DC00D3596F /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
@@ -1095,6 +1098,7 @@
 				5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */,
 				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
 				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
+				5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */,
 				5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */,
 				5F39788F29E3320B007C3B65 /* SettingsViewController.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
