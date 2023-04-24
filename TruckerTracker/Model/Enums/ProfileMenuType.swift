@@ -44,9 +44,9 @@ enum ProfileMenuType: String, CaseIterable {
         case .recurring:
             return SFSymbols.crownArrow
         case .data:
-            return SFSymbols.pc
+            return SFSymbols.cloud
         case .contact:
-            return SFSymbols.envelope
+            return SFSymbols.trash
         }
     }
     

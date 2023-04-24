@@ -95,8 +95,21 @@ class HomeViewController: UIViewController {
     // UI Configuration
     func configureNavBar() {
         navigationItem.title = "Income"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor:
-                                                            AppColors.textColor]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: AppColors.textColor]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: SFSymbols.chartLine, style: .plain,
+                                                           target: self, action: #selector(displayChart))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbols.squareArrowUp, style: .plain,
+                                                            target: self, action: #selector(showExportVC))
+        navigationItem.leftBarButtonItem?.tintColor = AppColors.textColor
+        navigationItem.rightBarButtonItem?.tintColor = AppColors.textColor
+    }
+    
+    @objc func displayChart() {
+        //TODO: Display chart
+    }
+    
+    @objc func showExportVC() {
+        //TODO: Show Export VC
     }
     
     func updateHeaderHeight() {

@@ -25,9 +25,6 @@ class SettingsViewController: UIViewController {
     }
     
     let imagePicker = ImagePickerManager()
-//    lazy var imagePicker: ImagePickerManager = {
-//        return ImagePickerManager()
-//    }()
     
     // Life cycle
     override func viewDidLoad() {
@@ -115,6 +112,13 @@ class SettingsViewController: UIViewController {
             //TODO: Cache and Save Image
         }
     }
+    
+    // Navigation
+    func showSetting(_ setting: SettingsType) {
+        let settingDetailVC = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.settingDetailViewController) as! SettingDetailViewController
+        settingDetailVC.setting = setting
+        navigationController?.pushViewController(settingDetailVC, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -139,7 +143,7 @@ extension SettingsViewController: UICollectionViewDataSource {
 extension SettingsViewController: UICollectionViewDelegate {
     // Selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: Show SettingsDetailVC
+        showSetting(settingsItems[indexPath.item])
     }
 }
 

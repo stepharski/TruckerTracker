@@ -114,10 +114,10 @@ class TRPeriodSelectorVC: UIViewController {
         
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
-            closeButton.widthAnchor.constraint(equalToConstant: 40),
-            closeButton.heightAnchor.constraint(equalToConstant: 40),
+            closeButton.widthAnchor.constraint(equalToConstant: 35),
+            closeButton.heightAnchor.constraint(equalToConstant: 35),
             closeButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding/2),
-            closeButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding/2),
+            closeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding/2),
             
             periodLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             periodLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),

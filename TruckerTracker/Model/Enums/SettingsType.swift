@@ -10,7 +10,7 @@ import UIKit
 enum SettingsType: String, CaseIterable {
     
     case tools, driver, attachments
-    case recurring, data, contact
+    case recurring, reset, cloud
     
     var title: String {
         return self.rawValue.capitalized
@@ -26,10 +26,10 @@ enum SettingsType: String, CaseIterable {
             return "Uploaded attachments"
         case .recurring:
             return "Scheduled expenses"
-        case .data:
-            return "Export or Reset"
-        case .contact:
-            return "Get in touch with us"
+        case .cloud:
+            return "Secure your data"
+        case .reset:
+            return "Start from scratch"
         }
     }
     
@@ -43,10 +43,10 @@ enum SettingsType: String, CaseIterable {
             return SFSymbols.docOnDoc
         case .recurring:
             return SFSymbols.crownArrow
-        case .data:
-            return SFSymbols.pc
-        case .contact:
-            return SFSymbols.envelope
+        case .cloud:
+            return SFSymbols.cloud
+        case .reset:
+            return SFSymbols.trash
         }
     }
     
@@ -60,10 +60,10 @@ enum SettingsType: String, CaseIterable {
             return "Manage uploaded files \n grouped by type"
         case .recurring:
             return "Schedule or edit \n expenses that repeat"
-        case .data:
-            return "Synchronize \n your information"
-        case .contact:
-            return "Provide feedback \n report bug or ask question"
+        case .cloud:
+            return "Keep your data secure \n in the cloud"
+        case .reset:
+            return "Erase your existing data \n to begin anew"
         }
     }
 }

@@ -20,17 +20,16 @@ struct AppColors {
 struct SFSymbols {
     
     // Navigation
-    static let menu = UIImage(systemName: "line.3.horizontal")
-    static let share = UIImage(systemName: "square.and.arrow.up")
     static let xmark = UIImage(systemName: "xmark")
     static let arrowBack = UIImage(systemName: "chevron.backward")
+    static let chartLine = UIImage(systemName: "chart.xyaxis.line")
+    static let squareArrowUp = UIImage(systemName: "square.and.arrow.up")
     
     // TabBar
     static let listRect = UIImage(systemName: "list.bullet.below.rectangle")
     static let plus = UIImage(systemName: "plus")
     static let wrench = UIImage(systemName: "wrench")
     static let wrenchFill = UIImage(systemName: "wrench.fill")
-    
     
     // TableView
     static let plusRectangleFill = UIImage(systemName: "plus.rectangle.fill")
@@ -60,9 +59,8 @@ struct SFSymbols {
     static let personText = UIImage(systemName: "person.text.rectangle")
     static let docOnDoc = UIImage(systemName: "doc.on.doc")
     static let crownArrow = UIImage(systemName: "digitalcrown.arrow.clockwise")
-    static let chartBarX = UIImage(systemName: "chart.bar.xaxis")
-    static let envelope = UIImage(systemName: "envelope")
-    static let pc = UIImage(systemName: "pc")
+    static let trash = UIImage(systemName: "trash")
+    static let cloud = UIImage(systemName: "cloud")
     
     // Compact arrows
     static let arrowCompactUp = UIImage(systemName: "chevron.compact.up")
@@ -81,8 +79,10 @@ struct StoryboardIdentifiers {
     static let homeViewController = "HomeViewController"
     static let itemViewController = "ItemViewController"
     static let settingsViewController = "SettingsViewController"
-    static let menuDetailedVC = "MenuDetailedVC"
+    static let settingDetailViewController = "SettingDetailViewController"
     
+    // TODO: Clean
+    static let menuDetailedVC = "MenuDetailedVC"
     static let locationSearchVC = "LocationSearchVC"
 }
 

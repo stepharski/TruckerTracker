@@ -126,6 +126,7 @@
 		5FDF97C829E4B37500DCD038 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97C629E4B37500DCD038 /* SettingsCell.swift */; };
 		5FDF97C929E4B37500DCD038 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97C729E4B37500DCD038 /* SettingsCell.xib */; };
 		5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */; };
+		5FDF97CF29E8E3A600DCD038 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CE29E8E3A600DCD038 /* SettingDetailViewController.swift */; };
 		5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadViewModel.swift */; };
 		5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */; };
 		5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */; };
@@ -254,6 +255,7 @@
 		5FDF97C629E4B37500DCD038 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5FDF97C729E4B37500DCD038 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
 		5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		5FDF97CE29E8E3A600DCD038 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
 		5FEC7BB429B792080091F8FB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 		5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				5F39788E29E3320B007C3B65 /* SettingsViewController.swift */,
+				5FDF97CE29E8E3A600DCD038 /* SettingDetailViewController.swift */,
 				5F791010294CE58B00A73600 /* MenuDetailedVC.swift */,
 				5F790FF22944448C00A73600 /* MenuChildVCs */,
 			);
@@ -1031,6 +1034,7 @@
 				5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */,
 				5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
+				5FDF97CF29E8E3A600DCD038 /* SettingDetailViewController.swift in Sources */,
 				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
 				5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */,

@@ -111,7 +111,7 @@ class ItemViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: SFSymbols.xmark,
             style: .plain,
             target: self,
