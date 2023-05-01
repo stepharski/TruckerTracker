@@ -18,10 +18,10 @@ struct LoadCellViewModel {
     init(_ model: Load) {
         date = model.date.convertToMonthDayFormat()
         
-        let currencySymbol = UDManager.shared.getCurrencyType().symbol
+        let currencySymbol = UDManager.shared.currency.symbol
         amount = "\(currencySymbol)\(model.amount.formattedWithSeparator())"
         
-        let distanceSymbol = UDManager.shared.getDistanceType().abbreviation
+        let distanceSymbol = UDManager.shared.distanceUnit.abbreviation
         distance = "\(model.distance.formattedWithSeparator()) \(distanceSymbol)"
         
         startLocation = model.startLocation

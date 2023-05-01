@@ -11,7 +11,7 @@ extension Calendar {
     
     static func getCurrent() -> Calendar {
         var currentCalendar = current
-        currentCalendar.firstWeekday = UDManager.shared.getFirstWeekDay()
+        currentCalendar.firstWeekday = UDManager.shared.weekStartDay.number
         currentCalendar.minimumDaysInFirstWeek = Constants.minimumDaysInFirstWeek
         
         return currentCalendar

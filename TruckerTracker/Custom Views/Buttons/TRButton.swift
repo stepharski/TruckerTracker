@@ -9,36 +9,27 @@ import UIKit
 
 // Button type
 enum TRButtonType {
-    case light, dark, red
+    case dark, red
     
     var backgroundColor: UIColor {
         switch self {
-        case .light:
-            return #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
         case .dark:
-            return #colorLiteral(red: 0.1215686275, green: 0.1176470588, blue: 0.137254902, alpha: 1)
+            return .label
         case .red:
-            return #colorLiteral(red: 0.537254902, green: 0.09411764706, blue: 0.05882352941, alpha: 1)
+            return .systemRed
         }
     }
     
     var foregroundColor: UIColor {
-        switch self {
-        case .light:
-            return #colorLiteral(red: 0.1137254902, green: 0.1098039216, blue: 0.1294117647, alpha: 1)
-        case .dark, .red:
-            return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
-        }
+        return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
     }
     
     var shadowColor: UIColor {
         switch self {
-        case .light:
-            return .white.withAlphaComponent(0.25)
         case .dark:
-            return .black.withAlphaComponent(0.5)
+            return .label.withAlphaComponent(0.5)
         case .red:
-            return .red.withAlphaComponent(0.25)
+            return .label.withAlphaComponent(0.25)
         }
     }
 }

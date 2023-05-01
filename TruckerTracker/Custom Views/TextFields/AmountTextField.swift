@@ -41,7 +41,7 @@ class AmountTextField: UITextField {
     }
     
     lazy var currencySign: String = {
-        return UDManager.shared.getCurrencyType().symbol
+        return UDManager.shared.currency.symbol
     }()
     
     var amountDidChange: ((Double) -> Void)?

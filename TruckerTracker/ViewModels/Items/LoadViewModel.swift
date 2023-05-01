@@ -51,7 +51,7 @@ class LoadViewModelEmptyDistanceItem: LoadViewModelItem {
     var distance: Int
     
     var distanceAbbreviation: String {
-        return UDManager.shared.getDistanceType().abbreviation
+        return UDManager.shared.distanceUnit.abbreviation
     }
     
     init(distance: Int) {
@@ -67,7 +67,7 @@ class LoadViewModelTripDistanceItem: LoadViewModelItem {
     var distance: Int
     
     var distanceAbbreviation: String {
-        return UDManager.shared.getDistanceType().abbreviation
+        return UDManager.shared.distanceUnit.abbreviation
     }
     
     init(distance: Int) {

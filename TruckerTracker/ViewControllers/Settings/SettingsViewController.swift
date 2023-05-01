@@ -115,9 +115,9 @@ class SettingsViewController: UIViewController {
     
     // Navigation
     func showSetting(_ setting: SettingsType) {
-        let settingDetailVC = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.settingDetailViewController) as! SettingDetailViewController
-        settingDetailVC.setting = setting
-        navigationController?.pushViewController(settingDetailVC, animated: true)
+        let settingsDetailVC = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.settingsDetailViewController) as! SettingsDetailViewController
+        settingsDetailVC.setting = setting
+        navigationController?.pushViewController(settingsDetailVC, animated: true)
     }
 }
 

@@ -25,7 +25,7 @@ private enum SectionType: String, CaseIterable {
 class DriverMenuVC: UIViewController {
     
     let tableView = UITableView()
-    let saveButton = TRButton(title: "SAVE", type: .light)
+    let saveButton = TRButton(title: "SAVE", type: .dark)
     
     private let sections = SectionType.allCases
     

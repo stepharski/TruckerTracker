@@ -17,6 +17,19 @@ struct AppColors {
     static let negativeIncomeColors = [#colorLiteral(red: 0.7450980392, green: 0.1333333333, blue: 0.07843137255, alpha: 1), #colorLiteral(red: 0.2549019608, green: 0.0431372549, blue: 0.02352941176, alpha: 1)]
 }
 
+struct StoryboardIdentifiers {
+    static let tabBarController = "TRTabBarController"
+    static let homeViewController = "HomeViewController"
+    static let itemViewController = "ItemViewController"
+    static let settingsViewController = "SettingsViewController"
+    static let settingsDetailViewController = "SettingsDetailViewController"
+}
+
+struct NotificationNames {
+    static let settingsChanged = Notification.Name("SettingsChanged")
+    static let darkModeChanged = Notification.Name("DarkModeChanged")
+}
+
 struct SFSymbols {
     
     // Navigation
@@ -54,13 +67,20 @@ struct SFSymbols {
     static let dropFill = UIImage(systemName: "drop.fill")
     static let snowflake = UIImage(systemName: "snowflake")
     
-    // Profile
+    // Settings
     static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")
     static let personText = UIImage(systemName: "person.text.rectangle")
     static let docOnDoc = UIImage(systemName: "doc.on.doc")
     static let crownArrow = UIImage(systemName: "digitalcrown.arrow.clockwise")
     static let trash = UIImage(systemName: "trash")
     static let cloud = UIImage(systemName: "cloud")
+    
+    // Tools Settings
+    static let gearArrows = UIImage(systemName: "gearshape.arrow.triangle.2.circlepath")
+    static let steeringWheel = UIImage(systemName: "steeringwheel")
+    static let banknote = UIImage(systemName: "banknote")
+    static let calendar = UIImage(systemName: "calendar")
+    static let moon = UIImage(systemName: "moon")
     
     // Compact arrows
     static let arrowCompactUp = UIImage(systemName: "chevron.compact.up")
@@ -71,19 +91,6 @@ struct SFSymbols {
     // Sync benefits
     static let macStudio = UIImage(systemName: "macstudio")
     static let macPro = UIImage(systemName: "macpro.gen1")
-}
-
-
-struct StoryboardIdentifiers {
-    static let tabBarController = "TRTabBarController"
-    static let homeViewController = "HomeViewController"
-    static let itemViewController = "ItemViewController"
-    static let settingsViewController = "SettingsViewController"
-    static let settingDetailViewController = "SettingDetailViewController"
-    
-    // TODO: Clean
-    static let menuDetailedVC = "MenuDetailedVC"
-    static let locationSearchVC = "LocationSearchVC"
 }
 
 

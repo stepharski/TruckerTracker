@@ -20,7 +20,7 @@ struct FuelCellViewModel {
         title = "Diesel"
         date = model.date.convertToMonthDayFormat()
         
-        let currencySymbol = UDManager.shared.getCurrencyType().symbol
+        let currencySymbol = UDManager.shared.currency.symbol
         amount = "\(currencySymbol)\(model.totalAmount.formattedWithSeparator())"
         
         location = model.location ?? "Nowhereville, NA"

@@ -407,10 +407,10 @@
             </objects>
             <point key="canvasLocation" x="72.51908396946564" y="1007.7464788732395"/>
         </scene>
-        <!--Setting Detail View Controller-->
+        <!--Settings Detail View Controller-->
         <scene sceneID="fYw-eU-mTe">
             <objects>
-                <viewController storyboardIdentifier="SettingDetailViewController" id="S6W-NS-JaC" customClass="SettingDetailViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsDetailViewController" id="S6W-NS-JaC" customClass="SettingsDetailViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mej-DV-qYM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -462,67 +462,16 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerHeightConstraint" destination="FZE-IZ-06G" id="m2J-yy-wcK"/>
-                        <outlet property="headerView" destination="Rgs-Jz-NGC" id="m7Z-1c-bzH"/>
-                        <outlet property="settingContainerView" destination="QyK-qc-vLv" id="T1a-5m-A4l"/>
-                        <outlet property="settingDescription" destination="YGt-jJ-ER3" id="gwt-An-ygc"/>
-                        <outlet property="settingImageView" destination="vTr-ht-3US" id="8Dp-ib-oVm"/>
+                        <outlet property="headerHeightConstraint" destination="FZE-IZ-06G" id="DBZ-yh-g8t"/>
+                        <outlet property="headerView" destination="Rgs-Jz-NGC" id="NZy-AB-gkH"/>
+                        <outlet property="settingContainerView" destination="QyK-qc-vLv" id="z62-xe-22q"/>
+                        <outlet property="settingDescription" destination="YGt-jJ-ER3" id="WTQ-Hu-LGd"/>
+                        <outlet property="settingImageView" destination="vTr-ht-3US" id="fSq-ik-67l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4g-ve-886" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1054" y="1008"/>
-        </scene>
-        <!--Menu DetailedVC-->
-        <scene sceneID="gnG-sa-xzM">
-            <objects>
-                <viewController storyboardIdentifier="MenuDetailedVC" id="lIF-of-ieL" customClass="MenuDetailedVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gNd-tM-Rfd">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrench.and.screwdriver" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QZZ-eK-Vqz">
-                                <rect key="frame" x="166.66666666666666" y="68.333333333333329" width="60" height="61.999999999999986"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="46A-vP-sD1"/>
-                                    <constraint firstAttribute="width" secondItem="QZZ-eK-Vqz" secondAttribute="height" multiplier="1:1" id="ceN-ab-3ct"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure app appearance and workflow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXw-Vy-qeJ">
-                                <rect key="frame" x="20" y="144" width="353" height="43"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdZ-ZY-5sS">
-                                <rect key="frame" x="20" y="217" width="353" height="581"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="r3p-SO-db8"/>
-                        <color key="backgroundColor" red="0.11764705882352941" green="0.22352941176470587" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="r3p-SO-db8" firstAttribute="trailing" secondItem="NdZ-ZY-5sS" secondAttribute="trailing" constant="20" id="2sx-iW-TtC"/>
-                            <constraint firstItem="ZXw-Vy-qeJ" firstAttribute="leading" secondItem="r3p-SO-db8" secondAttribute="leading" constant="20" id="Bbo-TO-RPQ"/>
-                            <constraint firstItem="QZZ-eK-Vqz" firstAttribute="top" secondItem="r3p-SO-db8" secondAttribute="top" constant="10" id="EN0-vQ-Ui5"/>
-                            <constraint firstItem="r3p-SO-db8" firstAttribute="bottom" secondItem="NdZ-ZY-5sS" secondAttribute="bottom" constant="20" id="H3P-Iq-Das"/>
-                            <constraint firstItem="NdZ-ZY-5sS" firstAttribute="top" secondItem="ZXw-Vy-qeJ" secondAttribute="bottom" constant="30" id="ZfR-PO-bn8"/>
-                            <constraint firstItem="NdZ-ZY-5sS" firstAttribute="leading" secondItem="r3p-SO-db8" secondAttribute="leading" constant="20" id="fo0-BQ-Cq9"/>
-                            <constraint firstItem="ZXw-Vy-qeJ" firstAttribute="top" secondItem="QZZ-eK-Vqz" secondAttribute="bottom" constant="15" id="gdu-rD-T1j"/>
-                            <constraint firstItem="r3p-SO-db8" firstAttribute="trailing" secondItem="ZXw-Vy-qeJ" secondAttribute="trailing" constant="20" id="jkL-LH-WRa"/>
-                            <constraint firstItem="QZZ-eK-Vqz" firstAttribute="centerX" secondItem="gNd-tM-Rfd" secondAttribute="centerX" id="uhi-4d-qRh"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="menuContainerView" destination="NdZ-ZY-5sS" id="fIf-SH-TlZ"/>
-                        <outlet property="menuDescriptionLabel" destination="ZXw-Vy-qeJ" id="Ybq-wc-Jzh"/>
-                        <outlet property="menuImageView" destination="QZZ-eK-Vqz" id="ovM-qA-wEh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3m-6Q-WNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2108" y="1008"/>
         </scene>
     </scenes>
     <resources>

@@ -35,7 +35,7 @@ class DocumentsMenuVC: UIViewController {
     let periodDisplayVC = TRPeriodDisplayVC()
     
     let tableView = UITableView(frame: .zero, style: .grouped)
-    let addDocButton = TRButton(title: "ADD DOCUMENT", type: .light)
+    let addDocButton = TRButton(title: "ADD DOCUMENT", type: .dark)
     
     private var sections = [Section]()
     

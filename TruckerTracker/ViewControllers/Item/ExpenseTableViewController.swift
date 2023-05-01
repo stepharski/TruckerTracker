@@ -42,6 +42,7 @@ class ExpenseTableViewController: UITableViewController {
         tableView.register(NoAttachmentCell.nib, forCellReuseIdentifier: NoAttachmentCell.identifier)
     }
     
+    //TODO: - Move to ViewModel!!!
     // MARK: - View Model update
     // Name
     private func updateName(_ name: String) {

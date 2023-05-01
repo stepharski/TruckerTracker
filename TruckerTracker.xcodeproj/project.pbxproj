@@ -64,7 +64,6 @@
 		5F790FFA2944521F00A73600 /* TRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF92944521F00A73600 /* TRButton.swift */; };
 		5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791004294B8F7F00A73600 /* TRItemCell.swift */; };
 		5F791007294B8F7F00A73600 /* TRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F791005294B8F7F00A73600 /* TRItemCell.xib */; };
-		5F791011294CE58B00A73600 /* MenuDetailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791010294CE58B00A73600 /* MenuDetailedVC.swift */; };
 		5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791012294CEC2900A73600 /* FrequencyType.swift */; };
 		5F791015294CECF700A73600 /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791014294CECF700A73600 /* FuelType.swift */; };
 		5F791017294D756600A73600 /* DriverMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791016294D756600A73600 /* DriverMenuVC.swift */; };
@@ -84,7 +83,6 @@
 		5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */; };
 		5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */; };
 		5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */; };
-		5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD6E2923394C00DEEC20 /* ProfileMenuType.swift */; };
 		5FA55194297AE44900D3596F /* TRPeriodSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA55193297AE44900D3596F /* TRPeriodSelectorVC.swift */; };
 		5FA55196297AE46400D3596F /* TRDatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA55195297AE46400D3596F /* TRDatePickerVC.swift */; };
 		5FA55198297B082A00D3596F /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA55197297B082A00D3596F /* String+Ext.swift */; };
@@ -109,14 +107,15 @@
 		5FA551E529A0989F00D3596F /* FuelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551E329A0989F00D3596F /* FuelCell.swift */; };
 		5FA551E629A0989F00D3596F /* FuelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551E429A0989F00D3596F /* FuelCell.xib */; };
 		5FA551EA29A141ED00D3596F /* LoadCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */; };
-		5FA551EC29A1431900D3596F /* UnitsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551EB29A1431900D3596F /* UnitsType.swift */; };
-		5FA551EE29A1459C00D3596F /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551ED29A1459C00D3596F /* CurrencyType.swift */; };
 		5FA551F029A1493C00D3596F /* Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551EF29A1493C00D3596F /* Load.swift */; };
 		5FA551F229A1500B00D3596F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F129A1500B00D3596F /* Expense.swift */; };
 		5FA551F529A150E500D3596F /* ExpenseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */; };
 		5FA551F929A1563800D3596F /* Fuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F829A1563800D3596F /* Fuel.swift */; };
 		5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */; };
 		5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FC29A164D400D3596F /* Numeric+Ext.swift */; };
+		5FB723B229F828AA003E6778 /* ToolsSettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */; };
+		5FB723B529F82E09003E6778 /* ToolsSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */; };
+		5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B629FDBD41003E6778 /* Array+Ext.swift */; };
 		5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */; };
 		5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2928B920540037A4AD /* TRTabBar.swift */; };
 		5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3628BC18ED0037A4AD /* Constants.swift */; };
@@ -126,7 +125,12 @@
 		5FDF97C829E4B37500DCD038 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97C629E4B37500DCD038 /* SettingsCell.swift */; };
 		5FDF97C929E4B37500DCD038 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97C729E4B37500DCD038 /* SettingsCell.xib */; };
 		5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */; };
-		5FDF97CF29E8E3A600DCD038 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CE29E8E3A600DCD038 /* SettingDetailViewController.swift */; };
+		5FDF97D229F6D7CA00DCD038 /* SettingsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97D129F6D7CA00DCD038 /* SettingsDetailViewController.swift */; };
+		5FDF97D429F6D91100DCD038 /* ToolsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97D329F6D91100DCD038 /* ToolsSettingsViewController.swift */; };
+		5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */; };
+		5FDF97DF29F7241E00DCD038 /* SettingOptionPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */; };
+		5FDF97E429F727AF00DCD038 /* SettingToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97E229F727AF00DCD038 /* SettingToggleCell.swift */; };
+		5FDF97E529F727AF00DCD038 /* SettingToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97E329F727AF00DCD038 /* SettingToggleCell.xib */; };
 		5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadViewModel.swift */; };
 		5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */; };
 		5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */; };
@@ -191,7 +195,6 @@
 		5F790FF92944521F00A73600 /* TRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRButton.swift; sourceTree = "<group>"; };
 		5F791004294B8F7F00A73600 /* TRItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRItemCell.swift; sourceTree = "<group>"; };
 		5F791005294B8F7F00A73600 /* TRItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRItemCell.xib; sourceTree = "<group>"; };
-		5F791010294CE58B00A73600 /* MenuDetailedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailedVC.swift; sourceTree = "<group>"; };
 		5F791012294CEC2900A73600 /* FrequencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyType.swift; sourceTree = "<group>"; };
 		5F791014294CECF700A73600 /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
 		5F791016294D756600A73600 /* DriverMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverMenuVC.swift; sourceTree = "<group>"; };
@@ -213,7 +216,6 @@
 		5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Ext.swift"; sourceTree = "<group>"; };
 		5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Ext.swift"; sourceTree = "<group>"; };
-		5F97FD6E2923394C00DEEC20 /* ProfileMenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuType.swift; sourceTree = "<group>"; };
 		5FA55193297AE44900D3596F /* TRPeriodSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPeriodSelectorVC.swift; sourceTree = "<group>"; };
 		5FA55195297AE46400D3596F /* TRDatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRDatePickerVC.swift; sourceTree = "<group>"; };
 		5FA55197297B082A00D3596F /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -238,14 +240,15 @@
 		5FA551E329A0989F00D3596F /* FuelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCell.swift; sourceTree = "<group>"; };
 		5FA551E429A0989F00D3596F /* FuelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelCell.xib; sourceTree = "<group>"; };
 		5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCellViewModel.swift; sourceTree = "<group>"; };
-		5FA551EB29A1431900D3596F /* UnitsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsType.swift; sourceTree = "<group>"; };
-		5FA551ED29A1459C00D3596F /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 		5FA551EF29A1493C00D3596F /* Load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load.swift; sourceTree = "<group>"; };
 		5FA551F129A1500B00D3596F /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCellViewModel.swift; sourceTree = "<group>"; };
 		5FA551F829A1563800D3596F /* Fuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuel.swift; sourceTree = "<group>"; };
 		5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCellViewModel.swift; sourceTree = "<group>"; };
 		5FA551FC29A164D400D3596F /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
+		5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsType.swift; sourceTree = "<group>"; };
+		5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsViewModel.swift; sourceTree = "<group>"; };
+		5FB723B629FDBD41003E6778 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBarController.swift; sourceTree = "<group>"; };
 		5FB92F2928B920540037A4AD /* TRTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBar.swift; sourceTree = "<group>"; };
 		5FB92F3628BC18ED0037A4AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -255,7 +258,12 @@
 		5FDF97C629E4B37500DCD038 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5FDF97C729E4B37500DCD038 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
 		5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
-		5FDF97CE29E8E3A600DCD038 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
+		5FDF97D129F6D7CA00DCD038 /* SettingsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailViewController.swift; sourceTree = "<group>"; };
+		5FDF97D329F6D91100DCD038 /* ToolsSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsViewController.swift; sourceTree = "<group>"; };
+		5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionPickerCell.swift; sourceTree = "<group>"; };
+		5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOptionPickerCell.xib; sourceTree = "<group>"; };
+		5FDF97E229F727AF00DCD038 /* SettingToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingToggleCell.swift; sourceTree = "<group>"; };
+		5FDF97E329F727AF00DCD038 /* SettingToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingToggleCell.xib; sourceTree = "<group>"; };
 		5FEC7BB429B792080091F8FB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 		5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -503,8 +511,8 @@
 			isa = PBXGroup;
 			children = (
 				5F39788E29E3320B007C3B65 /* SettingsViewController.swift */,
-				5FDF97CE29E8E3A600DCD038 /* SettingDetailViewController.swift */,
-				5F791010294CE58B00A73600 /* MenuDetailedVC.swift */,
+				5FDF97D129F6D7CA00DCD038 /* SettingsDetailViewController.swift */,
+				5FDF97D029F6D69D00DCD038 /* SettingsChildVCs */,
 				5F790FF22944448C00A73600 /* MenuChildVCs */,
 			);
 			path = Settings;
@@ -716,8 +724,9 @@
 		5FA551C7298C818000D3596F /* Foundation+Ext */ = {
 			isa = PBXGroup;
 			children = (
-				5FA55197297B082A00D3596F /* String+Ext.swift */,
+				5FB723B629FDBD41003E6778 /* Array+Ext.swift */,
 				5F71DC8429578138003111AF /* Date+Ext.swift */,
+				5FA55197297B082A00D3596F /* String+Ext.swift */,
 				5F39788229D3E24C007C3B65 /* Double+Ext.swift */,
 				5FA551FC29A164D400D3596F /* Numeric+Ext.swift */,
 				5FA551AB2980371600D3596F /* Calendar+Ext.swift */,
@@ -734,6 +743,7 @@
 				5F790FFB2947E9CB00A73600 /* General Cells */,
 				5FA551D729A075DE00D3596F /* Home Cells */,
 				5FEC7BBA29B7D55E0091F8FB /* Item Cells */,
+				5FDF97D529F6E0ED00DCD038 /* SettingsDetail Cells */,
 				5F791019294D7AA300A73600 /* MenuDetailedCells */,
 				5FA5519E297B1B0500D3596F /* PeriodSelector Cells */,
 			);
@@ -790,8 +800,17 @@
 			children = (
 				5FEC7BB129B791460091F8FB /* Home */,
 				5FEC7BB029B791330091F8FB /* Items */,
+				5FB723B329F82C8E003E6778 /* Settings */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5FB723B329F82C8E003E6778 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		5FB92F3128B921FD0037A4AD /* ViewControllers */ = {
@@ -878,14 +897,12 @@
 		5FB92F4828C9841A0037A4AD /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				5F97FD6E2923394C00DEEC20 /* ProfileMenuType.swift */,
 				5F791012294CEC2900A73600 /* FrequencyType.swift */,
 				5FA551B029805C6500D3596F /* PeriodType.swift */,
 				5F791014294CECF700A73600 /* FuelType.swift */,
 				5FA551D1299596A300D3596F /* ItemType.swift */,
-				5FA551EB29A1431900D3596F /* UnitsType.swift */,
-				5FA551ED29A1459C00D3596F /* CurrencyType.swift */,
 				5FDF97C329E33E0A00DCD038 /* SettingsType.swift */,
+				5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -897,6 +914,49 @@
 				5FDF97C729E4B37500DCD038 /* SettingsCell.xib */,
 			);
 			path = "Settings Cell";
+			sourceTree = "<group>";
+		};
+		5FDF97D029F6D69D00DCD038 /* SettingsChildVCs */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF97D329F6D91100DCD038 /* ToolsSettingsViewController.swift */,
+			);
+			path = SettingsChildVCs;
+			sourceTree = "<group>";
+		};
+		5FDF97D529F6E0ED00DCD038 /* SettingsDetail Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF97DB29F7240600DCD038 /* OptionPickerCell */,
+				5FDF97E029F7270C00DCD038 /* ToggleCell */,
+				5FDF97E129F7271E00DCD038 /* InputCell */,
+			);
+			path = "SettingsDetail Cells";
+			sourceTree = "<group>";
+		};
+		5FDF97DB29F7240600DCD038 /* OptionPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */,
+				5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */,
+			);
+			path = OptionPickerCell;
+			sourceTree = "<group>";
+		};
+		5FDF97E029F7270C00DCD038 /* ToggleCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF97E229F727AF00DCD038 /* SettingToggleCell.swift */,
+				5FDF97E329F727AF00DCD038 /* SettingToggleCell.xib */,
+			);
+			path = ToggleCell;
+			sourceTree = "<group>";
+		};
+		5FDF97E129F7271E00DCD038 /* InputCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InputCell;
 			sourceTree = "<group>";
 		};
 		5FEC7BB029B791330091F8FB /* Items */ = {
@@ -1006,11 +1066,13 @@
 				5F39786529CE8105007C3B65 /* ExpenseNoteCell.xib in Resources */,
 				5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */,
 				5FDF97C929E4B37500DCD038 /* SettingsCell.xib in Resources */,
+				5FDF97DF29F7241E00DCD038 /* SettingOptionPickerCell.xib in Resources */,
 				5F39785729CE376B007C3B65 /* NameCell.xib in Resources */,
 				5F39787729D23790007C3B65 /* NoAttachmentCell.xib in Resources */,
 				5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
 				5F2B8010295A05DD0044E004 /* ContactCell.xib in Resources */,
+				5FDF97E529F727AF00DCD038 /* SettingToggleCell.xib in Resources */,
 				5F39786029CE6F79007C3B65 /* ExpenseFrequencyCell.xib in Resources */,
 				5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */,
 				5F2B802E295F8DAA0044E004 /* ExportPeriodCell.xib in Resources */,
@@ -1034,8 +1096,8 @@
 				5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */,
 				5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
-				5FDF97CF29E8E3A600DCD038 /* SettingDetailViewController.swift in Sources */,
 				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
+				5FB723B529F82E09003E6778 /* ToolsSettingsViewModel.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
 				5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */,
 				5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */,
@@ -1044,16 +1106,18 @@
 				5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */,
 				5F790FFA2944521F00A73600 /* TRButton.swift in Sources */,
 				5FA551AF29805BC900D3596F /* Period.swift in Sources */,
-				5FA551EE29A1459C00D3596F /* CurrencyType.swift in Sources */,
 				5FA551EA29A141ED00D3596F /* LoadCellViewModel.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
+				5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */,
 				5F39783429C7FA21007C3B65 /* TRError.swift in Sources */,
+				5FDF97E429F727AF00DCD038 /* SettingToggleCell.swift in Sources */,
 				5F2B802D295F8DAA0044E004 /* ExportPeriodCell.swift in Sources */,
 				5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */,
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
 				5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */,
 				5F39786729CE9EE4007C3B65 /* FuelViewModel.swift in Sources */,
+				5FDF97D429F6D91100DCD038 /* ToolsSettingsViewController.swift in Sources */,
 				5F97B6B02954F417004C5D2A /* DocumentsMenuVC.swift in Sources */,
 				5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */,
 				5F39788029D37F6F007C3B65 /* FuelEntryCell.swift in Sources */,
@@ -1063,7 +1127,6 @@
 				5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */,
 				5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */,
 				5F2B800F295A05DD0044E004 /* ContactCell.swift in Sources */,
-				5F791011294CE58B00A73600 /* MenuDetailedVC.swift in Sources */,
 				5F39787B29D3761B007C3B65 /* FuelLocationCell.swift in Sources */,
 				5F39785129CE20C7007C3B65 /* LoadDistanceCell.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
@@ -1088,25 +1151,26 @@
 				5F2B800B295A02480044E004 /* ContactMenuVC.swift in Sources */,
 				5FA551F229A1500B00D3596F /* Expense.swift in Sources */,
 				5F39787129D2351C007C3B65 /* AttachmentCell.swift in Sources */,
+				5FB723B229F828AA003E6778 /* ToolsSettingsType.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
 				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
 				5FDF97C829E4B37500DCD038 /* SettingsCell.swift in Sources */,
 				5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */,
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
+				5FDF97D229F6D7CA00DCD038 /* SettingsDetailViewController.swift in Sources */,
 				5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */,
-				5FA551EC29A1431900D3596F /* UnitsType.swift in Sources */,
 				5F39787629D23790007C3B65 /* NoAttachmentCell.swift in Sources */,
 				5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */,
 				5FA551B129805C6500D3596F /* PeriodType.swift in Sources */,
 				5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */,
-				5F97FD6F2923394C00DEEC20 /* ProfileMenuType.swift in Sources */,
 				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
 				5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */,
 				5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */,
 				5F39788F29E3320B007C3B65 /* SettingsViewController.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5F39786B29D2215F007C3B65 /* SectionTitleHeaderView.swift in Sources */,
+				5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */,
 				5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */,
 				5F791017294D756600A73600 /* DriverMenuVC.swift in Sources */,
 				5F71DC8529578138003111AF /* Date+Ext.swift in Sources */,

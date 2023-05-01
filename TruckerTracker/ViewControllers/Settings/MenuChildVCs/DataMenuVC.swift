@@ -20,7 +20,7 @@ private enum MenuType: String, CaseIterable {
         case .reset:
             return .red
         case .sync:
-            return .light
+            return .dark
         case .export:
             return .dark
         }

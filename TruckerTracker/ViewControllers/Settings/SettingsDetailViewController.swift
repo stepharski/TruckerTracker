@@ -1,13 +1,13 @@
 //
-//  SettingDetailViewController.swift
+//  SettingsDetailViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/13/23.
+//  Created by Stepan Kukharskyi on 4/24/23.
 //
 
 import UIKit
 
-class SettingDetailViewController: UIViewController {
+class SettingsDetailViewController: UIViewController {
 
     @IBOutlet private var headerView: UIView!
     @IBOutlet private var headerHeightConstraint: NSLayoutConstraint!
@@ -66,7 +66,7 @@ class SettingDetailViewController: UIViewController {
     func getSettingVC() -> UIViewController {
         switch setting {
         case .tools:
-            return UIViewController()
+            return ToolsSettingsViewController()
         case .driver:
             return UIViewController()
         case .attachments:

@@ -32,7 +32,7 @@ class ExpenseCell: UITableViewCell {
     }
 
     // Configuration
-    func configureUI() {
+    private func configureUI() {
         contentView.roundEdges(by: 20)
         contentView.backgroundColor = .systemGray6
     }

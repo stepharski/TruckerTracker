@@ -18,7 +18,7 @@ private struct RecurringExpense {
 class RecurringMenuVC: UIViewController {
     
     let tableView = UITableView()
-    let addButton = TRButton(title: "ADD TRANSACTION", type: .light)
+    let addButton = TRButton(title: "ADD TRANSACTION", type: .dark)
     
     private var expenses = [RecurringExpense]()
     

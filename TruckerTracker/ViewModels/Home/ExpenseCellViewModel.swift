@@ -19,7 +19,7 @@ struct ExpenseCellViewModel {
         name = model.name
         date = model.date.convertToMonthDayFormat()
         
-        let currencySymbol = UDManager.shared.getCurrencyType().symbol
+        let currencySymbol = UDManager.shared.currency.symbol
         amount = "\(currencySymbol)\(model.amount.formattedWithSeparator())"
         
         frequencyTitle = model.frequency.title

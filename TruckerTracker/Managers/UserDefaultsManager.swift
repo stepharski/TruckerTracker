@@ -10,17 +10,20 @@ import Foundation
 // MARK: - UserDefaultsKeys
 struct UDKeys {
     static let period = "period"
-    static let distance = "distance"
+    static let distanceUnit = "distanceUnit"
     static let currency = "currency"
-    static let firstWeekDay = "firstWeekDay"
+    static let weekStartDay = "weekStartDay"
+    static let isDarkModeOn = "isDarkModeOn"
 }
 
 struct UDValues {
-    static let periodType: PeriodType = .week
-    static let firstWeekDay: Int = 2 // Monday
     static let userSinceYear: Int = 2022
-    static let distanceType: DistanceType = .miles
-    static let currencyType: CurrencyType = .usd
+    static let periodType: PeriodType = .week
+    
+    static let distanceUnit: DistanceUnit = .miles
+    static let currency: Currency = .usd
+    static let weekStartDay: Weekday = .monday
+    static let isDarkModeOn: Bool = false
 }
 
 // MARK: - UserDefaultsManager
@@ -30,42 +33,39 @@ class UDManager {
     let defaults = UserDefaults.standard
 
     
-    // User default/selected period
-    func savePeriod(_ period: Period) {
-        defaults.setCodable(value: period, forKey: UDKeys.period)
-    }
-    
-    func getPeriod() -> Period {
-        return defaults.codableValue(forKey: UDKeys.period)
-            ?? Period(type: UDValues.periodType, interval: Date().getDateInterval(in: UDValues.periodType))
-    }
-    
-    // User default/selected first week day
-    func saveFirstWeekDay(_ day: Int) {
-        guard (1...7).contains(day) else { return }
+    // Period
+    var period: Period {
+        get { return defaults.codableValue(forKey: UDKeys.period)
+                    ?? Period(type: UDValues.periodType, interval: Date().getDateInterval(in: UDValues.periodType)) }
         
-        defaults.set(day, forKey: UDKeys.firstWeekDay)
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.period) }
     }
     
-    func getFirstWeekDay() -> Int {
-        return defaults.value(forKey: UDKeys.firstWeekDay) as? Int ?? UDValues.firstWeekDay
+    // Distance unit
+    var distanceUnit: DistanceUnit {
+        get { return defaults.codableValue(forKey: UDKeys.distanceUnit) ?? UDValues.distanceUnit }
+        
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.distanceUnit) }
     }
     
-    // User default/selected distance type
-    func saveDistanceType(_ distanceType: DistanceType) {
-        defaults.setCodable(value: distanceType, forKey: UDKeys.distance)
+    // Currency
+    var currency: Currency {
+        get { return defaults.codableValue(forKey: UDKeys.currency) ?? UDValues.currency }
+        
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.currency) }
     }
     
-    func getDistanceType() -> DistanceType {
-        return defaults.codableValue(forKey: UDKeys.distance) ?? UDValues.distanceType
+    // Week start day
+    var weekStartDay: Weekday {
+        get { return defaults.codableValue(forKey: UDKeys.weekStartDay) ?? UDValues.weekStartDay }
+        
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.weekStartDay) }
     }
     
-    // User default/selected currency type
-    func saveCurrencyType(_ currencyType: CurrencyType) {
-        defaults.setCodable(value: currencyType, forKey: UDKeys.currency)
-    }
-    
-    func getCurrencyType() -> CurrencyType {
-        return defaults.codableValue(forKey: UDKeys.currency) ?? UDValues.currencyType
+    // Dark mode
+    var isDarkModeOn: Bool {
+        get { return (defaults.value(forKey: UDKeys.isDarkModeOn) as? Bool) ?? UDValues.isDarkModeOn }
+        
+        set { defaults.set(newValue, forKey: UDKeys.isDarkModeOn) }
     }
 }

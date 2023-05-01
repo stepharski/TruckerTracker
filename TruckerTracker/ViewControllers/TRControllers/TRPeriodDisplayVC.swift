@@ -28,7 +28,7 @@ class TRPeriodDisplayVC: UIViewController {
     let numberOfItemFontSize: CGFloat = 14
     
     lazy var period: Period = {
-        return UDManager.shared.getPeriod()
+        return UDManager.shared.period
     }() { didSet { updatePeriodLabel() }}
     
     var numberOfItems: Int = 0 {
@@ -125,20 +125,20 @@ class TRPeriodDisplayVC: UIViewController {
     
     @objc private func nextButtonTapped() {
         period.interval = period.interval.nextInterval()
-        UDManager.shared.savePeriod(period)
+        UDManager.shared.period = period
         delegate?.displayDidUpdate(period: period)
     }
     
     @objc private func previousButtonTapped() {
         period.interval = period.interval.previousInterval()
-        UDManager.shared.savePeriod(period)
+        UDManager.shared.period = period
         delegate?.displayDidUpdate(period: period)
     }
     
     // Update
     func checkPeriodForUpdate() {
-        if period.interval != UDManager.shared.getPeriod().interval {
-            period = UDManager.shared.getPeriod()
+        if period.interval != UDManager.shared.period.interval {
+            period = UDManager.shared.period
             delegate?.displayDidUpdate(period: period)
         }
     }

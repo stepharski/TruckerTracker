@@ -42,11 +42,11 @@ class TRPeriodSelectorVC: UIViewController {
     private var pickerComponents = [[String]]()
     
     lazy var selectedPeriod: Period = {
-        return UDManager.shared.getPeriod()
+        return UDManager.shared.period
     }() {
         didSet {
             updateUI()
-            UDManager.shared.savePeriod(selectedPeriod)
+            UDManager.shared.period = selectedPeriod
             delegate?.selectorDidUpdate(period: selectedPeriod)
         }
     }
