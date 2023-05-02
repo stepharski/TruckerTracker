@@ -12,7 +12,15 @@ struct Period: Codable {
     var type: PeriodType
     var interval: DateInterval
     
+    // Default
+    static func getDefault() -> Period {
+        let defaultType = UDValues.periodType
+        let defaultInterval = Date().getDateInterval(in: defaultType)
+        
+        return Period(type: defaultType, interval: defaultInterval)
+    }
     
+    // String
     func convertToString() -> String {
         switch type {
         case .year:

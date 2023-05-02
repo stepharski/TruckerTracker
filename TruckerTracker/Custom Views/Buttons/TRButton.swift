@@ -7,34 +7,43 @@
 
 import UIKit
 
-// Button type
-enum TRButtonType {
-    case dark, red
+//MARK: - Button Type
+// Size
+enum TRButtonSizeType {
+    case capsule, rectangle
     
-    var backgroundColor: UIColor {
+    var cornerStyle: UIButton.Configuration.CornerStyle {
         switch self {
-        case .dark:
-            return .label
-        case .red:
-            return .systemRed
-        }
-    }
-    
-    var foregroundColor: UIColor {
-        return #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1)
-    }
-    
-    var shadowColor: UIColor {
-        switch self {
-        case .dark:
-            return .label.withAlphaComponent(0.5)
-        case .red:
-            return .label.withAlphaComponent(0.25)
+        case .capsule:  return .capsule
+        case .rectangle: return .small
         }
     }
 }
 
-// TRButton
+// Color
+enum TRButtonColorType {
+    case dark, red
+    
+    var foregroundColor: UIColor {
+        return .systemBackground
+    }
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .dark: return .label
+        case .red:  return .systemRed
+        }
+    }
+    
+    var shadowColor: UIColor {
+        switch self {
+        case .dark: return .label.withAlphaComponent(0.5)
+        case .red:  return .label.withAlphaComponent(0.25)
+        }
+    }
+}
+
+//MARK: -  TRButton
 class TRButton: UIButton {
 
     // Font attributes
@@ -51,10 +60,10 @@ class TRButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(title: String, type: TRButtonType) {
+    convenience init(title: String, color: TRButtonColorType, size: TRButtonSizeType) {
         self.init(frame: .zero)
 
-        set(title: title, type: type)
+        set(title: title, color: color, size: size)
     }
     
     // Configuration
@@ -64,14 +73,15 @@ class TRButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func set(title: String, type: TRButtonType) {
+    func set(title: String, color: TRButtonColorType, size: TRButtonSizeType) {
         var attTitle = AttributedString(title)
         attTitle.font = UIFont.systemFont(ofSize: titleFontSize, weight: titleFontWeight)
         
         configuration?.attributedTitle = attTitle
-        configuration?.baseBackgroundColor = type.backgroundColor
-        configuration?.baseForegroundColor = type.foregroundColor
+        configuration?.cornerStyle = size.cornerStyle
+        configuration?.baseBackgroundColor = color.backgroundColor
+        configuration?.baseForegroundColor = color.foregroundColor
         
-        dropShadow(color: type.shadowColor)
+        dropShadow(color: color.shadowColor)
     }
 }

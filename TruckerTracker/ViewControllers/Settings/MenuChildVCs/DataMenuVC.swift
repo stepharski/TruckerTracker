@@ -15,13 +15,11 @@ private enum MenuType: String, CaseIterable {
         return rawValue.capitalized
     }
     
-    var actionButtonType: TRButtonType {
+    var actionButtonType: TRButtonColorType {
         switch self {
         case .reset:
             return .red
-        case .sync:
-            return .dark
-        case .export:
+        case .sync, .export:
             return .dark
         }
     }
@@ -117,7 +115,9 @@ class DataMenuVC: UIViewController {
         didSet {
             updateSections()
             tableView.reloadData()
-            actionButton.set(title: selectedMenu.title, type: selectedMenu.actionButtonType)
+            actionButton.set(title: selectedMenu.title,
+                             color: selectedMenu.actionButtonType,
+                             size: .capsule)
         }
     }
     
@@ -194,7 +194,7 @@ class DataMenuVC: UIViewController {
     }
     
     func configureActionButton() {
-        actionButton.set(title: selectedMenu.title, type: selectedMenu.actionButtonType)
+        actionButton.set(title: selectedMenu.title, color: selectedMenu.actionButtonType, size: .capsule)
         actionButton.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
     }
     

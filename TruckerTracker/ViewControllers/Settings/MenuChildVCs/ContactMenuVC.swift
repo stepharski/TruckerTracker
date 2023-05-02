@@ -29,7 +29,7 @@ private enum SectionType: String, CaseIterable {
 class ContactMenuVC: UIViewController {
     
     let tableView = UITableView()
-    let sendButton = TRButton(title: "SEND", type: .dark)
+    let sendButton = TRButton(title: "SEND", color: .dark, size: .capsule)
     
     private let sections = SectionType.allCases
     

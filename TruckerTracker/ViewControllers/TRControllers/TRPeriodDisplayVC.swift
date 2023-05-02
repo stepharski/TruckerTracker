@@ -9,8 +9,8 @@ import UIKit
 
 // MARK: - PeriodDisplayDelegate
 protocol PeriodDisplayDelegate: AnyObject {
-    func didTapPeriodDisplay()
-    func displayDidUpdate(period: Period)
+    func didTapPeriod()
+    func didUpdatePeriod(with newPeriod: Period)
 }
 
 // MARK: - TRPeriodDisplayVC
@@ -18,18 +18,18 @@ class TRPeriodDisplayVC: UIViewController {
     
     weak var delegate: PeriodDisplayDelegate?
 
-    private let nextButton = UIButton()
-    private let previousButton = UIButton()
+    let periodFontSize: CGFloat = 17
+    let numberOfItemFontSize: CGFloat = 14
     
     private let periodlabel = UILabel()
     private let numberOfItemsLabel = UILabel()
     
-    let periodFontSize: CGFloat = 17
-    let numberOfItemFontSize: CGFloat = 14
+    private let nextButton = UIButton()
+    private let previousButton = UIButton()
     
-    lazy var period: Period = {
-        return UDManager.shared.period
-    }() { didSet { updatePeriodLabel() }}
+    var period: Period = Period.getDefault() {
+        didSet { updatePeriodLabel() }
+    }
     
     var numberOfItems: Int = 0 {
         didSet { updateNumberOfItemsLabel() }}
@@ -43,18 +43,10 @@ class TRPeriodDisplayVC: UIViewController {
         super.viewDidLoad()
 
         addTapToBackground()
-        
         configureLabels()
         configureButtons()
-        
         updatePeriodLabel()
         updateNumberOfItemsLabel()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        checkPeriodForUpdate()
     }
     
     // Background tap
@@ -64,7 +56,7 @@ class TRPeriodDisplayVC: UIViewController {
     }
     
     @objc private func didTapBackground() {
-        delegate?.didTapPeriodDisplay()
+        delegate?.didTapPeriod()
     }
     
     // Labels
@@ -123,23 +115,14 @@ class TRPeriodDisplayVC: UIViewController {
         previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
     }
     
+    // Period Update
     @objc private func nextButtonTapped() {
         period.interval = period.interval.nextInterval()
-        UDManager.shared.period = period
-        delegate?.displayDidUpdate(period: period)
+        delegate?.didUpdatePeriod(with: period)
     }
     
     @objc private func previousButtonTapped() {
         period.interval = period.interval.previousInterval()
-        UDManager.shared.period = period
-        delegate?.displayDidUpdate(period: period)
-    }
-    
-    // Update
-    func checkPeriodForUpdate() {
-        if period.interval != UDManager.shared.period.interval {
-            period = UDManager.shared.period
-            delegate?.displayDidUpdate(period: period)
-        }
+        delegate?.didUpdatePeriod(with: period)
     }
 }

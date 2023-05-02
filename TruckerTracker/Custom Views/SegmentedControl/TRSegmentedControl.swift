@@ -25,9 +25,6 @@ enum SegmentSelectorType {
 // MARK: - TRSegmentedControl
 class TRSegmentedControl: UIControl {
     
-    var titles = [String]()
-    var subtitles = [String]()
-    
     var selectedIndex: Int = 0
     var selectorColor: UIColor = AppColors.textColor
     
@@ -39,6 +36,9 @@ class TRSegmentedControl: UIControl {
     
     var subtitleFontSize: CGFloat = 15
     var subtitleFontWeight: UIFont.Weight = .medium
+    
+    private var titles = [String]()
+    private var subtitles = [String]()
     
     private var buttons = [UIButton]()
     private var selectorView = UIView()
@@ -80,6 +80,23 @@ class TRSegmentedControl: UIControl {
         }
     }
     
+    // Titles
+    func getAttributedTitle(with title: String) -> AttributedString {
+        var attributedTitle = AttributedString(title)
+        attributedTitle.font = UIFont.systemFont(ofSize: titleFontSize, weight: titleFontWeight)
+        attributedTitle.foregroundColor = textColor
+        
+        return attributedTitle
+    }
+    
+    func getAttributedSubtitle(with subtitle: String) -> AttributedString {
+        var attributedSubtitle = AttributedString(subtitle)
+        attributedSubtitle.font = UIFont.systemFont(ofSize: subtitleFontSize, weight: subtitleFontWeight)
+        attributedSubtitle.foregroundColor = textColor
+        
+        return attributedSubtitle
+    }
+    
     // Buttons
     private func setupButtons() {
         guard titles.count > 0 else { return }
@@ -92,19 +109,10 @@ class TRSegmentedControl: UIControl {
             var config = UIButton.Configuration.plain()
             config.baseBackgroundColor = .clear
             config.titleAlignment = .center
-            
-            var attTitle = AttributedString(title)
-            attTitle.font = UIFont.systemFont(ofSize: titleFontSize,
-                                              weight: titleFontWeight)
-            attTitle.foregroundColor = textColor
-            config.attributedTitle = attTitle
+            config.attributedTitle = getAttributedTitle(with: title)
             
             if subtitles.indices.contains(index) {
-                var attsubtitle = AttributedString(subtitles[index])
-                attsubtitle.font = UIFont.systemFont(ofSize: subtitleFontSize,
-                                                     weight: subtitleFontWeight)
-                attsubtitle.foregroundColor = textColor
-                config.attributedSubtitle = attsubtitle
+                config.attributedSubtitle = getAttributedSubtitle(with: subtitles[index])
             }
             
             let handler: UIButton.ConfigurationUpdateHandler = { button in
@@ -128,7 +136,6 @@ class TRSegmentedControl: UIControl {
         }
         
         setupButtonsStack()
-//        setupSelector()
     }
     
     @objc func buttonTapped(sender: UIButton) {

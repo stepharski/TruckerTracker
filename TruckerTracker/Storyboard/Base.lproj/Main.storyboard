@@ -45,8 +45,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AM-ff-xYA">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="230"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 5,050" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niz-iu-8ol">
-                                        <rect key="frame" x="152" y="59" width="89" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niz-iu-8ol">
+                                        <rect key="frame" x="178" y="59" width="37" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -79,6 +79,11 @@
                                 <rect key="frame" x="20" y="335" width="353" height="483"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IYc-pz-ZK7">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <color key="color" systemColor="systemGreenColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="03N-4G-5yh"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -88,15 +93,18 @@
                             <constraint firstItem="03N-4G-5yh" firstAttribute="bottom" secondItem="Edw-bi-FtK" secondAttribute="bottom" id="Gb0-9M-mac"/>
                             <constraint firstItem="1AM-ff-xYA" firstAttribute="top" secondItem="Vxb-5P-HUb" secondAttribute="top" id="OHX-1K-hCv"/>
                             <constraint firstItem="a1y-fh-q2m" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" constant="25" id="R0Q-ss-DCM"/>
+                            <constraint firstItem="IYc-pz-ZK7" firstAttribute="centerY" secondItem="Vxb-5P-HUb" secondAttribute="centerY" id="bbX-Jr-crh"/>
                             <constraint firstItem="03N-4G-5yh" firstAttribute="trailing" secondItem="a1y-fh-q2m" secondAttribute="trailing" constant="25" id="ozr-3l-7aO"/>
                             <constraint firstItem="1AM-ff-xYA" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" id="tFf-ve-8BN"/>
                             <constraint firstItem="03N-4G-5yh" firstAttribute="trailing" secondItem="1AM-ff-xYA" secondAttribute="trailing" id="vBH-R6-cAq"/>
+                            <constraint firstItem="IYc-pz-ZK7" firstAttribute="centerX" secondItem="Vxb-5P-HUb" secondAttribute="centerX" id="vKX-t1-9xd"/>
                             <constraint firstItem="niz-iu-8ol" firstAttribute="top" secondItem="03N-4G-5yh" secondAttribute="top" id="vLl-TO-sfo"/>
                             <constraint firstItem="a1y-fh-q2m" firstAttribute="top" secondItem="1AM-ff-xYA" secondAttribute="bottom" constant="25" id="xPC-XL-ymO"/>
                             <constraint firstItem="Edw-bi-FtK" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" constant="20" id="zcc-jZ-Yom"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="IYc-pz-ZK7" id="lO7-I4-A1p"/>
                         <outlet property="headerView" destination="1AM-ff-xYA" id="3ti-D3-8BY"/>
                         <outlet property="headerViewHeightConstraint" destination="dgh-bk-6X6" id="F3z-74-xLj"/>
                         <outlet property="incomeAmountLabel" destination="niz-iu-8ol" id="OM6-ep-4Eq"/>
@@ -146,6 +154,7 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8N5-Mz-dBk">
                                 <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
                                 <color key="tintColor" systemColor="labelColor"/>
+                                <color key="color" systemColor="systemGreenColor"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ron-qE-eKh" userLabel="Action Buttons Stack">
                                 <rect key="frame" x="44" y="773" width="305" height="45"/>
@@ -487,6 +496,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

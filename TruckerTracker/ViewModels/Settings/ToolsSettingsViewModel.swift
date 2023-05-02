@@ -57,6 +57,14 @@ class ToolsSettingsViewModel {
             return
         }
     }
+    
+    func updateDarkMode(isOn: Bool) {
+        options.forEach { option in
+            if let darkModeOption = option as? ToolsViewModelDarkModeOption {
+                darkModeOption.isDarkModeOn = isOn
+            }
+        }
+    }
 }
 
 // MARK: - ToolsViewModel Options definition

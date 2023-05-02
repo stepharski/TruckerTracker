@@ -136,6 +136,11 @@ extension ToolsSettingsViewController: UITableViewDataSource {
             cell.configure(image: darkModeOption.image,
                            title: darkModeOption.title,
                            isToggleOn: darkModeOption.isDarkModeOn)
+            
+            cell.didToggleSwitch = { [weak self] isSwitchOn in
+                self?.viewModel.updateDarkMode(isOn: isSwitchOn)
+            }
+            
             return cell
         }
     }

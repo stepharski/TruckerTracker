@@ -32,25 +32,29 @@ class TRPeriodSelectorVC: UIViewController {
     
     weak var delegate: PeriodSelectorDelegate?
     
-    let containerView = UIView()
-    let closeButton = UIButton()
-    let periodLabel = UILabel()
-    let tableView = UITableView()
+    private let containerView = UIView()
+    private let closeButton = UIButton()
+    private let periodLabel = UILabel()
+    private let tableView = UITableView()
+    private let applyButton = TRButton(title: "APPLY", color: .dark, size: .rectangle)
 
     private var sections = [Section]()
     private var pickerSelectedRows = [Int]()
     private var pickerComponents = [[String]]()
     
-    lazy var selectedPeriod: Period = {
-        return UDManager.shared.period
-    }() {
-        didSet {
-            updateUI()
-            UDManager.shared.period = selectedPeriod
-            delegate?.selectorDidUpdate(period: selectedPeriod)
-        }
+    var selectedPeriod: Period! {
+        didSet { updateUI() }
     }
     
+    // Life cycle
+    init(selectedPeriod: Period) {
+        super.init(nibName: nil, bundle: nil)
+        self.selectedPeriod = selectedPeriod
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +64,7 @@ class TRPeriodSelectorVC: UIViewController {
         layoutUI()
         configureCloseButton()
         configurePeriodLabel()
+        configureApplyButton()
         
         updateUI()
         addSectionsRows()
@@ -95,7 +100,7 @@ class TRPeriodSelectorVC: UIViewController {
         containerView.roundEdges(by: 10)
         containerView.backgroundColor = .systemGray6
         
-        let containerHeight: CGFloat = 600
+        let containerHeight: CGFloat = 590
         containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -108,9 +113,10 @@ class TRPeriodSelectorVC: UIViewController {
 
     // UI
     func layoutUI() {
-        containerView.addSubviews(closeButton, periodLabel, tableView)
+        containerView.addSubviews(closeButton, periodLabel, tableView, applyButton)
         
-        [closeButton, periodLabel, tableView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [closeButton, periodLabel, tableView, applyButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false }
         
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
@@ -122,8 +128,13 @@ class TRPeriodSelectorVC: UIViewController {
             periodLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             periodLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
             
-            tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            tableView.topAnchor.constraint(equalTo: periodLabel.bottomAnchor, constant: 30),
+            applyButton.widthAnchor.constraint(equalToConstant: 300),
+            applyButton.heightAnchor.constraint(equalToConstant: 45),
+            applyButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            applyButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -25),
+            
+            tableView.topAnchor.constraint(equalTo: periodLabel.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: applyButton.topAnchor, constant: padding),
             tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
         ])
@@ -140,7 +151,6 @@ class TRPeriodSelectorVC: UIViewController {
     // Configuration
     private func configureCloseButton() {
         var config = UIButton.Configuration.plain()
-        
         config.image = SFSymbols.xmark
         config.baseForegroundColor = .label
         closeButton.configuration = config
@@ -154,7 +164,6 @@ class TRPeriodSelectorVC: UIViewController {
     
     private func configurePeriodLabel() {
         periodLabel.text = selectedPeriod.convertToString()
-        
         periodLabel.textColor = .label
         periodLabel.textAlignment = .center
         periodLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -163,7 +172,6 @@ class TRPeriodSelectorVC: UIViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
@@ -172,6 +180,15 @@ class TRPeriodSelectorVC: UIViewController {
         tableView.register(PeriodPickerCell.nib, forCellReuseIdentifier: PeriodPickerCell.identifier)
         tableView.register(CustomPeriodCell.nib, forCellReuseIdentifier: CustomPeriodCell.identifier)
         tableView.register(PeriodTypeCell.nib, forCellReuseIdentifier: PeriodTypeCell.identifier)
+    }
+    
+    private func configureApplyButton() {
+        applyButton.addTarget(self, action: #selector(applyPeriodSelection), for: .touchUpInside)
+    }
+    
+    @objc func applyPeriodSelection() {
+        delegate?.selectorDidUpdate(period: selectedPeriod)
+        self.dismiss(animated: true)
     }
     
     // PickerView components
@@ -241,7 +258,6 @@ class TRPeriodSelectorVC: UIViewController {
             selectedIndexes.append(index)
         }
         
-
         return selectedIndexes
     }
     
@@ -270,6 +286,7 @@ class TRPeriodSelectorVC: UIViewController {
             default:
                 break
             }
+            
             // year - second component in weekYear/mothYear picker
         } else if component == 1 {
             // change year
@@ -290,7 +307,7 @@ class TRPeriodSelectorVC: UIViewController {
             }
         }
 
-        // gives year 2024
+        // update period
         if let date = calendar.date(from: dateComponents) {
             selectedPeriod.interval = date.getDateInterval(in: selectedPeriod.type)
         }
@@ -299,10 +316,12 @@ class TRPeriodSelectorVC: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension TRPeriodSelectorVC: UITableViewDataSource {
+    // Number of sections
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
+    // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sections[section].type {
         case .period:
@@ -312,10 +331,9 @@ extension TRPeriodSelectorVC: UITableViewDataSource {
         }
     }
     
+    // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionType = sections[indexPath.section].type
-        
-        
         switch sectionType {
         case .period:
             switch selectedPeriod.type {
@@ -325,15 +343,14 @@ extension TRPeriodSelectorVC: UITableViewDataSource {
                 cell.delegate = self
                 cell.pickerData = pickerComponents
                 cell.selectedRows = pickerSelectedRows
-                
                 return cell
+                
             case .customPeriod, .sinceYouStarted:
                 let cell = tableView.dequeueReusableCell(withIdentifier: CustomPeriodCell.identifier)
                                                                                 as! CustomPeriodCell
                 cell.startDate = selectedPeriod.interval.start
                 cell.endDate = selectedPeriod.interval.end
                 cell.delegate = self
-                
                 return cell
             }
         case .types:
@@ -342,7 +359,6 @@ extension TRPeriodSelectorVC: UITableViewDataSource {
             let rowType = sections[indexPath.section].rows[indexPath.row]
             cell.typeTitle = rowType.title
             cell.isTypeSelected = rowType == selectedPeriod.type
-            
             return cell
         }
     }
@@ -350,10 +366,12 @@ extension TRPeriodSelectorVC: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension TRPeriodSelectorVC: UITableViewDelegate {
+    // Header Height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
+    // Header View
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                                 SectionTitleHeaderView.identifier) as! SectionTitleHeaderView
@@ -365,16 +383,17 @@ extension TRPeriodSelectorVC: UITableViewDelegate {
         return headerView
     }
     
-    
+    // Row Height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch sections[indexPath.section].type {
         case .period:
-            return 150
+            return 130
         case .types:
             return 45
         }
     }
     
+    // Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedSection = sections[indexPath.section].type
         let selectedPeriodType = sections[indexPath.section].rows[indexPath.row]

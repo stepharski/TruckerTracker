@@ -13,6 +13,8 @@ class SettingToggleCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var toggleSwitch: UISwitch!
     
+    var didToggleSwitch: ((Bool) -> Void)?
+    
     // Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +33,7 @@ class SettingToggleCell: UITableViewCell {
     
     // @IBAction
     @IBAction private func toggleSwitchValueChanged(_ sender: UISwitch) {
-        //TODO: Handle switch
+        didToggleSwitch?(sender.isOn)
     }
     
     // Configuration

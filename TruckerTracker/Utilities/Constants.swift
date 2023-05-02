@@ -25,11 +25,6 @@ struct StoryboardIdentifiers {
     static let settingsDetailViewController = "SettingsDetailViewController"
 }
 
-struct NotificationNames {
-    static let settingsChanged = Notification.Name("SettingsChanged")
-    static let darkModeChanged = Notification.Name("DarkModeChanged")
-}
-
 struct SFSymbols {
     
     // Navigation

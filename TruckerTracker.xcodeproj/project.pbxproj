@@ -60,7 +60,6 @@
 		5F39788F29E3320B007C3B65 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788E29E3320B007C3B65 /* SettingsViewController.swift */; };
 		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
-		5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */; };
 		5F790FFA2944521F00A73600 /* TRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790FF92944521F00A73600 /* TRButton.swift */; };
 		5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791004294B8F7F00A73600 /* TRItemCell.swift */; };
 		5F791007294B8F7F00A73600 /* TRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F791005294B8F7F00A73600 /* TRItemCell.xib */; };
@@ -79,7 +78,6 @@
 		5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6A82952CEC6004C5D2A /* DriverPayRateCell.swift */; };
 		5F97B6AB2952CEC6004C5D2A /* DriverPayRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F97B6A92952CEC6004C5D2A /* DriverPayRateCell.xib */; };
 		5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6AD2953F8FB004C5D2A /* TRSlider.swift */; };
-		5F97B6B02954F417004C5D2A /* DocumentsMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97B6AF2954F417004C5D2A /* DocumentsMenuVC.swift */; };
 		5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */; };
 		5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */; };
 		5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */; };
@@ -116,6 +114,8 @@
 		5FB723B229F828AA003E6778 /* ToolsSettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */; };
 		5FB723B529F82E09003E6778 /* ToolsSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */; };
 		5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B629FDBD41003E6778 /* Array+Ext.swift */; };
+		5FB723B929FF6069003E6778 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B829FF6069003E6778 /* HomeViewModel.swift */; };
+		5FB723C22A008122003E6778 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723C12A008122003E6778 /* Notification+Ext.swift */; };
 		5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */; };
 		5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2928B920540037A4AD /* TRTabBar.swift */; };
 		5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3628BC18ED0037A4AD /* Constants.swift */; };
@@ -191,7 +191,6 @@
 		5F39788E29E3320B007C3B65 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsMenuVC.swift; sourceTree = "<group>"; };
 		5F790FF92944521F00A73600 /* TRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRButton.swift; sourceTree = "<group>"; };
 		5F791004294B8F7F00A73600 /* TRItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRItemCell.swift; sourceTree = "<group>"; };
 		5F791005294B8F7F00A73600 /* TRItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRItemCell.xib; sourceTree = "<group>"; };
@@ -212,7 +211,6 @@
 		5F97B6A82952CEC6004C5D2A /* DriverPayRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverPayRateCell.swift; sourceTree = "<group>"; };
 		5F97B6A92952CEC6004C5D2A /* DriverPayRateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverPayRateCell.xib; sourceTree = "<group>"; };
 		5F97B6AD2953F8FB004C5D2A /* TRSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRSlider.swift; sourceTree = "<group>"; };
-		5F97B6AF2954F417004C5D2A /* DocumentsMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsMenuVC.swift; sourceTree = "<group>"; };
 		5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Ext.swift"; sourceTree = "<group>"; };
 		5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Ext.swift"; sourceTree = "<group>"; };
@@ -249,6 +247,8 @@
 		5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsType.swift; sourceTree = "<group>"; };
 		5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsViewModel.swift; sourceTree = "<group>"; };
 		5FB723B629FDBD41003E6778 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		5FB723B829FF6069003E6778 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5FB723C12A008122003E6778 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
 		5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBarController.swift; sourceTree = "<group>"; };
 		5FB92F2928B920540037A4AD /* TRTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBar.swift; sourceTree = "<group>"; };
 		5FB92F3628BC18ED0037A4AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -481,9 +481,7 @@
 		5F790FF22944448C00A73600 /* MenuChildVCs */ = {
 			isa = PBXGroup;
 			children = (
-				5F790FF3294444FA00A73600 /* ToolsMenuVC.swift */,
 				5F791016294D756600A73600 /* DriverMenuVC.swift */,
-				5F97B6AF2954F417004C5D2A /* DocumentsMenuVC.swift */,
 				5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */,
 				5F2B800A295A02480044E004 /* ContactMenuVC.swift */,
 				5F2B8016295A95C10044E004 /* DataMenuVC.swift */,
@@ -731,6 +729,7 @@
 				5FA551FC29A164D400D3596F /* Numeric+Ext.swift */,
 				5FA551AB2980371600D3596F /* Calendar+Ext.swift */,
 				5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */,
+				5FB723C12A008122003E6778 /* Notification+Ext.swift */,
 				5FA551B22980654A00D3596F /* UserDefaults+Ext.swift */,
 			);
 			path = "Foundation+Ext";
@@ -972,6 +971,7 @@
 		5FEC7BB129B791460091F8FB /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5FB723B829FF6069003E6778 /* HomeViewModel.swift */,
 				5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */,
 				5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */,
 				5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */,
@@ -1115,10 +1115,11 @@
 				5F2B802D295F8DAA0044E004 /* ExportPeriodCell.swift in Sources */,
 				5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */,
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
+				5FB723B929FF6069003E6778 /* HomeViewModel.swift in Sources */,
 				5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */,
+				5FB723C22A008122003E6778 /* Notification+Ext.swift in Sources */,
 				5F39786729CE9EE4007C3B65 /* FuelViewModel.swift in Sources */,
 				5FDF97D429F6D91100DCD038 /* ToolsSettingsViewController.swift in Sources */,
-				5F97B6B02954F417004C5D2A /* DocumentsMenuVC.swift in Sources */,
 				5F791006294B8F7F00A73600 /* TRItemCell.swift in Sources */,
 				5F39788029D37F6F007C3B65 /* FuelEntryCell.swift in Sources */,
 				5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */,
@@ -1159,7 +1160,6 @@
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5FDF97D229F6D7CA00DCD038 /* SettingsDetailViewController.swift in Sources */,
-				5F790FF4294444FA00A73600 /* ToolsMenuVC.swift in Sources */,
 				5F39787629D23790007C3B65 /* NoAttachmentCell.swift in Sources */,
 				5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */,
 				5FA551B129805C6500D3596F /* PeriodType.swift in Sources */,
