@@ -8,40 +8,37 @@
 import UIKit
 
 //MARK: - Button Type
-// Size
-enum TRButtonSizeType {
-    case capsule, rectangle
-    
-    var cornerStyle: UIButton.Configuration.CornerStyle {
-        switch self {
-        case .capsule:  return .capsule
-        case .rectangle: return .small
-        }
-    }
-}
-
-// Color
-enum TRButtonColorType {
-    case dark, red
+// Action
+enum TRButtonActionType {
+    case confirm, destruct, cancel
     
     var foregroundColor: UIColor {
-        return .systemBackground
+        switch self {
+        case .cancel:             return .label
+        case .confirm, .destruct:  return .systemBackground
+        }
     }
     
     var backgroundColor: UIColor {
         switch self {
-        case .dark: return .label
-        case .red:  return .systemRed
-        }
-    }
-    
-    var shadowColor: UIColor {
-        switch self {
-        case .dark: return .label.withAlphaComponent(0.5)
-        case .red:  return .label.withAlphaComponent(0.25)
+        case .confirm:  return .label
+        case .destruct: return .systemRed
+        case .cancel:   return .systemGray5
         }
     }
 }
+// Shape
+enum TRButtonShapeType {
+    case capsule, rectangle
+    
+    var cornerStyle: UIButton.Configuration.CornerStyle {
+        switch self {
+        case .capsule:   return .capsule
+        case .rectangle:  return .large
+        }
+    }
+}
+
 
 //MARK: -  TRButton
 class TRButton: UIButton {
@@ -49,6 +46,7 @@ class TRButton: UIButton {
     // Font attributes
     private let titleFontSize: CGFloat = 16
     private let titleFontWeight: UIFont.Weight = .semibold
+    
     
     // Life cycle
     override init(frame: CGRect) {
@@ -60,28 +58,25 @@ class TRButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(title: String, color: TRButtonColorType, size: TRButtonSizeType) {
+    convenience init(title: String, action: TRButtonActionType, shape: TRButtonShapeType) {
         self.init(frame: .zero)
 
-        set(title: title, color: color, size: size)
+        set(title: title, action: action, shape: shape)
     }
     
     // Configuration
     private func configure() {
         configuration = .filled()
-        configuration?.cornerStyle = .capsule
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func set(title: String, color: TRButtonColorType, size: TRButtonSizeType) {
+    func set(title: String, action: TRButtonActionType, shape: TRButtonShapeType) {
         var attTitle = AttributedString(title)
         attTitle.font = UIFont.systemFont(ofSize: titleFontSize, weight: titleFontWeight)
         
         configuration?.attributedTitle = attTitle
-        configuration?.cornerStyle = size.cornerStyle
-        configuration?.baseBackgroundColor = color.backgroundColor
-        configuration?.baseForegroundColor = color.foregroundColor
-        
-        dropShadow(color: color.shadowColor)
+        configuration?.cornerStyle = shape.cornerStyle
+        configuration?.baseBackgroundColor = action.backgroundColor
+        configuration?.baseForegroundColor = action.foregroundColor
     }
 }

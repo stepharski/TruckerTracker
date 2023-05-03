@@ -1,13 +1,13 @@
 //
-//  TRPeriodSelectorVC.swift
+//  PeriodSelectorViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 1/20/23.
+//  Created by Stepan Kukharskyi on 5/2/23.
 //
 
 import UIKit
 
-// MARK: - PeriodSelectorDelegate
+// MARK: - PeriodSelector Delegate
 protocol PeriodSelectorDelegate: AnyObject {
     func selectorDidUpdate(period: Period)
 }
@@ -27,8 +27,8 @@ private struct Section {
 }
 
 
-// MARK: - TRPeriodSelectorVC
-class TRPeriodSelectorVC: UIViewController {
+// MARK: - PeriodSelector ViewController
+class PeriodSelectorViewController: UIViewController {
     
     weak var delegate: PeriodSelectorDelegate?
     
@@ -36,7 +36,7 @@ class TRPeriodSelectorVC: UIViewController {
     private let closeButton = UIButton()
     private let periodLabel = UILabel()
     private let tableView = UITableView()
-    private let applyButton = TRButton(title: "APPLY", color: .dark, size: .rectangle)
+    private let applyButton = TRButton(title: "APPLY", action: .confirm, shape: .rectangle)
 
     private var sections = [Section]()
     private var pickerSelectedRows = [Int]()
@@ -314,8 +314,8 @@ class TRPeriodSelectorVC: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
-extension TRPeriodSelectorVC: UITableViewDataSource {
+// MARK: - UITableView DataSource
+extension PeriodSelectorViewController: UITableViewDataSource {
     // Number of sections
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -364,8 +364,8 @@ extension TRPeriodSelectorVC: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
-extension TRPeriodSelectorVC: UITableViewDelegate {
+// MARK: - UITableView Delegate
+extension PeriodSelectorViewController: UITableViewDelegate {
     // Header Height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
@@ -419,16 +419,16 @@ extension TRPeriodSelectorVC: UITableViewDelegate {
     }
 }
 
-// MARK: - PeriodPickerCellDelegate
-extension TRPeriodSelectorVC: PeriodPickerCellDelegate {
+// MARK: - PeriodPickerCell Delegate
+extension PeriodSelectorViewController: PeriodPickerCellDelegate {
     func pickerDidSelect(row: Int, component: Int) {
         updatePeriodFromPicker(row: row, component: component)
     }
 }
 
 
-// MARK: - CustomPeriodCellDelegate
-extension TRPeriodSelectorVC: CustomPeriodCellDelegate {
+// MARK: - CustomPeriodCell Delegate
+extension PeriodSelectorViewController: CustomPeriodCellDelegate {
     func didSelect(startDate: Date, endDate: Date) {
         selectedPeriod.interval = DateInterval(start: startDate, end: endDate)
     }

@@ -52,14 +52,13 @@ class ToolsSettingsViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
-        
         tableView.register(SettingOptionPickerCell.nib, forCellReuseIdentifier: SettingOptionPickerCell.identifier)
-        tableView.register(SettingToggleCell.nib, forCellReuseIdentifier: SettingToggleCell.identifier)
     }
 
     // Navigation
     func showPickerVC(items: [String], selectedIndex: Int) {
-        let pickerVC = TRPickerVC(pickerItems: items, selectedRow: selectedIndex)
+        let pickerVC = OptionPickerViewController(pickerItems: items,
+                                                  selectedRow: selectedIndex)
         pickerVC.delegate = self
         pickerVC.modalPresentationStyle = .pageSheet
         pickerVC.sheetPresentationController?.detents = [.medium()]
@@ -69,12 +68,27 @@ class ToolsSettingsViewController: UIViewController {
     
     // Reset
     @objc func resetButtonTapped() {
-        //TODO: Reset Settings
+        showAlert()
+    }
+    
+    func showAlert() {
+        let alertVC = AlertViewController(title: "Reset Settings",
+                      message: "This will reset your app settings to their default values. Are you sure?",
+                      actionTitle: "Reset", actionType: .destruct, cancelTitle: "Cancel")
+
+        alertVC.didTapAction = { [weak self] in
+            self?.viewModel.resetAllSettings()
+            self?.tableView.reloadData()
+        }
+        
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.modalTransitionStyle = .crossDissolve
+        present(alertVC, animated: true)
     }
 }
 
-// MARK: - TRPickerDelegate
-extension ToolsSettingsViewController: TRPickerDelegate {
+// MARK: - OptionPicker Delegate
+extension ToolsSettingsViewController: OptionPickerDelegate {
     func didSelectRow(_ row: Int) {
         guard let tableViewRow = pickerTriggeredRow,
               let option = viewModel.options[safe: tableViewRow] else { return }
@@ -84,7 +98,7 @@ extension ToolsSettingsViewController: TRPickerDelegate {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableView Delegate
 extension ToolsSettingsViewController: UITableViewDelegate {
     // Row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,22 +108,14 @@ extension ToolsSettingsViewController: UITableViewDelegate {
     // Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let option = viewModel.options[indexPath.row]
+        guard let allTypes = option.allTypes, let valueIndex = option.valueIndex else { return }
         
-        switch option.type {
-        case .distance, .currency, .weekStartDay:
-            guard let allTypes = option.allTypes,
-                    let valueIndex = option.valueIndex else { return }
-            
-            pickerTriggeredRow = indexPath.row
-            showPickerVC(items: allTypes, selectedIndex: valueIndex)
-            
-        case .darkMode:
-            return
-        }
+        pickerTriggeredRow = indexPath.row
+        showPickerVC(items: allTypes, selectedIndex: valueIndex)
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - UITableView DataSource
 extension ToolsSettingsViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,29 +125,10 @@ extension ToolsSettingsViewController: UITableViewDataSource {
     // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let option = viewModel.options[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingOptionPickerCell.identifier)
+                                                                    as! SettingOptionPickerCell
+        cell.configure(image: option.image, title: option.title, value: option.stringValue)
         
-        switch option.type {
-        case .distance, .currency, .weekStartDay:
-            let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                        SettingOptionPickerCell.identifier)
-                                                                as! SettingOptionPickerCell
-            cell.configure(image: option.image, title: option.title, value: option.stringValue)
-            return cell
-            
-        case .darkMode:
-            guard let darkModeOption = option as? ToolsViewModelDarkModeOption else { return UITableViewCell() }
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: SettingToggleCell.identifier)
-                                                                    as! SettingToggleCell
-            cell.configure(image: darkModeOption.image,
-                           title: darkModeOption.title,
-                           isToggleOn: darkModeOption.isDarkModeOn)
-            
-            cell.didToggleSwitch = { [weak self] isSwitchOn in
-                self?.viewModel.updateDarkMode(isOn: isSwitchOn)
-            }
-            
-            return cell
-        }
+        return cell
     }
 }

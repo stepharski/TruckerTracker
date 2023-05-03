@@ -1,20 +1,20 @@
 //
-//  TRPeriodDisplayVC.swift
+//  PeriodDisplayViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 2/2/23.
+//  Created by Stepan Kukharskyi on 5/2/23.
 //
 
 import UIKit
 
-// MARK: - PeriodDisplayDelegate
+// MARK: - PeriodDisplay Delegate
 protocol PeriodDisplayDelegate: AnyObject {
     func didTapPeriod()
     func didUpdatePeriod(with newPeriod: Period)
 }
 
-// MARK: - TRPeriodDisplayVC
-class TRPeriodDisplayVC: UIViewController {
+// MARK: - PeriodDisplay ViewController
+class PeriodDisplayViewController: UIViewController {
     
     weak var delegate: PeriodDisplayDelegate?
 

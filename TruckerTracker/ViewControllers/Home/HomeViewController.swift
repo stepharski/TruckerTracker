@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
     
-    let periodDisplayVC = TRPeriodDisplayVC()
+    let periodDisplayVC = PeriodDisplayViewController()
     var segmentedControl: TRSegmentedControl!
     
     let segments = ItemType.allCases
@@ -172,7 +172,7 @@ class HomeViewController: UIViewController {
     
     // Navigation
     func showPeriodSelectorVC() {
-        let periodSelectorVC = TRPeriodSelectorVC(selectedPeriod: homeDisplayPeriod)
+        let periodSelectorVC = PeriodSelectorViewController(selectedPeriod: homeDisplayPeriod)
         periodSelectorVC.delegate = self
         present(periodSelectorVC, animated: true)
     }

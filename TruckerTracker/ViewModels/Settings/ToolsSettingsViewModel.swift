@@ -29,7 +29,7 @@ class ToolsSettingsViewModel {
         options = [ ToolsViewModelDistanceOption(),     // Distance
                 ToolsViewModelCurrencyOption(),       // Currency
                 ToolsViewModelWeekStartDayOption(),  // Week start day
-                ToolsViewModelDarkModeOption() ]   // Dark mode
+                ToolsViewModelThemeOption() ]      // Theme
     }
     
     // Update
@@ -53,17 +53,16 @@ class ToolsSettingsViewModel {
                 weekStartDayOption.weekStartDay = weekStartDay
             }
             
-        case .darkMode:
-            return
+        case .theme:
+            if let themeOption = option as? ToolsViewModelThemeOption,
+               let appTheme = AppTheme.allCases[safe: valueIndex] {
+                themeOption.theme = appTheme
+            }
         }
     }
     
-    func updateDarkMode(isOn: Bool) {
-        options.forEach { option in
-            if let darkModeOption = option as? ToolsViewModelDarkModeOption {
-                darkModeOption.isDarkModeOn = isOn
-            }
-        }
+    func resetAllSettings() {
+        UDManager.shared.resetAll()
     }
 }
 
@@ -134,19 +133,24 @@ class ToolsViewModelWeekStartDayOption: ToolsViewModelOption {
     }
 }
 
-// Dark mode
-class ToolsViewModelDarkModeOption: ToolsViewModelOption {
-    var type: ToolsSettingsType = .darkMode
+// Theme
+class ToolsViewModelThemeOption: ToolsViewModelOption {
+    var type: ToolsSettingsType = .theme
     
     var image: UIImage? { return type.image }
     var title: String { return type.title }
+    var stringValue: String? { return theme.title }
     
-    var stringValue: String?
-    var valueIndex: Int?
-    var allTypes: [String]?
+    var theme: AppTheme {
+        get { return UDManager.shared.appTheme }
+        set { UDManager.shared.appTheme = newValue }
+    }
     
-    var isDarkModeOn: Bool {
-        get { return UDManager.shared.isDarkModeOn }
-        set { UDManager.shared.isDarkModeOn = newValue }
+    var valueIndex: Int? {
+        return AppTheme.allCases.firstIndex(of: theme)
+    }
+    
+    var allTypes: [String]? {
+        return AppTheme.allCases.map { $0.title }
     }
 }

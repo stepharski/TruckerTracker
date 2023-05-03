@@ -7,21 +7,19 @@
 
 import UIKit
 
-// MARK: - ToolsSettingsType
+// MARK: - ToolsSettings Type
 enum ToolsSettingsType: String, CaseIterable {
     case distance
     case currency
     case weekStartDay
-    case darkMode
+    case theme
     
     var title: String {
         switch self {
-        case .distance, .currency:
+        case .distance, .currency, .theme:
             return self.rawValue.capitalized
         case .weekStartDay:
             return "Week starts on"
-        case .darkMode:
-            return "Dark mode"
         }
     }
     
@@ -33,7 +31,7 @@ enum ToolsSettingsType: String, CaseIterable {
             return SFSymbols.banknote
         case .weekStartDay:
             return SFSymbols.calendar
-        case .darkMode:
+        case .theme:
             return SFSymbols.moon
         }
     }
@@ -96,5 +94,27 @@ enum Weekday: String, Codable, CaseIterable {
     
     var number: Int {
         return Weekday.allCases.firstIndex(of: self)! + 1
+    }
+}
+
+// MARK: - AppTheme
+enum AppTheme: String, Codable, CaseIterable {
+    case system
+    case light
+    case dark
+    
+    var title: String {
+        return rawValue.capitalized
+    }
+    
+    var style: UIUserInterfaceStyle {
+        switch self {
+        case .system:
+            return .unspecified
+        case .light:
+            return .light
+        case .dark:
+            return .dark
+        }
     }
 }

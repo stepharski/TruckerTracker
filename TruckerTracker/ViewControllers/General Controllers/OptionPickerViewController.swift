@@ -1,19 +1,19 @@
 //
-//  TRPickerVC.swift
+//  OptionPickerViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 10/22/22.
+//  Created by Stepan Kukharskyi on 5/2/23.
 //
 
 import UIKit
 
-// MARK: - TRPickerDelegate
-protocol TRPickerDelegate: AnyObject {
+// MARK: - OptionPicker Delegate
+protocol OptionPickerDelegate: AnyObject {
     func didSelectRow(_ row: Int)
 }
 
-// MARK: - TRPickerVC
-class TRPickerVC: UIViewController {
+// MARK: - OptionPicker ViewController
+class OptionPickerViewController: UIViewController {
     
     let pickerTintColor: UIColor = #colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1)
     let toolbarColor: UIColor = .systemGray5
@@ -26,7 +26,7 @@ class TRPickerVC: UIViewController {
     var pickerItems: [String]!
     var selectedRow: Int!
     
-    var delegate: TRPickerDelegate?
+    var delegate: OptionPickerDelegate?
     
     // Life cycle
     init(pickerItems: [String], selectedRow: Int) {
@@ -127,8 +127,8 @@ class TRPickerVC: UIViewController {
     }
 }
 
-//MARK: UIPickerViewDelegate, UIPickerViewDataSource
-extension TRPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
+//MARK: UIPickerView Delegate, UIPickerView DataSource
+extension OptionPickerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

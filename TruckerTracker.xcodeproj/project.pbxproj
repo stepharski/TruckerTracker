@@ -81,8 +81,6 @@
 		5F97FD512910F0B900DEEC20 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */; };
 		5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */; };
 		5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */; };
-		5FA55194297AE44900D3596F /* TRPeriodSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA55193297AE44900D3596F /* TRPeriodSelectorVC.swift */; };
-		5FA55196297AE46400D3596F /* TRDatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA55195297AE46400D3596F /* TRDatePickerVC.swift */; };
 		5FA55198297B082A00D3596F /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA55197297B082A00D3596F /* String+Ext.swift */; };
 		5FA5519C297B1AA800D3596F /* PeriodTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5519A297B1AA800D3596F /* PeriodTypeCell.swift */; };
 		5FA5519D297B1AA800D3596F /* PeriodTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA5519B297B1AA800D3596F /* PeriodTypeCell.xib */; };
@@ -96,7 +94,6 @@
 		5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */; };
 		5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C129870D7700D3596F /* CustomPeriodCell.swift */; };
 		5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551C229870D7700D3596F /* CustomPeriodCell.xib */; };
-		5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */; };
 		5FA551D2299596A300D3596F /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551D1299596A300D3596F /* ItemType.swift */; };
 		5FA551DB29A0797600D3596F /* LoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551D929A0797600D3596F /* LoadCell.swift */; };
 		5FA551DC29A0797600D3596F /* LoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551DA29A0797600D3596F /* LoadCell.xib */; };
@@ -116,11 +113,15 @@
 		5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B629FDBD41003E6778 /* Array+Ext.swift */; };
 		5FB723B929FF6069003E6778 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B829FF6069003E6778 /* HomeViewModel.swift */; };
 		5FB723C22A008122003E6778 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723C12A008122003E6778 /* Notification+Ext.swift */; };
+		5FB723C82A01796E003E6778 /* PeriodDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723C72A01796E003E6778 /* PeriodDisplayViewController.swift */; };
+		5FB723CA2A0179DC003E6778 /* PeriodSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723C92A0179DC003E6778 /* PeriodSelectorViewController.swift */; };
+		5FB723CC2A017B06003E6778 /* OptionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723CB2A017B06003E6778 /* OptionPickerViewController.swift */; };
+		5FB723CE2A017BB5003E6778 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723CD2A017BB5003E6778 /* DatePickerViewController.swift */; };
+		5FB723D02A017C30003E6778 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723CF2A017C30003E6778 /* AlertViewController.swift */; };
 		5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */; };
 		5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2928B920540037A4AD /* TRTabBar.swift */; };
 		5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3628BC18ED0037A4AD /* Constants.swift */; };
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
-		5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */; };
 		5FDF97C429E33E0A00DCD038 /* SettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97C329E33E0A00DCD038 /* SettingsType.swift */; };
 		5FDF97C829E4B37500DCD038 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97C629E4B37500DCD038 /* SettingsCell.swift */; };
 		5FDF97C929E4B37500DCD038 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97C729E4B37500DCD038 /* SettingsCell.xib */; };
@@ -129,8 +130,6 @@
 		5FDF97D429F6D91100DCD038 /* ToolsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97D329F6D91100DCD038 /* ToolsSettingsViewController.swift */; };
 		5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */; };
 		5FDF97DF29F7241E00DCD038 /* SettingOptionPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */; };
-		5FDF97E429F727AF00DCD038 /* SettingToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97E229F727AF00DCD038 /* SettingToggleCell.swift */; };
-		5FDF97E529F727AF00DCD038 /* SettingToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97E329F727AF00DCD038 /* SettingToggleCell.xib */; };
 		5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadViewModel.swift */; };
 		5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */; };
 		5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */; };
@@ -214,8 +213,6 @@
 		5F97FD502910F0B900DEEC20 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		5F97FD5429189DC400DEEC20 /* UISearchBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Ext.swift"; sourceTree = "<group>"; };
 		5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Ext.swift"; sourceTree = "<group>"; };
-		5FA55193297AE44900D3596F /* TRPeriodSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPeriodSelectorVC.swift; sourceTree = "<group>"; };
-		5FA55195297AE46400D3596F /* TRDatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRDatePickerVC.swift; sourceTree = "<group>"; };
 		5FA55197297B082A00D3596F /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		5FA5519A297B1AA800D3596F /* PeriodTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodTypeCell.swift; sourceTree = "<group>"; };
 		5FA5519B297B1AA800D3596F /* PeriodTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeriodTypeCell.xib; sourceTree = "<group>"; };
@@ -229,7 +226,6 @@
 		5FA551B92981F6E900D3596F /* DateInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInterval+Ext.swift"; sourceTree = "<group>"; };
 		5FA551C129870D7700D3596F /* CustomPeriodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPeriodCell.swift; sourceTree = "<group>"; };
 		5FA551C229870D7700D3596F /* CustomPeriodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPeriodCell.xib; sourceTree = "<group>"; };
-		5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPeriodDisplayVC.swift; sourceTree = "<group>"; };
 		5FA551D1299596A300D3596F /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		5FA551D929A0797600D3596F /* LoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCell.swift; sourceTree = "<group>"; };
 		5FA551DA29A0797600D3596F /* LoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadCell.xib; sourceTree = "<group>"; };
@@ -249,11 +245,15 @@
 		5FB723B629FDBD41003E6778 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		5FB723B829FF6069003E6778 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5FB723C12A008122003E6778 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
+		5FB723C72A01796E003E6778 /* PeriodDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDisplayViewController.swift; sourceTree = "<group>"; };
+		5FB723C92A0179DC003E6778 /* PeriodSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodSelectorViewController.swift; sourceTree = "<group>"; };
+		5FB723CB2A017B06003E6778 /* OptionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPickerViewController.swift; sourceTree = "<group>"; };
+		5FB723CD2A017BB5003E6778 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		5FB723CF2A017C30003E6778 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		5FB92F2728B91FF20037A4AD /* TRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBarController.swift; sourceTree = "<group>"; };
 		5FB92F2928B920540037A4AD /* TRTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBar.swift; sourceTree = "<group>"; };
 		5FB92F3628BC18ED0037A4AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRPickerVC.swift; sourceTree = "<group>"; };
 		5FDF97C329E33E0A00DCD038 /* SettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsType.swift; sourceTree = "<group>"; };
 		5FDF97C629E4B37500DCD038 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5FDF97C729E4B37500DCD038 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
@@ -262,8 +262,6 @@
 		5FDF97D329F6D91100DCD038 /* ToolsSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsViewController.swift; sourceTree = "<group>"; };
 		5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionPickerCell.swift; sourceTree = "<group>"; };
 		5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOptionPickerCell.xib; sourceTree = "<group>"; };
-		5FDF97E229F727AF00DCD038 /* SettingToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingToggleCell.swift; sourceTree = "<group>"; };
-		5FDF97E329F727AF00DCD038 /* SettingToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingToggleCell.xib; sourceTree = "<group>"; };
 		5FEC7BB429B792080091F8FB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 		5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -493,6 +491,8 @@
 			isa = PBXGroup;
 			children = (
 				5FEC7BB829B7D3160091F8FB /* HomeViewController.swift */,
+				5FB723C72A01796E003E6778 /* PeriodDisplayViewController.swift */,
+				5FB723C92A0179DC003E6778 /* PeriodSelectorViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -629,15 +629,14 @@
 			path = Slider;
 			sourceTree = "<group>";
 		};
-		5FA55192297AE36D00D3596F /* TRControllers */ = {
+		5FA55192297AE36D00D3596F /* General Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5FD315BB2904C9CC00169E23 /* TRPickerVC.swift */,
-				5FA55195297AE46400D3596F /* TRDatePickerVC.swift */,
-				5FA551C5298C801200D3596F /* TRPeriodDisplayVC.swift */,
-				5FA55193297AE44900D3596F /* TRPeriodSelectorVC.swift */,
+				5FB723CF2A017C30003E6778 /* AlertViewController.swift */,
+				5FB723CD2A017BB5003E6778 /* DatePickerViewController.swift */,
+				5FB723CB2A017B06003E6778 /* OptionPickerViewController.swift */,
 			);
-			path = TRControllers;
+			path = "General Controllers";
 			sourceTree = "<group>";
 		};
 		5FA55199297B18D400D3596F /* PeriodTypeCell */ = {
@@ -816,7 +815,7 @@
 			isa = PBXGroup;
 			children = (
 				5F790FF6294449FF00A73600 /* Location Search VC */,
-				5FA55192297AE36D00D3596F /* TRControllers */,
+				5FA55192297AE36D00D3596F /* General Controllers */,
 				5FA551C02982B19400D3596F /* TabBar */,
 				5F790FF5294449F300A73600 /* Home */,
 				5F28CF8329A1A0A80068C425 /* Item */,
@@ -927,7 +926,6 @@
 			isa = PBXGroup;
 			children = (
 				5FDF97DB29F7240600DCD038 /* OptionPickerCell */,
-				5FDF97E029F7270C00DCD038 /* ToggleCell */,
 				5FDF97E129F7271E00DCD038 /* InputCell */,
 			);
 			path = "SettingsDetail Cells";
@@ -940,15 +938,6 @@
 				5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */,
 			);
 			path = OptionPickerCell;
-			sourceTree = "<group>";
-		};
-		5FDF97E029F7270C00DCD038 /* ToggleCell */ = {
-			isa = PBXGroup;
-			children = (
-				5FDF97E229F727AF00DCD038 /* SettingToggleCell.swift */,
-				5FDF97E329F727AF00DCD038 /* SettingToggleCell.xib */,
-			);
-			path = ToggleCell;
 			sourceTree = "<group>";
 		};
 		5FDF97E129F7271E00DCD038 /* InputCell */ = {
@@ -1072,7 +1061,6 @@
 				5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
 				5F2B8010295A05DD0044E004 /* ContactCell.xib in Resources */,
-				5FDF97E529F727AF00DCD038 /* SettingToggleCell.xib in Resources */,
 				5F39786029CE6F79007C3B65 /* ExpenseFrequencyCell.xib in Resources */,
 				5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */,
 				5F2B802E295F8DAA0044E004 /* ExportPeriodCell.xib in Resources */,
@@ -1096,7 +1084,6 @@
 				5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */,
 				5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
-				5FD315BC2904C9CC00169E23 /* TRPickerVC.swift in Sources */,
 				5FB723B529F82E09003E6778 /* ToolsSettingsViewModel.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
 				5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */,
@@ -1111,7 +1098,6 @@
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
 				5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */,
 				5F39783429C7FA21007C3B65 /* TRError.swift in Sources */,
-				5FDF97E429F727AF00DCD038 /* SettingToggleCell.swift in Sources */,
 				5F2B802D295F8DAA0044E004 /* ExportPeriodCell.swift in Sources */,
 				5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */,
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
@@ -1140,6 +1126,7 @@
 				5FDF97C429E33E0A00DCD038 /* SettingsType.swift in Sources */,
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5F39788329D3E24C007C3B65 /* Double+Ext.swift in Sources */,
+				5FB723C82A01796E003E6778 /* PeriodDisplayViewController.swift in Sources */,
 				5F39784C29CDD3AB007C3B65 /* ItemDateCell.swift in Sources */,
 				5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */,
 				5FA551F929A1563800D3596F /* Fuel.swift in Sources */,
@@ -1149,6 +1136,7 @@
 				5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
 				5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */,
+				5FB723D02A017C30003E6778 /* AlertViewController.swift in Sources */,
 				5F2B800B295A02480044E004 /* ContactMenuVC.swift in Sources */,
 				5FA551F229A1500B00D3596F /* Expense.swift in Sources */,
 				5F39787129D2351C007C3B65 /* AttachmentCell.swift in Sources */,
@@ -1157,6 +1145,7 @@
 				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
 				5FDF97C829E4B37500DCD038 /* SettingsCell.swift in Sources */,
 				5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */,
+				5FB723CA2A0179DC003E6778 /* PeriodSelectorViewController.swift in Sources */,
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5FDF97D229F6D7CA00DCD038 /* SettingsDetailViewController.swift in Sources */,
@@ -1166,9 +1155,9 @@
 				5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */,
 				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
 				5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */,
-				5FA551C6298C801200D3596F /* TRPeriodDisplayVC.swift in Sources */,
 				5F39788F29E3320B007C3B65 /* SettingsViewController.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
+				5FB723CC2A017B06003E6778 /* OptionPickerViewController.swift in Sources */,
 				5F39786B29D2215F007C3B65 /* SectionTitleHeaderView.swift in Sources */,
 				5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */,
 				5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */,
@@ -1177,8 +1166,8 @@
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5F2B8020295E2DC30044E004 /* SyncInfoCell.swift in Sources */,
 				5FA551DB29A0797600D3596F /* LoadCell.swift in Sources */,
+				5FB723CE2A017BB5003E6778 /* DatePickerViewController.swift in Sources */,
 				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,
-				5FA55194297AE44900D3596F /* TRPeriodSelectorVC.swift in Sources */,
 				5FA551F029A1493C00D3596F /* Load.swift in Sources */,
 				5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */,
 				5FA551AC2980371600D3596F /* Calendar+Ext.swift in Sources */,
@@ -1187,7 +1176,6 @@
 				5FA551E529A0989F00D3596F /* FuelCell.swift in Sources */,
 				5F2B8032295F99D50044E004 /* ExportCategoriesCell.swift in Sources */,
 				5F2B801A295AA0900044E004 /* TRSegmentedControl.swift in Sources */,
-				5FA55196297AE46400D3596F /* TRDatePickerVC.swift in Sources */,
 				5F2B8017295A95C10044E004 /* DataMenuVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1338,6 +1326,7 @@
 				DEVELOPMENT_TEAM = W78FYLG72B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TruckerTracker/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1367,6 +1356,7 @@
 				DEVELOPMENT_TEAM = W78FYLG72B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TruckerTracker/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

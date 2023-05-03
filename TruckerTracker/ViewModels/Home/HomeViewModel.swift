@@ -67,7 +67,7 @@ class HomeViewModel {
     // Data fetch
     func fetchData(for period: Period, completion: @escaping((Bool) -> Void)) {
         //TODO: Fetch from CoreData
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.generateMockData()
             completion(true)
         }

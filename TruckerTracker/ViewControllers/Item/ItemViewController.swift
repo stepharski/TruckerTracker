@@ -258,7 +258,7 @@ class ItemViewController: UIViewController {
 
     // Navigation
     func showDatePickerVC(for date: Date) {
-        let datePickerVC = TRDatePickerVC()
+        let datePickerVC = DatePickerViewController()
         datePickerVC.delegate = self
         datePickerVC.pickerDate = date
         datePickerVC.modalPresentationStyle = .pageSheet
@@ -271,7 +271,8 @@ class ItemViewController: UIViewController {
         var pickerItems = [String]()
         FrequencyType.allCases.forEach { pickerItems.append($0.title) }
         
-        let pickerVC = TRPickerVC(pickerItems: pickerItems, selectedRow: frequency.index ?? 0)
+        let pickerVC = OptionPickerViewController(pickerItems: pickerItems,
+                                                  selectedRow: frequency.index ?? 0)
         pickerVC.delegate = self
         pickerVC.modalPresentationStyle = .pageSheet
         pickerVC.sheetPresentationController?.detents = [.medium()]
@@ -311,6 +312,7 @@ class ItemViewController: UIViewController {
     
     func displayLocationError(with message: String) {
         if self.isViewVisible {
+            
             self.showAlert(title: "Location Error", message: message)
         }
     }
@@ -369,8 +371,8 @@ extension ItemViewController: FuelTableViewControllerDelegate {
     }
 }
 
-// MARK: - DatePickerDelegeate
-extension ItemViewController: TRDatePickerVCDelegeate {
+// MARK: - DatePicker Delegeate
+extension ItemViewController: DatePickerDelegeate {
     func didSelect(date: Date) {
         switch selectedSegment {
         case .expense:
@@ -384,7 +386,7 @@ extension ItemViewController: TRDatePickerVCDelegeate {
 }
 
 // MARK: - TRPickerDelegate
-extension ItemViewController: TRPickerDelegate {
+extension ItemViewController: OptionPickerDelegate {
     func didSelectRow(_ row: Int) {
         guard FrequencyType.allCases.count > row, expenseTableVC.parent != nil else { return }
         

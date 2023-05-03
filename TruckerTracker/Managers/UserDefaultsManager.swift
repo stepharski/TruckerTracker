@@ -5,18 +5,15 @@
 //  Created by Stepan Kukharskyi on 1/20/23.
 //
 
-import Foundation
-import Combine
+import UIKit
 
 // MARK: - UserDefaults Keys
 struct UDKeys {
-    static let period = "period"
     static let homeDisplayPeriod = "homeDisplayPeriod"
-    
     static let distanceUnit = "distanceUnit"
     static let currency = "currency"
     static let weekStartDay = "weekStartDay"
-    static let isDarkModeOn = "isDarkModeOn"
+    static let appTheme = "appTheme"
 }
 
 // Default Values
@@ -27,7 +24,7 @@ struct UDValues {
     static let distanceUnit: DistanceUnit = .miles
     static let currency: Currency = .usd
     static let weekStartDay: Weekday = .monday
-    static let isDarkModeOn: Bool = false
+    static let appTheme: AppTheme = .system
 }
 
 // MARK: - UserDefaults Manager
@@ -42,13 +39,6 @@ class UDManager {
         get { return defaults.codableValue(forKey: UDKeys.homeDisplayPeriod) ?? Period.getDefault() }
         
         set { defaults.setCodable(value: newValue, forKey: UDKeys.homeDisplayPeriod) }
-    }
-    
-    // OLD Period
-    var period: Period {
-        get { return defaults.codableValue(forKey: UDKeys.period) ?? Period.getDefault() }
-        
-        set { defaults.setCodable(value: newValue, forKey: UDKeys.period) }
     }
     
     // Distance unit
@@ -81,10 +71,29 @@ class UDManager {
         }
     }
     
-    // Dark mode
-    var isDarkModeOn: Bool {
-        get { return (defaults.value(forKey: UDKeys.isDarkModeOn) as? Bool) ?? UDValues.isDarkModeOn }
+    // App theme
+    var appTheme: AppTheme {
+        get { return defaults.codableValue(forKey: UDKeys.appTheme) ?? UDValues.appTheme }
         
-        set { defaults.set(newValue, forKey: UDKeys.isDarkModeOn) }
+        set {
+            defaults.setCodable(value: newValue, forKey: UDKeys.appTheme)
+            updateUserInterface(with: newValue.style)
+        }
+    }
+    
+    func updateUserInterface(with style: UIUserInterfaceStyle) {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        window?.overrideUserInterfaceStyle = style
+    }
+    
+    // Reset
+    func resetAll() {
+        homeDisplayPeriod =  Period.getDefault()
+        distanceUnit =      UDValues.distanceUnit
+        currency =         UDValues.currency
+        weekStartDay =     UDValues.weekStartDay
+        appTheme =        UDValues.appTheme
     }
 }

@@ -109,7 +109,6 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
-        print("received raw location")
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
         let clLocation = CLLocation(latitude: latitude, longitude: longitude)
@@ -118,13 +117,11 @@ extension LocationManager: CLLocationManagerDelegate {
             do {
                 let locationInfo = try await getLocationInfo(from: clLocation)
                 
-                print("received location info")
                 guard locationRequestState != .timedOut else { return }
                 locationRequestState = .locationFound
                 didReceiveLocationInfo?(locationInfo)
                 
             } catch {
-                print("received error")
                 guard locationRequestState != .timedOut else { return }
                 locationRequestState = .error
                 
@@ -141,7 +138,6 @@ extension LocationManager: CLLocationManagerDelegate {
     
     // Error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("didFailWithError")
         guard locationRequestState != .timedOut else { return }
         
         locationRequestState = .error
