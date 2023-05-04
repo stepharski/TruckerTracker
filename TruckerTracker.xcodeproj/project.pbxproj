@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F16E3A52A02B91C00BA5DFD /* DriverSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16E3A42A02B91C00BA5DFD /* DriverSettingsViewController.swift */; };
+		5F16E3A82A02B9E500BA5DFD /* SettingInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16E3A62A02B9E500BA5DFD /* SettingInputCell.swift */; };
+		5F16E3A92A02B9E500BA5DFD /* SettingInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F16E3A72A02B9E500BA5DFD /* SettingInputCell.xib */; };
+		5F16E3AB2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16E3AA2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift */; };
+		5F16E3B12A02D1CD00BA5DFD /* AppSettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16E3B02A02D1CD00BA5DFD /* AppSettingsEnums.swift */; };
 		5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */; };
 		5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */; };
 		5F2B80092958CC5C0044E004 /* RecurringExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B80072958CC5C0044E004 /* RecurringExpenseCell.xib */; };
@@ -108,7 +113,6 @@
 		5FA551F929A1563800D3596F /* Fuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F829A1563800D3596F /* Fuel.swift */; };
 		5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */; };
 		5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FC29A164D400D3596F /* Numeric+Ext.swift */; };
-		5FB723B229F828AA003E6778 /* ToolsSettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */; };
 		5FB723B529F82E09003E6778 /* ToolsSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */; };
 		5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B629FDBD41003E6778 /* Array+Ext.swift */; };
 		5FB723B929FF6069003E6778 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B829FF6069003E6778 /* HomeViewModel.swift */; };
@@ -137,6 +141,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F16E3A42A02B91C00BA5DFD /* DriverSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverSettingsViewController.swift; sourceTree = "<group>"; };
+		5F16E3A62A02B9E500BA5DFD /* SettingInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInputCell.swift; sourceTree = "<group>"; };
+		5F16E3A72A02B9E500BA5DFD /* SettingInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingInputCell.xib; sourceTree = "<group>"; };
+		5F16E3AA2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverSettingsViewModel.swift; sourceTree = "<group>"; };
+		5F16E3B02A02D1CD00BA5DFD /* AppSettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsEnums.swift; sourceTree = "<group>"; };
 		5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringMenuVC.swift; sourceTree = "<group>"; };
 		5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpenseCell.swift; sourceTree = "<group>"; };
 		5F2B80072958CC5C0044E004 /* RecurringExpenseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecurringExpenseCell.xib; sourceTree = "<group>"; };
@@ -240,7 +249,6 @@
 		5FA551F829A1563800D3596F /* Fuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuel.swift; sourceTree = "<group>"; };
 		5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCellViewModel.swift; sourceTree = "<group>"; };
 		5FA551FC29A164D400D3596F /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
-		5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsType.swift; sourceTree = "<group>"; };
 		5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSettingsViewModel.swift; sourceTree = "<group>"; };
 		5FB723B629FDBD41003E6778 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		5FB723B829FF6069003E6778 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -279,6 +287,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F16E3AC2A02CCB900BA5DFD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF97C329E33E0A00DCD038 /* SettingsType.swift */,
+				5F16E3B02A02D1CD00BA5DFD /* AppSettingsEnums.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5F16E3AD2A02CCF600BA5DFD /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				5FA551D1299596A300D3596F /* ItemType.swift */,
+				5F791014294CECF700A73600 /* FuelType.swift */,
+				5F791012294CEC2900A73600 /* FrequencyType.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 		5F28CF8329A1A0A80068C425 /* Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,13 +578,13 @@
 				5F79101A294D7ACE00A73600 /* DriverTypeCell.swift */,
 				5F79101B294D7ACE00A73600 /* DriverTypeCell.xib */,
 			);
-			path = DriverTypeCell;
+			name = DriverTypeCell;
+			path = ../MenuDetailedCells/DriverTypeCell;
 			sourceTree = "<group>";
 		};
 		5F791019294D7AA300A73600 /* MenuDetailedCells */ = {
 			isa = PBXGroup;
 			children = (
-				5F791018294D7A8D00A73600 /* DriverTypeCell */,
 				5F97B6A72952CE81004C5D2A /* DriverPayRateCell */,
 				5F2B7FFF2958BD260044E004 /* RecuringCell */,
 				5F2B800C295A05A90044E004 /* ContactCell */,
@@ -807,6 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB723B429F82E09003E6778 /* ToolsSettingsViewModel.swift */,
+				5F16E3AA2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -895,12 +923,9 @@
 		5FB92F4828C9841A0037A4AD /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				5F791012294CEC2900A73600 /* FrequencyType.swift */,
 				5FA551B029805C6500D3596F /* PeriodType.swift */,
-				5F791014294CECF700A73600 /* FuelType.swift */,
-				5FA551D1299596A300D3596F /* ItemType.swift */,
-				5FDF97C329E33E0A00DCD038 /* SettingsType.swift */,
-				5FB723B129F828AA003E6778 /* ToolsSettingsType.swift */,
+				5F16E3AD2A02CCF600BA5DFD /* Item */,
+				5F16E3AC2A02CCB900BA5DFD /* Settings */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -918,6 +943,7 @@
 			isa = PBXGroup;
 			children = (
 				5FDF97D329F6D91100DCD038 /* ToolsSettingsViewController.swift */,
+				5F16E3A42A02B91C00BA5DFD /* DriverSettingsViewController.swift */,
 			);
 			path = SettingsChildVCs;
 			sourceTree = "<group>";
@@ -927,6 +953,7 @@
 			children = (
 				5FDF97DB29F7240600DCD038 /* OptionPickerCell */,
 				5FDF97E129F7271E00DCD038 /* InputCell */,
+				5F791018294D7A8D00A73600 /* DriverTypeCell */,
 			);
 			path = "SettingsDetail Cells";
 			sourceTree = "<group>";
@@ -943,6 +970,8 @@
 		5FDF97E129F7271E00DCD038 /* InputCell */ = {
 			isa = PBXGroup;
 			children = (
+				5F16E3A62A02B9E500BA5DFD /* SettingInputCell.swift */,
+				5F16E3A72A02B9E500BA5DFD /* SettingInputCell.xib */,
 			);
 			path = InputCell;
 			sourceTree = "<group>";
@@ -1050,6 +1079,7 @@
 				5FA551E629A0989F00D3596F /* FuelCell.xib in Resources */,
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5FA5519D297B1AA800D3596F /* PeriodTypeCell.xib in Resources */,
+				5F16E3A92A02B9E500BA5DFD /* SettingInputCell.xib in Resources */,
 				5FA551A3297B2B4900D3596F /* PeriodPickerCell.xib in Resources */,
 				5F39787C29D3761B007C3B65 /* FuelLocationCell.xib in Resources */,
 				5F39786529CE8105007C3B65 /* ExpenseNoteCell.xib in Resources */,
@@ -1135,12 +1165,12 @@
 				5F39786D29D221A7007C3B65 /* AddActionFooterView.swift in Sources */,
 				5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
+				5F16E3A52A02B91C00BA5DFD /* DriverSettingsViewController.swift in Sources */,
 				5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */,
 				5FB723D02A017C30003E6778 /* AlertViewController.swift in Sources */,
 				5F2B800B295A02480044E004 /* ContactMenuVC.swift in Sources */,
 				5FA551F229A1500B00D3596F /* Expense.swift in Sources */,
 				5F39787129D2351C007C3B65 /* AttachmentCell.swift in Sources */,
-				5FB723B229F828AA003E6778 /* ToolsSettingsType.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
 				5F79101C294D7ACE00A73600 /* DriverTypeCell.swift in Sources */,
 				5FDF97C829E4B37500DCD038 /* SettingsCell.swift in Sources */,
@@ -1148,6 +1178,7 @@
 				5FB723CA2A0179DC003E6778 /* PeriodSelectorViewController.swift in Sources */,
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
+				5F16E3B12A02D1CD00BA5DFD /* AppSettingsEnums.swift in Sources */,
 				5FDF97D229F6D7CA00DCD038 /* SettingsDetailViewController.swift in Sources */,
 				5F39787629D23790007C3B65 /* NoAttachmentCell.swift in Sources */,
 				5F97FD5529189DC400DEEC20 /* UISearchBar+Ext.swift in Sources */,
@@ -1156,6 +1187,7 @@
 				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
 				5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */,
 				5F39788F29E3320B007C3B65 /* SettingsViewController.swift in Sources */,
+				5F16E3AB2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5FB723CC2A017B06003E6778 /* OptionPickerViewController.swift in Sources */,
 				5F39786B29D2215F007C3B65 /* SectionTitleHeaderView.swift in Sources */,
@@ -1165,6 +1197,7 @@
 				5F71DC8529578138003111AF /* Date+Ext.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5F2B8020295E2DC30044E004 /* SyncInfoCell.swift in Sources */,
+				5F16E3A82A02B9E500BA5DFD /* SettingInputCell.swift in Sources */,
 				5FA551DB29A0797600D3596F /* LoadCell.swift in Sources */,
 				5FB723CE2A017BB5003E6778 /* DatePickerViewController.swift in Sources */,
 				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,

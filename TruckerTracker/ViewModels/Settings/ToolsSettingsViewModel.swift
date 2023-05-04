@@ -7,6 +7,14 @@
 
 import UIKit
 
+// MARK: - ToolsSettings Type
+enum ToolsSettingsType {
+    case distance
+    case currency
+    case weekStartDay
+    case theme
+}
+
 // MARK: - ToolsViewModelOption
 protocol ToolsViewModelOption {
     var type: ToolsSettingsType { get }
@@ -40,19 +48,16 @@ class ToolsSettingsViewModel {
                let distanceUnit = DistanceUnit.allCases[safe: valueIndex] {
                 distanceOption.distanceUnit = distanceUnit
             }
-            
         case .currency:
             if let currencyOption = option as? ToolsViewModelCurrencyOption,
                let currency = Currency.allCases[safe: valueIndex] {
                 currencyOption.currency = currency
             }
-            
         case .weekStartDay:
             if let weekStartDayOption = option as? ToolsViewModelWeekStartDayOption,
                let weekStartDay = Weekday.allCases[safe: valueIndex] {
                 weekStartDayOption.weekStartDay = weekStartDay
             }
-            
         case .theme:
             if let themeOption = option as? ToolsViewModelThemeOption,
                let appTheme = AppTheme.allCases[safe: valueIndex] {
@@ -70,14 +75,16 @@ class ToolsSettingsViewModel {
 // Distance
 class ToolsViewModelDistanceOption: ToolsViewModelOption {
     var type: ToolsSettingsType = .distance
-    
-    var image: UIImage? { return type.image }
-    var title: String { return type.title }
-    var stringValue: String? { return distanceUnit.title }
+    var image: UIImage? = SFSymbols.steeringWheel
+    var title: String = "Distance"
     
     var distanceUnit: DistanceUnit {
         get { return UDManager.shared.distanceUnit }
         set { UDManager.shared.distanceUnit = newValue }
+    }
+    
+    var stringValue: String? {
+        return distanceUnit.title
     }
     
     var valueIndex: Int? {
@@ -92,14 +99,16 @@ class ToolsViewModelDistanceOption: ToolsViewModelOption {
 // Currency
 class ToolsViewModelCurrencyOption: ToolsViewModelOption {
     var type: ToolsSettingsType = .currency
-    
-    var image: UIImage? { return type.image }
-    var title: String { return type.title }
-    var stringValue: String? { return currency.title }
+    var image: UIImage? = SFSymbols.banknote
+    var title: String = "Currency"
     
     var currency: Currency {
         get { return UDManager.shared.currency }
         set { UDManager.shared.currency = newValue }
+    }
+    
+    var stringValue: String? {
+        return currency.title
     }
     
     var valueIndex: Int? {
@@ -114,14 +123,16 @@ class ToolsViewModelCurrencyOption: ToolsViewModelOption {
 // Week start day
 class ToolsViewModelWeekStartDayOption: ToolsViewModelOption {
     var type: ToolsSettingsType = .weekStartDay
-    
-    var image: UIImage? { return type.image }
-    var title: String { return type.title }
-    var stringValue: String? { return weekStartDay.title }
+    var image: UIImage? = SFSymbols.calendar
+    var title: String = "Week start day"
     
     var weekStartDay: Weekday {
         get { return UDManager.shared.weekStartDay }
         set { UDManager.shared.weekStartDay = newValue }
+    }
+    
+    var stringValue: String? {
+        return weekStartDay.title
     }
     
     var valueIndex: Int? {
@@ -136,14 +147,16 @@ class ToolsViewModelWeekStartDayOption: ToolsViewModelOption {
 // Theme
 class ToolsViewModelThemeOption: ToolsViewModelOption {
     var type: ToolsSettingsType = .theme
-    
-    var image: UIImage? { return type.image }
-    var title: String { return type.title }
-    var stringValue: String? { return theme.title }
+    var image: UIImage? =  SFSymbols.moon
+    var title: String = "Theme"
     
     var theme: AppTheme {
         get { return UDManager.shared.appTheme }
         set { UDManager.shared.appTheme = newValue }
+    }
+    
+    var stringValue: String? {
+        return theme.title
     }
     
     var valueIndex: Int? {

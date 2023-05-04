@@ -68,7 +68,7 @@ class SettingsDetailViewController: UIViewController {
         case .tools:
             return ToolsSettingsViewController()
         case .driver:
-            return UIViewController()
+            return DriverSettingsViewController()
         case .attachments:
             return UIViewController()
         case .recurring:

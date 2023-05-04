@@ -77,6 +77,11 @@ struct SFSymbols {
     static let calendar = UIImage(systemName: "calendar")
     static let moon = UIImage(systemName: "moon")
     
+    // Driver Settings
+    static let personIdCard = UIImage(systemName: "person.text.rectangle")
+    static let personTwo = UIImage(systemName: "person.2")
+    static let scissors = UIImage(systemName: "scissors")
+    
     // Compact arrows
     static let arrowCompactUp = UIImage(systemName: "chevron.compact.up")
     static let arrowCompactDown = UIImage(systemName: "chevron.compact.down")

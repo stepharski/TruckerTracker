@@ -1,41 +1,11 @@
 //
-//  ToolsSettingsType.swift
+//  AppSettingsEnums.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/25/23.
+//  Created by Stepan Kukharskyi on 5/3/23.
 //
 
 import UIKit
-
-// MARK: - ToolsSettings Type
-enum ToolsSettingsType: String, CaseIterable {
-    case distance
-    case currency
-    case weekStartDay
-    case theme
-    
-    var title: String {
-        switch self {
-        case .distance, .currency, .theme:
-            return self.rawValue.capitalized
-        case .weekStartDay:
-            return "Week starts on"
-        }
-    }
-    
-    var image: UIImage? {
-        switch self {
-        case .distance:
-            return SFSymbols.steeringWheel
-        case .currency:
-            return SFSymbols.banknote
-        case .weekStartDay:
-            return SFSymbols.calendar
-        case .theme:
-            return SFSymbols.moon
-        }
-    }
-}
 
 // MARK: - DistanceUnits
 enum DistanceUnit: String, Codable, CaseIterable {
