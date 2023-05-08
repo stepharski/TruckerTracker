@@ -43,6 +43,7 @@ class DriverSettingsViewController: UIViewController {
         tableView.alwaysBounceVertical = false
         tableView.register(SettingInputCell.nib, forCellReuseIdentifier: SettingInputCell.identifier)
         tableView.register(DriverTypeCell.nib, forCellReuseIdentifier: DriverTypeCell.identifier)
+        tableView.register(DriverPayRateCell.nib, forCellReuseIdentifier: DriverPayRateCell.identifier)
     }
 }
 
@@ -56,14 +57,19 @@ extension DriverSettingsViewController: UITableViewDelegate {
         
         switch option.type {
         case .name:       return 60 + spacing
-        case .driverType:  return 220 + spacing
-        case .payRate:     return 0
+        case .driverType:  return 125 + spacing
+        case .payRate:     return 110 + spacing
         }
     }
     
     // Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: Handle selection
+        let selectedOption = viewModel.options[indexPath.row]
+        
+        if selectedOption.type == .name,
+            let driverNameCell = tableView.cellForRow(at: indexPath) as? SettingInputCell {
+            driverNameCell.activateTextField()
+        }
     }
 }
 
@@ -71,7 +77,7 @@ extension DriverSettingsViewController: UITableViewDelegate {
 extension DriverSettingsViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.options.count - 1
+        return viewModel.options.count
     }
     
     // Cell for row
@@ -96,24 +102,22 @@ extension DriverSettingsViewController: UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: DriverTypeCell.identifier) as! DriverTypeCell
             cell.configure(title: typeOption.title, image: typeOption.image,
-                                               isTeamDriver: typeOption.isTeamDriver,
-                                               isOwnerOperator: typeOption.isOwnerOperator)
+                                               isTeamDriver: typeOption.isTeamDriver)
             
             cell.teamTypeSelected = { [weak self] isTeamDriver in
-                self?.viewModel.updateTeamStatus(isTeam: isTeamDriver)
-            }
-            
-            cell.ownerTypeSelected = { [weak self] isOwnerOperator in
-                self?.viewModel.updateOwnershipStatus(isOwner: isOwnerOperator)
+                self?.viewModel.updateTeamStatus(with: isTeamDriver)
             }
             
             return cell
             
         case .payRate:
-            return UITableViewCell()
+            guard let payRateOption = option as? DriverSettingsPayRateOption else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withIdentifier: DriverPayRateCell.identifier) as! DriverPayRateCell
+            cell.configure(title: payRateOption.title,
+                           image: payRateOption.image,
+                           payRate: payRateOption.payRate)
+            return cell
         }
 
     }
-    
-    
 }

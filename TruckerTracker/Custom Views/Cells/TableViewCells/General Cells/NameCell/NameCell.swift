@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: Rename to ItemNameCell !!!
 class NameCell: UITableViewCell {
 
     @IBOutlet private var titleImageView: UIImageView!

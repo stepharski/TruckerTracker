@@ -35,9 +35,9 @@ class DriverSettingsViewModel {
     //TODO: Fetch/Save data in CoreData
     func updateName(with name: String) { }
     
-    func updateTeamStatus(isTeam: Bool ) { }
+    func updateTeamStatus(with isTeam: Bool ) { }
     
-    func updateOwnershipStatus(isOwner: Bool) { }
+    func updatePayRate(with payRate: Double) {  }
 }
 
 
@@ -60,7 +60,6 @@ class DriverSettingsTypeOption: DriverSettingsViewModelOption {
     
     // TODO: Fetch/Save in CoreData
     var isTeamDriver: Bool { return false }
-    var isOwnerOperator: Bool { return true }
 }
 
 // Pay rate
@@ -70,5 +69,5 @@ class DriverSettingsPayRateOption: DriverSettingsViewModelOption {
     var title: String = "Pay rate"
     
     // TODO: Fetch/Save in CoreData
-    var payRate: Double { return 88 }
+    var payRate: Float { return 88 }
 }
