@@ -37,7 +37,7 @@ class DriverSettingsViewModel {
     
     func updateTeamStatus(with isTeam: Bool ) { }
     
-    func updatePayRate(with payRate: Double) {  }
+    func updatePayRate(with payRate: Int) {  }
 }
 
 
@@ -69,5 +69,5 @@ class DriverSettingsPayRateOption: DriverSettingsViewModelOption {
     var title: String = "Pay rate"
     
     // TODO: Fetch/Save in CoreData
-    var payRate: Float { return 88 }
+    var payRate: Int { return 88 }
 }

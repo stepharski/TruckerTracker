@@ -453,7 +453,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QyK-qc-vLv">
-                                <rect key="frame" x="0.0" y="265" width="393" height="553"/>
+                                <rect key="frame" x="0.0" y="265" width="393" height="587"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -462,7 +462,7 @@
                         <constraints>
                             <constraint firstItem="Rgs-Jz-NGC" firstAttribute="leading" secondItem="qlW-J5-YKM" secondAttribute="leading" id="5iB-zL-9jh"/>
                             <constraint firstItem="QyK-qc-vLv" firstAttribute="top" secondItem="Rgs-Jz-NGC" secondAttribute="bottom" id="GjQ-kd-2Dc"/>
-                            <constraint firstItem="qlW-J5-YKM" firstAttribute="bottom" secondItem="QyK-qc-vLv" secondAttribute="bottom" id="H4H-gB-bbW"/>
+                            <constraint firstAttribute="bottom" secondItem="QyK-qc-vLv" secondAttribute="bottom" id="H4H-gB-bbW"/>
                             <constraint firstItem="QyK-qc-vLv" firstAttribute="leading" secondItem="qlW-J5-YKM" secondAttribute="leading" id="Hi0-Sd-eTc"/>
                             <constraint firstItem="vTr-ht-3US" firstAttribute="top" secondItem="qlW-J5-YKM" secondAttribute="top" constant="20" id="OM4-i2-XWv"/>
                             <constraint firstItem="Rgs-Jz-NGC" firstAttribute="top" secondItem="Mej-DV-qYM" secondAttribute="top" id="T72-IU-cDV"/>

@@ -1,0 +1,231 @@
+//
+//  DriverSettingsViewController.swift
+//  TruckerTracker
+//
+//  Created by Stepan Kukharskyi on 5/3/23.
+//
+
+import UIKit
+
+class DriverSettingsViewController: UIViewController {
+    
+    let padding: CGFloat = 15
+    private let tableView = UITableView()
+    private let saveButton = TRButton()
+    private var savingOverlayView: UIView?
+    private lazy var spinner: UIActivityIndicatorView = createSpinner()
+    
+    let viewModel = DriverSettingsViewModel()
+    
+    var settingsHaveChanges: Bool = false {
+        didSet { updateSaveButtonState() }
+    }
+
+    // Life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        layoutUI()
+        configureTableView()
+        configureSaveButton()
+        settingsHaveChanges = false
+    }
+    
+    // UI
+    private func layoutUI() {
+        view.addSubviews(tableView, saveButton)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let bottomMultiplier: CGFloat = DeviceTypes.isiPhoneSE ? 1 : 2
+        NSLayoutConstraint.activate([
+            saveButton.heightAnchor.constraint(equalToConstant: 45),
+            saveButton.widthAnchor.constraint(equalToConstant: 200),
+            saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                           constant: bottomMultiplier * -padding),
+            
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 2*padding),
+            tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: padding),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+        ])
+    }
+    
+    // TableView
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.alwaysBounceVertical = false
+        tableView.register(SettingInputCell.nib, forCellReuseIdentifier: SettingInputCell.identifier)
+        tableView.register(DriverTypeCell.nib, forCellReuseIdentifier: DriverTypeCell.identifier)
+        tableView.register(DriverPayRateCell.nib, forCellReuseIdentifier: DriverPayRateCell.identifier)
+    }
+    
+    // Save button
+    private func configureSaveButton() {
+        saveButton.set(title: "SAVE", action: .confirm, shape: .capsule)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+    }
+    
+    private func updateSaveButtonState() {
+        UIView.animate(withDuration: 0.25) {
+            self.saveButton.isEnabled = self.settingsHaveChanges
+            self.saveButton.alpha = self.settingsHaveChanges ? 1 : 0.75
+        }
+    }
+    
+    // Spinner
+    private func createSpinner() -> UIActivityIndicatorView {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        spinner.color = .systemGreen
+        view.addSubview(spinner)
+        
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: parent?.view.centerXAnchor ?? view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: parent?.view.centerYAnchor ?? view.centerYAnchor)
+        ])
+        
+        return spinner
+    }
+    
+    // Checkmark
+    private func showCheckmark() {
+        let checkmarkView = createCheckmark()
+        checkmarkView.showCheckmark()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + checkmarkView.animationDuration*2) {
+            checkmarkView.removeFromSuperview()
+        }
+    }
+    
+    private func createCheckmark() -> CheckmarkView {
+        let squareSize: CGFloat = 40
+        let checkmark = CheckmarkView(frame: CGRect(x: 0, y: 0, width: squareSize,
+                                                            height: squareSize))
+        checkmark.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(checkmark)
+
+        let centerYAnchor = parent?.view.centerYAnchor ?? view.centerYAnchor
+        let centerXAnchor = parent?.view.centerXAnchor ?? view.centerXAnchor
+        NSLayoutConstraint.activate([
+            checkmark.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -squareSize/2),
+            checkmark.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -squareSize/2)
+        ])
+        
+        return checkmark
+    }
+    
+    // Saving overlay
+    func showSavingOverlay() {
+        let overlayView = UIView()
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.25)
+        view.addSubview(overlayView)
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.pinToEdges(of: view)
+        self.savingOverlayView = overlayView
+    }
+    
+    func dismissSavingOverlay() {
+        self.savingOverlayView?.removeFromSuperview()
+        self.savingOverlayView = nil
+    }
+    
+    // Save functionality
+    @objc private func saveButtonTapped() {
+        spinner.startAnimating()
+        showSavingOverlay()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            self?.settingsHaveChanges = false
+            self?.spinner.stopAnimating()
+            self?.dismissSavingOverlay()
+            self?.showCheckmark()
+        }
+    }
+}
+
+
+// MARK: - UITableView Delegate
+extension DriverSettingsViewController: UITableViewDelegate {
+    // Row height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let spacing: CGFloat = 15
+        let option = viewModel.options[indexPath.row]
+        
+        switch option.type {
+        case .name:       return 60 + spacing
+        case .driverType:  return 125 + spacing
+        case .payRate:     return 110 + spacing
+        }
+    }
+    
+    // Selection
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedOption = viewModel.options[indexPath.row]
+        
+        if selectedOption.type == .name,
+            let driverNameCell = tableView.cellForRow(at: indexPath) as? SettingInputCell {
+            driverNameCell.activateTextField()
+        }
+    }
+}
+
+// MARK: - UITableView DataSource
+extension DriverSettingsViewController: UITableViewDataSource {
+    // Number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.options.count
+    }
+    
+    // Cell for row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let option = viewModel.options[indexPath.row]
+        
+        switch option.type {
+        case .name:
+            guard let nameOption = option as? DriverSettingsNameOption else { return UITableViewCell() }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingInputCell.identifier) as! SettingInputCell
+            cell.configure(image: nameOption.image, title: nameOption.title, input: nameOption.name)
+            
+            cell.inputDidChange = { [weak self] name in
+                self?.settingsHaveChanges = true
+                self?.viewModel.updateName(with: name)
+            }
+            
+            return cell
+            
+        case .driverType:
+            guard let typeOption = option as? DriverSettingsTypeOption else { return UITableViewCell() }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: DriverTypeCell.identifier) as! DriverTypeCell
+            cell.configure(title: typeOption.title, image: typeOption.image,
+                                               isTeamDriver: typeOption.isTeamDriver)
+            
+            cell.teamTypeSelected = { [weak self] isTeamDriver in
+                self?.settingsHaveChanges = true
+                self?.viewModel.updateTeamStatus(with: isTeamDriver)
+            }
+            
+            return cell
+            
+        case .payRate:
+            guard let payRateOption = option as? DriverSettingsPayRateOption else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withIdentifier: DriverPayRateCell.identifier) as! DriverPayRateCell
+            cell.configure(title: payRateOption.title,
+                           image: payRateOption.image,
+                           payRate: payRateOption.payRate)
+            
+            cell.payRateChanged = { [weak self] payRate in
+                self?.settingsHaveChanges = true
+                self?.viewModel.updatePayRate(with: payRate)
+            }
+            
+            return cell
+        }
+    }
+}

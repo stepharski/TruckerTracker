@@ -76,9 +76,9 @@ class ToolsSettingsViewController: UIViewController {
                       message: "This will reset your app settings to their default values. Are you sure?",
                       actionTitle: "Reset", actionType: .destruct, cancelTitle: "Cancel")
 
-        alertVC.didTapAction = { [weak self] in
-            self?.viewModel.resetAllSettings()
-            self?.tableView.reloadData()
+        alertVC.didTapAction = { [unowned self] in
+            self.viewModel.resetAllSettings()
+            self.tableView.reloadData()
         }
         
         alertVC.modalPresentationStyle = .overFullScreen

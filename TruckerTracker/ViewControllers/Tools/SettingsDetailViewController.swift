@@ -16,7 +16,7 @@ class SettingsDetailViewController: UIViewController {
     @IBOutlet private var settingContainerView: UIView!
     
     var setting: SettingsType = .tools
-    
+    lazy var settingChildVC = { getSettingChildVC() }()
     
     // Life cycle
     required init?(coder: NSCoder) {
@@ -47,7 +47,7 @@ class SettingsDetailViewController: UIViewController {
             image: SFSymbols.arrowBack,
             style: .plain,
             target: self,
-            action: #selector(popVC))
+            action: #selector(backButtonTapped))
     }
     
     private func configureHeader() {
@@ -63,7 +63,7 @@ class SettingsDetailViewController: UIViewController {
     }
     
     // Child VC
-    func getSettingVC() -> UIViewController {
+    func getSettingChildVC() -> UIViewController {
         switch setting {
         case .tools:
             return ToolsSettingsViewController()
@@ -81,15 +81,37 @@ class SettingsDetailViewController: UIViewController {
     }
     
     func addSettingChildVC() {
-        let settingVC = getSettingVC()
-        addChild(settingVC)
-        settingContainerView.addSubview(settingVC.view)
-        settingVC.view.frame = settingContainerView.bounds
-        settingVC.didMove(toParent: self)
+        addChild(settingChildVC)
+        settingContainerView.addSubview(settingChildVC.view)
+        settingChildVC.view.frame = settingContainerView.bounds
+        settingChildVC.didMove(toParent: self)
     }
     
     // Navigation
-    @objc func popVC() {
+    func popVC() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func backButtonTapped() {
+        if let driverSettingsVC = settingChildVC as? DriverSettingsViewController,
+            driverSettingsVC.settingsHaveChanges {
+            showDriverSettingsAlert()
+        } else {
+            popVC()
+        }
+    }
+    
+    func showDriverSettingsAlert() {
+        let alertVC = AlertViewController(title: "Unsaved Changes",
+                      message: "Changes have not been saved. Exit anyway?",
+                      actionTitle: "Exit", actionType: .confirm, cancelTitle: "Cancel")
+
+        alertVC.didTapAction = { [unowned self] in
+            self.popVC()
+        }
+        
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.modalTransitionStyle = .crossDissolve
+        present(alertVC, animated: true)
     }
 }

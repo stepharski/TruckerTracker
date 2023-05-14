@@ -12,6 +12,7 @@
 		5F16E3A92A02B9E500BA5DFD /* SettingInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F16E3A72A02B9E500BA5DFD /* SettingInputCell.xib */; };
 		5F16E3AB2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16E3AA2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift */; };
 		5F16E3B12A02D1CD00BA5DFD /* AppSettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16E3B02A02D1CD00BA5DFD /* AppSettingsEnums.swift */; };
+		5F16E3B92A0C69B500BA5DFD /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16E3B82A0C69B500BA5DFD /* CheckmarkView.swift */; };
 		5F2B80052958CC3E0044E004 /* RecurringMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */; };
 		5F2B80082958CC5C0044E004 /* RecurringExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */; };
 		5F2B80092958CC5C0044E004 /* RecurringExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B80072958CC5C0044E004 /* RecurringExpenseCell.xib */; };
@@ -144,6 +145,7 @@
 		5F16E3A72A02B9E500BA5DFD /* SettingInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingInputCell.xib; sourceTree = "<group>"; };
 		5F16E3AA2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverSettingsViewModel.swift; sourceTree = "<group>"; };
 		5F16E3B02A02D1CD00BA5DFD /* AppSettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsEnums.swift; sourceTree = "<group>"; };
+		5F16E3B82A0C69B500BA5DFD /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		5F2B80042958CC3E0044E004 /* RecurringMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringMenuVC.swift; sourceTree = "<group>"; };
 		5F2B80062958CC5C0044E004 /* RecurringExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpenseCell.swift; sourceTree = "<group>"; };
 		5F2B80072958CC5C0044E004 /* RecurringExpenseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecurringExpenseCell.xib; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */,
+				5F16E3B82A0C69B500BA5DFD /* CheckmarkView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -528,15 +531,15 @@
 			path = "Location Search VC";
 			sourceTree = "<group>";
 		};
-		5F790FF729444A1D00A73600 /* Settings */ = {
+		5F790FF729444A1D00A73600 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
 				5F39788E29E3320B007C3B65 /* SettingsViewController.swift */,
 				5FDF97D129F6D7CA00DCD038 /* SettingsDetailViewController.swift */,
-				5FDF97D029F6D69D00DCD038 /* SettingsChildVCs */,
+				5FDF97D029F6D69D00DCD038 /* Tools Child VCs */,
 				5F790FF22944448C00A73600 /* MenuChildVCs */,
 			);
-			path = Settings;
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		5F790FF8294451D300A73600 /* Buttons */ = {
@@ -832,7 +835,7 @@
 				5FA551C02982B19400D3596F /* TabBar */,
 				5F790FF5294449F300A73600 /* Home */,
 				5F28CF8329A1A0A80068C425 /* Item */,
-				5F790FF729444A1D00A73600 /* Settings */,
+				5F790FF729444A1D00A73600 /* Tools */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -924,13 +927,13 @@
 			path = "Settings Cell";
 			sourceTree = "<group>";
 		};
-		5FDF97D029F6D69D00DCD038 /* SettingsChildVCs */ = {
+		5FDF97D029F6D69D00DCD038 /* Tools Child VCs */ = {
 			isa = PBXGroup;
 			children = (
 				5FDF97D329F6D91100DCD038 /* ToolsSettingsViewController.swift */,
 				5F16E3A42A02B91C00BA5DFD /* DriverSettingsViewController.swift */,
 			);
-			path = SettingsChildVCs;
+			path = "Tools Child VCs";
 			sourceTree = "<group>";
 		};
 		5FDF97D529F6E0ED00DCD038 /* SettingsDetail Cells */ = {
@@ -1173,6 +1176,7 @@
 				5F39788F29E3320B007C3B65 /* SettingsViewController.swift in Sources */,
 				5F16E3AB2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
+				5F16E3B92A0C69B500BA5DFD /* CheckmarkView.swift in Sources */,
 				5FB723CC2A017B06003E6778 /* OptionPickerViewController.swift in Sources */,
 				5F39786B29D2215F007C3B65 /* SectionTitleHeaderView.swift in Sources */,
 				5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */,

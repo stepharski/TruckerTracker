@@ -14,10 +14,10 @@ class DriverPayRateCell: UITableViewCell {
     @IBOutlet private var percentLabel: UILabel!
     @IBOutlet private var slider: TRSlider!
    
-    private var minPayRate: Float = 0
-    private var maxPayRate: Float = 100
+    private var minPayRate: Int = 1
+    private var maxPayRate: Int = 100
     
-    private var payRate: Float = 88 {
+    private var payRate: Int = 88 {
         willSet {
             if payRate < minPayRate {
                 self.payRate = minPayRate
@@ -26,12 +26,12 @@ class DriverPayRateCell: UITableViewCell {
             }
         }
         didSet {
-            slider.value = payRate
-            percentLabel.text = "\(Int(payRate))%"
+            slider.value = Float(payRate)
+            percentLabel.text = "\(payRate)%"
         }
     }
     
-    var payRateChanged: ((_ payRate: Float) -> ())?
+    var payRateChanged: ((_ payRate: Int) -> ())?
     
     
     // Life cycle
@@ -52,12 +52,16 @@ class DriverPayRateCell: UITableViewCell {
     
     // @IBAction
     @IBAction private func sliderChanged(_ sender: TRSlider) {
-        payRate = sender.value
+        guard payRate != Int(sender.value) else { return }
+        
+        payRate = Int(sender.value)
         payRateChanged?(payRate)
     }
     
     // Configuration
-    func configure(title: String?, image: UIImage?, payRate: Float) {
+    func configure(title: String?, image: UIImage?, payRate: Int) {
+        guard payRate > 0 else { return }
+        
         self.payRate = payRate
         titleLabel.text = title
         titleImageVIew.image = image
@@ -69,9 +73,9 @@ class DriverPayRateCell: UITableViewCell {
     }
     
     private func configureSlider() {
-        slider.value = payRate
-        slider.minimumValue = minPayRate
-        slider.maximumValue = maxPayRate
+        slider.value = Float(payRate)
+        slider.minimumValue = Float(minPayRate)
+        slider.maximumValue = Float(maxPayRate)
         
         slider.layer.cornerRadius = 25
     }
