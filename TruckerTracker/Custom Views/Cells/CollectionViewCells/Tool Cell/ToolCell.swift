@@ -1,13 +1,13 @@
 //
-//  SettingsCell.swift
+//  ToolCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/10/23.
+//  Created by Stepan Kukharskyi on 5/14/23.
 //
 
 import UIKit
 
-class SettingsCell: UICollectionViewCell {
+class ToolCell: UICollectionViewCell {
 
     @IBOutlet private var titleImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!

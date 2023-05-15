@@ -308,34 +308,14 @@
             </objects>
             <point key="canvasLocation" x="1018" y="232"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Tools View Controller-->
         <scene sceneID="Ti4-HP-zzv">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="2RK-Oq-7eG" customClass="SettingsViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ToolsViewController" id="2RK-Oq-7eG" customClass="ToolsViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwc-ja-DTi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8cq-I0-uwy">
-                                <rect key="frame" x="0.0" y="265" width="393" height="553"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xAJ-Db-o1h">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Settings" id="QQs-EP-qxc">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xYx-M9-voZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qm-FZ-9oN">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="265"/>
                                 <subviews>
@@ -356,7 +336,7 @@
                                             <constraint firstAttribute="width" constant="100" id="ur7-70-yqj"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4K-E6-Vyz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trucker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4K-E6-Vyz">
                                         <rect key="frame" x="20" y="184" width="353" height="22"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -388,6 +368,26 @@
                                     <constraint firstItem="Yrp-O1-QOM" firstAttribute="centerY" secondItem="79F-4B-e84" secondAttribute="centerY" constant="35" id="sPL-DQ-o83"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8cq-I0-uwy">
+                                <rect key="frame" x="0.0" y="265" width="393" height="553"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xAJ-Db-o1h">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Settings" id="QQs-EP-qxc">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xYx-M9-voZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Yu-wP-xrK"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -403,23 +403,23 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="avatarBackgroundView" destination="79F-4B-e84" id="c09-ro-N5X"/>
-                        <outlet property="avatarImageView" destination="PQB-B2-VeJ" id="1k4-wN-oc5"/>
-                        <outlet property="collectionView" destination="8cq-I0-uwy" id="OUz-Yq-Z6R"/>
-                        <outlet property="headerView" destination="9qm-FZ-9oN" id="wkf-ej-XUc"/>
-                        <outlet property="headerViewHeightConstraint" destination="TfE-U0-JdK" id="ApW-hM-rUh"/>
-                        <outlet property="nameLabel" destination="a4K-E6-Vyz" id="I3X-hh-VCH"/>
-                        <outlet property="plusButton" destination="Yrp-O1-QOM" id="co6-8V-Kb4"/>
+                        <outlet property="avatarBackgroundView" destination="79F-4B-e84" id="Zq2-am-JkY"/>
+                        <outlet property="avatarImageView" destination="PQB-B2-VeJ" id="fJw-nT-Cfp"/>
+                        <outlet property="collectionView" destination="8cq-I0-uwy" id="uNu-rP-LOP"/>
+                        <outlet property="headerView" destination="9qm-FZ-9oN" id="eNI-0L-f1r"/>
+                        <outlet property="headerViewHeightConstraint" destination="TfE-U0-JdK" id="FM3-XQ-ag9"/>
+                        <outlet property="nameLabel" destination="a4K-E6-Vyz" id="42G-wE-LwO"/>
+                        <outlet property="plusButton" destination="Yrp-O1-QOM" id="tZR-x5-hZl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OP5-Ef-Y68" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="72.51908396946564" y="1007.7464788732395"/>
         </scene>
-        <!--Settings Detail View Controller-->
+        <!--Tool Menu View Controller-->
         <scene sceneID="fYw-eU-mTe">
             <objects>
-                <viewController storyboardIdentifier="SettingsDetailViewController" id="S6W-NS-JaC" customClass="SettingsDetailViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ToolMenuViewController" id="S6W-NS-JaC" customClass="ToolMenuViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mej-DV-qYM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,8 +427,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgs-Jz-NGC">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="265"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrench.and.screwdriver" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vTr-ht-3US">
-                                        <rect key="frame" x="164" y="78.333333333333329" width="65" height="66.999999999999986"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrench.adjustable" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vTr-ht-3US">
+                                        <rect key="frame" x="164" y="78" width="65" height="67.333333333333343"/>
                                         <color key="tintColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vTr-ht-3US" secondAttribute="height" multiplier="1:1" id="64w-dz-ygk"/>
@@ -471,11 +471,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerHeightConstraint" destination="FZE-IZ-06G" id="DBZ-yh-g8t"/>
-                        <outlet property="headerView" destination="Rgs-Jz-NGC" id="NZy-AB-gkH"/>
-                        <outlet property="settingContainerView" destination="QyK-qc-vLv" id="z62-xe-22q"/>
-                        <outlet property="settingDescription" destination="YGt-jJ-ER3" id="WTQ-Hu-LGd"/>
-                        <outlet property="settingImageView" destination="vTr-ht-3US" id="fSq-ik-67l"/>
+                        <outlet property="headerHeightConstraint" destination="FZE-IZ-06G" id="3XW-Ki-bNJ"/>
+                        <outlet property="headerView" destination="Rgs-Jz-NGC" id="eLv-Us-7yU"/>
+                        <outlet property="toolContainerView" destination="QyK-qc-vLv" id="KLh-TO-onm"/>
+                        <outlet property="toolDescription" destination="YGt-jJ-ER3" id="ydw-YL-0CQ"/>
+                        <outlet property="toolImageView" destination="vTr-ht-3US" id="g0K-SK-c2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4g-ve-886" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -487,7 +487,7 @@
         <image name="driverAvatar" width="225" height="225"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="117" height="128"/>
-        <image name="wrench.and.screwdriver" catalog="system" width="128" height="119"/>
+        <image name="wrench.adjustable" catalog="system" width="128" height="124"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -1,22 +1,22 @@
 //
-//  SettingsDetailViewController.swift
+//  ToolMenuViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/24/23.
+//  Created by Stepan Kukharskyi on 5/14/23.
 //
 
 import UIKit
 
-class SettingsDetailViewController: UIViewController {
+class ToolMenuViewController: UIViewController {
 
     @IBOutlet private var headerView: UIView!
     @IBOutlet private var headerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private var settingImageView: UIImageView!
-    @IBOutlet private var settingDescription: UILabel!
-    @IBOutlet private var settingContainerView: UIView!
+    @IBOutlet private var toolImageView: UIImageView!
+    @IBOutlet private var toolDescription: UILabel!
+    @IBOutlet private var toolContainerView: UIView!
     
-    var setting: SettingsType = .tools
-    lazy var settingChildVC = { getSettingChildVC() }()
+    var selectedTool: ToolsType = .settings
+    lazy var toolChildVC = { getToolChildVC() }()
     
     // Life cycle
     required init?(coder: NSCoder) {
@@ -29,7 +29,7 @@ class SettingsDetailViewController: UIViewController {
         
         configureNavBar()
         updateHeaderHeight()
-        addSettingChildVC()
+        addToolChildVC()
         dismissKeyboardOnTouchOutside()
     }
     
@@ -40,7 +40,7 @@ class SettingsDetailViewController: UIViewController {
     
     // Configuration
     private func configureNavBar() {
-        navigationItem.title = setting.title
+        navigationItem.title = selectedTool.title
         navigationController?.navigationBar.tintColor = .white
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -54,8 +54,8 @@ class SettingsDetailViewController: UIViewController {
         headerView.dropShadow(opacity: 0.3)
         headerView.applyGradient(colors: AppColors.headerColors, locations: [0, 1])
         
-        settingImageView.image = setting.image
-        settingDescription.text = setting.description
+        toolImageView.image = selectedTool.image
+        toolDescription.text = selectedTool.description
     }
     
     func updateHeaderHeight() {
@@ -63,10 +63,10 @@ class SettingsDetailViewController: UIViewController {
     }
     
     // Child VC
-    func getSettingChildVC() -> UIViewController {
-        switch setting {
-        case .tools:
-            return ToolsSettingsViewController()
+    func getToolChildVC() -> UIViewController {
+        switch selectedTool {
+        case .settings:
+            return AppSettingsViewController()
         case .driver:
             return DriverSettingsViewController()
         case .attachments:
@@ -80,11 +80,11 @@ class SettingsDetailViewController: UIViewController {
         }
     }
     
-    func addSettingChildVC() {
-        addChild(settingChildVC)
-        settingContainerView.addSubview(settingChildVC.view)
-        settingChildVC.view.frame = settingContainerView.bounds
-        settingChildVC.didMove(toParent: self)
+    func addToolChildVC() {
+        addChild(toolChildVC)
+        toolContainerView.addSubview(toolChildVC.view)
+        toolChildVC.view.frame = toolContainerView.bounds
+        toolChildVC.didMove(toParent: self)
     }
     
     // Navigation
@@ -93,7 +93,7 @@ class SettingsDetailViewController: UIViewController {
     }
     
     @objc func backButtonTapped() {
-        if let driverSettingsVC = settingChildVC as? DriverSettingsViewController,
+        if let driverSettingsVC = toolChildVC as? DriverSettingsViewController,
             driverSettingsVC.settingsHaveChanges {
             showDriverSettingsAlert()
         } else {

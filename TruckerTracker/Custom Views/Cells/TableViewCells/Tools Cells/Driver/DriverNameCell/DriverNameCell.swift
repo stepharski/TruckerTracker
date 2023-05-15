@@ -1,13 +1,13 @@
 //
-//  SettingInputCell.swift
+//  DriverNameCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 5/3/23.
+//  Created by Stepan Kukharskyi on 5/14/23.
 //
 
 import UIKit
 
-class SettingInputCell: UITableViewCell {
+class DriverNameCell: UITableViewCell {
 
     @IBOutlet private var titleImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
@@ -64,7 +64,7 @@ class SettingInputCell: UITableViewCell {
 }
 
 // MARK: - UITextField Delegate
-extension SettingInputCell: UITextFieldDelegate {
+extension DriverNameCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         inputTextfield.resignFirstResponder()
         return true

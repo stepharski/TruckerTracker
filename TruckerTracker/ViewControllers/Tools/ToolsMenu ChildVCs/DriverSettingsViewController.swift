@@ -58,7 +58,7 @@ class DriverSettingsViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
-        tableView.register(SettingInputCell.nib, forCellReuseIdentifier: SettingInputCell.identifier)
+        tableView.register(DriverNameCell.nib, forCellReuseIdentifier: DriverNameCell.identifier)
         tableView.register(DriverTypeCell.nib, forCellReuseIdentifier: DriverTypeCell.identifier)
         tableView.register(DriverPayRateCell.nib, forCellReuseIdentifier: DriverPayRateCell.identifier)
     }
@@ -154,9 +154,9 @@ extension DriverSettingsViewController: UITableViewDelegate {
     // Row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let spacing: CGFloat = 15
-        let option = viewModel.options[indexPath.row]
+        let settingVM = viewModel.settings[indexPath.row]
         
-        switch option.type {
+        switch settingVM.type {
         case .name:       return 60 + spacing
         case .driverType:  return 125 + spacing
         case .payRate:     return 110 + spacing
@@ -165,10 +165,10 @@ extension DriverSettingsViewController: UITableViewDelegate {
     
     // Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedOption = viewModel.options[indexPath.row]
+        let selectedSettingVM = viewModel.settings[indexPath.row]
         
-        if selectedOption.type == .name,
-            let driverNameCell = tableView.cellForRow(at: indexPath) as? SettingInputCell {
+        if selectedSettingVM.type == .name,
+            let driverNameCell = tableView.cellForRow(at: indexPath) as? DriverNameCell {
             driverNameCell.activateTextField()
         }
     }
@@ -178,19 +178,21 @@ extension DriverSettingsViewController: UITableViewDelegate {
 extension DriverSettingsViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.options.count
+        return viewModel.settings.count
     }
     
     // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let option = viewModel.options[indexPath.row]
+        let settingVM = viewModel.settings[indexPath.row]
         
-        switch option.type {
+        switch settingVM.type {
         case .name:
-            guard let nameOption = option as? DriverSettingsNameOption else { return UITableViewCell() }
+            guard let driverNameVM = settingVM as? DriverNameSettingVM else { return UITableViewCell() }
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: SettingInputCell.identifier) as! SettingInputCell
-            cell.configure(image: nameOption.image, title: nameOption.title, input: nameOption.name)
+            let cell = tableView.dequeueReusableCell(withIdentifier: DriverNameCell.identifier) as! DriverNameCell
+            cell.configure(image: driverNameVM.image,
+                           title: driverNameVM.title,
+                           input: driverNameVM.name)
             
             cell.inputDidChange = { [weak self] name in
                 self?.settingsHaveChanges = true
@@ -200,11 +202,12 @@ extension DriverSettingsViewController: UITableViewDataSource {
             return cell
             
         case .driverType:
-            guard let typeOption = option as? DriverSettingsTypeOption else { return UITableViewCell() }
+            guard let driverTypeVM = settingVM as? DriverTypeSettingVM else { return UITableViewCell() }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: DriverTypeCell.identifier) as! DriverTypeCell
-            cell.configure(title: typeOption.title, image: typeOption.image,
-                                               isTeamDriver: typeOption.isTeamDriver)
+            cell.configure(title: driverTypeVM.title,
+                           image: driverTypeVM.image,
+                           isTeamDriver: driverTypeVM.isTeamDriver)
             
             cell.teamTypeSelected = { [weak self] isTeamDriver in
                 self?.settingsHaveChanges = true
@@ -214,11 +217,12 @@ extension DriverSettingsViewController: UITableViewDataSource {
             return cell
             
         case .payRate:
-            guard let payRateOption = option as? DriverSettingsPayRateOption else { return UITableViewCell() }
+            guard let driverPayRateVM = settingVM as? DriverPayRateSettingVM else { return UITableViewCell() }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: DriverPayRateCell.identifier) as! DriverPayRateCell
-            cell.configure(title: payRateOption.title,
-                           image: payRateOption.image,
-                           payRate: payRateOption.payRate)
+            cell.configure(title: driverPayRateVM.title,
+                           image: driverPayRateVM.image,
+                           payRate: driverPayRateVM.payRate)
             
             cell.payRateChanged = { [weak self] payRate in
                 self?.settingsHaveChanges = true

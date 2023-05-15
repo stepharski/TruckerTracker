@@ -1,16 +1,17 @@
 //
-//  SettingsType.swift
+//  ToolsType.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/9/23.
+//  Created by Stepan Kukharskyi on 5/14/23.
 //
 
 import UIKit
 
-enum SettingsType: String, CaseIterable {
+enum ToolsType: String, CaseIterable {
     
-    case tools, driver, attachments
-    case recurring, reset, cloud
+    case settings, driver
+    case attachments, recurring
+    case reset, cloud
     
     var title: String {
         return self.rawValue.capitalized
@@ -18,7 +19,7 @@ enum SettingsType: String, CaseIterable {
     
     var subtitle: String {
         switch self {
-        case .tools:
+        case .settings:
             return "App configuration"
         case .driver:
             return "Personal info"
@@ -35,8 +36,8 @@ enum SettingsType: String, CaseIterable {
     
     var image: UIImage? {
         switch self {
-        case .tools:
-            return SFSymbols.wrenchScrew
+        case .settings:
+            return SFSymbols.wrench
         case .driver:
             return SFSymbols.personText
         case .attachments:
@@ -52,7 +53,7 @@ enum SettingsType: String, CaseIterable {
     
     var description: String {
         switch self {
-        case .tools:
+        case .settings:
             return "Configure app \n appearance and workflow"
         case .driver:
             return "Edit driver's \n personal info and type"

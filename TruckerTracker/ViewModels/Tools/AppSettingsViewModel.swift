@@ -1,80 +1,86 @@
 //
-//  ToolsSettingsViewModel.swift
+//  AppSettingsViewModel.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/25/23.
+//  Created by Stepan Kukharskyi on 5/14/23.
 //
 
 import UIKit
 
-// MARK: - ToolsSettings Type
-enum ToolsSettingsType {
+// MARK: - AppSettings Type
+enum AppSettingsType {
     case distance
     case currency
     case weekStartDay
     case theme
 }
 
-// MARK: - ToolsViewModelOption
-protocol ToolsViewModelOption {
-    var type: ToolsSettingsType { get }
-    
+// MARK: - AppSettingsOption ViewModel
+protocol AppSettingsOptionViewModel {
+    var type: AppSettingsType { get }
+
     var image: UIImage? { get }
     var title: String { get }
     var stringValue: String? { get }
-    
+
     var valueIndex: Int? { get }
     var allTypes: [String]? { get }
 }
 
+
 // MARK: - ToolsSettingsViewModel
-class ToolsSettingsViewModel {
-    
-    var options: [ToolsViewModelOption]
-    
+class AppSettingsViewModel {
+
+    var settings: [AppSettingsOptionViewModel]
+
     // Init
     init() {
-        options = [ ToolsViewModelDistanceOption(),     // Distance
-                ToolsViewModelCurrencyOption(),       // Currency
-                ToolsViewModelWeekStartDayOption(),  // Week start day
-                ToolsViewModelThemeOption() ]      // Theme
+        settings = [ DistanceSettingVM(),       // Distance
+                    CurrencySettingVM(),       // Currency
+                    WeekStartDaySettingVM(),    // Week start day
+                    ThemeSettingVM() ]         // Theme
     }
-    
+
     // Update
-    func updateOption(_ option: ToolsViewModelOption, valueIndex: Int) {
-        switch option.type {
+    func updateSettings(_ setting: AppSettingsOptionViewModel, valueIndex: Int) {
+        switch setting.type {
         case .distance:
-            if let distanceOption = option as? ToolsViewModelDistanceOption,
+            if let distanceVM = setting as? DistanceSettingVM,
                let distanceUnit = DistanceUnit.allCases[safe: valueIndex] {
-                distanceOption.distanceUnit = distanceUnit
+                distanceVM.distanceUnit = distanceUnit
             }
+            
         case .currency:
-            if let currencyOption = option as? ToolsViewModelCurrencyOption,
+            if let currencyVM = setting as? CurrencySettingVM,
                let currency = Currency.allCases[safe: valueIndex] {
-                currencyOption.currency = currency
+                currencyVM.currency = currency
             }
+            
         case .weekStartDay:
-            if let weekStartDayOption = option as? ToolsViewModelWeekStartDayOption,
+            if let weekStartDayVM = setting as? WeekStartDaySettingVM,
                let weekStartDay = Weekday.allCases[safe: valueIndex] {
-                weekStartDayOption.weekStartDay = weekStartDay
+                weekStartDayVM.weekStartDay = weekStartDay
             }
+            
         case .theme:
-            if let themeOption = option as? ToolsViewModelThemeOption,
+            if let themeVM = setting as? ThemeSettingVM,
                let appTheme = AppTheme.allCases[safe: valueIndex] {
-                themeOption.theme = appTheme
+                themeVM.theme = appTheme
             }
         }
     }
-    
+
+    // Reset
     func resetAllSettings() {
         UDManager.shared.resetAll()
     }
 }
 
-// MARK: - ToolsViewModel Options definition
+
+// MARK: - AppSettingsOption ViewModels
 // Distance
-class ToolsViewModelDistanceOption: ToolsViewModelOption {
-    var type: ToolsSettingsType = .distance
+private class DistanceSettingVM: AppSettingsOptionViewModel {
+    var type: AppSettingsType = .distance
     var image: UIImage? = SFSymbols.steeringWheel
     var title: String = "Distance"
     
@@ -82,87 +88,87 @@ class ToolsViewModelDistanceOption: ToolsViewModelOption {
         get { return UDManager.shared.distanceUnit }
         set { UDManager.shared.distanceUnit = newValue }
     }
-    
+
     var stringValue: String? {
         return distanceUnit.title
     }
-    
+
     var valueIndex: Int? {
         return DistanceUnit.allCases.firstIndex(of: distanceUnit)
     }
-    
+
     var allTypes: [String]? {
         return DistanceUnit.allCases.map { $0.title }
     }
 }
 
 // Currency
-class ToolsViewModelCurrencyOption: ToolsViewModelOption {
-    var type: ToolsSettingsType = .currency
+private class CurrencySettingVM: AppSettingsOptionViewModel {
+    var type: AppSettingsType = .currency
     var image: UIImage? = SFSymbols.banknote
     var title: String = "Currency"
-    
+
     var currency: Currency {
         get { return UDManager.shared.currency }
         set { UDManager.shared.currency = newValue }
     }
-    
+
     var stringValue: String? {
         return currency.title
     }
-    
+
     var valueIndex: Int? {
         return Currency.allCases.firstIndex(of: currency)
     }
-    
+
     var allTypes: [String]? {
         return Currency.allCases.map { $0.title }
     }
 }
 
 // Week start day
-class ToolsViewModelWeekStartDayOption: ToolsViewModelOption {
-    var type: ToolsSettingsType = .weekStartDay
+private class WeekStartDaySettingVM: AppSettingsOptionViewModel {
+    var type: AppSettingsType = .weekStartDay
     var image: UIImage? = SFSymbols.calendar
     var title: String = "Week start day"
-    
+
     var weekStartDay: Weekday {
         get { return UDManager.shared.weekStartDay }
         set { UDManager.shared.weekStartDay = newValue }
     }
-    
+
     var stringValue: String? {
         return weekStartDay.title
     }
-    
+
     var valueIndex: Int? {
         return Weekday.allCases.firstIndex(of: weekStartDay)
     }
-    
+
     var allTypes: [String]? {
         return Weekday.allCases.map { $0.title }
     }
 }
 
 // Theme
-class ToolsViewModelThemeOption: ToolsViewModelOption {
-    var type: ToolsSettingsType = .theme
+private class ThemeSettingVM: AppSettingsOptionViewModel {
+    var type: AppSettingsType = .theme
     var image: UIImage? =  SFSymbols.moon
     var title: String = "Theme"
-    
+
     var theme: AppTheme {
         get { return UDManager.shared.appTheme }
         set { UDManager.shared.appTheme = newValue }
     }
-    
+
     var stringValue: String? {
         return theme.title
     }
-    
+
     var valueIndex: Int? {
         return AppTheme.allCases.firstIndex(of: theme)
     }
-    
+
     var allTypes: [String]? {
         return AppTheme.allCases.map { $0.title }
     }

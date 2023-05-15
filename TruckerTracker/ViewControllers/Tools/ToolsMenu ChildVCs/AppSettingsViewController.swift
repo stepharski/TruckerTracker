@@ -1,18 +1,18 @@
 //
-//  ToolsSettingsViewController.swift
+//  AppSettingsViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/24/23.
+//  Created by Stepan Kukharskyi on 5/14/23.
 //
 
 import UIKit
 
-class ToolsSettingsViewController: UIViewController {
+class AppSettingsViewController: UIViewController {
     
     let padding: CGFloat = 15
     let tableView = UITableView()
     
-    let viewModel = ToolsSettingsViewModel()
+    let viewModel = AppSettingsViewModel()
     var pickerTriggeredRow: Int?
 
     // Life cycle
@@ -88,18 +88,18 @@ class ToolsSettingsViewController: UIViewController {
 }
 
 // MARK: - OptionPicker Delegate
-extension ToolsSettingsViewController: OptionPickerDelegate {
+extension AppSettingsViewController: OptionPickerDelegate {
     func didSelectRow(_ row: Int) {
         guard let tableViewRow = pickerTriggeredRow,
-              let option = viewModel.options[safe: tableViewRow] else { return }
+              let settingVM = viewModel.settings[safe: tableViewRow] else { return }
         
-        viewModel.updateOption(option, valueIndex: row)
+        viewModel.updateSettings(settingVM, valueIndex: row)
         tableView.reloadRows(at: [IndexPath(row: tableViewRow, section: 0)], with: .none)
     }
 }
 
 // MARK: - UITableView Delegate
-extension ToolsSettingsViewController: UITableViewDelegate {
+extension AppSettingsViewController: UITableViewDelegate {
     // Row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60 + 15
@@ -107,8 +107,8 @@ extension ToolsSettingsViewController: UITableViewDelegate {
     
     // Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let option = viewModel.options[indexPath.row]
-        guard let allTypes = option.allTypes, let valueIndex = option.valueIndex else { return }
+        let settingVM = viewModel.settings[indexPath.row]
+        guard let allTypes = settingVM.allTypes, let valueIndex = settingVM.valueIndex else { return }
         
         pickerTriggeredRow = indexPath.row
         showPickerVC(items: allTypes, selectedIndex: valueIndex)
@@ -116,19 +116,20 @@ extension ToolsSettingsViewController: UITableViewDelegate {
 }
 
 // MARK: - UITableView DataSource
-extension ToolsSettingsViewController: UITableViewDataSource {
+extension AppSettingsViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.options.count
+        return viewModel.settings.count
     }
     
     // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let option = viewModel.options[indexPath.row]
+        let settingVM = viewModel.settings[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingOptionPickerCell.identifier)
                                                                     as! SettingOptionPickerCell
-        cell.configure(image: option.image, title: option.title, value: option.stringValue)
-        
+        cell.configure(image: settingVM.image,
+                       title: settingVM.title,
+                       value: settingVM.stringValue)
         return cell
     }
 }

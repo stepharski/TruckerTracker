@@ -7,6 +7,8 @@
 
 import UIKit
 
+//TODO: Change Option to Setting
+
 // MARK: - DriverSettings Type
 enum DriverSettingsType {
     case name
@@ -14,8 +16,8 @@ enum DriverSettingsType {
     case payRate
 }
 
-// MARK: - DriverSettings ViewModel Option
-protocol DriverSettingsViewModelOption {
+// MARK: - DriverSettingsOption ViewModel
+protocol DriverSettingsOptionViewModel {
     var type: DriverSettingsType { get }
     var image: UIImage? { get }
     var title: String { get }
@@ -24,12 +26,12 @@ protocol DriverSettingsViewModelOption {
 // MARK: - DriverSettings ViewModel
 class DriverSettingsViewModel {
     
-    var options: [DriverSettingsViewModelOption]
+    var settings: [DriverSettingsOptionViewModel]
     
     init() {
-        options = [ DriverSettingsNameOption(),         // Name
-                    DriverSettingsTypeOption(),       // Type
-                    DriverSettingsPayRateOption() ]  // Pay rate
+        settings = [ DriverNameSettingVM(),      // Name
+                    DriverTypeSettingVM(),      // Type
+                    DriverPayRateSettingVM() ]   // Pay rate
     }
     
     //TODO: Fetch/Save data in CoreData
@@ -41,9 +43,9 @@ class DriverSettingsViewModel {
 }
 
 
-// MARK: - DriverSettingsViewModel Options definition
+// MARK: - DriverSettingsOption ViewModels
 // Name
-class DriverSettingsNameOption: DriverSettingsViewModelOption {
+class DriverNameSettingVM: DriverSettingsOptionViewModel {
     var type: DriverSettingsType = .name
     var image: UIImage? = SFSymbols.personIdCard
     var title: String = "Name"
@@ -53,7 +55,7 @@ class DriverSettingsNameOption: DriverSettingsViewModelOption {
 }
 
 // Type
-class DriverSettingsTypeOption: DriverSettingsViewModelOption {
+class DriverTypeSettingVM: DriverSettingsOptionViewModel {
     var type: DriverSettingsType = .driverType
     var image: UIImage? = SFSymbols.personTwo
     var title: String = "Type"
@@ -63,7 +65,7 @@ class DriverSettingsTypeOption: DriverSettingsViewModelOption {
 }
 
 // Pay rate
-class DriverSettingsPayRateOption: DriverSettingsViewModelOption {
+class DriverPayRateSettingVM: DriverSettingsOptionViewModel {
     var type: DriverSettingsType = .payRate
     var image: UIImage? = SFSymbols.scissors
     var title: String = "Pay rate"

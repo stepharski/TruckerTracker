@@ -21,8 +21,8 @@ struct StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
     static let homeViewController = "HomeViewController"
     static let itemViewController = "ItemViewController"
-    static let settingsViewController = "SettingsViewController"
-    static let settingsDetailViewController = "SettingsDetailViewController"
+    static let toolsViewController = "ToolsViewController"
+    static let toolMenuViewController = "ToolMenuViewController"
 }
 
 struct SFSymbols {
@@ -36,8 +36,8 @@ struct SFSymbols {
     // TabBar
     static let listRect = UIImage(systemName: "list.bullet.below.rectangle")
     static let plus = UIImage(systemName: "plus")
-    static let wrench = UIImage(systemName: "wrench")
-    static let wrenchFill = UIImage(systemName: "wrench.fill")
+    static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")
+    
     
     // TableView
     static let plusRectangleFill = UIImage(systemName: "plus.rectangle.fill")
@@ -62,8 +62,8 @@ struct SFSymbols {
     static let dropFill = UIImage(systemName: "drop.fill")
     static let snowflake = UIImage(systemName: "snowflake")
     
-    // Settings
-    static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")
+    // Tools
+    static let wrench = UIImage(systemName: "wrench.adjustable")
     static let personText = UIImage(systemName: "person.text.rectangle")
     static let docOnDoc = UIImage(systemName: "doc.on.doc")
     static let crownArrow = UIImage(systemName: "digitalcrown.arrow.clockwise")

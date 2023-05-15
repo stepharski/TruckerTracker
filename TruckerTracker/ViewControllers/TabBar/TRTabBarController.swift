@@ -36,24 +36,24 @@ class TRTabBarController: UITabBarController {
                         StoryboardIdentifiers.homeViewController) as! HomeViewController
         let itemVC = storyboard?.instantiateViewController(withIdentifier:
                         StoryboardIdentifiers.itemViewController) as! ItemViewController
-        let settingsVC = storyboard?.instantiateViewController(withIdentifier:
-                        StoryboardIdentifiers.settingsViewController) as! SettingsViewController
+        let toolsVC = storyboard?.instantiateViewController(withIdentifier:
+                        StoryboardIdentifiers.toolsViewController) as! ToolsViewController
         
         let homeNavController = UINavigationController(rootViewController: homeVC)
         let itemNavController = UINavigationController(rootViewController: itemVC)
-        let settingsNavController = UINavigationController(rootViewController: settingsVC)
+        let toolsNavController = UINavigationController(rootViewController: toolsVC)
 
         homeVC.tabBarItem = UITabBarItem(title: nil,
                                          image: TRTabBarItem.home.image,
-                                         selectedImage: TRTabBarItem.home.selectedImage)
+                                         selectedImage: TRTabBarItem.home.image)
         itemNavController.tabBarItem = UITabBarItem(title: nil,
                                            image: TRTabBarItem.newItem.image,
-                                           selectedImage: TRTabBarItem.newItem.selectedImage)
-        settingsNavController.tabBarItem = UITabBarItem(title: nil,
-                                           image: TRTabBarItem.settings.image,
-                                           selectedImage: TRTabBarItem.settings.selectedImage)
+                                           selectedImage: TRTabBarItem.newItem.image)
+        toolsNavController.tabBarItem = UITabBarItem(title: nil,
+                                           image: TRTabBarItem.tools.image,
+                                           selectedImage: TRTabBarItem.tools.image)
 
-        viewControllers = [homeNavController, itemNavController, settingsNavController]
+        viewControllers = [homeNavController, itemNavController, toolsNavController]
     }
         
     func handleTabBarItemTap() {
