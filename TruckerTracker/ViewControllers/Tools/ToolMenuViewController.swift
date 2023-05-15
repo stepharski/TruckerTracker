@@ -70,7 +70,7 @@ class ToolMenuViewController: UIViewController {
         case .driver:
             return DriverSettingsViewController()
         case .attachments:
-            return UIViewController()
+            return AttachmentsListViewController()
         case .recurring:
             return UIViewController()
         case .reset:

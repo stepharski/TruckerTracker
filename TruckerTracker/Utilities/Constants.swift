@@ -38,7 +38,6 @@ struct SFSymbols {
     static let plus = UIImage(systemName: "plus")
     static let wrenchScrew = UIImage(systemName: "wrench.and.screwdriver")
     
-    
     // TableView
     static let plusRectangleFill = UIImage(systemName: "plus.rectangle.fill")
     static let docTextMagGlass = UIImage(systemName: "doc.text.magnifyingglass")
@@ -70,7 +69,7 @@ struct SFSymbols {
     static let trash = UIImage(systemName: "trash")
     static let cloud = UIImage(systemName: "cloud")
     
-    // Tools Settings
+    // App Settings
     static let gearArrows = UIImage(systemName: "gearshape.arrow.triangle.2.circlepath")
     static let steeringWheel = UIImage(systemName: "steeringwheel")
     static let banknote = UIImage(systemName: "banknote")
@@ -81,6 +80,10 @@ struct SFSymbols {
     static let personIdCard = UIImage(systemName: "person.text.rectangle")
     static let personTwo = UIImage(systemName: "person.2")
     static let scissors = UIImage(systemName: "scissors")
+    
+    // Sort/Filter
+    static let arrowUpDown = UIImage(systemName: "arrow.up.arrow.down")
+    static let linesDown = UIImage(systemName: "line.3.horizontal.decrease")
     
     // Compact arrows
     static let arrowCompactUp = UIImage(systemName: "chevron.compact.up")
