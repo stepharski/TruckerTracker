@@ -81,6 +81,9 @@ struct SFSymbols {
     static let personTwo = UIImage(systemName: "person.2")
     static let scissors = UIImage(systemName: "scissors")
     
+    // Attachments
+    static let docFill = UIImage(systemName: "doc.fill")
+    
     // Sort/Filter
     static let arrowUpDown = UIImage(systemName: "arrow.up.arrow.down")
     static let linesDown = UIImage(systemName: "line.3.horizontal.decrease")

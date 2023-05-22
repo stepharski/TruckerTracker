@@ -17,6 +17,9 @@ class AttachmentsListViewController: UIViewController {
     
     private let tableView = UITableView()
     private let addButton = TRButton()
+    
+    let viewModel = AttachmentsListViewModel()
+    
 
     // Life cycle
     override func viewDidLoad() {
@@ -27,6 +30,7 @@ class AttachmentsListViewController: UIViewController {
         configureSortFilterButtons()
         configureTableView()
         configureAddButton()
+        fetchAttachments()
     }
 
     
@@ -97,6 +101,12 @@ class AttachmentsListViewController: UIViewController {
     @objc func addButtonTapped() {
         //TODO: Show NewItemVC ???
     }
+    
+    // Fetch data
+    func fetchAttachments() {
+        viewModel.fetchAttachments()
+        tableView.reloadData()
+    }
 }
 
 // MARK: - UITableView Delegate
@@ -116,14 +126,14 @@ extension AttachmentsListViewController: UITableViewDelegate {
 extension AttachmentsListViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.numberOfRows
     }
     
     // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: ToolsAttachmentCell.identifier) as! ToolsAttachmentCell
-        
+        let model = viewModel.model(at: indexPath.row)
+        cell.configure(image: model.image, title: model.name, subtitle: model.description)
         return cell
     }
 }
