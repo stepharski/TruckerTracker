@@ -1,17 +1,18 @@
 //
-//  ToolsAttachmentCell.swift
+//  RecurringExpenseCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 5/15/23.
+//  Created by Stepan Kukharskyi on 5/22/23.
 //
 
 import UIKit
 
-class ToolsAttachmentCell: UITableViewCell {
+class RecurringExpenseCell: UITableViewCell {
 
     @IBOutlet private var titleImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var subtitleLabel: UILabel!
+    @IBOutlet private var amountLabel: UILabel!
     
     // Life cycle
     override func awakeFromNib() {
@@ -34,9 +35,10 @@ class ToolsAttachmentCell: UITableViewCell {
         contentView.backgroundColor = .systemGray6
     }
     
-    func configure(image: UIImage?, title: String, subtitle: String) {
+    func configure(image: UIImage?, title: String, subtitle: String, amountText: String) {
         titleImageView.image = image
         titleLabel.text = title
         subtitleLabel.text = subtitle
+        amountLabel.text = amountText
     }
 }

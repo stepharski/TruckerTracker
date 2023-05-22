@@ -38,7 +38,7 @@ extension Date {
     
     // Returns date interval for specific date in given period type
     func getDateInterval(in type: PeriodType) -> DateInterval {
-        let calendar = Calendar.getCurrent()
+        let calendar = Calendar.userCurrent()
         var component = Calendar.Component.weekOfYear
         
         switch type {
@@ -55,9 +55,24 @@ extension Date {
         return calendar.dateInterval(of: component, for: self) ?? DateInterval()
     }
     
-    func getYear() -> Int {
-        let calendar = Calendar.getCurrent()
-        
+    
+    func yearNumber() -> Int {
+        let calendar = Calendar.userCurrent()
         return calendar.component(.year, from: self)
+    }
+    
+    
+    func weekdayName() -> String {
+        let calendar = Calendar.userCurrent()
+        let weekdayIndex = calendar.component(.weekday, from: self)
+        let weekdaySymbols = calendar.weekdaySymbols
+        
+        return weekdaySymbols[weekdayIndex - 1]
+    }
+    
+    
+    func dayNumberInYear() -> Int {
+        let calendar = Calendar.userCurrent()
+        return calendar.ordinality(of: .day, in: .year, for: self) ?? 0
     }
 }

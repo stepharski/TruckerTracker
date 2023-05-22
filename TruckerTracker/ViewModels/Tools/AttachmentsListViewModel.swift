@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - AttachmentViewModel
+// MARK: - Attachment ViewModel
 class AttachmentViewModel {
     
     let attachment: Attachment
@@ -20,18 +20,18 @@ class AttachmentViewModel {
         return SFSymbols.docFill
     }
     
-    var name: String {
+    var title: String {
         return attachment.title
     }
     
-    var description: String {
+    var subtitle: String {
         let itemType = attachment.itemType.title.capitalized
         let attachmentDate = attachment.date.convertToMonthDayYearFormat()
         return "\(itemType) on \(attachmentDate)"
     }
 }
 
-// MARK: - AttachmentsListViewModel
+// MARK: - AttachmentsList ViewModel
 class AttachmentsListViewModel {
     
     private var attachmentViewModels = [AttachmentViewModel]()

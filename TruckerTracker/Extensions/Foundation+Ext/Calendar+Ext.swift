@@ -9,7 +9,7 @@ import Foundation
 
 extension Calendar {
     
-    static func getCurrent() -> Calendar {
+    static func userCurrent() -> Calendar {
         var currentCalendar = current
         currentCalendar.firstWeekday = UDManager.shared.weekStartDay.number
         currentCalendar.minimumDaysInFirstWeek = Constants.minimumDaysInFirstWeek

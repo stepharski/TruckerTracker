@@ -40,4 +40,15 @@ class Expense {
         return Expense(id: id, date: date, amount: amount,
                        name: name, frequency: frequency)
     }
+    
+    static func getRecurringMock() -> Expense {
+        let id: String = UUID().uuidString
+        let date: Date = Date()
+        let amount: Double = Double.random(in: 0...1000)
+        let name: String = ["Trailer rent", "IFTA", "Truck lease"].randomElement()!
+        let frequency: FrequencyType = FrequencyType.allCases.randomElement()!
+        
+        return Expense(id: id, date: date, amount: amount,
+                       name: name, frequency: frequency)
+    }
 }

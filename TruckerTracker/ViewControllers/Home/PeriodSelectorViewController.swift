@@ -215,7 +215,7 @@ class PeriodSelectorViewController: UIViewController {
         
         // number of years
         let userSinceYear = UDValues.userSinceYear
-        let selectedYear = selectedPeriod.interval.start.getYear()
+        let selectedYear = selectedPeriod.interval.start.yearNumber()
         let pickerMiddleYear = selectedYear < userSinceYear ? selectedYear
                                                             : userSinceYear
         ((pickerMiddleYear - 5)...(pickerMiddleYear + 5)).forEach {
@@ -233,7 +233,7 @@ class PeriodSelectorViewController: UIViewController {
         
         var selectedIndexes = [Int]()
         
-        let calendar = Calendar.getCurrent()
+        let calendar = Calendar.userCurrent()
         let date = selectedPeriod.interval.middleDate()
 
         switch selectedPeriod.type {
@@ -266,18 +266,18 @@ class PeriodSelectorViewController: UIViewController {
         guard pickerComponents.indices.contains(component) else { return }
         guard pickerComponents[component].indices.contains(row) else { return }
 
-        let calendar = Calendar.getCurrent()
+        let calendar = Calendar.userCurrent()
         var dateComponents = DateComponents()
         
         // first component in weekYear/monthYear/year picker
         if component == 0 {
             switch selectedPeriod.type {
             case .week:
-                let year = selectedPeriod.interval.middleDate().getYear()
+                let year = selectedPeriod.interval.middleDate().yearNumber()
                 dateComponents = DateComponents(weekOfYear: row + 1, yearForWeekOfYear: year)
                 
             case .month:
-                dateComponents = DateComponents(year: selectedPeriod.interval.start.getYear(), month: row + 1)
+                dateComponents = DateComponents(year: selectedPeriod.interval.start.yearNumber(), month: row + 1)
                 
             case .year:
                 let year = pickerComponents[component][row]
@@ -409,8 +409,8 @@ extension PeriodSelectorViewController: UITableViewDelegate {
                 newInterval = Date().getDateInterval(in: selectedPeriod.type)
                 
             case .sinceYouStarted:
-                let dateComponents = DateComponents(calendar: .getCurrent(), year: UDValues.userSinceYear)
-                let startDate = Calendar.getCurrent().date(from: dateComponents) ?? Date()
+                let dateComponents = DateComponents(calendar: .userCurrent(), year: UDValues.userSinceYear)
+                let startDate = Calendar.userCurrent().date(from: dateComponents) ?? Date()
                 newInterval = DateInterval(start: startDate, end: Date())
             }
             

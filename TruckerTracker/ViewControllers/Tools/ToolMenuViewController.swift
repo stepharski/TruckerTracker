@@ -72,7 +72,7 @@ class ToolMenuViewController: UIViewController {
         case .attachments:
             return AttachmentsListViewController()
         case .recurring:
-            return UIViewController()
+            return RecurringExpensesListViewController()
         case .reset:
             return UIViewController()
         case .cloud:

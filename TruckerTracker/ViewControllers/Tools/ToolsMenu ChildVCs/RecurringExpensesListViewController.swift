@@ -1,52 +1,47 @@
 //
-//  AttachmentsListViewController.swift
+//  RecurringExpensesListViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 5/15/23.
+//  Created by Stepan Kukharskyi on 5/22/23.
 //
 
 import UIKit
 
-class AttachmentsListViewController: UIViewController {
+class RecurringExpensesListViewController: UIViewController {
     
     let xPadding: CGFloat = 15
     
-    private let sortFilterStackView = UIStackView()
     private let sortButton = SortFilterButton(type: .sort)
-    private let filterButton = SortFilterButton(type: .filter)
-    
     private let tableView = UITableView()
     private let addButton = TRButton()
     
-    let viewModel = AttachmentsListViewModel()
+    let viewModel = RecurringExpensesListViewModel()
     
 
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         layoutUI()
-        configureSortFilterStack()
-        configureSortFilterButtons()
+        configureSortButton()
         configureTableView()
         configureAddButton()
         fetchData()
     }
-
     
     // Layout UI
     private func layoutUI() {
-        [sortFilterStackView, tableView, addButton].forEach {
+        [sortButton, tableView, addButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
         
         let bottomMultiplier: CGFloat = DeviceTypes.isiPhoneSE ? 1 : 2
         NSLayoutConstraint.activate([
-            sortFilterStackView.heightAnchor.constraint(equalToConstant: 50),
-            sortFilterStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            sortFilterStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: xPadding),
-            sortFilterStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -xPadding),
+            sortButton.heightAnchor.constraint(equalToConstant: 50),
+            sortButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            sortButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: xPadding),
+            sortButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -xPadding),
             
             addButton.heightAnchor.constraint(equalToConstant: 45),
             addButton.widthAnchor.constraint(equalToConstant: 200),
@@ -56,7 +51,7 @@ class AttachmentsListViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: xPadding),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -xPadding),
             tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -15),
-            tableView.topAnchor.constraint(equalTo: sortFilterStackView.bottomAnchor, constant: 20)
+            tableView.topAnchor.constraint(equalTo: sortButton.bottomAnchor, constant: 20)
         ])
     }
     
@@ -66,20 +61,11 @@ class AttachmentsListViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        tableView.register(ToolsAttachmentCell.nib, forCellReuseIdentifier: ToolsAttachmentCell.identifier)
+        tableView.register(RecurringExpenseCell.nib, forCellReuseIdentifier: RecurringExpenseCell.identifier)
     }
-    
-    private func configureSortFilterStack() {
-        sortFilterStackView.spacing = 20
-        sortFilterStackView.axis = .horizontal
-        sortFilterStackView.distribution = .fillEqually
-        sortFilterStackView.addArrangedSubview(sortButton)
-        sortFilterStackView.addArrangedSubview(filterButton)
-    }
-    
-    private func configureSortFilterButtons() {
+
+    private func configureSortButton() {
         sortButton.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
-        filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
     }
     
     private func configureAddButton() {
@@ -92,22 +78,18 @@ class AttachmentsListViewController: UIViewController {
         //TODO: Show SortVC
     }
     
-    @objc func filterButtonTapped() {
-        //TODO: Show FilterVC
-    }
-    
     @objc func addButtonTapped() {
-        //TODO: Show NewItemVC ???
+        //TODO: Show NewExpense
     }
     
     func fetchData() {
-        viewModel.fetchAttachments()
+        viewModel.fetchRecurringExpenses()
         tableView.reloadData()
     }
 }
 
 // MARK: - UITableView Delegate
-extension AttachmentsListViewController: UITableViewDelegate {
+extension RecurringExpensesListViewController: UITableViewDelegate {
     // Row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60 + 10
@@ -120,7 +102,7 @@ extension AttachmentsListViewController: UITableViewDelegate {
 }
 
 // MARK: - UITableView DataSource
-extension AttachmentsListViewController: UITableViewDataSource {
+extension RecurringExpensesListViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows
@@ -128,12 +110,11 @@ extension AttachmentsListViewController: UITableViewDataSource {
     
     // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ToolsAttachmentCell.identifier)
-                                                                    as! ToolsAttachmentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecurringExpenseCell.identifier)
+                                                                    as! RecurringExpenseCell
         let model = viewModel.model(at: indexPath.row)
-        cell.configure(image: model.image,
-                       title: model.title,
-                       subtitle: model.subtitle)
+        cell.configure(image: model.image, title: model.title,
+                       subtitle: model.subtitle, amountText: model.amountText)
         return cell
     }
 }
