@@ -89,7 +89,7 @@ class AttachmentsListViewController: UIViewController {
     
     // Functionality
     @objc func sortButtonTapped() {
-        //TODO: Show SortVC
+        showSortViewController()
     }
     
     @objc func filterButtonTapped() {
@@ -103,6 +103,20 @@ class AttachmentsListViewController: UIViewController {
     func fetchData() {
         viewModel.fetchAttachments()
         tableView.reloadData()
+    }
+    
+    // Navigation
+    func showSortViewController() {
+        let sortController = SortOptionsViewController()
+        sortController.delegate = self
+        present(sortController, animated: true)
+    }
+}
+
+// MARK: - SortOption Selector Delegate
+extension AttachmentsListViewController: SortOptionSelectorDelegate {
+    func sortOptionSelected(_ option: SortOption) {
+        //TODO: Fetch data
     }
 }
 

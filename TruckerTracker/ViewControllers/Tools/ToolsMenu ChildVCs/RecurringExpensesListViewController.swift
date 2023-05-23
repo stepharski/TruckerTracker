@@ -75,7 +75,7 @@ class RecurringExpensesListViewController: UIViewController {
     
     // Functionality
     @objc func sortButtonTapped() {
-        //TODO: Show SortVC
+        showSortViewController()
     }
     
     @objc func addButtonTapped() {
@@ -85,6 +85,20 @@ class RecurringExpensesListViewController: UIViewController {
     func fetchData() {
         viewModel.fetchRecurringExpenses()
         tableView.reloadData()
+    }
+    
+    // Navigation
+    func showSortViewController() {
+        let sortController = SortOptionsViewController()
+        sortController.delegate = self
+        present(sortController, animated: true)
+    }
+}
+
+// MARK: - SortOption Selector Delegate
+extension RecurringExpensesListViewController: SortOptionSelectorDelegate {
+    func sortOptionSelected(_ option: SortOption) {
+        //TODO: Fetch data
     }
 }
 

@@ -144,6 +144,9 @@
 		5FED3CCE2A1BC07A00103045 /* RecurringExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CCC2A1BC07A00103045 /* RecurringExpenseCell.swift */; };
 		5FED3CCF2A1BC07A00103045 /* RecurringExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FED3CCD2A1BC07A00103045 /* RecurringExpenseCell.xib */; };
 		5FED3CD12A1BC72900103045 /* RecurringExpensesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CD02A1BC72900103045 /* RecurringExpensesListViewModel.swift */; };
+		5FED3CD32A1C39EC00103045 /* SortOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CD22A1C39EC00103045 /* SortOptionsViewController.swift */; };
+		5FED3CD82A1C4EF000103045 /* SortOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CD62A1C4EF000103045 /* SortOptionCell.swift */; };
+		5FED3CD92A1C4EF000103045 /* SortOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FED3CD72A1C4EF000103045 /* SortOptionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -286,6 +289,9 @@
 		5FED3CCC2A1BC07A00103045 /* RecurringExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpenseCell.swift; sourceTree = "<group>"; };
 		5FED3CCD2A1BC07A00103045 /* RecurringExpenseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecurringExpenseCell.xib; sourceTree = "<group>"; };
 		5FED3CD02A1BC72900103045 /* RecurringExpensesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpensesListViewModel.swift; sourceTree = "<group>"; };
+		5FED3CD22A1C39EC00103045 /* SortOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionsViewController.swift; sourceTree = "<group>"; };
+		5FED3CD62A1C4EF000103045 /* SortOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionCell.swift; sourceTree = "<group>"; };
+		5FED3CD72A1C4EF000103045 /* SortOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortOptionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -681,6 +687,7 @@
 				5FB723CF2A017C30003E6778 /* AlertViewController.swift */,
 				5FB723CD2A017BB5003E6778 /* DatePickerViewController.swift */,
 				5FB723CB2A017B06003E6778 /* OptionPickerViewController.swift */,
+				5FED3CD22A1C39EC00103045 /* SortOptionsViewController.swift */,
 			);
 			path = "General Controllers";
 			sourceTree = "<group>";
@@ -790,6 +797,7 @@
 				5FA551D729A075DE00D3596F /* Home Cells */,
 				5FEC7BBA29B7D55E0091F8FB /* Item Cells */,
 				5FDF97D529F6E0ED00DCD038 /* Tools Cells */,
+				5FED3CD42A1C4EBE00103045 /* SortFilter Cells */,
 				5F791019294D7AA300A73600 /* OLD MenuDetailedCells */,
 			);
 			path = TableViewCells;
@@ -1036,6 +1044,23 @@
 			path = Recurring;
 			sourceTree = "<group>";
 		};
+		5FED3CD42A1C4EBE00103045 /* SortFilter Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5FED3CD52A1C4ED700103045 /* SortOptionCell */,
+			);
+			path = "SortFilter Cells";
+			sourceTree = "<group>";
+		};
+		5FED3CD52A1C4ED700103045 /* SortOptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FED3CD62A1C4EF000103045 /* SortOptionCell.swift */,
+				5FED3CD72A1C4EF000103045 /* SortOptionCell.xib */,
+			);
+			path = SortOptionCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1098,6 +1123,7 @@
 				5F2B8029295F7D080044E004 /* ResetOptionCell.xib in Resources */,
 				5F1185942A119F31006B8F56 /* DriverNameCell.xib in Resources */,
 				5F2B8021295E2DC30044E004 /* SyncInfoCell.xib in Resources */,
+				5FED3CD92A1C4EF000103045 /* SortOptionCell.xib in Resources */,
 				5FA551E129A0901900D3596F /* ExpenseCell.xib in Resources */,
 				5F97B6AB2952CEC6004C5D2A /* DriverPayRateCell.xib in Resources */,
 				5FA551E629A0989F00D3596F /* FuelCell.xib in Resources */,
@@ -1152,6 +1178,7 @@
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
 				5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */,
+				5FED3CD32A1C39EC00103045 /* SortOptionsViewController.swift in Sources */,
 				5F39783429C7FA21007C3B65 /* TRError.swift in Sources */,
 				5F2B802D295F8DAA0044E004 /* ExportPeriodCell.swift in Sources */,
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
@@ -1182,6 +1209,7 @@
 				5FA55198297B082A00D3596F /* String+Ext.swift in Sources */,
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5F39788329D3E24C007C3B65 /* Double+Ext.swift in Sources */,
+				5FED3CD82A1C4EF000103045 /* SortOptionCell.swift in Sources */,
 				5FB723C82A01796E003E6778 /* PeriodDisplayViewController.swift in Sources */,
 				5F39784C29CDD3AB007C3B65 /* ItemDateCell.swift in Sources */,
 				5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */,

@@ -26,7 +26,7 @@ class PeriodTypeCell: UITableViewCell {
         }
     }
     
-    
+    // Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         

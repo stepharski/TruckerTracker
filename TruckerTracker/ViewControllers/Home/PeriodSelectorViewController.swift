@@ -36,7 +36,7 @@ class PeriodSelectorViewController: UIViewController {
     private let closeButton = UIButton()
     private let periodLabel = UILabel()
     private let tableView = UITableView()
-    private let applyButton = TRButton(title: "APPLY", action: .confirm, shape: .rectangle)
+    private let applyButton = TRButton()
 
     private var sections = [Section]()
     private var pickerSelectedRows = [Int]()
@@ -56,6 +56,7 @@ class PeriodSelectorViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -113,20 +114,20 @@ class PeriodSelectorViewController: UIViewController {
 
     // UI
     func layoutUI() {
-        containerView.addSubviews(closeButton, periodLabel, tableView, applyButton)
-        
         [closeButton, periodLabel, tableView, applyButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false }
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            containerView.addSubview($0)
+        }
         
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
+            periodLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            periodLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
+            
             closeButton.widthAnchor.constraint(equalToConstant: 35),
             closeButton.heightAnchor.constraint(equalToConstant: 35),
             closeButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding/2),
             closeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding/2),
-            
-            periodLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            periodLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
             
             applyButton.widthAnchor.constraint(equalToConstant: 300),
             applyButton.heightAnchor.constraint(equalToConstant: 45),
@@ -183,6 +184,7 @@ class PeriodSelectorViewController: UIViewController {
     }
     
     private func configureApplyButton() {
+        applyButton.set(title: "APPLY", action: .confirm, shape: .rectangle)
         applyButton.addTarget(self, action: #selector(applyPeriodSelection), for: .touchUpInside)
     }
     
