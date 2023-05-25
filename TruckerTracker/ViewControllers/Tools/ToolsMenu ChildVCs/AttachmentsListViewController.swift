@@ -93,7 +93,7 @@ class AttachmentsListViewController: UIViewController {
     }
     
     @objc func filterButtonTapped() {
-        //TODO: Show FilterVC
+        showFilterViewController()
     }
     
     @objc func addButtonTapped() {
@@ -110,6 +110,12 @@ class AttachmentsListViewController: UIViewController {
         let sortController = SortOptionsViewController()
         sortController.delegate = self
         present(sortController, animated: true)
+    }
+    
+    func showFilterViewController() {
+        let filterController = FilterOptionsViewController()
+        //TODO: Set delegate
+        present(filterController, animated: true)
     }
 }
 

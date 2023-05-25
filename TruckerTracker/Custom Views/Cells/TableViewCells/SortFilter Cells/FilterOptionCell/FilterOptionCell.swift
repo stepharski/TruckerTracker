@@ -1,26 +1,27 @@
 //
-//  SortOptionCell.swift
+//  FilterOptionCell.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 5/22/23.
+//  Created by Stepan Kukharskyi on 5/24/23.
 //
 
 import UIKit
 
-class SortOptionCell: UITableViewCell {
+class FilterOptionCell: UITableViewCell {
 
     @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var checkmarkImageView: UIImageView!
-    @IBOutlet private var highlightedBackgroundView: UIView!
+    @IBOutlet private var checkBoxView: UIView!
+    @IBOutlet private var checkMarkImageView: UIImageView!
     
     var optionTitle: String? {
         didSet { titleLabel.text = optionTitle }
     }
     
-    var isOptionSelected: Bool = false {
+    var isOptionSelected: Bool = true {
         didSet {
-            checkmarkImageView.isHidden = !isOptionSelected
-            highlightedBackgroundView.backgroundColor = isOptionSelected ? .systemGray5 : .clear
+            checkMarkImageView.isHidden = !isOptionSelected
+            titleLabel.textColor = isOptionSelected ? .label : .systemGray2
+            checkBoxView.backgroundColor = isOptionSelected ? .label : .systemGray5
         }
     }
     
@@ -30,7 +31,7 @@ class SortOptionCell: UITableViewCell {
         
         selectionStyle = .none
         backgroundColor = .clear
-        highlightedBackgroundView.roundEdges(by: 10)
+        checkBoxView.roundEdges(by: 5)
     }
     
     override func layoutSubviews() {

@@ -111,10 +111,10 @@ class SortOptionsViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             
-            closeButton.widthAnchor.constraint(equalToConstant: 35),
-            closeButton.heightAnchor.constraint(equalToConstant: 35),
-            closeButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-            closeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            closeButton.widthAnchor.constraint(equalToConstant: 45),
+            closeButton.heightAnchor.constraint(equalToConstant: 45),
+            closeButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5),
+            closeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
             
             applyButton.widthAnchor.constraint(equalToConstant: 300),
             applyButton.heightAnchor.constraint(equalToConstant: 45),

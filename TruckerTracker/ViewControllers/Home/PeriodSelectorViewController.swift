@@ -72,16 +72,6 @@ class PeriodSelectorViewController: UIViewController {
         configureTableView()
     }
     
-    
-    // Sections configuration
-    func addSectionsRows() {
-        sections = [
-            Section(type: .period, rows: []),
-            Section(type: .types, rows: [.year, .month, .week, .customPeriod, .sinceYouStarted])
-        ]
-    }
-    
-    
     // Dismiss on background tap
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -94,6 +84,13 @@ class PeriodSelectorViewController: UIViewController {
         }
     }
     
+    // Sections configuration
+    func addSectionsRows() {
+        sections = [
+            Section(type: .period, rows: []),
+            Section(type: .types, rows: [.year, .month, .week, .customPeriod, .sinceYouStarted])
+        ]
+    }
     
     // Container View
     private func configureContainerView() {
@@ -177,7 +174,8 @@ class PeriodSelectorViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
         
-        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionTitleHeaderView.identifier)
+        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier:
+                                                        SectionTitleHeaderView.identifier)
         tableView.register(PeriodPickerCell.nib, forCellReuseIdentifier: PeriodPickerCell.identifier)
         tableView.register(CustomPeriodCell.nib, forCellReuseIdentifier: CustomPeriodCell.identifier)
         tableView.register(PeriodTypeCell.nib, forCellReuseIdentifier: PeriodTypeCell.identifier)

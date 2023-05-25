@@ -147,6 +147,9 @@
 		5FED3CD32A1C39EC00103045 /* SortOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CD22A1C39EC00103045 /* SortOptionsViewController.swift */; };
 		5FED3CD82A1C4EF000103045 /* SortOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CD62A1C4EF000103045 /* SortOptionCell.swift */; };
 		5FED3CD92A1C4EF000103045 /* SortOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FED3CD72A1C4EF000103045 /* SortOptionCell.xib */; };
+		5FED3CDB2A1EC47C00103045 /* FilterOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CDA2A1EC47C00103045 /* FilterOptionsViewController.swift */; };
+		5FED3CDF2A1F002700103045 /* FilterOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CDD2A1F002700103045 /* FilterOptionCell.swift */; };
+		5FED3CE02A1F002700103045 /* FilterOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FED3CDE2A1F002700103045 /* FilterOptionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -292,6 +295,9 @@
 		5FED3CD22A1C39EC00103045 /* SortOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionsViewController.swift; sourceTree = "<group>"; };
 		5FED3CD62A1C4EF000103045 /* SortOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionCell.swift; sourceTree = "<group>"; };
 		5FED3CD72A1C4EF000103045 /* SortOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortOptionCell.xib; sourceTree = "<group>"; };
+		5FED3CDA2A1EC47C00103045 /* FilterOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsViewController.swift; sourceTree = "<group>"; };
+		5FED3CDD2A1F002700103045 /* FilterOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionCell.swift; sourceTree = "<group>"; };
+		5FED3CDE2A1F002700103045 /* FilterOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOptionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -687,6 +693,7 @@
 				5FB723CF2A017C30003E6778 /* AlertViewController.swift */,
 				5FB723CD2A017BB5003E6778 /* DatePickerViewController.swift */,
 				5FB723CB2A017B06003E6778 /* OptionPickerViewController.swift */,
+				5FED3CDA2A1EC47C00103045 /* FilterOptionsViewController.swift */,
 				5FED3CD22A1C39EC00103045 /* SortOptionsViewController.swift */,
 			);
 			path = "General Controllers";
@@ -1047,6 +1054,7 @@
 		5FED3CD42A1C4EBE00103045 /* SortFilter Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5FED3CDC2A1EFFFD00103045 /* FilterOptionCell */,
 				5FED3CD52A1C4ED700103045 /* SortOptionCell */,
 			);
 			path = "SortFilter Cells";
@@ -1059,6 +1067,15 @@
 				5FED3CD72A1C4EF000103045 /* SortOptionCell.xib */,
 			);
 			path = SortOptionCell;
+			sourceTree = "<group>";
+		};
+		5FED3CDC2A1EFFFD00103045 /* FilterOptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				5FED3CDD2A1F002700103045 /* FilterOptionCell.swift */,
+				5FED3CDE2A1F002700103045 /* FilterOptionCell.xib */,
+			);
+			path = FilterOptionCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1141,6 +1158,7 @@
 				5F39787729D23790007C3B65 /* NoAttachmentCell.xib in Resources */,
 				5F2B8033295F99D50044E004 /* ExportCategoriesCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
+				5FED3CE02A1F002700103045 /* FilterOptionCell.xib in Resources */,
 				5F2B8010295A05DD0044E004 /* ContactCell.xib in Resources */,
 				5F39786029CE6F79007C3B65 /* ExpenseFrequencyCell.xib in Resources */,
 				5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */,
@@ -1231,6 +1249,7 @@
 				5FED3CCE2A1BC07A00103045 /* RecurringExpenseCell.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
 				5FEC7BB929B7D3160091F8FB /* HomeViewController.swift in Sources */,
+				5FED3CDF2A1F002700103045 /* FilterOptionCell.swift in Sources */,
 				5FB723CA2A0179DC003E6778 /* PeriodSelectorViewController.swift in Sources */,
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
@@ -1250,6 +1269,7 @@
 				5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */,
 				5F1185AC2A12F627006B8F56 /* Attachment.swift in Sources */,
 				5F1185A62A12E7BF006B8F56 /* SortFilterButton.swift in Sources */,
+				5FED3CDB2A1EC47C00103045 /* FilterOptionsViewController.swift in Sources */,
 				5F71DC8529578138003111AF /* Date+Ext.swift in Sources */,
 				5F16E3BB2A118FD900BA5DFD /* ToolsViewController.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
