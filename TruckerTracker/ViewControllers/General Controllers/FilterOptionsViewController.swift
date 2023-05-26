@@ -7,7 +7,12 @@
 
 import UIKit
 
-// MARK: - SectionsRows Definition
+// MARK: - Filter Options Selector Delegate
+protocol FilterOptionsSelectorDelegate: AnyObject {
+    func filterOptionsSelected(period: Period, categories: Set<ItemType>)
+}
+
+// MARK: - Sections Rows Definition
 private enum Section {
     case period
     case categories(items: [ItemType])
@@ -31,6 +36,8 @@ class FilterOptionsViewController: UIViewController {
     private let applyButton = TRButton()
     
     private var sections = [Section]()
+    
+    weak var delegate: FilterOptionsSelectorDelegate?
     
     var selectedPeriod: Period = UDManager.shared.homeDisplayPeriod
     var selectedCategories: Set<ItemType> = [.expense, .fuel, .load]
@@ -141,7 +148,9 @@ class FilterOptionsViewController: UIViewController {
     }
     
     @objc func resetButtonTapped() {
-        //TODO: Reset filter
+        selectedPeriod = UDManager.shared.homeDisplayPeriod
+        selectedCategories = [.expense, .load, .fuel]
+        tableView.reloadData()
     }
     
     private func configureCloseButton() {
@@ -176,7 +185,7 @@ class FilterOptionsViewController: UIViewController {
     }
     
     @objc private func applyButtonTapped() {
-        //TODO: Notify delegate
+        delegate?.filterOptionsSelected(period: selectedPeriod, categories: selectedCategories)
         self.dismiss(animated: true)
     }
 }
@@ -205,6 +214,9 @@ extension FilterOptionsViewController: UITableViewDataSource {
         case .period:
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomPeriodCell.identifier)
                                                                         as! CustomPeriodCell
+            cell.startDate = selectedPeriod.interval.start
+            cell.endDate = selectedPeriod.interval.end
+            cell.delegate = self
             return cell
             
         case .categories(let items):
@@ -263,5 +275,12 @@ extension FilterOptionsViewController: UITableViewDelegate {
             selectedCategories.formSymmetricDifference([selectedItem])
             tableView.reloadData()
         }
+    }
+}
+
+// MARK: - CustomPeriodCell Delegate
+extension FilterOptionsViewController: CustomPeriodCellDelegate {
+    func didSelect(startDate: Date, endDate: Date) {
+        selectedPeriod.interval = DateInterval(start: startDate, end: endDate)
     }
 }

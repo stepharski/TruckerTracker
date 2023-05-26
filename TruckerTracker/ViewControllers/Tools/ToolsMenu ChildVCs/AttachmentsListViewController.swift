@@ -114,7 +114,7 @@ class AttachmentsListViewController: UIViewController {
     
     func showFilterViewController() {
         let filterController = FilterOptionsViewController()
-        //TODO: Set delegate
+        filterController.delegate = self
         present(filterController, animated: true)
     }
 }
@@ -122,6 +122,13 @@ class AttachmentsListViewController: UIViewController {
 // MARK: - SortOption Selector Delegate
 extension AttachmentsListViewController: SortOptionSelectorDelegate {
     func sortOptionSelected(_ option: SortOption) {
+        //TODO: Fetch data
+    }
+}
+
+// MARK: - FilterOptions Selector Delegate
+extension AttachmentsListViewController: FilterOptionsSelectorDelegate {
+    func filterOptionsSelected(period: Period, categories: Set<ItemType>) {
         //TODO: Fetch data
     }
 }
