@@ -30,6 +30,7 @@ class ToolMenuViewController: UIViewController {
         configureNavBar()
         updateHeaderHeight()
         addToolChildVC()
+        setupGestureRecognizer()
         dismissKeyboardOnTouchOutside()
     }
     
@@ -113,5 +114,16 @@ class ToolMenuViewController: UIViewController {
         alertVC.modalPresentationStyle = .overFullScreen
         alertVC.modalTransitionStyle = .crossDissolve
         present(alertVC, animated: true)
+    }
+    
+    // Gestures
+    func setupGestureRecognizer() {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+        swipe.direction = .right
+        view.addGestureRecognizer(swipe)
+    }
+    
+    @objc func swipeAction() {
+        navigationController?.popViewController(animated: true)
     }
 }

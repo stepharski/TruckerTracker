@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -158,20 +157,20 @@
                                 <color key="color" systemColor="systemGreenColor"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ron-qE-eKh" userLabel="Action Buttons Stack">
-                                <rect key="frame" x="44" y="773" width="305" height="45"/>
+                                <rect key="frame" x="56.666666666666657" y="773" width="280" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFN-z4-qXh">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="KgB-xH-RQj"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="vC9-fn-6LJ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="vC9-fn-6LJ"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="trash" catalog="system" cornerStyle="capsule"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1K-gx-4eo">
-                                        <rect key="frame" x="105" y="0.0" width="200" height="45"/>
+                                        <rect key="frame" x="80" y="0.0" width="200" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="OKp-vj-wqW"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="fM4-LO-ubN"/>
@@ -224,90 +223,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yKv-iz-1U6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="73" y="232"/>
-        </scene>
-        <!--Location SearchVC-->
-        <scene sceneID="Wej-ab-GAW">
-            <objects>
-                <viewController storyboardIdentifier="LocationSearchVC" id="Xdh-sr-qfT" customClass="LocationSearchVC" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7x5-gl-GXS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCO-PM-G4a">
-                                <rect key="frame" x="10" y="69" width="373" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="tVy-Ag-dPz"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Xdh-sr-qfT" id="UbF-JB-ev7"/>
-                                </connections>
-                            </searchBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hg6-UX-0Ch">
-                                <rect key="frame" x="5" y="133" width="383" height="624"/>
-                                <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TE-QZ-vU1">
-                                        <rect key="frame" x="15" y="0.0" width="353" height="300"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="7o6-Cz-8g4"/>
-                                        </constraints>
-                                        <standardMapConfiguration key="preferredConfiguration"/>
-                                    </mapView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KXJ-Ws-t18">
-                                        <rect key="frame" x="0.0" y="320" width="383" height="304"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1TE-QZ-vU1" secondAttribute="trailing" constant="15" id="C7Y-B9-pes"/>
-                                    <constraint firstItem="1TE-QZ-vU1" firstAttribute="leading" secondItem="Hg6-UX-0Ch" secondAttribute="leading" constant="15" id="WsU-5u-1eW"/>
-                                    <constraint firstAttribute="trailing" secondItem="KXJ-Ws-t18" secondAttribute="trailing" id="iqu-W5-mjZ"/>
-                                    <constraint firstItem="KXJ-Ws-t18" firstAttribute="leading" secondItem="Hg6-UX-0Ch" secondAttribute="leading" id="xPe-Xy-daT"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RyU-lR-C7E">
-                                <rect key="frame" x="80" y="777" width="233" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="sxj-hZ-4mR"/>
-                                    <constraint firstAttribute="height" constant="45" id="zM2-td-Sg5"/>
-                                </constraints>
-                                <color key="tintColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Select Location" cornerStyle="capsule">
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
-                                    <color key="baseForegroundColor" red="0.11372549019607843" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectLocationTapped:" destination="Xdh-sr-qfT" eventType="touchUpInside" id="JNY-eB-ZnU"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="oKR-py-gy8"/>
-                        <color key="backgroundColor" red="0.12156862745098039" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="Hg6-UX-0Ch" firstAttribute="top" secondItem="NCO-PM-G4a" secondAttribute="bottom" constant="20" id="3uW-QD-RLl"/>
-                            <constraint firstAttribute="bottom" secondItem="RyU-lR-C7E" secondAttribute="bottom" constant="30" id="4Ms-aU-Kcx"/>
-                            <constraint firstItem="Hg6-UX-0Ch" firstAttribute="leading" secondItem="oKR-py-gy8" secondAttribute="leading" constant="5" id="6a7-lm-aKD"/>
-                            <constraint firstItem="oKR-py-gy8" firstAttribute="trailing" secondItem="Hg6-UX-0Ch" secondAttribute="trailing" constant="5" id="C2s-rA-8Vg"/>
-                            <constraint firstItem="RyU-lR-C7E" firstAttribute="leading" secondItem="oKR-py-gy8" secondAttribute="leading" constant="80" id="DJF-At-9Uo"/>
-                            <constraint firstAttribute="trailing" secondItem="NCO-PM-G4a" secondAttribute="trailing" constant="10" id="SgH-4k-LkX"/>
-                            <constraint firstItem="NCO-PM-G4a" firstAttribute="top" secondItem="oKR-py-gy8" secondAttribute="top" constant="10" id="TvZ-ex-YgX"/>
-                            <constraint firstItem="NCO-PM-G4a" firstAttribute="leading" secondItem="oKR-py-gy8" secondAttribute="leading" constant="10" id="f5I-V7-27H"/>
-                            <constraint firstItem="oKR-py-gy8" firstAttribute="trailing" secondItem="RyU-lR-C7E" secondAttribute="trailing" constant="80" id="meq-ra-Jnp"/>
-                            <constraint firstItem="RyU-lR-C7E" firstAttribute="top" secondItem="Hg6-UX-0Ch" secondAttribute="bottom" constant="20" id="t4d-SF-VeB"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="04G-ee-TcP"/>
-                    <connections>
-                        <outlet property="mapView" destination="1TE-QZ-vU1" id="hCl-Oc-Oj9"/>
-                        <outlet property="searchBar" destination="NCO-PM-G4a" id="dhD-yG-bl7"/>
-                        <outlet property="selectLocationButton" destination="RyU-lR-C7E" id="Kyi-Mk-TeG"/>
-                        <outlet property="tableView" destination="KXJ-Ws-t18" id="Ayk-Zt-RJS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kfp-KY-DQg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1018" y="232"/>
         </scene>
         <!--Tools View Controller-->
         <scene sceneID="Ti4-HP-zzv">
@@ -498,11 +413,11 @@
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

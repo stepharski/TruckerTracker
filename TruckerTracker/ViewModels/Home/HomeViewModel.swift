@@ -48,9 +48,11 @@ class HomeViewModel {
         loads.forEach { loadsAmount += $0.amount }
         fuelings.forEach { fuelingsAmount += $0.totalAmount }
         
-        return ["\(expensesAmount.formattedWithSeparator())",
-                "\(loadsAmount.formattedWithSeparator())",
-                "\(fuelingsAmount.formattedWithSeparator())"]
+        let currency = UDManager.shared.currency.symbol
+        
+        return ["\(currency) \(expensesAmount.formattedWithSeparator())",
+                "\(currency) \(loadsAmount.formattedWithSeparator())",
+                "\(currency) \(fuelingsAmount.formattedWithSeparator())"]
     }
     
     func getNumberOfItems(for type: ItemType) -> Int {
