@@ -31,10 +31,8 @@ class RecurringExpensesListViewController: UIViewController {
     
     // Layout UI
     private func layoutUI() {
-        [sortButton, tableView, addButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview($0)
-        }
+        view.addSubviews(sortButton, tableView, addButton)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         let bottomMultiplier: CGFloat = DeviceTypes.isiPhoneSE ? 1 : 2
         NSLayoutConstraint.activate([

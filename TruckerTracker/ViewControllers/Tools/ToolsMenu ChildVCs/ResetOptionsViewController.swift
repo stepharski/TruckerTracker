@@ -21,7 +21,7 @@ private enum ResetOptions: String, CaseIterable {
         case .eraseHistory:
             return "Remove all my added data \nbut keep driver and app configuration"
         case .resetApp:
-            return "Delete driver profile, all associated data \nand reset app configuration"
+            return "Delete driver profile, all associated data and reset app configuration"
         }
     }
     
@@ -38,7 +38,6 @@ private enum ResetOptions: String, CaseIterable {
 // MARK: - ResetOptions View Controller
 class ResetOptionsViewController: UIViewController {
     
-    private let tableContainer = UIView()
     private let tableView = UITableView()
     private let resetButton = ActionButton()
     
@@ -57,10 +56,8 @@ class ResetOptionsViewController: UIViewController {
 
     // Layout
     private func layoutUI() {
-        [tableView, resetButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview($0)
-        }
+        view.addSubviews(tableView, resetButton)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         let bottomMultiplier: CGFloat = DeviceTypes.isiPhoneSE ? 1 : 2
         NSLayoutConstraint.activate([
@@ -160,7 +157,7 @@ extension ResetOptionsViewController: UITableViewDelegate {
     
     // Row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
+        return 95
     }
     
     // Selection

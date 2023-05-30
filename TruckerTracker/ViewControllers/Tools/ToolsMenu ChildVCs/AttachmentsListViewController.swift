@@ -36,10 +36,9 @@ class AttachmentsListViewController: UIViewController {
     
     // Layout UI
     private func layoutUI() {
-        [sortFilterStackView, tableView, addButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview($0)
-        }
+        view.addSubviews(sortFilterStackView, tableView, addButton)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        sortFilterStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let bottomMultiplier: CGFloat = DeviceTypes.isiPhoneSE ? 1 : 2
         NSLayoutConstraint.activate([

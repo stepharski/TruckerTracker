@@ -76,7 +76,7 @@ class ToolMenuViewController: UIViewController {
         case .reset:
             return ResetOptionsViewController()
         case .feedback:
-            return UIViewController()
+            return FeedbackViewController()
         }
     }
     

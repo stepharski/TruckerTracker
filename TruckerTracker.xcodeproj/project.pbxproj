@@ -148,6 +148,8 @@
 		5FED3CE02A1F002700103045 /* FilterOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FED3CDE2A1F002700103045 /* FilterOptionCell.xib */; };
 		5FED3CE22A20EA1A00103045 /* ResetOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CE12A20EA1A00103045 /* ResetOptionsViewController.swift */; };
 		5FED3CE42A256BFA00103045 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CE32A256BFA00103045 /* ActionButton.swift */; };
+		5FED3CE62A25796000103045 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CE52A25796000103045 /* FeedbackViewController.swift */; };
+		5FED3CEB2A2591D000103045 /* MessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CEA2A2591D000103045 /* MessageTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -294,6 +296,8 @@
 		5FED3CDE2A1F002700103045 /* FilterOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOptionCell.xib; sourceTree = "<group>"; };
 		5FED3CE12A20EA1A00103045 /* ResetOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetOptionsViewController.swift; sourceTree = "<group>"; };
 		5FED3CE32A256BFA00103045 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		5FED3CE52A25796000103045 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		5FED3CEA2A2591D000103045 /* MessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -879,6 +883,7 @@
 				5F39788829D4BEC2007C3B65 /* Views */,
 				5FB92F4128C970FD0037A4AD /* TabBar */,
 				5F2B8018295AA0610044E004 /* SegmentedControl */,
+				5FED3CE92A2591A900103045 /* TextView */,
 				5F2B8011295A127B0044E004 /* TextFields */,
 				5F790FF8294451D300A73600 /* Buttons */,
 				5F97B6AC2953F8DD004C5D2A /* Slider */,
@@ -959,6 +964,7 @@
 				5F11859E2A12801D006B8F56 /* AttachmentsListViewController.swift */,
 				5FED3CC92A1BBE8D00103045 /* RecurringExpensesListViewController.swift */,
 				5FED3CE12A20EA1A00103045 /* ResetOptionsViewController.swift */,
+				5FED3CE52A25796000103045 /* FeedbackViewController.swift */,
 			);
 			path = "ToolsMenu ChildVCs";
 			sourceTree = "<group>";
@@ -1062,6 +1068,14 @@
 				5FED3CDE2A1F002700103045 /* FilterOptionCell.xib */,
 			);
 			path = FilterOptionCell;
+			sourceTree = "<group>";
+		};
+		5FED3CE92A2591A900103045 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				5FED3CEA2A2591D000103045 /* MessageTextView.swift */,
+			);
+			path = TextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1208,6 +1222,7 @@
 				5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */,
 				5F39785F29CE6F79007C3B65 /* ExpenseFrequencyCell.swift in Sources */,
 				5F39783F29CC8782007C3B65 /* ExpenseTableViewController.swift in Sources */,
+				5FED3CE62A25796000103045 /* FeedbackViewController.swift in Sources */,
 				5FA55198297B082A00D3596F /* String+Ext.swift in Sources */,
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5F39788329D3E24C007C3B65 /* Double+Ext.swift in Sources */,
@@ -1245,6 +1260,7 @@
 				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
 				5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */,
 				5F16E3AB2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift in Sources */,
+				5FED3CEB2A2591D000103045 /* MessageTextView.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5F16E3B92A0C69B500BA5DFD /* CheckmarkView.swift in Sources */,
 				5FB723CC2A017B06003E6778 /* OptionPickerViewController.swift in Sources */,
