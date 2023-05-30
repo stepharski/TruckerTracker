@@ -251,8 +251,6 @@ class ItemViewController: UIViewController {
     // Action buttons
     func configureActionButtons() {
         deleteButton.isHidden = isNewItem
-        saveButton.dropShadow(opacity: 0.25)
-        deleteButton.dropShadow(opacity: 0.25)
         actionButtonsBottomConstraint.constant = DeviceTypes.isiPhoneSE ? 20 : 0
     }
 

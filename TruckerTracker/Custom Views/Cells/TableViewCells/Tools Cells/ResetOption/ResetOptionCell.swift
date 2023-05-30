@@ -16,15 +16,11 @@ class ResetOptionCell: UITableViewCell {
     @IBOutlet private var descriptionLabel: UILabel!
     
     var optionTitle: String? {
-        didSet {
-            titleLabel.text = optionTitle
-        }
+        didSet { titleLabel.text = optionTitle }
     }
     
     var optionDescription: String? {
-        didSet {
-            descriptionLabel.text = optionDescription
-        }
+        didSet { descriptionLabel.text = optionDescription }
     }
     
     var optionIsSelected: Bool = true {
@@ -34,7 +30,7 @@ class ResetOptionCell: UITableViewCell {
         }
     }
     
-    
+    // Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -45,12 +41,12 @@ class ResetOptionCell: UITableViewCell {
     
     
     private func updateLabels() {
-        titleLabel.textColor = optionIsSelected ? #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1) : #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 0.8)
-        descriptionLabel.textColor = optionIsSelected ? #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 0.9) : #colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 0.6)
+        titleLabel.textColor = optionIsSelected ? .label : .systemGray
+        descriptionLabel.textColor = optionIsSelected ? .label : .systemGray
     }
     
     private func updateCheckBox() {
         checkmarkImageView.isHidden = !optionIsSelected
-        checkBoxView.backgroundColor = optionIsSelected ? .black : .black.withAlphaComponent(0.8)
+        checkBoxView.backgroundColor = optionIsSelected ? .label : .systemGray4
     }
 }

@@ -11,7 +11,7 @@ enum ToolsType: String, CaseIterable {
     
     case settings, driver
     case attachments, recurring
-    case reset, cloud
+    case reset, feedback
     
     var title: String {
         return self.rawValue.capitalized
@@ -27,10 +27,10 @@ enum ToolsType: String, CaseIterable {
             return "Uploaded attachments"
         case .recurring:
             return "Scheduled expenses"
-        case .cloud:
-            return "Secure your data"
         case .reset:
             return "Start from scratch"
+        case .feedback:
+            return "Share your thoughts"
         }
     }
     
@@ -44,10 +44,10 @@ enum ToolsType: String, CaseIterable {
             return SFSymbols.docOnDoc
         case .recurring:
             return SFSymbols.crownArrow
-        case .cloud:
-            return SFSymbols.cloud
         case .reset:
             return SFSymbols.trash
+        case .feedback:
+            return SFSymbols.envelope
         }
     }
     
@@ -61,10 +61,10 @@ enum ToolsType: String, CaseIterable {
             return "Manage uploaded files \n grouped by type"
         case .recurring:
             return "Schedule or edit \n expenses that repeat"
-        case .cloud:
-            return "Keep your data secure \n in the cloud"
         case .reset:
-            return "Erase your existing data \n to begin anew"
+            return "Leave the past \n in your rearview"
+        case .feedback:
+            return "Share your thoughts, \n suggestions or concerns"
         }
     }
 }

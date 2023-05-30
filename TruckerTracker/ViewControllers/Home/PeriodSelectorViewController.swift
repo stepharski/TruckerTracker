@@ -36,7 +36,7 @@ class PeriodSelectorViewController: UIViewController {
     private let closeButton = UIButton()
     private let periodLabel = UILabel()
     private let tableView = UITableView()
-    private let applyButton = TRButton()
+    private let applyButton = ActionButton()
 
     private var sections = [Section]()
     private var pickerSelectedRows = [Int]()

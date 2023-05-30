@@ -16,7 +16,7 @@ class AttachmentsListViewController: UIViewController {
     private let filterButton = SortFilterButton(type: .filter)
     
     private let tableView = UITableView()
-    private let addButton = TRButton()
+    private let addButton = ActionButton()
     
     let viewModel = AttachmentsListViewModel()
     

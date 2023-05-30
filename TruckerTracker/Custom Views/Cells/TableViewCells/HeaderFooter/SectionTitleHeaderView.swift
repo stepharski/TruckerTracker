@@ -62,6 +62,10 @@ class SectionTitleHeaderView: UITableViewHeaderFooterView {
     var labelCenterYPadding: CGFloat = 5 {
         didSet { updateUI() }
     }
+    
+    var labelXPadding: CGFloat = 10 {
+        didSet { updateUI() }
+    }
 
     
     override init(reuseIdentifier: String?) {
@@ -87,10 +91,9 @@ class SectionTitleHeaderView: UITableViewHeaderFooterView {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let padding: CGFloat = 10
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: labelXPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -labelXPadding),
             titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYPadding)
         ])
     }

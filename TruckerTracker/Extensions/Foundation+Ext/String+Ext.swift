@@ -14,11 +14,18 @@ extension String {
     }
     
     func camelCaseToWords() -> String {
-        return unicodeScalars.dropFirst().reduce(String(prefix(1))) {
-            return CharacterSet.uppercaseLetters.contains($1)
-                ? $0 + " " + String($1)
-                : $0 + String($1)
-        }
+        return self.replacingOccurrences(of: "([A-Z])",
+                                         with: " $1",
+                                         options: .regularExpression,
+                                         range: range(of: self))
+                                                .lowercased()
+                                                .capitalizeFirstWord()
+    }
+    
+    func capitalizeFirstWord() -> String {
+        guard let firstCharacter = self.first else { return self }
+        
+        return String(firstCharacter).uppercased() + dropFirst()
     }
     
     

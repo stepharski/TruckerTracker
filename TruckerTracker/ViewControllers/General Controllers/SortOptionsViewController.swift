@@ -46,7 +46,7 @@ class SortOptionsViewController: UIViewController {
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
     private let tableView = UITableView()
-    private let applyButton = TRButton()
+    private let applyButton = ActionButton()
     
     private let options = SortOption.allCases
     

@@ -74,8 +74,8 @@ class ToolMenuViewController: UIViewController {
         case .recurring:
             return RecurringExpensesListViewController()
         case .reset:
-            return UIViewController()
-        case .cloud:
+            return ResetOptionsViewController()
+        case .feedback:
             return UIViewController()
         }
     }

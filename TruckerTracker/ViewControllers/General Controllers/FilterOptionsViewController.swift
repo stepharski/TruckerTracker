@@ -33,7 +33,7 @@ class FilterOptionsViewController: UIViewController {
     private let resetButton = UIButton()
     private let closeButton = UIButton()
     private let tableView = UITableView()
-    private let applyButton = TRButton()
+    private let applyButton = ActionButton()
     
     private var sections = [Section]()
     
@@ -173,10 +173,10 @@ class FilterOptionsViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
         
-        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier:
-                                                        SectionTitleHeaderView.identifier)
         tableView.register(CustomPeriodCell.nib, forCellReuseIdentifier: CustomPeriodCell.identifier)
         tableView.register(FilterOptionCell.nib, forCellReuseIdentifier: FilterOptionCell.identifier)
+        tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier:
+                                                    SectionTitleHeaderView.identifier)
     }
     
     private func configureApplyButton() {

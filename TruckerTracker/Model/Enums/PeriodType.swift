@@ -16,7 +16,7 @@ enum PeriodType: String, Codable {
         case .week, .month, .year:
             return self.rawValue.capitalized
         case .sinceYouStarted, .customPeriod:
-            return self.rawValue.camelCaseToWords().lowercased().capitalized
+            return self.rawValue.camelCaseToWords()
         }
     }
 }

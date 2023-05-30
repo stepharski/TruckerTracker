@@ -11,7 +11,7 @@ class DriverSettingsViewController: UIViewController {
     
     let padding: CGFloat = 15
     private let tableView = UITableView()
-    private let saveButton = TRButton()
+    private let saveButton = ActionButton()
     private var savingOverlayView: UIView?
     private lazy var spinner: UIActivityIndicatorView = createSpinner()
     

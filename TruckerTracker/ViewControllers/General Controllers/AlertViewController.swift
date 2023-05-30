@@ -14,7 +14,7 @@ class AlertViewController: UIViewController {
     
     var cancelTitle: String?
     var actionTitle: String?
-    var actionType: TRButtonActionType?
+    var actionType: ActionButtonType?
     var didTapAction: (() -> Void)?
     
     let xPadding: CGFloat = 30
@@ -27,7 +27,7 @@ class AlertViewController: UIViewController {
     
     // Life cycle
     init(title: String?, message: String,
-         actionTitle: String? = nil, actionType: TRButtonActionType? = nil, cancelTitle: String? = nil) {
+         actionTitle: String? = nil, actionType: ActionButtonType? = nil, cancelTitle: String? = nil) {
         super.init(nibName: nil, bundle: nil)
         
         self.alertTitle = title
@@ -113,7 +113,7 @@ class AlertViewController: UIViewController {
     
     // Action button
     func configureActionButton() {
-        let actionButton = TRButton(title: actionTitle ?? "Ok",
+        let actionButton = ActionButton(title: actionTitle ?? "Ok",
                                     action: actionType ?? .confirm, shape: .rectangle)
         buttonsStackView.addArrangedSubview(actionButton)
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
@@ -128,7 +128,7 @@ class AlertViewController: UIViewController {
     func configureCancelButton() {
         guard let title = cancelTitle else { return }
         
-        let cancelButton = TRButton(title: title, action: .cancel, shape: .rectangle)
+        let cancelButton = ActionButton(title: title, action: .cancel, shape: .rectangle)
         buttonsStackView.addArrangedSubview(cancelButton)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
     }

@@ -1,15 +1,15 @@
 //
-//  TRButton.swift
+//  ActionButton.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 12/10/22.
+//  Created by Stepan Kukharskyi on 5/29/23.
 //
 
 import UIKit
 
 //MARK: - Button Type
 // Action
-enum TRButtonActionType {
+enum ActionButtonType {
     case confirm, destruct, cancel
     
     var foregroundColor: UIColor {
@@ -28,7 +28,7 @@ enum TRButtonActionType {
     }
 }
 // Shape
-enum TRButtonShapeType {
+enum ActionButtonShape {
     case capsule, rectangle
     
     var cornerStyle: UIButton.Configuration.CornerStyle {
@@ -39,9 +39,8 @@ enum TRButtonShapeType {
     }
 }
 
-
-//MARK: -  TRButton
-class TRButton: UIButton {
+// MARK: - ActionButton
+class ActionButton: UIButton {
 
     // Font attributes
     private let titleFontSize: CGFloat = 16
@@ -58,7 +57,7 @@ class TRButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(title: String, action: TRButtonActionType, shape: TRButtonShapeType) {
+    convenience init(title: String, action: ActionButtonType, shape: ActionButtonShape) {
         self.init(frame: .zero)
 
         set(title: title, action: action, shape: shape)
@@ -70,7 +69,7 @@ class TRButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func set(title: String, action: TRButtonActionType, shape: TRButtonShapeType) {
+    func set(title: String, action: ActionButtonType, shape: ActionButtonShape) {
         var attTitle = AttributedString(title)
         attTitle.font = UIFont.systemFont(ofSize: titleFontSize, weight: titleFontWeight)
         

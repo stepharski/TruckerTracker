@@ -13,7 +13,7 @@ class RecurringExpensesListViewController: UIViewController {
     
     private let sortButton = SortFilterButton(type: .sort)
     private let tableView = UITableView()
-    private let addButton = TRButton()
+    private let addButton = ActionButton()
     
     let viewModel = RecurringExpensesListViewModel()
     

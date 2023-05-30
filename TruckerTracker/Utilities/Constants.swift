@@ -67,7 +67,7 @@ struct SFSymbols {
     static let docOnDoc = UIImage(systemName: "doc.on.doc")
     static let crownArrow = UIImage(systemName: "digitalcrown.arrow.clockwise")
     static let trash = UIImage(systemName: "trash")
-    static let cloud = UIImage(systemName: "cloud")
+    static let envelope = UIImage(systemName: "envelope")
     
     // App Settings
     static let gearArrows = UIImage(systemName: "gearshape.arrow.triangle.2.circlepath")
