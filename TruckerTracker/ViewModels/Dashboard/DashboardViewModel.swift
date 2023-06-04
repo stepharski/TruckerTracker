@@ -1,20 +1,19 @@
 //
-//  HomeViewModel.swift
+//  DashboardViewModel.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 4/30/23.
+//  Created by Stepan Kukharskyi on 5/30/23.
 //
 
 import Foundation
 
-class HomeViewModel {
+class DashboardViewModel {
     
     private(set) var totalIncome: Int = 0
     
     private(set) var expenses: [Expense] = []
     private(set) var loads: [Load] = []
     private(set) var fuelings: [Fuel] = []
-    
     
     // Cell VMs
     func expenseCellViewModel(for indexPath: IndexPath) -> ExpenseCellViewModel {
@@ -40,15 +39,11 @@ class HomeViewModel {
     }
     
     func getCategoryTotals() -> [String] {
-        var expensesAmount: Double = 0
-        var loadsAmount: Double = 0
-        var fuelingsAmount: Double = 0
-        
-        expenses.forEach { expensesAmount += $0.amount }
-        loads.forEach { loadsAmount += $0.amount }
-        fuelings.forEach { fuelingsAmount += $0.totalAmount }
-        
         let currency = UDManager.shared.currency.symbol
+        
+        let expensesAmount = expenses.reduce(0, { $0 + $1.amount })
+        let loadsAmount = loads.reduce(0, { $0 + $1.amount })
+        let fuelingsAmount = fuelings.reduce(0, { $0 + $1.totalAmount })
         
         return ["\(currency) \(expensesAmount.formattedWithSeparator())",
                 "\(currency) \(loadsAmount.formattedWithSeparator())",

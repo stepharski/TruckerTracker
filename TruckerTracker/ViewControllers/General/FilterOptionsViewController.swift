@@ -39,7 +39,7 @@ class FilterOptionsViewController: UIViewController {
     
     weak var delegate: FilterOptionsSelectorDelegate?
     
-    var selectedPeriod: Period = UDManager.shared.homeDisplayPeriod
+    var selectedPeriod: Period = UDManager.shared.dashboardPeriod
     var selectedCategories: Set<ItemType> = [.expense, .fuel, .load]
     
     // Life cycle
@@ -148,7 +148,7 @@ class FilterOptionsViewController: UIViewController {
     }
     
     @objc func resetButtonTapped() {
-        selectedPeriod = UDManager.shared.homeDisplayPeriod
+        selectedPeriod = UDManager.shared.dashboardPeriod
         selectedCategories = [.expense, .load, .fuel]
         tableView.reloadData()
     }

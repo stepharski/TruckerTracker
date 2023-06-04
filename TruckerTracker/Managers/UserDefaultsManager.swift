@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - UserDefaults Keys
 struct UDKeys {
-    static let homeDisplayPeriod = "homeDisplayPeriod"
+    static let dashboardPeriod = "dashboardPeriod"
     static let distanceUnit = "distanceUnit"
     static let currency = "currency"
     static let weekStartDay = "weekStartDay"
@@ -34,11 +34,11 @@ class UDManager {
     let defaults = UserDefaults.standard
 
     
-    // Home Display Period
-    var homeDisplayPeriod: Period {
-        get { return defaults.codableValue(forKey: UDKeys.homeDisplayPeriod) ?? Period.getDefault() }
+    // Dashboard Period
+    var dashboardPeriod: Period {
+        get { return defaults.codableValue(forKey: UDKeys.dashboardPeriod) ?? Period.getDefault() }
         
-        set { defaults.setCodable(value: newValue, forKey: UDKeys.homeDisplayPeriod) }
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.dashboardPeriod) }
     }
     
     // Distance unit
@@ -90,10 +90,10 @@ class UDManager {
     
     // Reset
     func resetAll() {
-        homeDisplayPeriod =  Period.getDefault()
-        distanceUnit =      UDValues.distanceUnit
-        currency =         UDValues.currency
-        weekStartDay =     UDValues.weekStartDay
-        appTheme =        UDValues.appTheme
+        dashboardPeriod = Period.getDefault()
+        distanceUnit = UDValues.distanceUnit
+        currency = UDValues.currency
+        weekStartDay = UDValues.weekStartDay
+        appTheme = UDValues.appTheme
     }
 }

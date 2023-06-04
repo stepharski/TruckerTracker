@@ -9,11 +9,11 @@ import UIKit
 
 // MARK: - TRTabBarItem
 enum TRTabBarItem: String {
-    case home, newItem, tools
+    case dashboard, newItem, tools
 
     var image: UIImage? {
         switch self {
-        case .home:
+        case .dashboard:
             return SFSymbols.listRect
         case .newItem:
             return nil

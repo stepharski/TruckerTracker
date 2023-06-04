@@ -1,14 +1,13 @@
 //
-//  HomeViewController.swift
+//  DashboardViewController.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 3/7/23.
+//  Created by Stepan Kukharskyi on 5/30/23.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
-    
+class DashboardViewController: UIViewController {
     
     @IBOutlet var headerView: UIView!
     @IBOutlet var headerViewHeightConstraint: NSLayoutConstraint!
@@ -20,18 +19,18 @@ class HomeViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
     
-    let periodDisplayVC = PeriodDisplayViewController()
-    var segmentedControl: TRSegmentedControl!
+    let viewModel = DashboardViewModel()
     
     let segments = ItemType.allCases
+    var segmentedControl: TRSegmentedControl!
     var selectedSegment: ItemType = .load {
         didSet { updatePeriodDisplay() }}
     
-    var homeViewModel = HomeViewModel()
-    var homeDisplayPeriod = UDManager.shared.homeDisplayPeriod {
-        didSet { UDManager.shared.homeDisplayPeriod = homeDisplayPeriod }
+    let periodDisplayVC = PeriodDisplayViewController()
+    var dashboardPeriod = UDManager.shared.dashboardPeriod {
+        didSet { UDManager.shared.dashboardPeriod = dashboardPeriod }
     }
-    
+
     
     // Life cycle
     override func viewDidLoad() {
@@ -54,7 +53,7 @@ class HomeViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        removeObservers()
     }
     
 
@@ -88,7 +87,7 @@ class HomeViewController: UIViewController {
     }
     
     func updateIncomeLabel() {
-        incomeAmountLabel.text = homeViewModel.getTotalIncome()
+        incomeAmountLabel.text = viewModel.getTotalIncome()
     }
 
     
@@ -103,8 +102,8 @@ class HomeViewController: UIViewController {
     }
     
     func updateSegmentedControl() {
-        let titles = homeViewModel.getCategoryTotals()
-        let subtitles = homeViewModel.getCategoryNames()
+        let titles = viewModel.getCategoryTotals()
+        let subtitles = viewModel.getCategoryNames()
         segmentedControl.configure(with: titles, subtitles: subtitles, type: .underline,
                                                    selectedIndex: selectedSegment.index)
     }
@@ -164,15 +163,15 @@ class HomeViewController: UIViewController {
     }
     
     func updatePeriodDisplay() {
-        periodDisplayVC.period = homeDisplayPeriod
+        periodDisplayVC.period = dashboardPeriod
         periodDisplayVC.itemName = selectedSegment.subtitle
-        periodDisplayVC.numberOfItems = homeViewModel.getNumberOfItems(for: selectedSegment)
+        periodDisplayVC.numberOfItems = viewModel.getNumberOfItems(for: selectedSegment)
     }
     
     
     // Navigation
     func showPeriodSelectorVC() {
-        let periodSelectorVC = PeriodSelectorViewController(selectedPeriod: homeDisplayPeriod)
+        let periodSelectorVC = PeriodSelectorViewController(selectedPeriod: dashboardPeriod)
         periodSelectorVC.delegate = self
         present(periodSelectorVC, animated: true)
     }
@@ -183,13 +182,13 @@ class HomeViewController: UIViewController {
         
         switch selectedSegment {
         case .expense:
-            itemVC.expense = homeViewModel.expenses[safe: row]
+            itemVC.expense = viewModel.expenses[safe: row]
             
         case .load:
-            itemVC.load = homeViewModel.loads[safe: row]
+            itemVC.load = viewModel.loads[safe: row]
 
         case .fuel:
-            itemVC.fueling = homeViewModel.fuelings[safe: row]
+            itemVC.fueling = viewModel.fuelings[safe: row]
         }
         
         self.present(itemNavController, animated: true)
@@ -212,7 +211,7 @@ class HomeViewController: UIViewController {
     // Data
     func updateData() {
         activityIndicator.startAnimating()
-        homeViewModel.fetchData(for: homeDisplayPeriod) { [weak self] success in
+        viewModel.fetchData(for: dashboardPeriod) { [weak self] success in
             guard success else { return }
             
             self?.updateIncomeLabel()
@@ -236,6 +235,14 @@ class HomeViewController: UIViewController {
                                                name: .weekStartDayChanged, object: nil)
     }
     
+    func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification,
+                                                                                      object: nil)
+        NotificationCenter.default.removeObserver(self, name: .distanceUnitChanged, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .currencyChanged, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .weekStartDayChanged, object: nil)
+    }
+    
     @objc func appWillEnterForeground() {
         segmentedControl.selectSegment(at: selectedSegment.index)
     }
@@ -250,13 +257,13 @@ class HomeViewController: UIViewController {
             updateData()
             
         case .weekStartDayChanged:
-            guard homeDisplayPeriod.type == .week else { return }
+            guard dashboardPeriod.type == .week else { return }
             
             // get current middle date
             // create new interval based on Calendar.firstWeekday
-            let middleDate = homeDisplayPeriod.interval.middleDate()
+            let middleDate = dashboardPeriod.interval.middleDate()
             let newInterval = middleDate.getDateInterval(in: .week)
-            homeDisplayPeriod = Period(type: .week, interval: newInterval)
+            dashboardPeriod = Period(type: .week, interval: newInterval)
             updateData()
             
         default:
@@ -267,30 +274,30 @@ class HomeViewController: UIViewController {
 
 
 // MARK: - Period Display Delegate
-extension HomeViewController: PeriodDisplayDelegate {
+extension DashboardViewController: PeriodDisplayDelegate {
     func didTapPeriod() {
         showPeriodSelectorVC()
     }
     
     func didUpdatePeriod(with newPeriod: Period) {
-        homeDisplayPeriod = newPeriod
+        dashboardPeriod = newPeriod
         updateData()
     }
 }
 
 // MARK: - Period Selector Delegate
-extension HomeViewController: PeriodSelectorDelegate {
+extension DashboardViewController: PeriodSelectorDelegate {
     func selectorDidUpdate(period: Period) {
-        homeDisplayPeriod = period
+        dashboardPeriod = period
         updateData()
     }
 }
 
 // MARK: - UITableView DataSource
-extension HomeViewController: UITableViewDataSource {
+extension DashboardViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = homeViewModel.getNumberOfItems(for: selectedSegment)
+        let numberOfRows = viewModel.getNumberOfItems(for: selectedSegment)
         
         if numberOfRows == 0 {
             tableView.setEmptyView(title: "No \(selectedSegment.pluralTitle) found.",
@@ -307,19 +314,19 @@ extension HomeViewController: UITableViewDataSource {
         switch selectedSegment {
         case .expense:
             let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseCell.identifier) as! ExpenseCell
-            let viewModel = homeViewModel.expenseCellViewModel(for: indexPath)
+            let viewModel = viewModel.expenseCellViewModel(for: indexPath)
             cell.configure(with: viewModel)
             return cell
             
         case .load:
             let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier) as! LoadCell
-            let viewModel = homeViewModel.loadCellViewModel(for: indexPath)
+            let viewModel = viewModel.loadCellViewModel(for: indexPath)
             cell.configure(with: viewModel)
             return cell
             
         case .fuel:
             let cell = tableView.dequeueReusableCell(withIdentifier: FuelCell.identifier) as! FuelCell
-            let viewModel = homeViewModel.fuelCellViewModel(for: indexPath)
+            let viewModel = viewModel.fuelCellViewModel(for: indexPath)
             cell.configure(with: viewModel)
             return cell
         }
@@ -327,7 +334,7 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableView Delegate
-extension HomeViewController: UITableViewDelegate {
+extension DashboardViewController: UITableViewDelegate {
     // Height for row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedSegment {
@@ -355,3 +362,4 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
 }
+

@@ -34,10 +34,10 @@
             </objects>
             <point key="canvasLocation" x="-868" y="232"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="yPR-W2-pFH">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="rbm-zM-uSE" customClass="HomeViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" id="rbm-zM-uSE" customClass="DashboardViewController" customModule="TruckerTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vxb-5P-HUb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
