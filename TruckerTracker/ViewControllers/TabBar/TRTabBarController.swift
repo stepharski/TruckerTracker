@@ -34,26 +34,26 @@ class TRTabBarController: UITabBarController {
         
         let dashboardVC = storyboard?.instantiateViewController(withIdentifier:
                         StoryboardIdentifiers.dashboardViewController) as! DashboardViewController
-        let itemVC = storyboard?.instantiateViewController(withIdentifier:
-                        StoryboardIdentifiers.itemViewController) as! ItemViewController
+        let itemEntryVC = storyboard?.instantiateViewController(withIdentifier:
+                        StoryboardIdentifiers.itemEntryViewController) as! ItemEntryViewController
         let toolsVC = storyboard?.instantiateViewController(withIdentifier:
                         StoryboardIdentifiers.toolsViewController) as! ToolsViewController
         
         let dashboardNavController = UINavigationController(rootViewController: dashboardVC)
-        let itemNavController = UINavigationController(rootViewController: itemVC)
+        let itemEntryNavController = UINavigationController(rootViewController: itemEntryVC)
         let toolsNavController = UINavigationController(rootViewController: toolsVC)
 
         dashboardVC.tabBarItem = UITabBarItem(title: nil,
                                          image: TRTabBarItem.dashboard.image,
                                          selectedImage: TRTabBarItem.dashboard.image)
-        itemNavController.tabBarItem = UITabBarItem(title: nil,
+        itemEntryNavController.tabBarItem = UITabBarItem(title: nil,
                                            image: TRTabBarItem.newItem.image,
                                            selectedImage: TRTabBarItem.newItem.image)
         toolsNavController.tabBarItem = UITabBarItem(title: nil,
                                            image: TRTabBarItem.tools.image,
                                            selectedImage: TRTabBarItem.tools.image)
 
-        viewControllers = [dashboardNavController, itemNavController, toolsNavController]
+        viewControllers = [dashboardNavController, itemEntryNavController, toolsNavController]
     }
         
     func handleTabBarItemTap() {
@@ -65,9 +65,9 @@ class TRTabBarController: UITabBarController {
     }
     
     func presentNewItemNavController() {
-        let itemVC = storyboard?.instantiateViewController(withIdentifier:
-                        StoryboardIdentifiers.itemViewController) as! ItemViewController
-        let itemNavController = UINavigationController(rootViewController: itemVC)
+        let itemEntryVC = storyboard?.instantiateViewController(withIdentifier:
+                        StoryboardIdentifiers.itemEntryViewController) as! ItemEntryViewController
+        let itemNavController = UINavigationController(rootViewController: itemEntryVC)
 
         self.present(itemNavController, animated: true)
     }
@@ -80,11 +80,8 @@ extension TRTabBarController: UITabBarControllerDelegate {
         guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
             return true
         }
-        
         // new item button
-        if selectedIndex == 1 {
-            return false
-        }
+        if selectedIndex == 1 { return false }
         
         return true
     }

@@ -34,31 +34,37 @@
 		5F2B801A295AA0900044E004 /* TRSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8019295AA0900044E004 /* TRSegmentedControl.swift */; };
 		5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8026295F7D080044E004 /* ResetOptionCell.swift */; };
 		5F2B8029295F7D080044E004 /* ResetOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B8027295F7D080044E004 /* ResetOptionCell.xib */; };
+		5F37F3702A51FEE400B8BE48 /* ItemEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F36F2A51FEE400B8BE48 /* ItemEntryViewModel.swift */; };
+		5F37F3722A5204F800B8BE48 /* ExpenseSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F3712A5204F800B8BE48 /* ExpenseSummaryViewModel.swift */; };
+		5F37F3742A52050900B8BE48 /* LoadSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F3732A52050900B8BE48 /* LoadSummaryViewModel.swift */; };
+		5F37F3762A52052200B8BE48 /* FuelSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F3752A52052200B8BE48 /* FuelSummaryViewModel.swift */; };
+		5F37F3782A522C5B00B8BE48 /* ItemModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F3772A522C5B00B8BE48 /* ItemModelType.swift */; };
+		5F37F37C2A54B5C900B8BE48 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F37B2A54B5C900B8BE48 /* Observable.swift */; };
 		5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782829BBC573007C3B65 /* LoadLocationCell.swift */; };
 		5F39782B29BBC573007C3B65 /* LoadLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39782929BBC573007C3B65 /* LoadLocationCell.xib */; };
 		5F39783429C7FA21007C3B65 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783329C7FA21007C3B65 /* TRError.swift */; };
 		5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */; };
 		5F39783F29CC8782007C3B65 /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */; };
 		5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */; };
-		5F39784329CC9205007C3B65 /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784229CC9205007C3B65 /* ExpenseViewModel.swift */; };
+		5F39784329CC9205007C3B65 /* ExpenseTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784229CC9205007C3B65 /* ExpenseTableViewModel.swift */; };
 		5F39784C29CDD3AB007C3B65 /* ItemDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784A29CDD3AB007C3B65 /* ItemDateCell.swift */; };
 		5F39784D29CDD3AB007C3B65 /* ItemDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39784B29CDD3AB007C3B65 /* ItemDateCell.xib */; };
 		5F39785129CE20C7007C3B65 /* LoadDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784F29CE20C7007C3B65 /* LoadDistanceCell.swift */; };
 		5F39785229CE20C7007C3B65 /* LoadDistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39785029CE20C7007C3B65 /* LoadDistanceCell.xib */; };
-		5F39785629CE376B007C3B65 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39785429CE376B007C3B65 /* NameCell.swift */; };
-		5F39785729CE376B007C3B65 /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39785529CE376B007C3B65 /* NameCell.xib */; };
+		5F39785629CE376B007C3B65 /* ItemNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39785429CE376B007C3B65 /* ItemNameCell.swift */; };
+		5F39785729CE376B007C3B65 /* ItemNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39785529CE376B007C3B65 /* ItemNameCell.xib */; };
 		5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39785829CE3A43007C3B65 /* ContactTextField.swift */; };
 		5F39785F29CE6F79007C3B65 /* ExpenseFrequencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39785D29CE6F79007C3B65 /* ExpenseFrequencyCell.swift */; };
 		5F39786029CE6F79007C3B65 /* ExpenseFrequencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39785E29CE6F79007C3B65 /* ExpenseFrequencyCell.xib */; };
 		5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786229CE8105007C3B65 /* ExpenseNoteCell.swift */; };
 		5F39786529CE8105007C3B65 /* ExpenseNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39786329CE8105007C3B65 /* ExpenseNoteCell.xib */; };
-		5F39786729CE9EE4007C3B65 /* FuelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786629CE9EE4007C3B65 /* FuelViewModel.swift */; };
+		5F39786729CE9EE4007C3B65 /* FuelTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786629CE9EE4007C3B65 /* FuelTableViewModel.swift */; };
 		5F39786B29D2215F007C3B65 /* SectionTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786A29D2215F007C3B65 /* SectionTitleHeaderView.swift */; };
 		5F39786D29D221A7007C3B65 /* AddActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786C29D221A7007C3B65 /* AddActionFooterView.swift */; };
-		5F39787129D2351C007C3B65 /* AttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786F29D2351C007C3B65 /* AttachmentCell.swift */; };
-		5F39787229D2351C007C3B65 /* AttachmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39787029D2351C007C3B65 /* AttachmentCell.xib */; };
-		5F39787629D23790007C3B65 /* NoAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39787429D23790007C3B65 /* NoAttachmentCell.swift */; };
-		5F39787729D23790007C3B65 /* NoAttachmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39787529D23790007C3B65 /* NoAttachmentCell.xib */; };
+		5F39787129D2351C007C3B65 /* ItemAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39786F29D2351C007C3B65 /* ItemAttachmentCell.swift */; };
+		5F39787229D2351C007C3B65 /* ItemAttachmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39787029D2351C007C3B65 /* ItemAttachmentCell.xib */; };
+		5F39787629D23790007C3B65 /* ItemNoAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39787429D23790007C3B65 /* ItemNoAttachmentCell.swift */; };
+		5F39787729D23790007C3B65 /* ItemNoAttachmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39787529D23790007C3B65 /* ItemNoAttachmentCell.xib */; };
 		5F39787B29D3761B007C3B65 /* FuelLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39787929D3761B007C3B65 /* FuelLocationCell.swift */; };
 		5F39787C29D3761B007C3B65 /* FuelLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39787A29D3761B007C3B65 /* FuelLocationCell.xib */; };
 		5F39788029D37F6F007C3B65 /* FuelEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39787E29D37F6F007C3B65 /* FuelEntryCell.swift */; };
@@ -67,7 +73,6 @@
 		5F39788529D481E6007C3B65 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788429D481E6007C3B65 /* LocationManager.swift */; };
 		5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */; };
 		5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */; };
-		5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC7C29574A98003111AF /* ExpandFooterView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791012294CEC2900A73600 /* FrequencyType.swift */; };
 		5F791015294CECF700A73600 /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791014294CECF700A73600 /* FuelType.swift */; };
@@ -96,18 +101,15 @@
 		5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551C129870D7700D3596F /* CustomPeriodCell.swift */; };
 		5FA551C429870D7700D3596F /* CustomPeriodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551C229870D7700D3596F /* CustomPeriodCell.xib */; };
 		5FA551D2299596A300D3596F /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551D1299596A300D3596F /* ItemType.swift */; };
-		5FA551DB29A0797600D3596F /* LoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551D929A0797600D3596F /* LoadCell.swift */; };
-		5FA551DC29A0797600D3596F /* LoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551DA29A0797600D3596F /* LoadCell.xib */; };
-		5FA551E029A0901900D3596F /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551DE29A0901900D3596F /* ExpenseCell.swift */; };
-		5FA551E129A0901900D3596F /* ExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551DF29A0901900D3596F /* ExpenseCell.xib */; };
-		5FA551E529A0989F00D3596F /* FuelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551E329A0989F00D3596F /* FuelCell.swift */; };
-		5FA551E629A0989F00D3596F /* FuelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551E429A0989F00D3596F /* FuelCell.xib */; };
-		5FA551EA29A141ED00D3596F /* LoadCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */; };
+		5FA551DB29A0797600D3596F /* LoadSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551D929A0797600D3596F /* LoadSummaryCell.swift */; };
+		5FA551DC29A0797600D3596F /* LoadSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551DA29A0797600D3596F /* LoadSummaryCell.xib */; };
+		5FA551E029A0901900D3596F /* ExpenseSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551DE29A0901900D3596F /* ExpenseSummaryCell.swift */; };
+		5FA551E129A0901900D3596F /* ExpenseSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551DF29A0901900D3596F /* ExpenseSummaryCell.xib */; };
+		5FA551E529A0989F00D3596F /* FuelSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551E329A0989F00D3596F /* FuelSummaryCell.swift */; };
+		5FA551E629A0989F00D3596F /* FuelSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551E429A0989F00D3596F /* FuelSummaryCell.xib */; };
 		5FA551F029A1493C00D3596F /* Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551EF29A1493C00D3596F /* Load.swift */; };
 		5FA551F229A1500B00D3596F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F129A1500B00D3596F /* Expense.swift */; };
-		5FA551F529A150E500D3596F /* ExpenseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */; };
 		5FA551F929A1563800D3596F /* Fuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F829A1563800D3596F /* Fuel.swift */; };
-		5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */; };
 		5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FC29A164D400D3596F /* Numeric+Ext.swift */; };
 		5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B629FDBD41003E6778 /* Array+Ext.swift */; };
 		5FB723C22A008122003E6778 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723C12A008122003E6778 /* Notification+Ext.swift */; };
@@ -123,8 +125,8 @@
 		5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */; };
 		5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */; };
 		5FDF97DF29F7241E00DCD038 /* SettingOptionPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */; };
-		5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadViewModel.swift */; };
-		5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */; };
+		5FEC7BB529B792080091F8FB /* LoadTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB429B792080091F8FB /* LoadTableViewModel.swift */; };
+		5FEC7BB729B7D1980091F8FB /* ItemEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BB629B7D1980091F8FB /* ItemEntryViewController.swift */; };
 		5FEC7BCA29B8E1C60091F8FB /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */; };
 		5FED3CCA2A1BBE8D00103045 /* RecurringExpensesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CC92A1BBE8D00103045 /* RecurringExpensesListViewController.swift */; };
 		5FED3CCE2A1BC07A00103045 /* RecurringExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FED3CCC2A1BC07A00103045 /* RecurringExpenseCell.swift */; };
@@ -170,31 +172,37 @@
 		5F2B8019295AA0900044E004 /* TRSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRSegmentedControl.swift; sourceTree = "<group>"; };
 		5F2B8026295F7D080044E004 /* ResetOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetOptionCell.swift; sourceTree = "<group>"; };
 		5F2B8027295F7D080044E004 /* ResetOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetOptionCell.xib; sourceTree = "<group>"; };
+		5F37F36F2A51FEE400B8BE48 /* ItemEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntryViewModel.swift; sourceTree = "<group>"; };
+		5F37F3712A5204F800B8BE48 /* ExpenseSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSummaryViewModel.swift; sourceTree = "<group>"; };
+		5F37F3732A52050900B8BE48 /* LoadSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSummaryViewModel.swift; sourceTree = "<group>"; };
+		5F37F3752A52052200B8BE48 /* FuelSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelSummaryViewModel.swift; sourceTree = "<group>"; };
+		5F37F3772A522C5B00B8BE48 /* ItemModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModelType.swift; sourceTree = "<group>"; };
+		5F37F37B2A54B5C900B8BE48 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		5F39782829BBC573007C3B65 /* LoadLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationCell.swift; sourceTree = "<group>"; };
 		5F39782929BBC573007C3B65 /* LoadLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadLocationCell.xib; sourceTree = "<group>"; };
 		5F39783329C7FA21007C3B65 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
 		5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTableViewController.swift; sourceTree = "<group>"; };
 		5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewController.swift; sourceTree = "<group>"; };
 		5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTableViewController.swift; sourceTree = "<group>"; };
-		5F39784229CC9205007C3B65 /* ExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewModel.swift; sourceTree = "<group>"; };
+		5F39784229CC9205007C3B65 /* ExpenseTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewModel.swift; sourceTree = "<group>"; };
 		5F39784A29CDD3AB007C3B65 /* ItemDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDateCell.swift; sourceTree = "<group>"; };
 		5F39784B29CDD3AB007C3B65 /* ItemDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDateCell.xib; sourceTree = "<group>"; };
 		5F39784F29CE20C7007C3B65 /* LoadDistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDistanceCell.swift; sourceTree = "<group>"; };
 		5F39785029CE20C7007C3B65 /* LoadDistanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadDistanceCell.xib; sourceTree = "<group>"; };
-		5F39785429CE376B007C3B65 /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
-		5F39785529CE376B007C3B65 /* NameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameCell.xib; sourceTree = "<group>"; };
+		5F39785429CE376B007C3B65 /* ItemNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNameCell.swift; sourceTree = "<group>"; };
+		5F39785529CE376B007C3B65 /* ItemNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemNameCell.xib; sourceTree = "<group>"; };
 		5F39785829CE3A43007C3B65 /* ContactTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTextField.swift; sourceTree = "<group>"; };
 		5F39785D29CE6F79007C3B65 /* ExpenseFrequencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFrequencyCell.swift; sourceTree = "<group>"; };
 		5F39785E29CE6F79007C3B65 /* ExpenseFrequencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseFrequencyCell.xib; sourceTree = "<group>"; };
 		5F39786229CE8105007C3B65 /* ExpenseNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseNoteCell.swift; sourceTree = "<group>"; };
 		5F39786329CE8105007C3B65 /* ExpenseNoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseNoteCell.xib; sourceTree = "<group>"; };
-		5F39786629CE9EE4007C3B65 /* FuelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelViewModel.swift; sourceTree = "<group>"; };
+		5F39786629CE9EE4007C3B65 /* FuelTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTableViewModel.swift; sourceTree = "<group>"; };
 		5F39786A29D2215F007C3B65 /* SectionTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleHeaderView.swift; sourceTree = "<group>"; };
 		5F39786C29D221A7007C3B65 /* AddActionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionFooterView.swift; sourceTree = "<group>"; };
-		5F39786F29D2351C007C3B65 /* AttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentCell.swift; sourceTree = "<group>"; };
-		5F39787029D2351C007C3B65 /* AttachmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttachmentCell.xib; sourceTree = "<group>"; };
-		5F39787429D23790007C3B65 /* NoAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAttachmentCell.swift; sourceTree = "<group>"; };
-		5F39787529D23790007C3B65 /* NoAttachmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoAttachmentCell.xib; sourceTree = "<group>"; };
+		5F39786F29D2351C007C3B65 /* ItemAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAttachmentCell.swift; sourceTree = "<group>"; };
+		5F39787029D2351C007C3B65 /* ItemAttachmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemAttachmentCell.xib; sourceTree = "<group>"; };
+		5F39787429D23790007C3B65 /* ItemNoAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNoAttachmentCell.swift; sourceTree = "<group>"; };
+		5F39787529D23790007C3B65 /* ItemNoAttachmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemNoAttachmentCell.xib; sourceTree = "<group>"; };
 		5F39787929D3761B007C3B65 /* FuelLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelLocationCell.swift; sourceTree = "<group>"; };
 		5F39787A29D3761B007C3B65 /* FuelLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelLocationCell.xib; sourceTree = "<group>"; };
 		5F39787E29D37F6F007C3B65 /* FuelEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEntryCell.swift; sourceTree = "<group>"; };
@@ -203,7 +211,6 @@
 		5F39788429D481E6007C3B65 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		5F71DC7C29574A98003111AF /* ExpandFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFooterView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F791012294CEC2900A73600 /* FrequencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyType.swift; sourceTree = "<group>"; };
 		5F791014294CECF700A73600 /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
@@ -234,18 +241,15 @@
 		5FA551C129870D7700D3596F /* CustomPeriodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPeriodCell.swift; sourceTree = "<group>"; };
 		5FA551C229870D7700D3596F /* CustomPeriodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPeriodCell.xib; sourceTree = "<group>"; };
 		5FA551D1299596A300D3596F /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
-		5FA551D929A0797600D3596F /* LoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCell.swift; sourceTree = "<group>"; };
-		5FA551DA29A0797600D3596F /* LoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadCell.xib; sourceTree = "<group>"; };
-		5FA551DE29A0901900D3596F /* ExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
-		5FA551DF29A0901900D3596F /* ExpenseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCell.xib; sourceTree = "<group>"; };
-		5FA551E329A0989F00D3596F /* FuelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCell.swift; sourceTree = "<group>"; };
-		5FA551E429A0989F00D3596F /* FuelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelCell.xib; sourceTree = "<group>"; };
-		5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCellViewModel.swift; sourceTree = "<group>"; };
+		5FA551D929A0797600D3596F /* LoadSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSummaryCell.swift; sourceTree = "<group>"; };
+		5FA551DA29A0797600D3596F /* LoadSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadSummaryCell.xib; sourceTree = "<group>"; };
+		5FA551DE29A0901900D3596F /* ExpenseSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSummaryCell.swift; sourceTree = "<group>"; };
+		5FA551DF29A0901900D3596F /* ExpenseSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseSummaryCell.xib; sourceTree = "<group>"; };
+		5FA551E329A0989F00D3596F /* FuelSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelSummaryCell.swift; sourceTree = "<group>"; };
+		5FA551E429A0989F00D3596F /* FuelSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelSummaryCell.xib; sourceTree = "<group>"; };
 		5FA551EF29A1493C00D3596F /* Load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load.swift; sourceTree = "<group>"; };
 		5FA551F129A1500B00D3596F /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
-		5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCellViewModel.swift; sourceTree = "<group>"; };
 		5FA551F829A1563800D3596F /* Fuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuel.swift; sourceTree = "<group>"; };
-		5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelCellViewModel.swift; sourceTree = "<group>"; };
 		5FA551FC29A164D400D3596F /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
 		5FB723B629FDBD41003E6778 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		5FB723C12A008122003E6778 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
@@ -261,8 +265,8 @@
 		5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionPickerCell.swift; sourceTree = "<group>"; };
 		5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOptionPickerCell.xib; sourceTree = "<group>"; };
-		5FEC7BB429B792080091F8FB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
-		5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		5FEC7BB429B792080091F8FB /* LoadTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTableViewModel.swift; sourceTree = "<group>"; };
+		5FEC7BB629B7D1980091F8FB /* ItemEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntryViewController.swift; sourceTree = "<group>"; };
 		5FEC7BC929B8E1C60091F8FB /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
 		5FED3CC92A1BBE8D00103045 /* RecurringExpensesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpensesListViewController.swift; sourceTree = "<group>"; };
 		5FED3CCC2A1BC07A00103045 /* RecurringExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringExpenseCell.swift; sourceTree = "<group>"; };
@@ -322,8 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				5FA551D1299596A300D3596F /* ItemType.swift */,
-				5F791014294CECF700A73600 /* FuelType.swift */,
+				5F37F3772A522C5B00B8BE48 /* ItemModelType.swift */,
 				5F791012294CEC2900A73600 /* FrequencyType.swift */,
+				5F791014294CECF700A73600 /* FuelType.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -347,15 +352,15 @@
 			path = Driver;
 			sourceTree = "<group>";
 		};
-		5F28CF8329A1A0A80068C425 /* Item */ = {
+		5F28CF8329A1A0A80068C425 /* Item Entry */ = {
 			isa = PBXGroup;
 			children = (
-				5FEC7BB629B7D1980091F8FB /* ItemViewController.swift */,
+				5FEC7BB629B7D1980091F8FB /* ItemEntryViewController.swift */,
 				5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */,
 				5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */,
 				5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */,
 			);
-			path = Item;
+			path = "Item Entry";
 			sourceTree = "<group>";
 		};
 		5F2B8011295A127B0044E004 /* TextFields */ = {
@@ -423,10 +428,11 @@
 		5F39785329CE36CF007C3B65 /* NameCell */ = {
 			isa = PBXGroup;
 			children = (
-				5F39785429CE376B007C3B65 /* NameCell.swift */,
-				5F39785529CE376B007C3B65 /* NameCell.xib */,
+				5F39785429CE376B007C3B65 /* ItemNameCell.swift */,
+				5F39785529CE376B007C3B65 /* ItemNameCell.xib */,
 			);
-			path = NameCell;
+			name = NameCell;
+			path = "../General Cells/NameCell";
 			sourceTree = "<group>";
 		};
 		5F39785C29CE6F2D007C3B65 /* FrequencyCell */ = {
@@ -450,8 +456,8 @@
 		5F39786E29D234F7007C3B65 /* AttachmentCell */ = {
 			isa = PBXGroup;
 			children = (
-				5F39786F29D2351C007C3B65 /* AttachmentCell.swift */,
-				5F39787029D2351C007C3B65 /* AttachmentCell.xib */,
+				5F39786F29D2351C007C3B65 /* ItemAttachmentCell.swift */,
+				5F39787029D2351C007C3B65 /* ItemAttachmentCell.xib */,
 			);
 			path = AttachmentCell;
 			sourceTree = "<group>";
@@ -459,8 +465,8 @@
 		5F39787329D23772007C3B65 /* NoAttachmentCell */ = {
 			isa = PBXGroup;
 			children = (
-				5F39787429D23790007C3B65 /* NoAttachmentCell.swift */,
-				5F39787529D23790007C3B65 /* NoAttachmentCell.xib */,
+				5F39787429D23790007C3B65 /* ItemNoAttachmentCell.swift */,
+				5F39787529D23790007C3B65 /* ItemNoAttachmentCell.xib */,
 			);
 			path = NoAttachmentCell;
 			sourceTree = "<group>";
@@ -492,14 +498,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		5F71DC7B29574A28003111AF /* ExpandFooterView */ = {
-			isa = PBXGroup;
-			children = (
-				5F71DC7C29574A98003111AF /* ExpandFooterView.swift */,
-			);
-			path = ExpandFooterView;
-			sourceTree = "<group>";
-		};
 		5F790FF5294449F300A73600 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,17 +525,6 @@
 				5F1185A52A12E7BF006B8F56 /* SortFilterButton.swift */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		5F790FFB2947E9CB00A73600 /* General Cells */ = {
-			isa = PBXGroup;
-			children = (
-				5F39785329CE36CF007C3B65 /* NameCell */,
-				5F39786E29D234F7007C3B65 /* AttachmentCell */,
-				5F39787329D23772007C3B65 /* NoAttachmentCell */,
-				5F71DC7B29574A28003111AF /* ExpandFooterView */,
-			);
-			path = "General Cells";
 			sourceTree = "<group>";
 		};
 		5F7B12B928E63EE200AA4B6F /* Cells */ = {
@@ -711,12 +698,11 @@
 			isa = PBXGroup;
 			children = (
 				5F2B8022295F73550044E004 /* HeaderFooter */,
-				5F790FFB2947E9CB00A73600 /* General Cells */,
-				5FA5519E297B1B0500D3596F /* PeriodSelector Cells */,
-				5FA551D729A075DE00D3596F /* Home Cells */,
-				5FEC7BBA29B7D55E0091F8FB /* Item Cells */,
+				5FA551D729A075DE00D3596F /* Dashboard Cells */,
+				5FEC7BBA29B7D55E0091F8FB /* Item Entry Cells */,
 				5FDF97D529F6E0ED00DCD038 /* Tools Cells */,
 				5FED3CD42A1C4EBE00103045 /* SortFilter Cells */,
+				5FA5519E297B1B0500D3596F /* PeriodSelector Cells */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -729,48 +715,48 @@
 			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
-		5FA551D729A075DE00D3596F /* Home Cells */ = {
+		5FA551D729A075DE00D3596F /* Dashboard Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5FA551DD29A0900000D3596F /* ExpenseCell */,
-				5FA551D829A0794500D3596F /* LoadCell */,
-				5FA551E229A0988700D3596F /* FuelCell */,
+				5FA551DD29A0900000D3596F /* ExpenseSummaryCell */,
+				5FA551D829A0794500D3596F /* LoadSummaryCell */,
+				5FA551E229A0988700D3596F /* FuelSummaryCell */,
 			);
-			path = "Home Cells";
+			path = "Dashboard Cells";
 			sourceTree = "<group>";
 		};
-		5FA551D829A0794500D3596F /* LoadCell */ = {
+		5FA551D829A0794500D3596F /* LoadSummaryCell */ = {
 			isa = PBXGroup;
 			children = (
-				5FA551D929A0797600D3596F /* LoadCell.swift */,
-				5FA551DA29A0797600D3596F /* LoadCell.xib */,
+				5FA551D929A0797600D3596F /* LoadSummaryCell.swift */,
+				5FA551DA29A0797600D3596F /* LoadSummaryCell.xib */,
 			);
-			path = LoadCell;
+			path = LoadSummaryCell;
 			sourceTree = "<group>";
 		};
-		5FA551DD29A0900000D3596F /* ExpenseCell */ = {
+		5FA551DD29A0900000D3596F /* ExpenseSummaryCell */ = {
 			isa = PBXGroup;
 			children = (
-				5FA551DE29A0901900D3596F /* ExpenseCell.swift */,
-				5FA551DF29A0901900D3596F /* ExpenseCell.xib */,
+				5FA551DE29A0901900D3596F /* ExpenseSummaryCell.swift */,
+				5FA551DF29A0901900D3596F /* ExpenseSummaryCell.xib */,
 			);
-			path = ExpenseCell;
+			path = ExpenseSummaryCell;
 			sourceTree = "<group>";
 		};
-		5FA551E229A0988700D3596F /* FuelCell */ = {
+		5FA551E229A0988700D3596F /* FuelSummaryCell */ = {
 			isa = PBXGroup;
 			children = (
-				5FA551E329A0989F00D3596F /* FuelCell.swift */,
-				5FA551E429A0989F00D3596F /* FuelCell.xib */,
+				5FA551E329A0989F00D3596F /* FuelSummaryCell.swift */,
+				5FA551E429A0989F00D3596F /* FuelSummaryCell.xib */,
 			);
-			path = FuelCell;
+			path = FuelSummaryCell;
 			sourceTree = "<group>";
 		};
 		5FA551E729A13D8600D3596F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				5FEC7BB129B791460091F8FB /* Dashboard */,
-				5FEC7BB029B791330091F8FB /* Items */,
+				5FEC7BB029B791330091F8FB /* Item Entry */,
 				5FB723B329F82C8E003E6778 /* Tools */,
 			);
 			path = ViewModels;
@@ -793,7 +779,7 @@
 				5FA55192297AE36D00D3596F /* General */,
 				5FA551C02982B19400D3596F /* TabBar */,
 				5F790FF5294449F300A73600 /* Dashboard */,
-				5F28CF8329A1A0A80068C425 /* Item */,
+				5F28CF8329A1A0A80068C425 /* Item Entry */,
 				5F790FF729444A1D00A73600 /* Tools */,
 			);
 			path = ViewControllers;
@@ -862,6 +848,7 @@
 		5FB92F4728C984140037A4AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F37F37B2A54B5C900B8BE48 /* Observable.swift */,
 				5FA551AD29805B9500D3596F /* DataTypes */,
 				5FB92F4828C9841A0037A4AD /* Enums */,
 			);
@@ -921,30 +908,32 @@
 			path = DriverNameCell;
 			sourceTree = "<group>";
 		};
-		5FEC7BB029B791330091F8FB /* Items */ = {
+		5FEC7BB029B791330091F8FB /* Item Entry */ = {
 			isa = PBXGroup;
 			children = (
-				5FEC7BB429B792080091F8FB /* LoadViewModel.swift */,
-				5F39784229CC9205007C3B65 /* ExpenseViewModel.swift */,
-				5F39786629CE9EE4007C3B65 /* FuelViewModel.swift */,
+				5F37F36F2A51FEE400B8BE48 /* ItemEntryViewModel.swift */,
+				5F39784229CC9205007C3B65 /* ExpenseTableViewModel.swift */,
+				5FEC7BB429B792080091F8FB /* LoadTableViewModel.swift */,
+				5F39786629CE9EE4007C3B65 /* FuelTableViewModel.swift */,
 			);
-			path = Items;
+			path = "Item Entry";
 			sourceTree = "<group>";
 		};
 		5FEC7BB129B791460091F8FB /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
 				5F1CAB982A26A82000B651F1 /* DashboardViewModel.swift */,
-				5FA551F429A150E500D3596F /* ExpenseCellViewModel.swift */,
-				5FA551E929A141ED00D3596F /* LoadCellViewModel.swift */,
-				5FA551FA29A1576E00D3596F /* FuelCellViewModel.swift */,
+				5F37F3712A5204F800B8BE48 /* ExpenseSummaryViewModel.swift */,
+				5F37F3732A52050900B8BE48 /* LoadSummaryViewModel.swift */,
+				5F37F3752A52052200B8BE48 /* FuelSummaryViewModel.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
-		5FEC7BBA29B7D55E0091F8FB /* Item Cells */ = {
+		5FEC7BBA29B7D55E0091F8FB /* Item Entry Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5F39785329CE36CF007C3B65 /* NameCell */,
 				5F39784929CDD395007C3B65 /* DateCell */,
 				5F39786129CE80DF007C3B65 /* NoteCell */,
 				5F39785C29CE6F2D007C3B65 /* FrequencyCell */,
@@ -952,8 +941,10 @@
 				5F39782729BBC532007C3B65 /* TripLocationCell */,
 				5F39787829D375F4007C3B65 /* FuelLocationCell */,
 				5F39787D29D37F11007C3B65 /* FuelEntryCell */,
+				5F39786E29D234F7007C3B65 /* AttachmentCell */,
+				5F39787329D23772007C3B65 /* NoAttachmentCell */,
 			);
-			path = "Item Cells";
+			path = "Item Entry Cells";
 			sourceTree = "<group>";
 		};
 		5FED3CCB2A1BC05400103045 /* Recurring */ = {
@@ -1062,9 +1053,9 @@
 				5F2B8029295F7D080044E004 /* ResetOptionCell.xib in Resources */,
 				5F1185942A119F31006B8F56 /* DriverNameCell.xib in Resources */,
 				5FED3CD92A1C4EF000103045 /* SortOptionCell.xib in Resources */,
-				5FA551E129A0901900D3596F /* ExpenseCell.xib in Resources */,
+				5FA551E129A0901900D3596F /* ExpenseSummaryCell.xib in Resources */,
 				5F97B6AB2952CEC6004C5D2A /* DriverPayRateCell.xib in Resources */,
-				5FA551E629A0989F00D3596F /* FuelCell.xib in Resources */,
+				5FA551E629A0989F00D3596F /* FuelSummaryCell.xib in Resources */,
 				5F1185A42A1280CF006B8F56 /* ToolsAttachmentCell.xib in Resources */,
 				5F8BE30428B7F9FB00441353 /* LaunchScreen.storyboard in Resources */,
 				5FA5519D297B1AA800D3596F /* PeriodTypeCell.xib in Resources */,
@@ -1074,9 +1065,9 @@
 				5F8BE30128B7F9FB00441353 /* Assets.xcassets in Resources */,
 				5FDF97DF29F7241E00DCD038 /* SettingOptionPickerCell.xib in Resources */,
 				5F1185982A11A040006B8F56 /* DriverTypeCell.xib in Resources */,
-				5F39785729CE376B007C3B65 /* NameCell.xib in Resources */,
+				5F39785729CE376B007C3B65 /* ItemNameCell.xib in Resources */,
 				5FED3CCF2A1BC07A00103045 /* RecurringExpenseCell.xib in Resources */,
-				5F39787729D23790007C3B65 /* NoAttachmentCell.xib in Resources */,
+				5F39787729D23790007C3B65 /* ItemNoAttachmentCell.xib in Resources */,
 				5F8BE2FC28B7F9FA00441353 /* Main.storyboard in Resources */,
 				5FED3CE02A1F002700103045 /* FilterOptionCell.xib in Resources */,
 				5F39786029CE6F79007C3B65 /* ExpenseFrequencyCell.xib in Resources */,
@@ -1084,8 +1075,8 @@
 				5F39785229CE20C7007C3B65 /* LoadDistanceCell.xib in Resources */,
 				5F39782B29BBC573007C3B65 /* LoadLocationCell.xib in Resources */,
 				5F16E3CB2A119AF500BA5DFD /* ToolCell.xib in Resources */,
-				5F39787229D2351C007C3B65 /* AttachmentCell.xib in Resources */,
-				5FA551DC29A0797600D3596F /* LoadCell.xib in Resources */,
+				5F39787229D2351C007C3B65 /* ItemAttachmentCell.xib in Resources */,
+				5FA551DC29A0797600D3596F /* LoadSummaryCell.xib in Resources */,
 				5F39784D29CDD3AB007C3B65 /* ItemDateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1097,45 +1088,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F39784329CC9205007C3B65 /* ExpenseViewModel.swift in Sources */,
-				5FA551FB29A1576E00D3596F /* FuelCellViewModel.swift in Sources */,
+				5F39784329CC9205007C3B65 /* ExpenseTableViewModel.swift in Sources */,
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
-				5FEC7BB729B7D1980091F8FB /* ItemViewController.swift in Sources */,
+				5FEC7BB729B7D1980091F8FB /* ItemEntryViewController.swift in Sources */,
 				5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */,
 				5F1CAB992A26A82000B651F1 /* DashboardViewModel.swift in Sources */,
 				5F1185932A119F31006B8F56 /* DriverNameCell.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
-				5FA551F529A150E500D3596F /* ExpenseCellViewModel.swift in Sources */,
 				5FA551AF29805BC900D3596F /* Period.swift in Sources */,
-				5FA551EA29A141ED00D3596F /* LoadCellViewModel.swift in Sources */,
+				5F37F3762A52052200B8BE48 /* FuelSummaryViewModel.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
+				5F37F3782A522C5B00B8BE48 /* ItemModelType.swift in Sources */,
 				5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */,
 				5FED3CD32A1C39EC00103045 /* SortOptionsViewController.swift in Sources */,
 				5F39783429C7FA21007C3B65 /* TRError.swift in Sources */,
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
 				5F1185A32A1280CF006B8F56 /* ToolsAttachmentCell.swift in Sources */,
-				5F71DC7D29574A98003111AF /* ExpandFooterView.swift in Sources */,
 				5FB723C22A008122003E6778 /* Notification+Ext.swift in Sources */,
-				5F39786729CE9EE4007C3B65 /* FuelViewModel.swift in Sources */,
+				5F39786729CE9EE4007C3B65 /* FuelTableViewModel.swift in Sources */,
 				5F1CAB972A26A6D200B651F1 /* DashboardViewController.swift in Sources */,
 				5F39788029D37F6F007C3B65 /* FuelEntryCell.swift in Sources */,
 				5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
-				5F39785629CE376B007C3B65 /* NameCell.swift in Sources */,
+				5F37F3722A5204F800B8BE48 /* ExpenseSummaryViewModel.swift in Sources */,
+				5F39785629CE376B007C3B65 /* ItemNameCell.swift in Sources */,
 				5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */,
 				5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */,
 				5F39787B29D3761B007C3B65 /* FuelLocationCell.swift in Sources */,
 				5F1185A82A12F593006B8F56 /* AttachmentsListViewModel.swift in Sources */,
 				5F11859C2A11AAE3006B8F56 /* AppSettingsViewModel.swift in Sources */,
+				5F37F3702A51FEE400B8BE48 /* ItemEntryViewModel.swift in Sources */,
 				5F16E3CA2A119AF500BA5DFD /* ToolCell.swift in Sources */,
 				5F39785129CE20C7007C3B65 /* LoadDistanceCell.swift in Sources */,
 				5F1185972A11A040006B8F56 /* DriverTypeCell.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
 				5F39788529D481E6007C3B65 /* LocationManager.swift in Sources */,
-				5FA551E029A0901900D3596F /* ExpenseCell.swift in Sources */,
-				5FEC7BB529B792080091F8FB /* LoadViewModel.swift in Sources */,
+				5FA551E029A0901900D3596F /* ExpenseSummaryCell.swift in Sources */,
+				5FEC7BB529B792080091F8FB /* LoadTableViewModel.swift in Sources */,
 				5F39785F29CE6F79007C3B65 /* ExpenseFrequencyCell.swift in Sources */,
 				5F39783F29CC8782007C3B65 /* ExpenseTableViewController.swift in Sources */,
 				5FED3CE62A25796000103045 /* FeedbackViewController.swift in Sources */,
@@ -1143,6 +1134,7 @@
 				5F97FD6D292210AA00DEEC20 /* UICollectionReusableView+Ext.swift in Sources */,
 				5F39788329D3E24C007C3B65 /* Double+Ext.swift in Sources */,
 				5FED3CD82A1C4EF000103045 /* SortOptionCell.swift in Sources */,
+				5F37F3742A52050900B8BE48 /* LoadSummaryViewModel.swift in Sources */,
 				5FB723C82A01796E003E6778 /* PeriodDisplayViewController.swift in Sources */,
 				5F39784C29CDD3AB007C3B65 /* ItemDateCell.swift in Sources */,
 				5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */,
@@ -1159,16 +1151,17 @@
 				5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */,
 				5FB723D02A017C30003E6778 /* AlertViewController.swift in Sources */,
 				5FA551F229A1500B00D3596F /* Expense.swift in Sources */,
-				5F39787129D2351C007C3B65 /* AttachmentCell.swift in Sources */,
+				5F39787129D2351C007C3B65 /* ItemAttachmentCell.swift in Sources */,
 				5FED3CCE2A1BC07A00103045 /* RecurringExpenseCell.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
+				5F37F37C2A54B5C900B8BE48 /* Observable.swift in Sources */,
 				5FED3CE42A256BFA00103045 /* ActionButton.swift in Sources */,
 				5FED3CDF2A1F002700103045 /* FilterOptionCell.swift in Sources */,
 				5FB723CA2A0179DC003E6778 /* PeriodSelectorViewController.swift in Sources */,
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,
 				5F16E3B12A02D1CD00BA5DFD /* AppSettingsEnums.swift in Sources */,
-				5F39787629D23790007C3B65 /* NoAttachmentCell.swift in Sources */,
+				5F39787629D23790007C3B65 /* ItemNoAttachmentCell.swift in Sources */,
 				5FA551B129805C6500D3596F /* PeriodType.swift in Sources */,
 				5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */,
 				5F39786429CE8105007C3B65 /* ExpenseNoteCell.swift in Sources */,
@@ -1188,7 +1181,7 @@
 				5F16E3BB2A118FD900BA5DFD /* ToolsViewController.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5F16E3C12A1194E600BA5DFD /* ToolMenuViewController.swift in Sources */,
-				5FA551DB29A0797600D3596F /* LoadCell.swift in Sources */,
+				5FA551DB29A0797600D3596F /* LoadSummaryCell.swift in Sources */,
 				5FB723CE2A017BB5003E6778 /* DatePickerViewController.swift in Sources */,
 				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,
 				5FA551F029A1493C00D3596F /* Load.swift in Sources */,
@@ -1199,7 +1192,7 @@
 				5F16E3BD2A11931B00BA5DFD /* ToolsType.swift in Sources */,
 				5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */,
 				5FED3CE22A20EA1A00103045 /* ResetOptionsViewController.swift in Sources */,
-				5FA551E529A0989F00D3596F /* FuelCell.swift in Sources */,
+				5FA551E529A0989F00D3596F /* FuelSummaryCell.swift in Sources */,
 				5F2B801A295AA0900044E004 /* TRSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

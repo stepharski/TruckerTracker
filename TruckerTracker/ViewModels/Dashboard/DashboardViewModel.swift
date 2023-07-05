@@ -9,75 +9,104 @@ import Foundation
 
 class DashboardViewModel {
     
-    private(set) var totalIncome: Int = 0
-    
-    private(set) var expenses: [Expense] = []
-    private(set) var loads: [Load] = []
-    private(set) var fuelings: [Fuel] = []
-    
-    // Cell VMs
-    func expenseCellViewModel(for indexPath: IndexPath) -> ExpenseCellViewModel {
-        return ExpenseCellViewModel(expenses[indexPath.row])
+    var totalIncome: Int { //TODO: Calculate total income
+        return 5500
     }
     
-    func loadCellViewModel(for indexPath: IndexPath) -> LoadCellViewModel {
-        return LoadCellViewModel(loads[indexPath.row])
+    var segments: [ItemType] = ItemType.allCases
+    var selectedSegment: Int = ItemType.load.index
+    
+    var selectedSegmentType: ItemType {
+        return segments[selectedSegment]
     }
     
-    func fuelCellViewModel(for indexPath: IndexPath) -> FuelCellViewModel {
-        return FuelCellViewModel(fuelings[indexPath.row])
-    }
-    
-    // Data handling
-    func getTotalIncome() -> String {
-        //TODO: Calculate Income
-        return "\(UDManager.shared.currency.symbol) \(totalIncome.formattedWithSeparator())"
-    }
-    
-    func getCategoryNames() -> [String] {
-        ItemType.allCases.map { $0.pluralTitle }
-    }
-    
-    func getCategoryTotals() -> [String] {
+    var segmentTitles: [String] {
         let currency = UDManager.shared.currency.symbol
-        
         let expensesAmount = expenses.reduce(0, { $0 + $1.amount })
         let loadsAmount = loads.reduce(0, { $0 + $1.amount })
         let fuelingsAmount = fuelings.reduce(0, { $0 + $1.totalAmount })
-        
-        return ["\(currency) \(expensesAmount.formattedWithSeparator())",
-                "\(currency) \(loadsAmount.formattedWithSeparator())",
-                "\(currency) \(fuelingsAmount.formattedWithSeparator())"]
+        return ["\(currency)\(expensesAmount.formattedWithSeparator())",
+                "\(currency)\(loadsAmount.formattedWithSeparator())",
+                "\(currency)\(fuelingsAmount.formattedWithSeparator())"]
     }
     
-    func getNumberOfItems(for type: ItemType) -> Int {
-        switch type {
-        case .expense:
-            return expenses.count
-        case .load:
-            return loads.count
-        case .fuel:
-            return fuelings.count
+    var segmentSubtitles: [String] {
+        return segments.map { $0.pluralTitle }
+    }
+    
+    var selectedSegmentSubtitle: String {
+        return selectedSegmentType.subtitle
+    }
+    
+    var dashboardPeriod: Period {
+        get { return UDManager.shared.dashboardPeriod }
+        set { UDManager.shared.dashboardPeriod = newValue }
+    }
+    
+    private var expenses: [Expense] = []
+    private var loads: [Load] = []
+    private var fuelings: [Fuel] = []
+    
+    var numberOfItems: Int {
+        switch selectedSegmentType {
+        case .expense:  return expenses.count
+        case .load:   return loads.count
+        case .fuel:  return fuelings.count
         }
     }
     
-    // Data fetch
-    func fetchData(for period: Period, completion: @escaping((Bool) -> Void)) {
-        //TODO: Fetch from CoreData
+    var emptyTableTitle: String {
+        return "No \(selectedSegmentType.pluralTitle) found."
+    }
+    
+    var emptyTableMessage: String {
+        return "Please, tap the '+' button to add a new \(selectedSegmentType.title)."
+    }
+    
+    // Table Models
+    func model(at row: Int) -> ItemModel? {
+        switch selectedSegmentType {
+        case .expense:
+            guard let expense = expenses[safe: row] else { return nil }
+            return ItemModel.expense(expense)
+        case .load:
+            guard let load = loads[safe: row] else { return nil }
+            return ItemModel.load(load)
+        case .fuel:
+            guard let fueling = fuelings[safe: row] else { return nil }
+            return ItemModel.fuel(fueling)
+        }
+    }
+    
+    // Table ViewModels
+    func expenseCellViewModel(for indexPath: IndexPath) -> ExpenseSummaryViewModel {
+        return ExpenseSummaryViewModel(expenses[indexPath.row])
+    }
+    
+    func loadCellViewModel(for indexPath: IndexPath) -> LoadSummaryViewModel {
+        return LoadSummaryViewModel(loads[indexPath.row])
+    }
+    
+    func fuelCellViewModel(for indexPath: IndexPath) -> FuelSummaryViewModel {
+        return FuelSummaryViewModel(fuelings[indexPath.row])
+    }
+    
+    //TODO: Add Core Data
+    // Data Handling
+    func fetchData(completion: @escaping((Bool) -> Void)) {
         DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.generateMockData()
             completion(true)
         }
     }
     
-    // Mock data
+    // Mock
     private func generateMockData() {
-        totalIncome = 5500
         for i in 0..<5 {
             expenses.append(Expense(id: "expense\(i)", date: Date(), amount: 380,
                                     name: "Trailer rent", frequency: .week,
                                     attachments: ["Expense2023-30"]))
-            
+
             loads.append(Load(id: "load\(i)", date: Date(), amount: 3200, distance: 964,
                               startLocation: "Chicago, IL", endLocation: "Atlanta, GA",
                                  attachments: ["RateCon2023-30"]))

@@ -70,7 +70,7 @@ class TRSegmentedControl: UIControl {
         setupButtons()
     }
     
-    func selectSegment(at index: Int) {
+    func selectSegment(_ index: Int) {
         guard titles.indices.contains(index) else { return }
         
         selectedIndex = index

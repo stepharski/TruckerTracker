@@ -7,7 +7,32 @@
 
 import UIKit
 
-// MARK: - RecurringExpense ViewModel
+//MARK: - Recurring Expenses List
+class RecurringExpensesListViewModel {
+    
+    private var recurringExpenseViewModels = [RecurringExpenseViewModel]()
+    
+    var numberOfRows: Int {
+        return recurringExpenseViewModels.count
+    }
+    
+    func model(at index: Int) -> RecurringExpenseViewModel {
+        return recurringExpenseViewModels[index]
+    }
+    
+    func fetchRecurringExpenses() {
+        for _ in 0..<15 {
+            let expense = Expense.getRecurringMock()
+            guard expense.frequency != .oneTime else { return }
+            
+            let expenseVM = RecurringExpenseViewModel(expense: expense)
+            recurringExpenseViewModels.append(expenseVM)
+        }
+    }
+}
+
+
+//MARK: - Recurring Expense
 class RecurringExpenseViewModel {
     
     let expense: Expense
@@ -41,29 +66,5 @@ class RecurringExpenseViewModel {
         let roundedAmount = Int(expense.amount)
         
         return "\(currencySymbol)\(roundedAmount)"
-    }
-}
-
-// MARK: - RecurringExpensesList ViewModel
-class RecurringExpensesListViewModel {
-    
-    private var recurringExpenseViewModels = [RecurringExpenseViewModel]()
-    
-    var numberOfRows: Int {
-        return recurringExpenseViewModels.count
-    }
-    
-    func model(at index: Int) -> RecurringExpenseViewModel {
-        return recurringExpenseViewModels[index]
-    }
-    
-    func fetchRecurringExpenses() {
-        for _ in 0..<15 {
-            let expense = Expense.getRecurringMock()
-            guard expense.frequency != .oneTime else { return }
-            
-            let expenseVM = RecurringExpenseViewModel(expense: expense)
-            recurringExpenseViewModels.append(expenseVM)
-        }
     }
 }

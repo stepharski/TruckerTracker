@@ -7,6 +7,29 @@
 
 import UIKit
 
+// MARK: - AttachmentsList ViewModel
+class AttachmentsListViewModel {
+    
+    private var attachmentViewModels = [AttachmentViewModel]()
+    
+    var numberOfRows: Int {
+        return attachmentViewModels.count
+    }
+    
+    func model(at index: Int) -> AttachmentViewModel {
+        return attachmentViewModels[index]
+    }
+    
+    
+    func fetchAttachments() {
+        for _ in 0..<10 {
+            let viewModel = AttachmentViewModel(attachment: Attachment.getRandomMock())
+            attachmentViewModels.append(viewModel)
+        }
+    }
+}
+
+
 // MARK: - Attachment ViewModel
 class AttachmentViewModel {
     
@@ -28,27 +51,5 @@ class AttachmentViewModel {
         let itemType = attachment.itemType.title.capitalized
         let attachmentDate = attachment.date.convertToMonthDayYearFormat()
         return "\(itemType) on \(attachmentDate)"
-    }
-}
-
-// MARK: - AttachmentsList ViewModel
-class AttachmentsListViewModel {
-    
-    private var attachmentViewModels = [AttachmentViewModel]()
-    
-    var numberOfRows: Int {
-        return attachmentViewModels.count
-    }
-    
-    func model(at index: Int) -> AttachmentViewModel {
-        return attachmentViewModels[index]
-    }
-    
-    
-    func fetchAttachments() {
-        for _ in 0..<10 {
-            let viewModel = AttachmentViewModel(attachment: Attachment.getRandomMock())
-            attachmentViewModels.append(viewModel)
-        }
     }
 }

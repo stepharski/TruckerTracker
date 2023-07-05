@@ -10,12 +10,12 @@ import Foundation
 class Load {
     
     let id: String
-    let date: Date
-    let amount: Double
-    let distance: Int
+    var date: Date
+    var amount: Double
+    var distance: Int
     var emptyDistance: Int?
-    let startLocation: String
-    let endLocation: String
+    var startLocation: String
+    var endLocation: String
     var attachments: [String]?
     
     
@@ -32,15 +32,8 @@ class Load {
         self.attachments = attachments
     }
     
-    static func getEmpty() -> Load {
-        let id: String = UUID().uuidString
-        let date: Date = Date()
-        let amount: Double = 0
-        let distance: Int = 0
-        let startLocation: String = ""
-        let endLocation: String = ""
-        
-        return Load(id: id, date: date, amount: amount, distance: distance,
-                    startLocation: startLocation, endLocation: endLocation)
+    static func template() -> Load {
+        return Load(id: UUID().uuidString, date: Date(), amount: 0,
+                    distance: 0, startLocation: "", endLocation: "")
     }
 }

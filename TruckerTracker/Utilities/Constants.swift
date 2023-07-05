@@ -20,7 +20,7 @@ struct AppColors {
 struct StoryboardIdentifiers {
     static let tabBarController = "TRTabBarController"
     static let dashboardViewController = "DashboardViewController"
-    static let itemViewController = "ItemViewController"
+    static let itemEntryViewController = "ItemEntryViewController"
     static let toolsViewController = "ToolsViewController"
     static let toolMenuViewController = "ToolMenuViewController"
 }

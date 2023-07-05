@@ -10,6 +10,14 @@ import Foundation
 enum ItemType: String, CaseIterable {
     case expense, load, fuel
     
+    var index: Int {
+        switch self {
+        case .expense: return 0
+        case .load:   return 1
+        case .fuel:  return 2
+        }
+    }
+    
     var title: String {
         return self.rawValue
     }
@@ -20,17 +28,6 @@ enum ItemType: String, CaseIterable {
             return "\(self.rawValue)s"
         case .fuel:
             return self.rawValue
-        }
-    }
-    
-    var index: Int {
-        switch self {
-        case .expense:
-            return 0
-        case .load:
-            return 1
-        case .fuel:
-            return 2
         }
     }
     

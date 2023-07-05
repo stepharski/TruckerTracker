@@ -9,27 +9,17 @@ import UIKit
 
 class DashboardViewController: UIViewController {
     
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var headerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var incomeAmountLabel: UILabel!
+    @IBOutlet private var headerView: UIView!
+    @IBOutlet private var headerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var incomeAmountLabel: UILabel!
+    @IBOutlet private var segmentedControlView: UIView!
+    @IBOutlet private var periodContainerView: UIView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var tableView: UITableView!
     
-    @IBOutlet var segmentedControlView: UIView!
-    @IBOutlet var periodContainerView: UIView!
-    
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var tableView: UITableView!
-    
-    let viewModel = DashboardViewModel()
-    
-    let segments = ItemType.allCases
-    var segmentedControl: TRSegmentedControl!
-    var selectedSegment: ItemType = .load {
-        didSet { updatePeriodDisplay() }}
-    
-    let periodDisplayVC = PeriodDisplayViewController()
-    var dashboardPeriod = UDManager.shared.dashboardPeriod {
-        didSet { UDManager.shared.dashboardPeriod = dashboardPeriod }
-    }
+    private let viewModel = DashboardViewModel()
+    private var segmentedControl: TRSegmentedControl!
+    private let periodDisplayVC = PeriodDisplayViewController()
 
     
     // Life cycle
@@ -52,13 +42,11 @@ class DashboardViewController: UIViewController {
         configureHeader()
     }
     
-    deinit {
-        removeObservers()
-    }
+    deinit { removeObservers() }
     
 
     // UI Configuration
-    func configureNavBar() {
+    private func configureNavBar() {
         navigationItem.title = "Income"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: AppColors.textColor]
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: SFSymbols.chartLine, style: .plain,
@@ -69,57 +57,58 @@ class DashboardViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = AppColors.textColor
     }
     
-    @objc func displayChart() {
+    @objc private func displayChart() {
         //TODO: Display chart
     }
     
-    @objc func showExportVC() {
+    @objc private func showExportVC() {
         //TODO: Show Export VC
     }
     
-    func updateHeaderHeight() {
+    private func updateHeaderHeight() {
         headerViewHeightConstraint.constant = DeviceTypes.isiPhoneSE ? 190 : 230
     }
     
-    func configureHeader() {
+    private func configureHeader() {
         headerView.dropShadow(opacity: 0.3)
         headerView.applyGradient(colors: AppColors.headerColors, locations: [0, 1])
     }
     
-    func updateIncomeLabel() {
-        incomeAmountLabel.text = viewModel.getTotalIncome()
+    private func updateIncomeLabel() {
+        let currency = UDManager.shared.currency.symbol
+        let income = viewModel.totalIncome.formattedWithSeparator()
+        incomeAmountLabel.text = currency + " " + income
     }
 
     
     // Segmented Control
-    func configureSegmentedControl() {
+    private func configureSegmentedControl() {
         segmentedControl = TRSegmentedControl(frame: segmentedControlView.bounds)
         segmentedControlView.addSubview(segmentedControl)
         segmentedControl.pinToEdges(of: segmentedControlView)
-        
-        updateSegmentedControl()
         segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+        updateSegmentedControl()
     }
     
-    func updateSegmentedControl() {
-        let titles = viewModel.getCategoryTotals()
-        let subtitles = viewModel.getCategoryNames()
+    private func updateSegmentedControl() {
+        let titles = viewModel.segmentTitles
+        let subtitles = viewModel.segmentSubtitles
         segmentedControl.configure(with: titles, subtitles: subtitles, type: .underline,
-                                                   selectedIndex: selectedSegment.index)
+                                               selectedIndex: viewModel.selectedSegment)
     }
     
-    @objc func segmentChanged(_ sender: TRSegmentedControl) {
-        guard segments.indices.contains(sender.selectedIndex)
-                && selectedSegment.index != sender.selectedIndex else { return }
+    @objc private func segmentChanged(_ sender: TRSegmentedControl) {
+        guard viewModel.selectedSegment != sender.selectedIndex else { return }
         
-        let isNextSegment = sender.selectedIndex > selectedSegment.index
-        selectedSegment = segments[sender.selectedIndex]
+        let isNextSegment = sender.selectedIndex > viewModel.selectedSegment
+        viewModel.selectedSegment = sender.selectedIndex
         updateTableView(animateLeft: isNextSegment)
+        updatePeriodDisplay()
     }
     
     
     // Gestures
-    func addSwipeGestures() {
+    private func addSwipeGestures() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         swipeLeft.direction = .left
         swipeLeft.cancelsTouchesInView = true
@@ -131,26 +120,28 @@ class DashboardViewController: UIViewController {
         view.addGestureRecognizer(swipeRight)
     }
     
-    @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        var currentSegment = selectedSegment.index
+    @objc private func handleSwipe(_ sender: UISwipeGestureRecognizer) {
+        var currentSegment = viewModel.selectedSegment
         
-        if sender.direction == .left && currentSegment < (segments.count - 1) {
+        if sender.direction == .left && currentSegment < (viewModel.segments.count - 1) {
             currentSegment += 1
-            selectedSegment = segments[currentSegment]
-            segmentedControl.selectSegment(at: currentSegment)
+            viewModel.selectedSegment = currentSegment
+            segmentedControl.selectSegment(currentSegment)
             updateTableView(animateLeft: true)
             
         } else if sender.direction == .right && currentSegment > 0 {
             currentSegment -= 1
-            selectedSegment = segments[currentSegment]
-            segmentedControl.selectSegment(at: currentSegment)
+            viewModel.selectedSegment = currentSegment
+            segmentedControl.selectSegment(currentSegment)
             updateTableView(animateLeft: false)
         }
+        
+        updatePeriodDisplay()
     }
     
     
     // Period
-    func addPeriodDisplayVC() {
+    private func addPeriodDisplayVC() {
         addChild(periodDisplayVC)
         periodContainerView.roundEdges()
         periodContainerView.dropShadow(opacity: 0.1)
@@ -162,56 +153,50 @@ class DashboardViewController: UIViewController {
         updatePeriodDisplay()
     }
     
-    func updatePeriodDisplay() {
-        periodDisplayVC.period = dashboardPeriod
-        periodDisplayVC.itemName = selectedSegment.subtitle
-        periodDisplayVC.numberOfItems = viewModel.getNumberOfItems(for: selectedSegment)
+    private func updatePeriodDisplay() {
+        periodDisplayVC.period = viewModel.dashboardPeriod
+        periodDisplayVC.numberOfItems = viewModel.numberOfItems
+        periodDisplayVC.itemName = viewModel.selectedSegmentSubtitle
     }
     
     
     // Navigation
-    func showPeriodSelectorVC() {
-        let periodSelectorVC = PeriodSelectorViewController(selectedPeriod: dashboardPeriod)
+    private func showPeriodSelectorVC() {
+        let periodSelectorVC = PeriodSelectorViewController(selectedPeriod: viewModel.dashboardPeriod)
         periodSelectorVC.delegate = self
         present(periodSelectorVC, animated: true)
     }
     
-    func showItemDetailedVC(for row: Int) {
-        let itemVC = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.itemViewController) as! ItemViewController
-        let itemNavController = UINavigationController(rootViewController: itemVC)
-        
-        switch selectedSegment {
-        case .expense:
-            itemVC.expense = viewModel.expenses[safe: row]
-            
-        case .load:
-            itemVC.load = viewModel.loads[safe: row]
-
-        case .fuel:
-            itemVC.fueling = viewModel.fuelings[safe: row]
+    private func showItemEntryVC(for row: Int) {
+        guard let itemModel = viewModel.model(at: row) else {
+            self.showAlert(title: "Error", message: "Failed to retrieve item.")
+            return
         }
         
+        let itemEntryVC = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.itemEntryViewController) as! ItemEntryViewController
+        let itemNavController = UINavigationController(rootViewController: itemEntryVC)
+        
+        itemEntryVC.setupViewModel(with: itemModel)
         self.present(itemNavController, animated: true)
     }
     
     // TableView
-    func configureTableView() {
+    private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tableView.register(ExpenseCell.nib, forCellReuseIdentifier: ExpenseCell.identifier)
-        tableView.register(LoadCell.nib, forCellReuseIdentifier: LoadCell.identifier)
-        tableView.register(FuelCell.nib, forCellReuseIdentifier: FuelCell.identifier)
+        tableView.register(ExpenseSummaryCell.nib, forCellReuseIdentifier: ExpenseSummaryCell.identifier)
+        tableView.register(LoadSummaryCell.nib, forCellReuseIdentifier: LoadSummaryCell.identifier)
+        tableView.register(FuelSummaryCell.nib, forCellReuseIdentifier: FuelSummaryCell.identifier)
     }
     
-    func updateTableView(animateLeft: Bool) {
+    private func updateTableView(animateLeft: Bool) {
         tableView.reloadSections(IndexSet(integer: 0), with: animateLeft ? .left : .right)
     }
     
     // Data
-    func updateData() {
+    private func updateData() {
         activityIndicator.startAnimating()
-        viewModel.fetchData(for: dashboardPeriod) { [weak self] success in
+        viewModel.fetchData() { [weak self] success in
             guard success else { return }
             
             self?.updateIncomeLabel()
@@ -223,7 +208,7 @@ class DashboardViewController: UIViewController {
     }
     
     // Notifications
-    func addObservers() {
+    private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground),
                                            name: UIApplication.willEnterForegroundNotification,
                                            object: nil)
@@ -235,7 +220,7 @@ class DashboardViewController: UIViewController {
                                                name: .weekStartDayChanged, object: nil)
     }
     
-    func removeObservers() {
+    private func removeObservers() {
         NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification,
                                                                                       object: nil)
         NotificationCenter.default.removeObserver(self, name: .distanceUnitChanged, object: nil)
@@ -243,27 +228,27 @@ class DashboardViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .weekStartDayChanged, object: nil)
     }
     
-    @objc func appWillEnterForeground() {
-        segmentedControl.selectSegment(at: selectedSegment.index)
+    @objc private func appWillEnterForeground() {
+        segmentedControl.selectSegment(viewModel.selectedSegment)
     }
     
-    @objc func handleNotification(_ notification: Notification) {
+    @objc private func handleNotification(_ notification: Notification) {
         switch notification.name {
         case .distanceUnitChanged:
-            guard selectedSegment == .load else { return }
+            guard viewModel.selectedSegment == 1 else { return } //Load
             updateData()
             
         case .currencyChanged:
             updateData()
             
         case .weekStartDayChanged:
-            guard dashboardPeriod.type == .week else { return }
+            guard viewModel.dashboardPeriod.type == .week else { return }
             
             // get current middle date
             // create new interval based on Calendar.firstWeekday
-            let middleDate = dashboardPeriod.interval.middleDate()
+            let middleDate = viewModel.dashboardPeriod.interval.middleDate()
             let newInterval = middleDate.getDateInterval(in: .week)
-            dashboardPeriod = Period(type: .week, interval: newInterval)
+            viewModel.dashboardPeriod = Period(type: .week, interval: newInterval)
             updateData()
             
         default:
@@ -280,7 +265,7 @@ extension DashboardViewController: PeriodDisplayDelegate {
     }
     
     func didUpdatePeriod(with newPeriod: Period) {
-        dashboardPeriod = newPeriod
+        viewModel.dashboardPeriod = newPeriod
         updateData()
     }
 }
@@ -288,7 +273,7 @@ extension DashboardViewController: PeriodDisplayDelegate {
 // MARK: - Period Selector Delegate
 extension DashboardViewController: PeriodSelectorDelegate {
     func selectorDidUpdate(period: Period) {
-        dashboardPeriod = period
+        viewModel.dashboardPeriod = period
         updateData()
     }
 }
@@ -297,35 +282,35 @@ extension DashboardViewController: PeriodSelectorDelegate {
 extension DashboardViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = viewModel.getNumberOfItems(for: selectedSegment)
-        
-        if numberOfRows == 0 {
-            tableView.setEmptyView(title: "No \(selectedSegment.pluralTitle) found.",
-                                   message: "Please, tap the '+' button to add a new \(selectedSegment.title).")
+        if viewModel.numberOfItems == 0 {
+            tableView.setEmptyView(title: viewModel.emptyTableTitle, message: viewModel.emptyTableMessage)
         } else {
             tableView.restore()
         }
         
-        return numberOfRows
+        return viewModel.numberOfItems
     }
     
     // Cell for row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch selectedSegment {
+        switch viewModel.selectedSegmentType {
         case .expense:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseCell.identifier) as! ExpenseCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseSummaryCell.identifier)
+                                                                        as! ExpenseSummaryCell
             let viewModel = viewModel.expenseCellViewModel(for: indexPath)
             cell.configure(with: viewModel)
             return cell
             
         case .load:
-            let cell = tableView.dequeueReusableCell(withIdentifier: LoadCell.identifier) as! LoadCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadSummaryCell.identifier)
+                                                                        as! LoadSummaryCell
             let viewModel = viewModel.loadCellViewModel(for: indexPath)
             cell.configure(with: viewModel)
             return cell
             
         case .fuel:
-            let cell = tableView.dequeueReusableCell(withIdentifier: FuelCell.identifier) as! FuelCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FuelSummaryCell.identifier)
+                                                                        as! FuelSummaryCell
             let viewModel = viewModel.fuelCellViewModel(for: indexPath)
             cell.configure(with: viewModel)
             return cell
@@ -337,7 +322,7 @@ extension DashboardViewController: UITableViewDataSource {
 extension DashboardViewController: UITableViewDelegate {
     // Height for row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch selectedSegment {
+        switch viewModel.selectedSegmentType {
         case .expense, .fuel:
             return 80 + 15
         case .load:
@@ -358,7 +343,7 @@ extension DashboardViewController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         UIView.animate(withDuration: 0.2) { [weak self] in
             cell?.transform = CGAffineTransform.identity
-            self?.showItemDetailedVC(for: indexPath.row)
+            self?.showItemEntryVC(for: indexPath.row)
         }
     }
 }

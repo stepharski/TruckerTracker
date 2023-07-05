@@ -10,12 +10,15 @@ import Foundation
 class Fuel {
     
     let id: String
-    let date: Date
-    let totalAmount: Double
+    var date: Date
     
     var dieselAmount: Double
     var defAmount: Double?
     var reeferAmount: Double?
+    
+    var totalAmount: Double {
+        return dieselAmount + (defAmount ?? 0) + (reeferAmount ?? 0)
+    }
     
     var location: String?
     var attachments: [String]?
@@ -26,7 +29,6 @@ class Fuel {
          location: String? = nil, attachments: [String]? = nil) {
         self.id = id
         self.date = date
-        self.totalAmount = dieselAmount + (defAmount ?? 0) + (reeferAmount ?? 0)
         
         self.dieselAmount = dieselAmount
         self.defAmount = defAmount
@@ -36,11 +38,7 @@ class Fuel {
         self.attachments = attachments
     }
     
-    static func getEmpty() -> Fuel {
-        let id: String = UUID().uuidString
-        let date: Date = Date()
-        let dieselAmount: Double = 50
-        
-        return Fuel(id: id, date: date, dieselAmount: dieselAmount)
+    static func template() -> Fuel {
+        return Fuel(id: UUID().uuidString, date: Date(), dieselAmount: 0)
     }
 }

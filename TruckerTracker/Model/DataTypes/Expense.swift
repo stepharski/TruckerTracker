@@ -10,10 +10,10 @@ import Foundation
 class Expense {
     
     let id: String
-    let date: Date
-    let amount: Double
-    let name: String
-    let frequency: FrequencyType
+    var date: Date
+    var amount: Double
+    var name: String
+    var frequency: FrequencyType
     
     var note: String?
     var attachments: [String]?
@@ -30,17 +30,11 @@ class Expense {
         self.attachments = attachments
     }
     
-    static func getEmpty() -> Expense {
-        let id: String = UUID().uuidString
-        let date: Date = Date()
-        let amount: Double = 0
-        let name: String = ""
-        let frequency: FrequencyType = .oneTime
-        
-        return Expense(id: id, date: date, amount: amount,
-                       name: name, frequency: frequency)
+    static func template() -> Expense {
+        return Expense(id: UUID().uuidString, date: Date(), amount: 0, name: "", frequency: .oneTime)
     }
     
+    //TODO: Remove
     static func getRecurringMock() -> Expense {
         let id: String = UUID().uuidString
         let date: Date = Date()
