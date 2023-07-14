@@ -63,7 +63,7 @@ class ItemEntryViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        stopLocationUpdates()
+        viewModel.stopLocationUpdates()
     }
     
     
@@ -74,7 +74,6 @@ class ItemEntryViewController: UIViewController {
     
     private func setupBinders() {
         viewModel.selectedSegment.bind { [weak self] _ in
-            self?.stopLocationUpdates()
             self?.updateTableVC()
         }
         
@@ -84,6 +83,22 @@ class ItemEntryViewController: UIViewController {
             
             viewModel.updateItemAmount(fuelAmount)
             self.amountTextField.amount = fuelAmount.formattedString
+        }
+        
+        viewModel.locationState.bind { [weak self] locationState in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                
+                switch locationState {
+                case .requesting:
+                    self.activityIndicator.startAnimating()
+                case .idle, .received:
+                    self.activityIndicator.stopAnimating()
+                case .error(let error):
+                    self.activityIndicator.stopAnimating()
+                    self.showAlert(title: "Location Error", message: error.rawValue)
+                }
+            }
         }
     }
     
@@ -225,40 +240,6 @@ class ItemEntryViewController: UIViewController {
         pickerVC.sheetPresentationController?.detents = [.medium()]
         present(pickerVC, animated: true)
     }
-    
-    // Location
-    private func requestUserLocation() {
-        activityIndicator.startAnimating()
-        locationManager.didReceiveLocationInfo = { [weak self] location in
-            DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-                if let isVisible = self?.isViewVisible, isVisible {
-                    self?.viewModel.updateItemLocation(location)
-                }
-            }
-        }
-        locationManager.didFailToReceiveLocation = { [weak self] error in
-            DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-                self?.displayLocationError(with: error.rawValue)
-            }
-        }
-        locationManager.requestUserLocation()
-    }
-    
-    private func stopLocationUpdates() {
-        guard locationManager.locationRequestState == .requestingLocation else { return }
-        locationManager.locationRequestState = .canceled
-        locationManager.didFailToReceiveLocation = nil
-        locationManager.didReceiveLocationInfo = nil
-        activityIndicator.stopAnimating()
-    }
-    
-    private func displayLocationError(with message: String) {
-        if self.isViewVisible {
-            self.showAlert(title: "Location Error", message: message)
-        }
-    }
 }
 
 
@@ -280,14 +261,14 @@ extension ItemEntryViewController: LoadTableViewControllerDelegate {
     }
     
     func loadDidRequestUserLocation() {
-        requestUserLocation()
+        viewModel.requestUserLocation()
     }
 }
 
 // MARK: - FuelTableViewControllerDelegate
 extension ItemEntryViewController: FuelTableViewControllerDelegate {
     func fuelDidRequestUserLocation() {
-        requestUserLocation()
+        viewModel.requestUserLocation()
     }
     
     func didSelectFuelDateCell(_ date: Date) {

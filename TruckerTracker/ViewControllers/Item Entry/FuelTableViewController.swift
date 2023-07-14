@@ -42,10 +42,12 @@ class FuelTableViewController: UITableViewController {
     
     // Binders
     private func setupBinders() {
-        viewModel.sectionToReload.bind { [weak self] section in
-            guard let self = self, let section = section else { return }
-            self.reloadSection(section)
-        }
+        viewModel.sectionToReload.bind({ [weak self] section in
+            DispatchQueue.main.async {
+                guard let self = self, let section = section else { return }
+                self.reloadSection(section)
+            }
+        })
     }
     
     private func reloadSection(_ sectionType: FuelTableSectionType) {

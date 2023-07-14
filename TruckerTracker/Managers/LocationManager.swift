@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 //MARK: - LocationRequestState
-enum LocationRequestState {
+private enum LocationRequestState {
     case notStarted
     case requestingLocation
     case locationFound
@@ -21,14 +21,14 @@ enum LocationRequestState {
 // MARK: - LocationManager
 class LocationManager: NSObject {
     
+    var locationTimeout: Double = 15
+    private var locationTimeoutTimer: Timer?
+    
     private let locationManager = CLLocationManager()
-    var locationRequestState: LocationRequestState = .notStarted
+    private var locationRequestState: LocationRequestState = .notStarted
     
     var didReceiveLocationInfo: ((String) -> Void)?
     var didFailToReceiveLocation: ((TRError) -> Void)?
-    
-    var locationTimeout: Double = 15
-    private var locationTimeoutTimer: Timer?
     
     
     // Init
@@ -69,6 +69,15 @@ class LocationManager: NSObject {
             locationManager.requestLocation()
             checkForLocationTimeout()
         }
+    }
+    
+    func stopLocationUpdates() {
+        guard locationRequestState == .requestingLocation else { return }
+        
+        locationManager.stopUpdatingLocation()
+        locationRequestState = .canceled
+        didFailToReceiveLocation = nil
+        didReceiveLocationInfo = nil
     }
     
     // Location Info
@@ -116,11 +125,10 @@ extension LocationManager: CLLocationManagerDelegate {
         Task {
             do {
                 let locationInfo = try await getLocationInfo(from: clLocation)
-                
                 guard locationRequestState != .timedOut else { return }
+                
                 locationRequestState = .locationFound
                 didReceiveLocationInfo?(locationInfo)
-                
             } catch {
                 guard locationRequestState != .timedOut else { return }
                 locationRequestState = .error
@@ -139,7 +147,6 @@ extension LocationManager: CLLocationManagerDelegate {
     // Error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         guard locationRequestState != .timedOut else { return }
-        
         locationRequestState = .error
         
         if let error = error as? CLError {

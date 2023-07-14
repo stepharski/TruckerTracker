@@ -45,8 +45,10 @@ class ExpenseTableViewController: UITableViewController {
     // Binders
     private func setupBinders() {
         viewModel.sectionToReload.bind({ [weak self] section in
-            guard let self = self, let section = section else { return }
-            self.reloadSection(section)
+            DispatchQueue.main.async {
+                guard let self = self, let section = section else { return }
+                self.reloadSection(section)
+            }
         })
     }
     

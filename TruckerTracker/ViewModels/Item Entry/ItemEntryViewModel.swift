@@ -7,25 +7,34 @@
 
 import Foundation
 
+// MARK: -
+enum ItemLocationState {
+    case idle
+    case requesting
+    case received
+    case error(TRError)
+}
+
+// MARK: - ItemEntry ViewModel
 class ItemEntryViewModel {
     
     private(set) var isNewItem = true
     private(set) var amount: Double = 0
     
+    private(set) var segments = ItemType.allCases
+    private(set) var selectedSegment: Observable<Int> = Observable(ItemType.load.index)
+    
+    var segmentTitles: [String] { return segments.map{ $0.title.capitalized }}
+    var selectedSegmentType: ItemType { return segments[selectedSegment.value] }
+    
     private var expenseTableViewModel: ExpenseTableViewModel?
     private var loadTableViewModel: LoadTableViewModel?
     private var fuelTableViewModel: FuelTableViewModel?
     
-    private(set) var segments = ItemType.allCases
-    private(set) var selectedSegment: Observable<Int> = Observable(ItemType.load.index)
+    private var locationManager = LocationManager()
+    private var locationRequestSegmentType: ItemType?
+    var locationState: Observable<ItemLocationState> = Observable(.idle)
     
-    var selectedSegmentType: ItemType {
-        return segments[selectedSegment.value]
-    }
-    
-    var segmentTitles: [String] {
-        return segments.map { $0.title.capitalized }
-    }
     
     // Init
     init(model: ItemModel? = nil) {
@@ -33,20 +42,20 @@ class ItemEntryViewModel {
         switch model {
         case .expense(let expense):
             amount = expense.amount
-            selectedSegment.value = ItemType.expense.index
+            selectSegment(ItemType.expense.index)
             expenseTableViewModel = ExpenseTableViewModel(expense)
         case .load(let load):
             amount = load.amount
-            selectedSegment.value = ItemType.load.index
+            selectSegment(ItemType.load.index)
             loadTableViewModel = LoadTableViewModel(load)
         case .fuel(let fuel):
             amount = fuel.totalAmount
-            selectedSegment.value = ItemType.fuel.index
+            selectSegment(ItemType.fuel.index)
             fuelTableViewModel = FuelTableViewModel(fuel)
         case .none:
             amount = 0
             isNewItem = true
-            selectedSegment.value = ItemType.load.index
+            selectSegment(ItemType.load.index)
             loadTableViewModel = LoadTableViewModel(Load.template())
         }
     }
@@ -71,6 +80,7 @@ class ItemEntryViewModel {
     func selectSegment(_ index: Int) {
         guard selectedSegment.value != index else { return }
         selectedSegment.value = index
+        stopLocationUpdates()
     }
     
     // Updates
@@ -111,5 +121,39 @@ class ItemEntryViewModel {
     func updateItemFrequency(_ frequency: FrequencyType?) {
         guard let frequency = frequency, selectedSegmentType == .expense else { return }
         expenseTableViewModel?.updateFrequency(frequency)
+    }
+    
+    // Location
+    func requestUserLocation() {
+        locationRequestSegmentType = selectedSegmentType
+        locationState.value = .requesting
+        setupLocationHandlers()
+        locationManager.requestUserLocation()
+    }
+    
+    private func setupLocationHandlers() {
+        locationManager.didReceiveLocationInfo = { [weak self] location in
+            guard let self = self else { return }
+            guard let requestedSegment = locationRequestSegmentType else { return }
+            guard requestedSegment == selectedSegmentType else { return }
+            
+            self.updateItemLocation(location)
+            self.locationState.value = .received
+        }
+        
+        locationManager.didFailToReceiveLocation = { [weak self] error in
+            guard let self = self else { return }
+            guard let requestedSegment = locationRequestSegmentType else { return }
+            guard requestedSegment == selectedSegmentType else { return }
+            
+            self.locationState.value = .error(error)
+        }
+    }
+    
+    func stopLocationUpdates() {
+        if case .requesting = locationState.value {
+            locationState.value = .idle
+            locationManager.stopLocationUpdates()
+        }
     }
 }
