@@ -29,7 +29,7 @@ extension LoadTableSection {
 // MARK: - LoadTable ViewModel
 class LoadTableViewModel {
     
-    private var load: Load!
+    private var load: Load
     var sections = [LoadTableSection]()
     
     var sectionToReload: Observable<LoadTableSectionType?> = Observable(nil)
@@ -38,12 +38,13 @@ class LoadTableViewModel {
     // Init
     init(_ load: Load) {
         self.load = load
-        sections.append(LoadTableEmptyDistanceSection(load.emptyDistance ?? 0))
-        sections.append(LoadTableTripDistanceSection(load.distance))
+        sections.append(LoadTableEmptyDistanceSection(Int(load.emptyDistance)))
+        sections.append(LoadTableTripDistanceSection(Int(load.distance)))
         sections.append(LoadTableDateSection(load.date))
         sections.append(LoadTableStartLocationSection(load.startLocation))
         sections.append(LoadTableEndLocationSection(load.endLocation))
-        sections.append(LoadTableAttachmentsSection(load.attachments ?? []))
+        //TODO: Handle Attachments
+//        sections.append(LoadTableAttachmentsSection(load.attachments ?? []))
     }
     
     // Section Index
@@ -55,7 +56,7 @@ class LoadTableViewModel {
     func updateEmptyDistance(_ distance: Int) {
         if let emptyDistanceSection = sections.first(where: { $0.type == .emptyDistance })
                                                         as? LoadTableEmptyDistanceSection {
-            self.load.emptyDistance = distance
+            self.load.emptyDistance = Int64(distance)
             emptyDistanceSection.distance = distance
         }
     }
@@ -63,7 +64,7 @@ class LoadTableViewModel {
     func updateTripDistance(_ distance: Int) {
         if let tripDistanceSection = sections.first(where: { $0.type == .tripDistance })
                                                         as? LoadTableTripDistanceSection {
-            self.load.distance = distance
+            self.load.distance = Int64(distance)
             tripDistanceSection.distance = distance
         }
     }
@@ -107,12 +108,22 @@ class LoadTableViewModel {
     }
     
     func updateAttachments(_ attachments: [String]) {
-        if let attachmentsSection = sections.first(where: { $0.type == .attachments })
-                                                    as? LoadTableAttachmentsSection {
-            self.load.attachments = attachments
-            attachmentsSection.attachments = attachments
-            sectionToReload.value = .attachments
-        }
+        //TODO: Update Attachments
+//        if let attachmentsSection = sections.first(where: { $0.type == .attachments })
+//                                                    as? LoadTableAttachmentsSection {
+//            self.load.attachments = attachments
+//            attachmentsSection.attachments = attachments
+//            sectionToReload.value = .attachments
+//        }
+    }
+    
+    // Validate and Save
+    func saveItem() {
+        
+    }
+    
+    private func validateItem() {
+        
     }
 }
 

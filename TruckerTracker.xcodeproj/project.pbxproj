@@ -42,7 +42,6 @@
 		5F37F37C2A54B5C900B8BE48 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F37B2A54B5C900B8BE48 /* Observable.swift */; };
 		5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39782829BBC573007C3B65 /* LoadLocationCell.swift */; };
 		5F39782B29BBC573007C3B65 /* LoadLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F39782929BBC573007C3B65 /* LoadLocationCell.xib */; };
-		5F39783429C7FA21007C3B65 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783329C7FA21007C3B65 /* TRError.swift */; };
 		5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */; };
 		5F39783F29CC8782007C3B65 /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */; };
 		5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */; };
@@ -74,6 +73,11 @@
 		5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */; };
 		5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
+		5F7627A32A95974C00B91CA9 /* Load+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A12A95974C00B91CA9 /* Load+CoreDataClass.swift */; };
+		5F7627A42A95974C00B91CA9 /* Load+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A22A95974C00B91CA9 /* Load+CoreDataProperties.swift */; };
+		5F7627A62AAF817400B91CA9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */; };
+		5F7627A82AEACBAB00B91CA9 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A72AEACBAB00B91CA9 /* LocationError.swift */; };
+		5F7627AA2AEACC7D00B91CA9 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A92AEACC7D00B91CA9 /* ValidationError.swift */; };
 		5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791012294CEC2900A73600 /* FrequencyType.swift */; };
 		5F791015294CECF700A73600 /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791014294CECF700A73600 /* FuelType.swift */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
@@ -180,7 +184,6 @@
 		5F37F37B2A54B5C900B8BE48 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		5F39782829BBC573007C3B65 /* LoadLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationCell.swift; sourceTree = "<group>"; };
 		5F39782929BBC573007C3B65 /* LoadLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadLocationCell.xib; sourceTree = "<group>"; };
-		5F39783329C7FA21007C3B65 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
 		5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTableViewController.swift; sourceTree = "<group>"; };
 		5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewController.swift; sourceTree = "<group>"; };
 		5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTableViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +215,11 @@
 		5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		5F7627A12A95974C00B91CA9 /* Load+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5F7627A22A95974C00B91CA9 /* Load+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5F7627A72AEACBAB00B91CA9 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
+		5F7627A92AEACC7D00B91CA9 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		5F791012294CEC2900A73600 /* FrequencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyType.swift; sourceTree = "<group>"; };
 		5F791014294CECF700A73600 /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
@@ -498,6 +506,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5F76279C2A92A0BB00B91CA9 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				5F7627A12A95974C00B91CA9 /* Load+CoreDataClass.swift */,
+				5F7627A22A95974C00B91CA9 /* Load+CoreDataProperties.swift */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
 		5F790FF5294449F300A73600 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +648,7 @@
 			isa = PBXGroup;
 			children = (
 				5F39788429D481E6007C3B65 /* LocationManager.swift */,
+				5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */,
 				5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */,
 				5FA551A5297B53DC00D3596F /* UserDefaultsManager.swift */,
 			);
@@ -823,7 +841,8 @@
 			isa = PBXGroup;
 			children = (
 				5FB92F3628BC18ED0037A4AD /* Constants.swift */,
-				5F39783329C7FA21007C3B65 /* TRError.swift */,
+				5F7627A72AEACBAB00B91CA9 /* LocationError.swift */,
+				5F7627A92AEACC7D00B91CA9 /* ValidationError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -849,6 +868,7 @@
 			isa = PBXGroup;
 			children = (
 				5F37F37B2A54B5C900B8BE48 /* Observable.swift */,
+				5F76279C2A92A0BB00B91CA9 /* CoreDataModels */,
 				5FA551AD29805B9500D3596F /* DataTypes */,
 				5FB92F4828C9841A0037A4AD /* Enums */,
 			);
@@ -1103,7 +1123,6 @@
 				5F37F3782A522C5B00B8BE48 /* ItemModelType.swift in Sources */,
 				5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */,
 				5FED3CD32A1C39EC00103045 /* SortOptionsViewController.swift in Sources */,
-				5F39783429C7FA21007C3B65 /* TRError.swift in Sources */,
 				5F97B6AE2953F8FB004C5D2A /* TRSlider.swift in Sources */,
 				5F1185A32A1280CF006B8F56 /* ToolsAttachmentCell.swift in Sources */,
 				5FB723C22A008122003E6778 /* Notification+Ext.swift in Sources */,
@@ -1140,10 +1159,13 @@
 				5FA551B32980654A00D3596F /* UserDefaults+Ext.swift in Sources */,
 				5F11859A2A11A79A006B8F56 /* AppSettingsViewController.swift in Sources */,
 				5FA551F929A1563800D3596F /* Fuel.swift in Sources */,
+				5F7627AA2AEACC7D00B91CA9 /* ValidationError.swift in Sources */,
+				5F7627A62AAF817400B91CA9 /* CoreDataManager.swift in Sources */,
 				5F39782A29BBC573007C3B65 /* LoadLocationCell.swift in Sources */,
 				5FA5519C297B1AA800D3596F /* PeriodTypeCell.swift in Sources */,
 				5F39786D29D221A7007C3B65 /* AddActionFooterView.swift in Sources */,
 				5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */,
+				5F7627A82AEACBAB00B91CA9 /* LocationError.swift in Sources */,
 				5FED3CCA2A1BBE8D00103045 /* RecurringExpensesListViewController.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
 				5F16E3A52A02B91C00BA5DFD /* DriverSettingsViewController.swift in Sources */,
@@ -1155,6 +1177,7 @@
 				5FED3CCE2A1BC07A00103045 /* RecurringExpenseCell.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
 				5F37F37C2A54B5C900B8BE48 /* Observable.swift in Sources */,
+				5F7627A42A95974C00B91CA9 /* Load+CoreDataProperties.swift in Sources */,
 				5FED3CE42A256BFA00103045 /* ActionButton.swift in Sources */,
 				5FED3CDF2A1F002700103045 /* FilterOptionCell.swift in Sources */,
 				5FB723CA2A0179DC003E6778 /* PeriodSelectorViewController.swift in Sources */,
@@ -1170,6 +1193,7 @@
 				5FED3CEB2A2591D000103045 /* MessageTextView.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5F16E3B92A0C69B500BA5DFD /* CheckmarkView.swift in Sources */,
+				5F7627A32A95974C00B91CA9 /* Load+CoreDataClass.swift in Sources */,
 				5FB723CC2A017B06003E6778 /* OptionPickerViewController.swift in Sources */,
 				5F39786B29D2215F007C3B65 /* SectionTitleHeaderView.swift in Sources */,
 				5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */,

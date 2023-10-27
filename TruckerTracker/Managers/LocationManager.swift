@@ -28,7 +28,7 @@ class LocationManager: NSObject {
     private var locationRequestState: LocationRequestState = .notStarted
     
     var didReceiveLocationInfo: ((String) -> Void)?
-    var didFailToReceiveLocation: ((TRError) -> Void)?
+    var didFailToReceiveLocation: ((LocationError) -> Void)?
     
     
     // Init
@@ -51,11 +51,11 @@ class LocationManager: NSObject {
             
         case .denied:
             locationRequestState = .error
-            didFailToReceiveLocation?(TRError.permissionLocationError)
+            didFailToReceiveLocation?(LocationError.permissionLocationError)
             
         default:
             locationRequestState = .error
-            didFailToReceiveLocation?(TRError.defaultLocationError)
+            didFailToReceiveLocation?(LocationError.defaultLocationError)
         }
     }
     
@@ -86,7 +86,7 @@ class LocationManager: NSObject {
         let placemarks = try await geocoder.reverseGeocodeLocation(location)
         
         guard let placemark = placemarks.first else {
-            throw TRError.defaultLocationError
+            throw LocationError.defaultLocationError
         }
         
         let city = placemark.locality ?? "Nowhereville"
@@ -101,7 +101,7 @@ class LocationManager: NSObject {
         locationTimeoutTimer = Timer.scheduledTimer(withTimeInterval: locationTimeout, repeats: false) { _ in
             if self.locationRequestState == .requestingLocation {
                 self.locationRequestState = .timedOut
-                self.didFailToReceiveLocation?(TRError.timeoutError)
+                self.didFailToReceiveLocation?(LocationError.timeoutError)
             }
         }
     }
@@ -133,12 +133,12 @@ extension LocationManager: CLLocationManagerDelegate {
                 guard locationRequestState != .timedOut else { return }
                 locationRequestState = .error
                 
-                if let error = error as? TRError {
+                if let error = error as? LocationError {
                     didFailToReceiveLocation?(error)
                 } else if let error = error as? CLError, error.code == .network {
-                    didFailToReceiveLocation?(TRError.networkError)
+                    didFailToReceiveLocation?(LocationError.networkError)
                 } else {
-                    didFailToReceiveLocation?(TRError.defaultLocationError)
+                    didFailToReceiveLocation?(LocationError.defaultLocationError)
                 }
             }
         }
@@ -152,11 +152,11 @@ extension LocationManager: CLLocationManagerDelegate {
         if let error = error as? CLError {
             switch error.code {
             case .network:
-                didFailToReceiveLocation?(TRError.networkError)
+                didFailToReceiveLocation?(LocationError.networkError)
             case .denied:
-                didFailToReceiveLocation?(TRError.permissionLocationError)
+                didFailToReceiveLocation?(LocationError.permissionLocationError)
             default:
-                didFailToReceiveLocation?(TRError.defaultLocationError)
+                didFailToReceiveLocation?(LocationError.defaultLocationError)
             }
         }
     }

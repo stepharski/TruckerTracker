@@ -71,6 +71,7 @@ class AppSettingsViewController: UIViewController {
         showAlert()
     }
     
+    // Alert
     func showAlert() {
         let alertVC = AlertViewController(title: "Reset Settings",
                       message: "This will reset your app settings to their default values. Are you sure?",

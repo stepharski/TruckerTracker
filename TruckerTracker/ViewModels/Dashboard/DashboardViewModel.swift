@@ -106,10 +106,6 @@ class DashboardViewModel {
             expenses.append(Expense(id: "expense\(i)", date: Date(), amount: 380,
                                     name: "Trailer rent", frequency: .week,
                                     attachments: ["Expense2023-30"]))
-
-            loads.append(Load(id: "load\(i)", date: Date(), amount: 3200, distance: 964,
-                              startLocation: "Chicago, IL", endLocation: "Atlanta, GA",
-                                 attachments: ["RateCon2023-30"]))
             
             fuelings.append(Fuel(id: "fuel\(i)", date: Date(), dieselAmount: 540,
                                 attachments: ["Receipt2023-30"]))

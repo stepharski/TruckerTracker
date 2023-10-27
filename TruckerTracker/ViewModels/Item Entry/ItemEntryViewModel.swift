@@ -8,11 +8,16 @@
 import Foundation
 
 // MARK: -
+enum ItemValidationError {
+    
+}
+
+// MARK: - Item Location State
 enum ItemLocationState {
     case idle
     case requesting
     case received
-    case error(TRError)
+    case error(LocationError)
 }
 
 // MARK: - ItemEntry ViewModel
@@ -31,9 +36,12 @@ class ItemEntryViewModel {
     private var loadTableViewModel: LoadTableViewModel?
     private var fuelTableViewModel: FuelTableViewModel?
     
-    private var locationManager = LocationManager()
+    private let dataManager = CoreDataManager.shared
+    
+    private let locationManager = LocationManager()
     private var locationRequestSegmentType: ItemType?
     var locationState: Observable<ItemLocationState> = Observable(.idle)
+    var validationState: Observable<ValidationError?> = Observable(nil)
     
     
     // Init
@@ -56,24 +64,21 @@ class ItemEntryViewModel {
             amount = 0
             isNewItem = true
             selectSegment(ItemType.load.index)
-            loadTableViewModel = LoadTableViewModel(Load.template())
+            loadTableViewModel = LoadTableViewModel(dataManager.createEmptyLoad())
         }
     }
     
     // Table View Models
     func getExpenseTableVM() -> ExpenseTableViewModel {
-        expenseTableViewModel = expenseTableViewModel ?? ExpenseTableViewModel(Expense.template())
-        return expenseTableViewModel!
+        return expenseTableViewModel ?? ExpenseTableViewModel(Expense.template())
     }
     
     func getLoadTableVM() -> LoadTableViewModel {
-        loadTableViewModel = loadTableViewModel ?? LoadTableViewModel(Load.template())
-        return loadTableViewModel!
+        return loadTableViewModel ?? LoadTableViewModel(dataManager.createEmptyLoad())
     }
     
     func getFuelTableVM() -> FuelTableViewModel {
-        fuelTableViewModel = fuelTableViewModel ?? FuelTableViewModel(Fuel.template())
-        return fuelTableViewModel!
+        return fuelTableViewModel ?? FuelTableViewModel(Fuel.template())
     }
     
     // Segments
@@ -155,5 +160,27 @@ class ItemEntryViewModel {
             locationState.value = .idle
             locationManager.stopLocationUpdates()
         }
+    }
+    
+    // Data management
+    func saveItem() {
+        guard amount > 0 else {
+            validationState.value = ValidationError.nullAmount
+            return
+        }
+        
+        switch selectedSegmentType {
+        case .expense:
+            print("save")
+        case .load:
+            //TODO: Add validate&save function to ExpenseVM with ResultType
+            print("save")
+        case .fuel:
+            print("save")
+        }
+    }
+    
+    func deleteItem() {
+        //TODO: Delete item
     }
 }

@@ -1,13 +1,13 @@
 //
-//  TRError.swift
+//  LocationError.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 3/19/23.
+//  Created by Stepan Kukharskyi on 10/26/23.
 //
 
 import Foundation
 
-enum TRError: String, Error {
+enum LocationError: String, Error {
     
     case timeoutError = "The request for your location timed out."
     case networkError = "Please check your internet connection and try again."

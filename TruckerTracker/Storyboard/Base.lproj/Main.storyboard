@@ -168,6 +168,9 @@
                                         <color key="tintColor" systemColor="systemGrayColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="trash" catalog="system" cornerStyle="capsule"/>
+                                        <connections>
+                                            <action selector="deleteButtonTapped:" destination="Wai-9V-eie" eventType="touchUpInside" id="8HF-eQ-dWU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1K-gx-4eo">
                                         <rect key="frame" x="80" y="0.0" width="200" height="45"/>
@@ -182,6 +185,9 @@
                                             <color key="baseForegroundColor" systemColor="systemGray6Color"/>
                                             <color key="baseBackgroundColor" systemColor="labelColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="Wai-9V-eie" eventType="touchUpInside" id="aVz-hb-hP8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

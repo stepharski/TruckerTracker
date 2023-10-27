@@ -26,8 +26,8 @@ class ItemEntryViewController: UIViewController {
     }()
     
     lazy private var loadTableVC: LoadTableViewController = {
-        let tableController = LoadTableViewController()
-        tableController.viewModel = viewModel.getLoadTableVM()
+        let loadTableVM = viewModel.getLoadTableVM()
+        let tableController = LoadTableViewController(viewModel: loadTableVM)
         tableController.delegate = self
         return tableController
     }()
@@ -73,10 +73,20 @@ class ItemEntryViewController: UIViewController {
     }
     
     private func setupBinders() {
+        setupSegmentBinder()
+        setupFuelAmountBinder()
+        setupLocationBinder()
+        setupFieldsValidationBinder()
+    }
+    
+    // VM Binders
+    private func setupSegmentBinder() {
         viewModel.selectedSegment.bind { [weak self] _ in
             self?.updateTableVC()
         }
-        
+    }
+    
+    private func setupFuelAmountBinder() {
         fuelTableVC.viewModel.totalFuelAmount.bind { [weak self] fuelAmount in
             guard let self = self else { return }
             guard fuelAmount != viewModel.amount else { return }
@@ -84,7 +94,9 @@ class ItemEntryViewController: UIViewController {
             viewModel.updateItemAmount(fuelAmount)
             self.amountTextField.amount = fuelAmount.formattedString
         }
-        
+    }
+    
+    private func setupLocationBinder() {
         viewModel.locationState.bind { [weak self] locationState in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -100,6 +112,24 @@ class ItemEntryViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func setupFieldsValidationBinder() {
+        viewModel.validationState.bind { [weak self] validationError in
+            guard let self = self else { return }
+            guard let errorMessage = validationError?.rawValue else { return }
+            
+            self.showAlert(title: "Validation Error", message: errorMessage)
+        }
+    }
+    
+    // @IBActions
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        viewModel.saveItem()
+    }
+    
+    @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        //TODO: Delete item
     }
     
     // Navigation Bar
