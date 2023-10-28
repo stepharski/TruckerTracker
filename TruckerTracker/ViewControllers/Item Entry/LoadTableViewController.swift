@@ -83,16 +83,12 @@ class LoadTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = viewModel.sections[indexPath.section]
         switch section.type {
-        case .emptyDistance, .tripDistance:
+        case .tripDistance:
             let cell = tableView.dequeueReusableCell(withIdentifier: LoadDistanceCell.identifier)
                                                                         as! LoadDistanceCell
             cell.configure(for: section)
             
-            cell.emptyDistanceDidChange = { [weak self] emptyDistance in
-                self?.viewModel.updateEmptyDistance(emptyDistance)
-            }
-            
-            cell.tripDistanceDidChange = { [weak self] tripDistance in
+            cell.distanceDidChange = { [weak self] tripDistance in
                 self?.viewModel.updateTripDistance(tripDistance)
             }
             return cell
@@ -146,7 +142,7 @@ class LoadTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = viewModel.sections[indexPath.section]
         switch section.type {
-        case .tripDistance, .emptyDistance:
+        case .tripDistance:
             if let distanceCell = tableView.cellForRow(at: indexPath) as? LoadDistanceCell {
                 distanceCell.activateTextField()
             }

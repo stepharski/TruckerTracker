@@ -9,7 +9,6 @@ import UIKit
 
 //MARK: - Type
 enum LoadTableSectionType {
-    case emptyDistance
     case tripDistance
     case date
     case startLocation
@@ -38,12 +37,10 @@ class LoadTableViewModel {
     // Init
     init(_ load: Load) {
         self.load = load
-        sections.append(LoadTableEmptyDistanceSection(Int(load.emptyDistance)))
         sections.append(LoadTableTripDistanceSection(Int(load.distance)))
         sections.append(LoadTableDateSection(load.date))
         sections.append(LoadTableStartLocationSection(load.startLocation))
         sections.append(LoadTableEndLocationSection(load.endLocation))
-        //TODO: Handle Attachments
 //        sections.append(LoadTableAttachmentsSection(load.attachments ?? []))
     }
     
@@ -53,14 +50,6 @@ class LoadTableViewModel {
     }
     
     // Section Updates
-    func updateEmptyDistance(_ distance: Int) {
-        if let emptyDistanceSection = sections.first(where: { $0.type == .emptyDistance })
-                                                        as? LoadTableEmptyDistanceSection {
-            self.load.emptyDistance = Int64(distance)
-            emptyDistanceSection.distance = distance
-        }
-    }
-    
     func updateTripDistance(_ distance: Int) {
         if let tripDistanceSection = sections.first(where: { $0.type == .tripDistance })
                                                         as? LoadTableTripDistanceSection {
@@ -108,7 +97,6 @@ class LoadTableViewModel {
     }
     
     func updateAttachments(_ attachments: [String]) {
-        //TODO: Update Attachments
 //        if let attachmentsSection = sections.first(where: { $0.type == .attachments })
 //                                                    as? LoadTableAttachmentsSection {
 //            self.load.attachments = attachments
@@ -133,27 +121,9 @@ class LoadTableViewModel {
 }
 
 // MARK: - Sections
-// Empty miles
-class LoadTableEmptyDistanceSection: LoadTableSection {
-    var type: LoadTableSectionType = .emptyDistance
-    var image: UIImage? = SFSymbols.roadLanesEmpty
-    var title: String = "Empty distance"
-    var distance: Int
-    
-    var distanceAbbreviation: String {
-        return UDManager.shared.distanceUnit.abbreviation
-    }
-    
-    init(_ distance: Int) {
-        self.distance = distance
-    }
-}
-
 // Trip miles
 class LoadTableTripDistanceSection: LoadTableSection {
     var type: LoadTableSectionType = .tripDistance
-    var image: UIImage? = SFSymbols.roadLanes
-    var title: String = "Trip distance"
     var distance: Int
     
     var distanceAbbreviation: String {

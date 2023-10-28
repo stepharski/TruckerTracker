@@ -14,10 +14,7 @@ class LoadDistanceCell: UITableViewCell {
     @IBOutlet private var distanceTextField: AmountTextField!
     @IBOutlet private var distanceAbbreviationLabel: UILabel!
     
-    private var section: LoadTableSection?
-    
-    var emptyDistanceDidChange: ((Int) -> Void)?
-    var tripDistanceDidChange: ((Int) -> Void)?
+    var distanceDidChange: ((Int) -> Void)?
     
     
     // Life cycle
@@ -30,20 +27,10 @@ class LoadDistanceCell: UITableViewCell {
     
     // Configuration
     func configure(for section: LoadTableSection?) {
-        self.section = section
+        guard let distanceSection = section as? LoadTableTripDistanceSection else { return }
         
-        if let tripDistanceSection = section as? LoadTableTripDistanceSection {
-            distanceImageView.image = tripDistanceSection.image
-            distanceTitleLabel.text = tripDistanceSection.title
-            distanceTextField.text = "\(tripDistanceSection.distance)"
-            distanceAbbreviationLabel.text = tripDistanceSection.distanceAbbreviation
-            
-        } else if let emptyDistanceSection = section as? LoadTableEmptyDistanceSection {
-            distanceImageView.image = emptyDistanceSection.image
-            distanceTitleLabel.text = emptyDistanceSection.title
-            distanceTextField.text = "\(emptyDistanceSection.distance)"
-            distanceAbbreviationLabel.text = emptyDistanceSection.distanceAbbreviation
-        }
+        distanceTextField.text = "\(distanceSection.distance)"
+        distanceAbbreviationLabel.text = distanceSection.distanceAbbreviation
     }
     
     // TextField
@@ -53,15 +40,8 @@ class LoadDistanceCell: UITableViewCell {
     
     private func configureTextField() {
         distanceTextField.isDecimalPad = false
-        
         distanceTextField.amountDidChange = { [weak self] amount in
-            
-            if self?.section is LoadTableTripDistanceSection {
-                self?.tripDistanceDidChange?(Int(amount))
-                
-            } else if self?.section is LoadTableEmptyDistanceSection {
-                self?.emptyDistanceDidChange?(Int(amount))
-            }
+            self?.distanceDidChange?(Int(amount))
         }
     }
 }

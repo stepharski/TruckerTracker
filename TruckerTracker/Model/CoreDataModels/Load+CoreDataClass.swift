@@ -2,7 +2,7 @@
 //  Load+CoreDataClass.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 8/22/23.
+//  Created by Stepan Kukharskyi on 10/28/23.
 //
 //
 
@@ -11,14 +11,13 @@ import CoreData
 
 @objc(Load)
 public class Load: NSManagedObject {
-
+    
     // Custom init
     public init(context: NSManagedObjectContext,
                 id: UUID = UUID(),
                 date: Date = Date(),
                 amount: Double = 0,
                 distance: Int64 = 0,
-                emptyDistance: Int64 = 0,
                 startLocation: String = "",
                 endLocation: String = "") {
         let entity = NSEntityDescription.entity(forEntityName: "Load", in: context)!
@@ -27,7 +26,6 @@ public class Load: NSManagedObject {
         self.date = date
         self.amount = amount
         self.distance = distance
-        self.emptyDistance = emptyDistance
         self.startLocation = startLocation
         self.endLocation = endLocation
     }

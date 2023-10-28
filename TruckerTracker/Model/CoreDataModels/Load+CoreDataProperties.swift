@@ -2,7 +2,7 @@
 //  Load+CoreDataProperties.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 8/22/23.
+//  Created by Stepan Kukharskyi on 10/28/23.
 //
 //
 
@@ -20,10 +20,9 @@ extension Load {
     @NSManaged public var date: Date
     @NSManaged public var amount: Double
     @NSManaged public var distance: Int64
-    @NSManaged public var emptyDistance: Int64
     @NSManaged public var startLocation: String
     @NSManaged public var endLocation: String
 
 }
 
-extension Load: Identifiable { }
+extension Load : Identifiable { }
