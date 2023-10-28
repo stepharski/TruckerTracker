@@ -9,6 +9,10 @@ import Foundation
 
 extension String {
     
+    func hasContent() -> Bool {
+        return !self.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+    
     var digits: String {
         return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
     }

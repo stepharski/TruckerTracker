@@ -117,13 +117,18 @@ class LoadTableViewModel {
 //        }
     }
     
-    // Validate and Save
+    // Save
     func saveItem() {
         
     }
     
-    private func validateItem() {
+    // Validation
+    func validateSections() -> ValidationError? {
+        guard self.load.distance > 0 else { return .nullDistance }
+        guard self.load.startLocation.hasContent() else { return .emptyStartLocation }
+        guard self.load.endLocation.hasContent() else { return .emptyEndLocation }
         
+        return nil
     }
 }
 

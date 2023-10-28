@@ -164,19 +164,33 @@ class ItemEntryViewModel {
     
     // Data management
     func saveItem() {
-        guard amount > 0 else {
-            validationState.value = ValidationError.nullAmount
+        if let validationError = validateItem() {
+            validationState.value = validationError
             return
         }
         
         switch selectedSegmentType {
         case .expense:
-            print("save")
+            print("expense save")
+            
         case .load:
-            //TODO: Add validate&save function to ExpenseVM with ResultType
-            print("save")
+            print("load save")
+            
         case .fuel:
-            print("save")
+            print("fuel save")
+        }
+    }
+
+    private func validateItem() -> ValidationError? {
+        guard amount > 0 else { return .nullAmount }
+        
+        switch selectedSegmentType {
+        case .expense:
+            return nil
+        case .load:
+            return loadTableViewModel?.validateSections() ?? nil
+        case .fuel:
+            return nil
         }
     }
     
