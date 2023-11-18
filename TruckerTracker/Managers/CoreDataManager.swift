@@ -42,13 +42,17 @@ class CoreDataManager {
 
 // MARK: - Load entity functions
 extension CoreDataManager {
-    func createEmptyLoad() -> Load {
-        return Load(context: viewContext)
-    }
     
-    func saveLoad() {
+    func saveChanges() {
         save()
     }
+    
+    
+    func createEmptyLoad(in childContext: NSManagedObjectContext) -> Load {
+        childContext.parent = viewContext
+        return Load(context: childContext)
+    }
+    
     
     func deleteLoad(_ load: Load) {
         viewContext.delete(load)

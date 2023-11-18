@@ -12,5 +12,6 @@ extension Notification.Name {
     static let distanceUnitChanged = Notification.Name("DistanceUnitChanged")
     static let currencyChanged = Notification.Name("CurrencyChanged")
     static let weekStartDayChanged = Notification.Name("WeekStartDayChanged")
+    static let didSaveEntryItem = Notification.Name("DidSaveEntryItem")
     
 }

@@ -10,6 +10,9 @@ import CoreLocation
 
 class ItemEntryViewController: UIViewController {
 
+    private var savingOverlayView: UIView?
+    private lazy var spinner: UIActivityIndicatorView = createSpinner()
+    
     @IBOutlet private var amountTextField: AmountTextField!
     @IBOutlet private var segmentedControlView: UIView!
     @IBOutlet private var tableContainerView: UIView!
@@ -76,7 +79,7 @@ class ItemEntryViewController: UIViewController {
         setupSegmentBinder()
         setupFuelAmountBinder()
         setupLocationBinder()
-        setupFieldsValidationBinder()
+        setupResultBinder()
     }
     
     // VM Binders
@@ -114,18 +117,32 @@ class ItemEntryViewController: UIViewController {
         }
     }
     
-    private func setupFieldsValidationBinder() {
-        viewModel.validationState.bind { [weak self] validationError in
+    private func setupResultBinder() {
+        viewModel.dataOperationResult.bind { [weak self] result in
             guard let self = self else { return }
-            guard let errorMessage = validationError?.rawValue else { return }
             
-            self.showAlert(title: "Validation Error", message: errorMessage)
+            self.activityIndicator.stopAnimating()
+            self.dismissSavingOverlay()
+            switch result {
+            case .success():
+                NotificationCenter.default.post(name: .didSaveEntryItem, object: nil)
+                self.dismissVC()
+            case .failure(let error):
+                if let error = error as? ValidationError {
+                    self.showAlert(title: "Validation Error", message: error.rawValue)
+                } else {
+                    self.showAlert(title: "Data Operation Error", message: error.localizedDescription)
+                }
+            case .none: break
+            }
         }
     }
     
     // @IBActions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        viewModel.saveItem()
+        activityIndicator.startAnimating()
+        showSavingOverlay()
+        viewModel.saveIfValid()
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
@@ -269,6 +286,37 @@ class ItemEntryViewController: UIViewController {
         pickerVC.modalPresentationStyle = .pageSheet
         pickerVC.sheetPresentationController?.detents = [.medium()]
         present(pickerVC, animated: true)
+    }
+    
+    // Spinner
+    private func createSpinner() -> UIActivityIndicatorView {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        spinner.color = .systemGreen
+        view.addSubview(spinner)
+        
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: parent?.view.centerXAnchor ?? view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: parent?.view.centerYAnchor ?? view.centerYAnchor)
+        ])
+        
+        return spinner
+    }
+    
+    // Saving overlay
+    func showSavingOverlay() {
+        let overlayView = UIView()
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.25)
+        view.addSubview(overlayView)
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.pinToEdges(of: view)
+        self.savingOverlayView = overlayView
+    }
+    
+    func dismissSavingOverlay() {
+        self.savingOverlayView?.removeFromSuperview()
+        self.savingOverlayView = nil
     }
 }
 

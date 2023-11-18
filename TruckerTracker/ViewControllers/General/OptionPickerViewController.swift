@@ -26,7 +26,7 @@ class OptionPickerViewController: UIViewController {
     var pickerItems: [String]!
     var selectedRow: Int!
     
-    var delegate: OptionPickerDelegate?
+    weak var delegate: OptionPickerDelegate?
     
     // Life cycle
     init(pickerItems: [String], selectedRow: Int) {

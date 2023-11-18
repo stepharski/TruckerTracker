@@ -7,11 +7,6 @@
 
 import Foundation
 
-// MARK: -
-enum ItemValidationError {
-    
-}
-
 // MARK: - Item Location State
 enum ItemLocationState {
     case idle
@@ -23,12 +18,12 @@ enum ItemLocationState {
 // MARK: - ItemEntry ViewModel
 class ItemEntryViewModel {
     
-    private(set) var isNewItem = true
     private(set) var amount: Double = 0
+    private(set) var isNewItem: Bool = true
+    private var initialItemType: ItemType = .load
     
     private(set) var segments = ItemType.allCases
     private(set) var selectedSegment: Observable<Int> = Observable(ItemType.load.index)
-    
     var segmentTitles: [String] { return segments.map{ $0.title.capitalized }}
     var selectedSegmentType: ItemType { return segments[selectedSegment.value] }
     
@@ -37,11 +32,10 @@ class ItemEntryViewModel {
     private var fuelTableViewModel: FuelTableViewModel?
     
     private let dataManager = CoreDataManager.shared
-    
     private let locationManager = LocationManager()
     private var locationRequestSegmentType: ItemType?
     var locationState: Observable<ItemLocationState> = Observable(.idle)
-    var validationState: Observable<ValidationError?> = Observable(nil)
+    var dataOperationResult: Observable<Result<Void, Error>?> = Observable(nil)
     
     
     // Init
@@ -50,21 +44,25 @@ class ItemEntryViewModel {
         switch model {
         case .expense(let expense):
             amount = expense.amount
+            initialItemType = .expense
             selectSegment(ItemType.expense.index)
             expenseTableViewModel = ExpenseTableViewModel(expense)
         case .load(let load):
             amount = load.amount
+            initialItemType = .load
             selectSegment(ItemType.load.index)
             loadTableViewModel = LoadTableViewModel(load)
         case .fuel(let fuel):
             amount = fuel.totalAmount
+            initialItemType = .fuel
             selectSegment(ItemType.fuel.index)
             fuelTableViewModel = FuelTableViewModel(fuel)
         case .none:
             amount = 0
             isNewItem = true
+            initialItemType = .load
             selectSegment(ItemType.load.index)
-            loadTableViewModel = LoadTableViewModel(dataManager.createEmptyLoad())
+            loadTableViewModel = LoadTableViewModel(nil)
         }
     }
     
@@ -74,7 +72,7 @@ class ItemEntryViewModel {
     }
     
     func getLoadTableVM() -> LoadTableViewModel {
-        return loadTableViewModel ?? LoadTableViewModel(dataManager.createEmptyLoad())
+        return loadTableViewModel ?? LoadTableViewModel(nil)
     }
     
     func getFuelTableVM() -> FuelTableViewModel {
@@ -163,24 +161,47 @@ class ItemEntryViewModel {
     }
     
     // Data management
-    func saveItem() {
+    func saveIfValid() {
         if let validationError = validateItem() {
-            validationState.value = validationError
+            dataOperationResult.value = .failure(validationError)
             return
         }
         
-        switch selectedSegmentType {
-        case .expense:
-            print("expense save")
-            
-        case .load:
-            print("load save")
-            
-        case .fuel:
-            print("fuel save")
+        let itemTypeChanged = initialItemType != selectedSegmentType
+        if !isNewItem && itemTypeChanged {
+            deleteItem()
         }
+        
+        saveItem()
     }
 
+    private func saveItem() {
+        var result: Result<Void, Error>?
+        
+        switch selectedSegmentType {
+        case .expense:
+            print("save expense")
+        case .load:
+            result = loadTableViewModel?.save()
+        case .fuel:
+            print("save fuel")
+        }
+        
+        guard let result = result else {
+            // throw error
+            return
+        }
+        
+        switch result {
+        case .success():
+            print("load save success")
+            dataOperationResult.value = .success(())
+        case .failure(let error):
+            print("load save failure")
+            dataOperationResult.value = .failure(error)
+        }
+    }
+    
     private func validateItem() -> ValidationError? {
         guard amount > 0 else { return .nullAmount }
         

@@ -218,6 +218,8 @@ class DashboardViewController: UIViewController {
                                                name: .currencyChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)),
                                                name: .weekStartDayChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)),
+                                               name: .didSaveEntryItem, object: nil)
     }
     
     private func removeObservers() {
@@ -226,6 +228,7 @@ class DashboardViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .distanceUnitChanged, object: nil)
         NotificationCenter.default.removeObserver(self, name: .currencyChanged, object: nil)
         NotificationCenter.default.removeObserver(self, name: .weekStartDayChanged, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didSaveEntryItem, object: nil)
     }
     
     @objc private func appWillEnterForeground() {
@@ -250,6 +253,10 @@ class DashboardViewController: UIViewController {
             let newInterval = middleDate.getDateInterval(in: .week)
             viewModel.dashboardPeriod = Period(type: .week, interval: newInterval)
             updateData()
+            
+        case .didSaveEntryItem:
+            //TODO: Fetch new data
+            print("Fetch new data")
             
         default:
             break

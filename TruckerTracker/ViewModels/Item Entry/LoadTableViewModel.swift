@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 //MARK: - Type
 enum LoadTableSectionType {
@@ -25,23 +26,26 @@ extension LoadTableSection {
     var rowCount: Int { return 1 }
 }
 
-// MARK: - LoadTable ViewModel
+// MARK: - LoadTable ViewModelQ
 class LoadTableViewModel {
     
     private var load: Load
-    var sections = [LoadTableSection]()
+    private let dataManager = CoreDataManager.shared
+    private let childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     
+    var sections = [LoadTableSection]()
     var sectionToReload: Observable<LoadTableSectionType?> = Observable(nil)
     var requestedLocation: LoadTableSectionType?
     
     // Init
-    init(_ load: Load) {
-        self.load = load
-        sections.append(LoadTableTripDistanceSection(Int(load.distance)))
-        sections.append(LoadTableDateSection(load.date))
-        sections.append(LoadTableStartLocationSection(load.startLocation))
-        sections.append(LoadTableEndLocationSection(load.endLocation))
-//        sections.append(LoadTableAttachmentsSection(load.attachments ?? []))
+    init(_ load: Load?) {
+        self.load = load ?? dataManager.createEmptyLoad(in: childContext)
+        
+        sections.append(LoadTableTripDistanceSection(Int(self.load.distance)))
+        sections.append(LoadTableDateSection(self.load.date))
+        sections.append(LoadTableStartLocationSection(self.load.startLocation))
+        sections.append(LoadTableEndLocationSection(self.load.endLocation))
+//        sections.append(LoadTableAttachmentsSection(load!.attachments ?? []))
     }
     
     // Section Index
@@ -105,11 +109,6 @@ class LoadTableViewModel {
 //        }
     }
     
-    // Save
-    func saveItem() {
-        
-    }
-    
     // Validation
     func validateSections() -> ValidationError? {
         guard self.load.distance > 0 else { return .nullDistance }
@@ -117,6 +116,17 @@ class LoadTableViewModel {
         guard self.load.endLocation.hasContent() else { return .emptyEndLocation }
         
         return nil
+    }
+    
+    // Save
+    func save() -> Result<Void, Error> {
+        do {
+            try childContext.save()
+            dataManager.saveChanges()
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
     }
 }
 
