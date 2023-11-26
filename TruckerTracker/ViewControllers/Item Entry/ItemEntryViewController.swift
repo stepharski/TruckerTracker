@@ -125,7 +125,8 @@ class ItemEntryViewController: UIViewController {
             self.dismissSavingOverlay()
             switch result {
             case .success():
-                NotificationCenter.default.post(name: .didSaveEntryItem, object: nil)
+                NotificationCenter.default.post(name: .itemEntryCompleted, object: nil,
+                                            userInfo: ["date": viewModel.itemDate])
                 self.dismissVC()
             case .failure(let error):
                 if let error = error as? ValidationError {

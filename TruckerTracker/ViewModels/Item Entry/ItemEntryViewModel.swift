@@ -19,6 +19,7 @@ enum ItemLocationState {
 class ItemEntryViewModel {
     
     private(set) var amount: Double = 0
+    private(set) var itemDate: Date = Date()
     private(set) var isNewItem: Bool = true
     private var initialItemType: ItemType = .load
     
@@ -44,22 +45,26 @@ class ItemEntryViewModel {
         switch model {
         case .expense(let expense):
             amount = expense.amount
+            itemDate = expense.date
             initialItemType = .expense
             selectSegment(ItemType.expense.index)
             expenseTableViewModel = ExpenseTableViewModel(expense)
         case .load(let load):
             amount = load.amount
+            itemDate = load.date
             initialItemType = .load
             selectSegment(ItemType.load.index)
             loadTableViewModel = LoadTableViewModel(load)
         case .fuel(let fuel):
             amount = fuel.totalAmount
+            itemDate = fuel.date
             initialItemType = .fuel
             selectSegment(ItemType.fuel.index)
             fuelTableViewModel = FuelTableViewModel(fuel)
         case .none:
             amount = 0
             isNewItem = true
+            itemDate = Date()
             initialItemType = .load
             selectSegment(ItemType.load.index)
             loadTableViewModel = LoadTableViewModel(nil)
@@ -111,6 +116,7 @@ class ItemEntryViewModel {
     }
     
     func updateItemDate(_ date: Date) {
+        itemDate = date
         switch selectedSegmentType {
         case .expense:
             expenseTableViewModel?.updateDate(date)
@@ -180,15 +186,17 @@ class ItemEntryViewModel {
         
         switch selectedSegmentType {
         case .expense:
+            //TODO: Add expense save
             print("save expense")
         case .load:
-            result = loadTableViewModel?.save()
+            result = loadTableViewModel?.save(with: amount)
         case .fuel:
+            //TODO: Add fuel save
             print("save fuel")
         }
         
         guard let result = result else {
-            // throw error
+            dataOperationResult.value = .failure(OperationError.saveError)
             return
         }
         

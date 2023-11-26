@@ -25,16 +25,15 @@ class DashboardViewController: UIViewController {
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureNavBar()
         updateHeaderHeight()
         configureSegmentedControl()
         addPeriodDisplayVC()
         configureTableView()
-        
-        updateData()
-        addObservers()
         addSwipeGestures()
+        addObservers()
+        setupBinders()
+        updateData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,6 +44,25 @@ class DashboardViewController: UIViewController {
     deinit { removeObservers() }
     
 
+    // Binders
+    private func setupBinders() {
+        setupDataBinder()
+    }
+    
+    private func setupDataBinder() {
+        viewModel.dataChanged.bind { [weak self] dataChanged in
+            guard dataChanged else { return }
+            
+            DispatchQueue.main.async {
+                self?.updateIncomeLabel()
+                self?.updateSegmentedControl()
+                self?.updatePeriodDisplay()
+                self?.tableView.reloadData()
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     // UI Configuration
     private func configureNavBar() {
         navigationItem.title = "Income"
@@ -196,15 +214,7 @@ class DashboardViewController: UIViewController {
     // Data
     private func updateData() {
         activityIndicator.startAnimating()
-        viewModel.fetchData() { [weak self] success in
-            guard success else { return }
-            
-            self?.updateIncomeLabel()
-            self?.updateSegmentedControl()
-            self?.updatePeriodDisplay()
-            self?.tableView.reloadData()
-            self?.activityIndicator.stopAnimating()
-        }
+        viewModel.fetchData()
     }
     
     // Notifications
@@ -219,7 +229,7 @@ class DashboardViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)),
                                                name: .weekStartDayChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)),
-                                               name: .didSaveEntryItem, object: nil)
+                                               name: .itemEntryCompleted, object: nil)
     }
     
     private func removeObservers() {
@@ -228,7 +238,7 @@ class DashboardViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .distanceUnitChanged, object: nil)
         NotificationCenter.default.removeObserver(self, name: .currencyChanged, object: nil)
         NotificationCenter.default.removeObserver(self, name: .weekStartDayChanged, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .didSaveEntryItem, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .itemEntryCompleted, object: nil)
     }
     
     @objc private func appWillEnterForeground() {
@@ -248,16 +258,18 @@ class DashboardViewController: UIViewController {
             guard viewModel.dashboardPeriod.type == .week else { return }
             
             // get current middle date
-            // create new interval based on Calendar.firstWeekday
             let middleDate = viewModel.dashboardPeriod.interval.middleDate()
+            // create new interval based on Calendar.firstWeekday
             let newInterval = middleDate.getDateInterval(in: .week)
             viewModel.dashboardPeriod = Period(type: .week, interval: newInterval)
             updateData()
             
-        case .didSaveEntryItem:
-            //TODO: Fetch new data
-            print("Fetch new data")
-            
+        case .itemEntryCompleted:
+            guard let dict = notification.userInfo as? NSDictionary else { return }
+            guard let date = dict["date"] as? Date else { return }
+            if viewModel.dashboardPeriod.interval.contains(date) {
+                updateData()
+            }
         default:
             break
         }

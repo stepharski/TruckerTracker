@@ -119,8 +119,9 @@ class LoadTableViewModel {
     }
     
     // Save
-    func save() -> Result<Void, Error> {
+    func save(with amount: Double) -> Result<Void, Error> {
         do {
+            load.amount = amount
             try childContext.save()
             dataManager.saveChanges()
             return .success(())

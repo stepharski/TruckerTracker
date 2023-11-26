@@ -9,16 +9,15 @@ import Foundation
 
 class DashboardViewModel {
     
-    var totalIncome: Int { //TODO: Calculate total income
-        return 5500
-    }
+    private let dataManager = CoreDataManager.shared
+    var dataChanged: Observable<Bool> = Observable(false)
+    
+    //TODO: Calculate total income
+    var totalIncome: Int { return 0 }
     
     var segments: [ItemType] = ItemType.allCases
     var selectedSegment: Int = ItemType.load.index
-    
-    var selectedSegmentType: ItemType {
-        return segments[selectedSegment]
-    }
+    var selectedSegmentType: ItemType { return segments[selectedSegment] }
     
     var segmentTitles: [String] {
         let currency = UDManager.shared.currency.symbol
@@ -91,24 +90,17 @@ class DashboardViewModel {
         return FuelSummaryViewModel(fuelings[indexPath.row])
     }
     
-    //TODO: Add Core Data
-    // Data Handling
-    func fetchData(completion: @escaping((Bool) -> Void)) {
-        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
-            self?.generateMockData()
-            completion(true)
-        }
+    // Data handlers
+    func fetchData() {
+        fetchLoads()
     }
     
-    // Mock
-    private func generateMockData() {
-        for i in 0..<5 {
-            expenses.append(Expense(id: "expense\(i)", date: Date(), amount: 380,
-                                    name: "Trailer rent", frequency: .week,
-                                    attachments: ["Expense2023-30"]))
-            
-            fuelings.append(Fuel(id: "fuel\(i)", date: Date(), dieselAmount: 540,
-                                attachments: ["Receipt2023-30"]))
+    // Loads
+    func fetchLoads() {
+        do {
+            self.loads = try dataManager.fetchLoads(for: dashboardPeriod)
+            self.dataChanged.value = true
         }
+        catch let error as NSError { print(error) }
     }
 }

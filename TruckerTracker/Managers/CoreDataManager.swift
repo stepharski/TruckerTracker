@@ -29,13 +29,10 @@ class CoreDataManager {
     
     private init() { }
     
-    private func save() {
+    func saveChanges() {
         if viewContext.hasChanges {
-            do {
-                try viewContext.save()
-            } catch {
-                fatalError("An error occured while saving context: \(error.localizedDescription)")
-            }
+            do { try viewContext.save() }
+            catch { fatalError("Error while saving context: \(error.localizedDescription)") }
         }
     }
 }
@@ -43,33 +40,24 @@ class CoreDataManager {
 // MARK: - Load entity functions
 extension CoreDataManager {
     
-    func saveChanges() {
-        save()
-    }
-    
-    
     func createEmptyLoad(in childContext: NSManagedObjectContext) -> Load {
         childContext.parent = viewContext
         return Load(context: childContext)
     }
     
-    
     func deleteLoad(_ load: Load) {
         viewContext.delete(load)
-        save()
+        saveChanges()
     }
     
-    func fetchLoads(filter: String? = nil) -> [Load] {
+    
+    func fetchLoads(for period: Period) throws -> [Load] {
         let request = Load.fetchRequest()
-        let dateSortDescriptor = NSSortDescriptor(keyPath: \Load.date, ascending: false)
-        request.sortDescriptors = [dateSortDescriptor]
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@",
+                            argumentArray: [period.interval.start, period.interval.end])
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Load.date, ascending: true)]
         
-        if let filter = filter {
-            let predicate = NSPredicate(format: "date between {$YESTERDAY, $TOMORROW}", filter)
-            request.predicate = predicate
-        }
-        
-        //TODO: Rewrite in more friendly way
-        return (try? viewContext.fetch(request)) ?? []
+        do { return try viewContext.fetch(request) }
+        catch let error { throw error }
     }
 }
