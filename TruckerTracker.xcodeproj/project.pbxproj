@@ -366,9 +366,13 @@
 			isa = PBXGroup;
 			children = (
 				5FEC7BB629B7D1980091F8FB /* ItemEntryViewController.swift */,
+				5F37F36F2A51FEE400B8BE48 /* ItemEntryViewModel.swift */,
 				5F39783E29CC8782007C3B65 /* ExpenseTableViewController.swift */,
+				5F39784229CC9205007C3B65 /* ExpenseTableViewModel.swift */,
 				5F39783A29CB827C007C3B65 /* LoadTableViewController.swift */,
+				5FEC7BB429B792080091F8FB /* LoadTableViewModel.swift */,
 				5F39784029CC8C5C007C3B65 /* FuelTableViewController.swift */,
+				5F39786629CE9EE4007C3B65 /* FuelTableViewModel.swift */,
 			);
 			path = "Item Entry";
 			sourceTree = "<group>";
@@ -521,8 +525,9 @@
 			isa = PBXGroup;
 			children = (
 				5F1CAB962A26A6D200B651F1 /* DashboardViewController.swift */,
-				5FB723C72A01796E003E6778 /* PeriodDisplayViewController.swift */,
-				5FB723C92A0179DC003E6778 /* PeriodSelectorViewController.swift */,
+				5F1CAB982A26A82000B651F1 /* DashboardViewModel.swift */,
+				5FD7BB742B13EEA300062D32 /* Segmented Control Module */,
+				5FD7BB732B13EE8B00062D32 /* Period Module */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -578,9 +583,8 @@
 				5FA551A4297B4E1E00D3596F /* Managers */,
 				5FB92F3828BD7CBD0037A4AD /* Extensions */,
 				5FB92F3528BC18E20037A4AD /* Utilities */,
-				5FA551E729A13D8600D3596F /* ViewModels */,
 				5FB92F3228B922080037A4AD /* Custom Views */,
-				5FB92F3128B921FD0037A4AD /* ViewControllers */,
+				5FB92F3128B921FD0037A4AD /* Screens */,
 				5FB92F3428B9226E0037A4AD /* Storyboard */,
 				5FB92F3328B922320037A4AD /* Supporting Files */,
 				5F8BE30528B7F9FB00441353 /* Info.plist */,
@@ -772,28 +776,7 @@
 			path = FuelSummaryCell;
 			sourceTree = "<group>";
 		};
-		5FA551E729A13D8600D3596F /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				5FEC7BB129B791460091F8FB /* Dashboard */,
-				5FEC7BB029B791330091F8FB /* Item Entry */,
-				5FB723B329F82C8E003E6778 /* Tools */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		5FB723B329F82C8E003E6778 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				5F11859B2A11AAE3006B8F56 /* AppSettingsViewModel.swift */,
-				5F16E3AA2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift */,
-				5F1185A72A12F593006B8F56 /* AttachmentsListViewModel.swift */,
-				5FED3CD02A1BC72900103045 /* RecurringExpensesListViewModel.swift */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		5FB92F3128B921FD0037A4AD /* ViewControllers */ = {
+		5FB92F3128B921FD0037A4AD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				5FA55192297AE36D00D3596F /* General */,
@@ -802,7 +785,7 @@
 				5F28CF8329A1A0A80068C425 /* Item Entry */,
 				5F790FF729444A1D00A73600 /* Tools */,
 			);
-			path = ViewControllers;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		5FB92F3228B922080037A4AD /* Custom Views */ = {
@@ -888,13 +871,36 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		5FD7BB732B13EE8B00062D32 /* Period Module */ = {
+			isa = PBXGroup;
+			children = (
+				5FB723C72A01796E003E6778 /* PeriodDisplayViewController.swift */,
+				5FB723C92A0179DC003E6778 /* PeriodSelectorViewController.swift */,
+			);
+			path = "Period Module";
+			sourceTree = "<group>";
+		};
+		5FD7BB742B13EEA300062D32 /* Segmented Control Module */ = {
+			isa = PBXGroup;
+			children = (
+				5F37F3712A5204F800B8BE48 /* ExpenseSummaryViewModel.swift */,
+				5F37F3732A52050900B8BE48 /* LoadSummaryViewModel.swift */,
+				5F37F3752A52052200B8BE48 /* FuelSummaryViewModel.swift */,
+			);
+			path = "Segmented Control Module";
+			sourceTree = "<group>";
+		};
 		5FDF97D029F6D69D00DCD038 /* ToolsMenu ChildVCs */ = {
 			isa = PBXGroup;
 			children = (
 				5F1185992A11A79A006B8F56 /* AppSettingsViewController.swift */,
+				5F11859B2A11AAE3006B8F56 /* AppSettingsViewModel.swift */,
 				5F16E3A42A02B91C00BA5DFD /* DriverSettingsViewController.swift */,
+				5F16E3AA2A02C5DD00BA5DFD /* DriverSettingsViewModel.swift */,
 				5F11859E2A12801D006B8F56 /* AttachmentsListViewController.swift */,
+				5F1185A72A12F593006B8F56 /* AttachmentsListViewModel.swift */,
 				5FED3CC92A1BBE8D00103045 /* RecurringExpensesListViewController.swift */,
+				5FED3CD02A1BC72900103045 /* RecurringExpensesListViewModel.swift */,
 				5FED3CE12A20EA1A00103045 /* ResetOptionsViewController.swift */,
 				5FED3CE52A25796000103045 /* FeedbackViewController.swift */,
 			);
@@ -929,28 +935,6 @@
 				5F1185922A119F31006B8F56 /* DriverNameCell.xib */,
 			);
 			path = DriverNameCell;
-			sourceTree = "<group>";
-		};
-		5FEC7BB029B791330091F8FB /* Item Entry */ = {
-			isa = PBXGroup;
-			children = (
-				5F37F36F2A51FEE400B8BE48 /* ItemEntryViewModel.swift */,
-				5F39784229CC9205007C3B65 /* ExpenseTableViewModel.swift */,
-				5FEC7BB429B792080091F8FB /* LoadTableViewModel.swift */,
-				5F39786629CE9EE4007C3B65 /* FuelTableViewModel.swift */,
-			);
-			path = "Item Entry";
-			sourceTree = "<group>";
-		};
-		5FEC7BB129B791460091F8FB /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				5F1CAB982A26A82000B651F1 /* DashboardViewModel.swift */,
-				5F37F3712A5204F800B8BE48 /* ExpenseSummaryViewModel.swift */,
-				5F37F3732A52050900B8BE48 /* LoadSummaryViewModel.swift */,
-				5F37F3752A52052200B8BE48 /* FuelSummaryViewModel.swift */,
-			);
-			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		5FEC7BBA29B7D55E0091F8FB /* Item Entry Cells */ = {
