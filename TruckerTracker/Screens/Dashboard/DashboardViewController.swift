@@ -229,7 +229,7 @@ class DashboardViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)),
                                                name: .weekStartDayChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)),
-                                               name: .itemEntryCompleted, object: nil)
+                                               name: .itemDataChanged, object: nil)
     }
     
     private func removeObservers() {
@@ -238,7 +238,7 @@ class DashboardViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .distanceUnitChanged, object: nil)
         NotificationCenter.default.removeObserver(self, name: .currencyChanged, object: nil)
         NotificationCenter.default.removeObserver(self, name: .weekStartDayChanged, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .itemEntryCompleted, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .itemDataChanged, object: nil)
     }
     
     @objc private func appWillEnterForeground() {
@@ -264,7 +264,7 @@ class DashboardViewController: UIViewController {
             viewModel.dashboardPeriod = Period(type: .week, interval: newInterval)
             updateData()
             
-        case .itemEntryCompleted:
+        case .itemDataChanged:
             guard let dict = notification.userInfo as? NSDictionary else { return }
             guard let date = dict["date"] as? Date else { return }
             if viewModel.dashboardPeriod.interval.contains(date) {

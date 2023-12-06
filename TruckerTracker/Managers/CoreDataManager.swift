@@ -23,17 +23,21 @@ class CoreDataManager {
         return container
     }()
     
-    private var viewContext: NSManagedObjectContext {
+    var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
     private init() { }
     
-    func saveChanges() {
-        if viewContext.hasChanges {
-            do { try viewContext.save() }
-            catch { fatalError("Error while saving context: \(error.localizedDescription)") }
+    func saveChanges() throws {
+        if mainContext.hasChanges {
+            try mainContext.save()
         }
+    }
+    
+    func delete(_ object: NSManagedObject) throws {
+        mainContext.delete(object)
+        try saveChanges()
     }
 }
 
@@ -41,15 +45,9 @@ class CoreDataManager {
 extension CoreDataManager {
     
     func createEmptyLoad(in childContext: NSManagedObjectContext) -> Load {
-        childContext.parent = viewContext
+        childContext.parent = mainContext
         return Load(context: childContext)
     }
-    
-    func deleteLoad(_ load: Load) {
-        viewContext.delete(load)
-        saveChanges()
-    }
-    
     
     func fetchLoads(for period: Period) throws -> [Load] {
         let request = Load.fetchRequest()
@@ -57,7 +55,7 @@ extension CoreDataManager {
                             argumentArray: [period.interval.start, period.interval.end])
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Load.date, ascending: true)]
         
-        do { return try viewContext.fetch(request) }
+        do { return try mainContext.fetch(request) }
         catch let error { throw error }
     }
 }

@@ -123,7 +123,16 @@ class LoadTableViewModel {
         do {
             load.amount = amount
             try childContext.save()
-            dataManager.saveChanges()
+            try dataManager.saveChanges()
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
+    }
+    
+    func delete() -> Result<Void, Error> {
+        do {
+            try dataManager.delete(load)
             return .success(())
         } catch {
             return .failure(error)

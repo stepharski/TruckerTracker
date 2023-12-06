@@ -9,5 +9,5 @@ import Foundation
 
 enum OperationError: String, Error {
     
-    case saveError = "Something went wrong while saving your data. Please try again."
+    case dataProcessingError = "Something went wrong while processing your request. Please try again."
 }

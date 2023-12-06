@@ -22,6 +22,7 @@ class ItemEntryViewModel {
     private(set) var itemDate: Date = Date()
     private(set) var isNewItem: Bool = true
     private var initialItemType: ItemType = .load
+    private var itemTypeChanged: Bool { return initialItemType != selectedSegmentType }
     
     private(set) var segments = ItemType.allCases
     private(set) var selectedSegment: Observable<Int> = Observable(ItemType.load.index)
@@ -165,51 +166,30 @@ class ItemEntryViewModel {
             locationManager.stopLocationUpdates()
         }
     }
-    
-    // Data management
+}
+
+// MARK: - Core Data Handling
+extension ItemEntryViewModel {
+    // Save processing
     func saveIfValid() {
         if let validationError = validateItem() {
             dataOperationResult.value = .failure(validationError)
             return
         }
         
-        let itemTypeChanged = initialItemType != selectedSegmentType
-        if !isNewItem && itemTypeChanged {
-            deleteItem()
-        }
-        
-        saveItem()
-    }
-
-    private func saveItem() {
-        var result: Result<Void, Error>?
-        
-        switch selectedSegmentType {
-        case .expense:
-            //TODO: Add expense save
-            print("save expense")
-        case .load:
-            result = loadTableViewModel?.save(with: amount)
-        case .fuel:
-            //TODO: Add fuel save
-            print("save fuel")
-        }
-        
-        guard let result = result else {
-            dataOperationResult.value = .failure(OperationError.saveError)
-            return
-        }
-        
-        switch result {
-        case .success():
-            print("load save success")
-            dataOperationResult.value = .success(())
-        case .failure(let error):
-            print("load save failure")
-            dataOperationResult.value = .failure(error)
+        if isNewItem {
+            saveNewItem()
+        } else if !isNewItem && !itemTypeChanged {
+            // Edit existing item of same type
+            saveItemChanges()
+        } else if !isNewItem && itemTypeChanged {
+            // Edit existing item + change type
+            deleteInitialItem()
+            saveNewItem()
         }
     }
     
+    // Validate
     private func validateItem() -> ValidationError? {
         guard amount > 0 else { return .nullAmount }
         
@@ -223,7 +203,65 @@ class ItemEntryViewModel {
         }
     }
     
-    func deleteItem() {
-        //TODO: Delete item
+    // Save new
+    private func saveNewItem() {
+        var result: Result<Void, Error>?
+        
+        switch selectedSegmentType {
+        case .expense:
+            //TODO: Add expense save
+            print("save expense")
+        case .load:
+            result = loadTableViewModel?.save(with: amount)
+        case .fuel:
+            //TODO: Add fuel save
+            print("save fuel")
+        }
+        
+        handleOperationResult(result)
     }
+    
+    // Save changes
+    private func saveItemChanges() {
+        do { 
+            try dataManager.saveChanges()
+            handleOperationResult(.success(()))
+        } catch {
+            handleOperationResult(.failure(error))
+        }
+    }
+    
+    // Delete initial
+    func deleteInitialItem() {
+        var result: Result<Void, Error>?
+        
+        switch initialItemType {
+        case .expense:
+            print("delete expense")
+        case .load:
+            result = loadTableViewModel?.delete()
+        case .fuel:
+            print("delete fuel")
+        }
+        
+        handleOperationResult(result)
+    }
+    
+    // Result
+    private func handleOperationResult(_ result: Result<Void, Error>?) {
+        guard let result = result else {
+            dataOperationResult.value = .failure(OperationError.dataProcessingError)
+            return
+        }
+        
+        switch result {
+        case .success():
+            print("operation save success")
+            dataOperationResult.value = .success(())
+        case .failure(let error):
+            print("operation save failure")
+            dataOperationResult.value = .failure(error)
+        }
+    }
+
 }

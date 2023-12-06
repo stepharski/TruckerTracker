@@ -59,7 +59,6 @@ class PeriodSelectorViewController: UIViewController {
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureContainerView()
         
         layoutUI()

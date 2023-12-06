@@ -125,8 +125,8 @@ class ItemEntryViewController: UIViewController {
             self.dismissSavingOverlay()
             switch result {
             case .success():
-                NotificationCenter.default.post(name: .itemEntryCompleted, object: nil,
-                                            userInfo: ["date": viewModel.itemDate])
+                NotificationCenter.default.post(name: .itemDataChanged, object: nil,
+                                            userInfo: ["date": viewModel.itemDate]) // Consider deletion date
                 self.dismissVC()
             case .failure(let error):
                 if let error = error as? ValidationError {
@@ -147,7 +147,9 @@ class ItemEntryViewController: UIViewController {
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
-        //TODO: Delete item
+        activityIndicator.startAnimating()
+        showSavingOverlay()
+        viewModel.deleteInitialItem()
     }
     
     // Navigation Bar
