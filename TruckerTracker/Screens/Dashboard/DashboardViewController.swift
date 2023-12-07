@@ -248,7 +248,7 @@ class DashboardViewController: UIViewController {
     @objc private func handleNotification(_ notification: Notification) {
         switch notification.name {
         case .distanceUnitChanged:
-            guard viewModel.selectedSegment == 1 else { return } //Load
+            guard viewModel.selectedSegment == 1 else { return } // Load
             updateData()
             
         case .currencyChanged:

@@ -36,6 +36,7 @@ class CoreDataManager {
     }
     
     func delete(_ object: NSManagedObject) throws {
+        //TODO: Consider adding perfrom and wait
         mainContext.delete(object)
         try saveChanges()
     }

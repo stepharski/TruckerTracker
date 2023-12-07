@@ -132,8 +132,11 @@ class ItemEntryViewModel {
         guard let frequency = frequency, selectedSegmentType == .expense else { return }
         expenseTableViewModel?.updateFrequency(frequency)
     }
-    
-    // Location
+}
+
+// MARK: - Location request
+extension ItemEntryViewModel {
+    // Request current location
     func requestUserLocation() {
         locationRequestSegmentType = selectedSegmentType
         locationState.value = .requesting
@@ -141,6 +144,7 @@ class ItemEntryViewModel {
         locationManager.requestUserLocation()
     }
     
+    // Handlers
     private func setupLocationHandlers() {
         locationManager.didReceiveLocationInfo = { [weak self] location in
             guard let self = self else { return }
@@ -160,6 +164,7 @@ class ItemEntryViewModel {
         }
     }
     
+    // Updates
     func stopLocationUpdates() {
         if case .requesting = locationState.value {
             locationState.value = .idle
@@ -183,7 +188,7 @@ extension ItemEntryViewModel {
             // Edit existing item of same type
             saveItemChanges()
         } else if !isNewItem && itemTypeChanged {
-            // Edit existing item + change type
+            // Change existing item type
             deleteInitialItem()
             saveNewItem()
         }
