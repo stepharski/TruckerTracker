@@ -93,6 +93,7 @@ class ItemEntryViewController: UIViewController {
         fuelTableVC.viewModel.totalFuelAmount.bind { [weak self] fuelAmount in
             guard let self = self else { return }
             guard fuelAmount != viewModel.amount else { return }
+            guard viewModel.selectedSegmentType == .fuel else { return }
             
             viewModel.updateItemAmount(fuelAmount)
             self.amountTextField.amount = fuelAmount.formattedString
