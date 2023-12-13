@@ -29,16 +29,43 @@ class CoreDataManager {
     
     private init() { }
     
+    // Save
     func saveChanges() throws {
         if mainContext.hasChanges {
             try mainContext.save()
         }
     }
     
+    // Delete
     func delete(_ object: NSManagedObject) throws {
         //TODO: Consider adding perfrom and wait
         mainContext.delete(object)
         try saveChanges()
+    }
+    
+    // Common fetch
+    private func fetchEntities<T: NSManagedObject>(entityType: T.Type, for period: Period) throws -> [T] {
+        let request = T.fetchRequest()
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@",
+                                argumentArray: [period.interval.start, period.interval.end])
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Load.date, ascending: true)]
+
+        do { return try mainContext.fetch(request) as? [T] ?? [] }
+        catch { throw error }
+    }
+}
+
+// MARK: - Expense entity functions
+extension CoreDataManager {
+    
+    func createEmptyExpense(in childContext: NSManagedObjectContext) -> Expense {
+        childContext.parent = mainContext
+        return Expense(context: childContext)
+    }
+    
+    func fetchExpenses(for period: Period) throws -> [Expense] {
+        do { return try fetchEntities(entityType: Expense.self, for: period) }
+        catch { throw error }
     }
 }
 
@@ -51,12 +78,7 @@ extension CoreDataManager {
     }
     
     func fetchLoads(for period: Period) throws -> [Load] {
-        let request = Load.fetchRequest()
-        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@",
-                            argumentArray: [period.interval.start, period.interval.end])
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \Load.date, ascending: true)]
-        
-        do { return try mainContext.fetch(request) }
-        catch let error { throw error }
+        do { return try fetchEntities(entityType: Load.self, for: period) }
+        catch { throw error }
     }
 }

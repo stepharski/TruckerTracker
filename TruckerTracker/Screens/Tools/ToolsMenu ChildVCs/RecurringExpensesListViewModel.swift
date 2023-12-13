@@ -21,13 +21,14 @@ class RecurringExpensesListViewModel {
     }
     
     func fetchRecurringExpenses() {
-        for _ in 0..<15 {
-            let expense = Expense.getRecurringMock()
-            guard expense.frequency != .oneTime else { return }
-            
-            let expenseVM = RecurringExpenseViewModel(expense: expense)
-            recurringExpenseViewModels.append(expenseVM)
-        }
+        //TODO: Fetch from Core Data
+//        for _ in 0..<15 {
+//            let expense = Expense.getRecurringMock()
+//            guard expense.frequency != .oneTime else { return }
+//            
+//            let expenseVM = RecurringExpenseViewModel(expense: expense)
+//            recurringExpenseViewModels.append(expenseVM)
+//        }
     }
 }
 

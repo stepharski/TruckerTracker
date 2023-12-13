@@ -7,29 +7,26 @@
 
 import UIKit
 
-enum FrequencyType: String, CaseIterable {
+enum FrequencyType: Int, CaseIterable {
     case oneTime
     case day, week, month, year
     
-    var index: Int? {
-        return FrequencyType.allCases.firstIndex(of: self)
-    }
+    var index: Int { return self.rawValue }
     
     var title: String {
         switch self {
-        case .oneTime:
-            return "One time"
-        default:
-            return "Every " + self.rawValue
+        case .oneTime:  return "One time"
+        case .day:     return "Every day"
+        case .week:    return "Every week"
+        case .month:   return "Every month"
+        case .year:    return "Every year"
         }
     }
     
     var image: UIImage? {
         switch self {
-        case .oneTime:
-            return SFSymbols.creditCard
-        default:
-            return SFSymbols.repeatArrows
+        case .oneTime:  return SFSymbols.creditCard
+        default:       return SFSymbols.repeatArrows
         }
     }
 }

@@ -16,10 +16,19 @@ protocol ExpenseTableViewControllerDelegate: AnyObject {
 // MARK: - ExpenseTableViewController
 class ExpenseTableViewController: UITableViewController {
     
-    var viewModel = ExpenseTableViewModel(Expense.template())
+    var viewModel: ExpenseTableViewModel
     weak var delegate: ExpenseTableViewControllerDelegate?
     
     // Life cycle
+    init(viewModel: ExpenseTableViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()

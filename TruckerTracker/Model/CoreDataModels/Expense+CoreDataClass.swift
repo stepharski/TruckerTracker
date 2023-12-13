@@ -1,33 +1,33 @@
 //
-//  Load+CoreDataClass.swift
+//  Expense+CoreDataClass.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 10/28/23.
+//  Created by Stepan Kukharskyi on 12/12/23.
 //
 //
 
 import Foundation
 import CoreData
 
-@objc(Load)
-public class Load: NSManagedObject {
-    
+@objc(Expense)
+public class Expense: NSManagedObject {
+
     // Custom init
     public init(context: NSManagedObjectContext,
                 id: UUID = UUID(),
                 date: Date = Date(),
+                name: String = "",
+                note: String = "",
                 amount: Double = 0,
-                distance: Int64 = 0,
-                startLocation: String = "",
-                endLocation: String = "") {
-        let entity = NSEntityDescription.entity(forEntityName: "Load", in: context)!
+                frequencyIndex: Int = 0) {
+        let entity = NSEntityDescription.entity(forEntityName: "Expense", in: context)!
         super.init(entity: entity, insertInto: context)
         self.id = id
         self.date = date
+        self.name = name
+        self.note = note
         self.amount = amount
-        self.distance = distance
-        self.startLocation = startLocation
-        self.endLocation = endLocation
+        self.frequency = FrequencyType(rawValue: frequencyIndex) ?? .oneTime
     }
     
     @objc

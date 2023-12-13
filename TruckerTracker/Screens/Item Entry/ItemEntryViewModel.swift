@@ -74,11 +74,19 @@ class ItemEntryViewModel {
     
     // Table View Models
     func getExpenseTableVM() -> ExpenseTableViewModel {
-        return expenseTableViewModel ?? ExpenseTableViewModel(Expense.template())
+        return expenseTableViewModel ?? {
+            let newExpenseTableVM = ExpenseTableViewModel(nil)
+            self.expenseTableViewModel = newExpenseTableVM
+            return newExpenseTableVM
+        }()
     }
     
     func getLoadTableVM() -> LoadTableViewModel {
-        return loadTableViewModel ?? LoadTableViewModel(nil)
+        return loadTableViewModel ?? {
+            let newLoadTableVM = LoadTableViewModel(nil)
+            self.loadTableViewModel = newLoadTableVM
+            return newLoadTableVM
+        }()
     }
     
     func getFuelTableVM() -> FuelTableViewModel {
@@ -196,11 +204,11 @@ extension ItemEntryViewModel {
     
     // Validate
     private func validateItem() -> ValidationError? {
-        guard amount > 0 else { return .nullAmount }
+        guard amount > 0 else { return .itemNullAmount }
         
         switch selectedSegmentType {
         case .expense:
-            return nil
+            return expenseTableViewModel?.validateSections() ?? nil
         case .load:
             return loadTableViewModel?.validateSections() ?? nil
         case .fuel:
@@ -214,13 +222,12 @@ extension ItemEntryViewModel {
         
         switch selectedSegmentType {
         case .expense:
-            //TODO: Add expense save
-            print("save expense")
+            result = expenseTableViewModel?.save(with: amount)
         case .load:
             result = loadTableViewModel?.save(with: amount)
         case .fuel:
-            //TODO: Add fuel save
-            print("save fuel")
+            //TODO: Add fuel save operation
+            print("Save Fuel")
         }
         
         handleOperationResult(result)
@@ -242,11 +249,11 @@ extension ItemEntryViewModel {
         
         switch initialItemType {
         case .expense:
-            print("delete expense")
+            result = expenseTableViewModel?.delete()
         case .load:
             result = loadTableViewModel?.delete()
         case .fuel:
-            print("delete fuel")
+            print("Delete Fuel")
         }
         
         handleOperationResult(result)

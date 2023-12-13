@@ -21,9 +21,9 @@ class ItemEntryViewController: UIViewController {
     @IBOutlet private var deleteButton: UIButton!
     @IBOutlet private var actionButtonsBottomConstraint: NSLayoutConstraint!
     
-    lazy private var expenseTableVC: ExpenseTableViewController = {
-        let tableController = ExpenseTableViewController()
-        tableController.viewModel = viewModel.getExpenseTableVM()
+    lazy private var expenseTableVC: ExpenseTableViewController = {        
+        let expenseTableVM = viewModel.getExpenseTableVM()
+        let tableController = ExpenseTableViewController(viewModel: expenseTableVM)
         tableController.delegate = self
         return tableController
     }()
@@ -285,7 +285,7 @@ class ItemEntryViewController: UIViewController {
     private func showFrequencyPickerVC(for frequency: FrequencyType) {
         let pickerItems = FrequencyType.allCases.map { $0.title }
         let pickerVC = OptionPickerViewController(pickerItems: pickerItems,
-                                               selectedRow: frequency.index ?? 0)
+                                                  selectedRow: frequency.index)
         pickerVC.delegate = self
         pickerVC.modalPresentationStyle = .pageSheet
         pickerVC.sheetPresentationController?.detents = [.medium()]

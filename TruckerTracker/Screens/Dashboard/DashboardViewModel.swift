@@ -92,7 +92,18 @@ class DashboardViewModel {
     
     // Data handlers
     func fetchData() {
+        fetchExpenses()
         fetchLoads()
+    }
+    
+    // Expenses
+    func fetchExpenses() {
+        do {
+            self.expenses = try dataManager.fetchExpenses(for: dashboardPeriod)
+            self.dataChanged.value = true
+        }
+        catch let error as NSError { print(error) }
+        //TODO: Throw error to Controller ???
     }
     
     // Loads
@@ -102,5 +113,6 @@ class DashboardViewModel {
             self.dataChanged.value = true
         }
         catch let error as NSError { print(error) }
+        //TODO: Throw error to Controller ???
     }
 }

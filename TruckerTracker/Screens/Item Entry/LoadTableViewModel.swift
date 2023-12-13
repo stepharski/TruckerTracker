@@ -45,7 +45,6 @@ class LoadTableViewModel {
         sections.append(LoadTableDateSection(self.load.date))
         sections.append(LoadTableStartLocationSection(self.load.startLocation))
         sections.append(LoadTableEndLocationSection(self.load.endLocation))
-//        sections.append(LoadTableAttachmentsSection(load!.attachments ?? []))
     }
     
     // Section Index
@@ -100,20 +99,11 @@ class LoadTableViewModel {
         }
     }
     
-    func updateAttachments(_ attachments: [String]) {
-//        if let attachmentsSection = sections.first(where: { $0.type == .attachments })
-//                                                    as? LoadTableAttachmentsSection {
-//            self.load.attachments = attachments
-//            attachmentsSection.attachments = attachments
-//            sectionToReload.value = .attachments
-//        }
-    }
-    
     // Validation
     func validateSections() -> ValidationError? {
-        guard self.load.distance > 0 else { return .nullDistance }
-        guard self.load.startLocation.hasContent() else { return .emptyStartLocation }
-        guard self.load.endLocation.hasContent() else { return .emptyEndLocation }
+        guard self.load.distance > 0 else { return .loadNullDistance }
+        guard self.load.startLocation.hasContent() else { return .loadNoStartLocation }
+        guard self.load.endLocation.hasContent() else { return .loadNoEndLocation }
         
         return nil
     }
@@ -130,6 +120,7 @@ class LoadTableViewModel {
         }
     }
     
+    // Delete
     func delete() -> Result<Void, Error> {
         do {
             try dataManager.delete(load)

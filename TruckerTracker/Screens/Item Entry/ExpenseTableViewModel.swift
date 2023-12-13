@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - Type
 enum ExpenseTableSectionType {
@@ -27,18 +28,22 @@ extension ExpenseTableSection {
 
 // MARK: - ExpenseTable ViewModel
 class ExpenseTableViewModel {
-    private var expense: Expense!
+    
+    private var expense: Expense
+    private let dataManager = CoreDataManager.shared
+    private let childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    
     var sections = [ExpenseTableSection]()
     var sectionToReload: Observable<ExpenseTableSectionType?> = Observable(nil)
     
     // Init
-    init(_ expense: Expense) {
-        self.expense = expense
-        sections.append(ExpenseTableNameSection(expense.name))
-        sections.append(ExpenseTableDateSection(expense.date))
-        sections.append(ExpenseTableFrequencySection(expense.frequency))
-        sections.append(ExpenseTableNoteSection(expense.note ?? ""))
-        sections.append(ExpenseTableAttachmentsSection(expense.attachments ?? []))
+    init(_ expense: Expense?) {
+        self.expense = expense ?? dataManager.createEmptyExpense(in: childContext)
+        
+        sections.append(ExpenseTableNameSection(self.expense.name))
+        sections.append(ExpenseTableDateSection(self.expense.date))
+        sections.append(ExpenseTableFrequencySection(self.expense.frequency))
+        sections.append(ExpenseTableNoteSection(self.expense.note))
     }
     
     // Section Index
@@ -78,12 +83,32 @@ class ExpenseTableViewModel {
         }
     }
     
-    func updateAttachments(_ attachments: [String]) {
-        if let attachmentsSection = sections.first(where: { $0.type == .attachments })
-                                                    as? ExpenseTableAttachmentsSection {
-            self.expense.attachments = attachments
-            attachmentsSection.attachments = attachments
-            sectionToReload.value = .attachments
+    // Validation
+    func validateSections() -> ValidationError? {
+        guard self.expense.name.hasContent() else { return .expenseNoName }
+        
+        return nil
+    }
+    
+    // Save
+    func save(with amount: Double) -> Result<Void, Error> {
+        do {
+            expense.amount = amount
+            try childContext.save()
+            try dataManager.saveChanges()
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
+    }
+    
+    // Delete
+    func delete() -> Result<Void, Error> {
+        do {
+            try dataManager.delete(expense)
+            return .success(())
+        } catch {
+            return .failure(error)
         }
     }
 }

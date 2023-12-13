@@ -112,8 +112,6 @@
 		5FA551E129A0901900D3596F /* ExpenseSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551DF29A0901900D3596F /* ExpenseSummaryCell.xib */; };
 		5FA551E529A0989F00D3596F /* FuelSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551E329A0989F00D3596F /* FuelSummaryCell.swift */; };
 		5FA551E629A0989F00D3596F /* FuelSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FA551E429A0989F00D3596F /* FuelSummaryCell.xib */; };
-		5FA551F029A1493C00D3596F /* Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551EF29A1493C00D3596F /* Load.swift */; };
-		5FA551F229A1500B00D3596F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F129A1500B00D3596F /* Expense.swift */; };
 		5FA551F929A1563800D3596F /* Fuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551F829A1563800D3596F /* Fuel.swift */; };
 		5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA551FC29A164D400D3596F /* Numeric+Ext.swift */; };
 		5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB723B629FDBD41003E6778 /* Array+Ext.swift */; };
@@ -127,6 +125,8 @@
 		5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F2928B920540037A4AD /* TRTabBar.swift */; };
 		5FB92F3728BC18ED0037A4AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3628BC18ED0037A4AD /* Constants.swift */; };
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
+		5FD7BB832B29528200062D32 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7BB812B29528200062D32 /* Expense+CoreDataClass.swift */; };
+		5FD7BB842B29528200062D32 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */; };
 		5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */; };
 		5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */; };
 		5FDF97DF29F7241E00DCD038 /* SettingOptionPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */; };
@@ -257,8 +257,6 @@
 		5FA551DF29A0901900D3596F /* ExpenseSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseSummaryCell.xib; sourceTree = "<group>"; };
 		5FA551E329A0989F00D3596F /* FuelSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelSummaryCell.swift; sourceTree = "<group>"; };
 		5FA551E429A0989F00D3596F /* FuelSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelSummaryCell.xib; sourceTree = "<group>"; };
-		5FA551EF29A1493C00D3596F /* Load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load.swift; sourceTree = "<group>"; };
-		5FA551F129A1500B00D3596F /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		5FA551F829A1563800D3596F /* Fuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuel.swift; sourceTree = "<group>"; };
 		5FA551FC29A164D400D3596F /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
 		5FB723B629FDBD41003E6778 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
@@ -272,6 +270,8 @@
 		5FB92F2928B920540037A4AD /* TRTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTabBar.swift; sourceTree = "<group>"; };
 		5FB92F3628BC18ED0037A4AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5FD7BB812B29528200062D32 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionPickerCell.swift; sourceTree = "<group>"; };
 		5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOptionPickerCell.xib; sourceTree = "<group>"; };
@@ -515,6 +515,8 @@
 		5F76279C2A92A0BB00B91CA9 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				5FD7BB812B29528200062D32 /* Expense+CoreDataClass.swift */,
+				5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */,
 				5F7627AB2AEDC08900B91CA9 /* Load+CoreDataClass.swift */,
 				5F7627AC2AEDC08900B91CA9 /* Load+CoreDataProperties.swift */,
 			);
@@ -665,8 +667,6 @@
 			isa = PBXGroup;
 			children = (
 				5FA551AE29805BC900D3596F /* Period.swift */,
-				5FA551EF29A1493C00D3596F /* Load.swift */,
-				5FA551F129A1500B00D3596F /* Expense.swift */,
 				5FA551F829A1563800D3596F /* Fuel.swift */,
 				5F1185AB2A12F627006B8F56 /* Attachment.swift */,
 			);
@@ -1106,6 +1106,7 @@
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
 				5FA551AF29805BC900D3596F /* Period.swift in Sources */,
 				5F37F3762A52052200B8BE48 /* FuelSummaryViewModel.swift in Sources */,
+				5FD7BB842B29528200062D32 /* Expense+CoreDataProperties.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
 				5F791015294CECF700A73600 /* FuelType.swift in Sources */,
 				5F37F3782A522C5B00B8BE48 /* ItemModelType.swift in Sources */,
@@ -1162,7 +1163,6 @@
 				5F11859F2A12801D006B8F56 /* AttachmentsListViewController.swift in Sources */,
 				5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */,
 				5FB723D02A017C30003E6778 /* AlertViewController.swift in Sources */,
-				5FA551F229A1500B00D3596F /* Expense.swift in Sources */,
 				5F39787129D2351C007C3B65 /* ItemAttachmentCell.swift in Sources */,
 				5FED3CCE2A1BC07A00103045 /* RecurringExpenseCell.swift in Sources */,
 				5FA551A6297B53DC00D3596F /* UserDefaultsManager.swift in Sources */,
@@ -1193,10 +1193,10 @@
 				5F16E3BB2A118FD900BA5DFD /* ToolsViewController.swift in Sources */,
 				5FB92F2A28B920540037A4AD /* TRTabBar.swift in Sources */,
 				5F16E3C12A1194E600BA5DFD /* ToolMenuViewController.swift in Sources */,
+				5FD7BB832B29528200062D32 /* Expense+CoreDataClass.swift in Sources */,
 				5FA551DB29A0797600D3596F /* LoadSummaryCell.swift in Sources */,
 				5FB723CE2A017BB5003E6778 /* DatePickerViewController.swift in Sources */,
 				5FA551C329870D7700D3596F /* CustomPeriodCell.swift in Sources */,
-				5FA551F029A1493C00D3596F /* Load.swift in Sources */,
 				5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */,
 				5FA551AC2980371600D3596F /* Calendar+Ext.swift in Sources */,
 				5FA551A2297B2B4900D3596F /* PeriodPickerCell.swift in Sources */,
