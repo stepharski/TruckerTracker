@@ -26,7 +26,7 @@ extension LoadTableSection {
     var rowCount: Int { return 1 }
 }
 
-// MARK: - LoadTable ViewModelQ
+// MARK: - LoadTable ViewModel
 class LoadTableViewModel {
     
     private var load: Load
@@ -46,13 +46,16 @@ class LoadTableViewModel {
         sections.append(LoadTableStartLocationSection(self.load.startLocation))
         sections.append(LoadTableEndLocationSection(self.load.endLocation))
     }
-    
+}
+
+// MARK: - Sections updates
+extension LoadTableViewModel {
     // Section Index
     func getIndex(of sectionType: LoadTableSectionType) -> Int? {
         return sections.firstIndex(where: { $0.type == sectionType })
     }
     
-    // Section Updates
+    // Updates
     func updateTripDistance(_ distance: Int) {
         if let tripDistanceSection = sections.first(where: { $0.type == .tripDistance })
                                                         as? LoadTableTripDistanceSection {
@@ -98,7 +101,10 @@ class LoadTableViewModel {
             endLocationSection.endLocation = location
         }
     }
-    
+}
+
+// MARK: - Core Data Operations
+extension LoadTableViewModel {
     // Validation
     func validateSections() -> ValidationError? {
         guard self.load.distance > 0 else { return .loadNullDistance }

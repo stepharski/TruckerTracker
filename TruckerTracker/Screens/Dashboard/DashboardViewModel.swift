@@ -94,6 +94,7 @@ class DashboardViewModel {
     func fetchData() {
         fetchExpenses()
         fetchLoads()
+        fetchFuelings()
     }
     
     // Expenses
@@ -110,6 +111,16 @@ class DashboardViewModel {
     func fetchLoads() {
         do {
             self.loads = try dataManager.fetchLoads(for: dashboardPeriod)
+            self.dataChanged.value = true
+        }
+        catch let error as NSError { print(error) }
+        //TODO: Throw error to Controller ???
+    }
+    
+    // Fuel
+    func fetchFuelings() {
+        do {
+            self.fuelings = try dataManager.fetchFuelings(for: dashboardPeriod)
             self.dataChanged.value = true
         }
         catch let error as NSError { print(error) }

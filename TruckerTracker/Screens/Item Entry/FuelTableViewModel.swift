@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - Type
 enum FuelTableSectionType {
@@ -29,25 +30,29 @@ extension FuelTableSection {
 // MARK: - FuelTable ViewModel
 class FuelTableViewModel {
     
-    private var fuel: Fuel!
-    var totalFuelAmount: Observable<Double> = Observable(0)
-
+    private var fuel: Fuel
+    private let dataManager = CoreDataManager.shared
+    private let childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    
     var sections = [FuelTableSection]()
     var sectionToReload: Observable<FuelTableSectionType?> = Observable(nil)
-    
+    var totalFuelAmount: Observable<Double> = Observable(0)
     
     // Init
-    init(_ fuel: Fuel) {
-        self.fuel = fuel
-        self.totalFuelAmount.value = fuel.totalAmount
-        sections.append(FuelTableLocationSection(fuel.location ?? ""))
-        sections.append(FuelTableDateSection(fuel.date))
-        sections.append(FuelTableDieselSection(fuel.dieselAmount))
-        sections.append(FuelTableDefSection(fuel.defAmount ?? 0))
-        sections.append(FuelTableReeferSection(fuel.reeferAmount ?? 0))
-        sections.append(FuelTableAttachmentsSection(fuel.attachments ?? []))
+    init(_ fuel: Fuel?) {
+        self.fuel = fuel ?? dataManager.createEmptyFuel(in: childContext)
+        self.totalFuelAmount.value = self.fuel.totalAmount
+        
+        sections.append(FuelTableLocationSection(self.fuel.location))
+        sections.append(FuelTableDateSection(self.fuel.date))
+        sections.append(FuelTableDieselSection(self.fuel.dieselAmount))
+        sections.append(FuelTableDefSection(self.fuel.defAmount))
+        sections.append(FuelTableReeferSection(self.fuel.reeferAmount))
     }
-    
+}
+
+// MARK: - Sections updates
+extension FuelTableViewModel {
     // Section Index
     func getIndex(of sectionType: FuelTableSectionType) -> Int? {
         return sections.firstIndex(where: { $0.type == sectionType })
@@ -115,13 +120,26 @@ class FuelTableViewModel {
             totalFuelAmount.value = fuel.totalAmount
         }
     }
+}
+
+// MARK: - Core Data Operations
+extension FuelTableViewModel {
+    func save() -> Result<Void, Error> {
+        do {
+            try childContext.save()
+            try dataManager.saveChanges()
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
+    }
     
-    func updateAttachments(_ attachments: [String]) {
-        if let attachmentsSection = sections.first(where: { $0.type == .attachments })
-                                                    as? FuelTableAttachmentsSection {
-            self.fuel.attachments = attachments
-            attachmentsSection.attachments = attachments
-            sectionToReload.value = .attachments
+    func delete() -> Result<Void, Error> {
+        do {
+            try dataManager.delete(fuel)
+            return .success(())
+        } catch {
+            return .failure(error)
         }
     }
 }

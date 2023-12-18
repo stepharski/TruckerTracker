@@ -82,3 +82,17 @@ extension CoreDataManager {
         catch { throw error }
     }
 }
+
+// MARK: - Fuel entity functions
+extension CoreDataManager {
+    
+    func createEmptyFuel(in childContext: NSManagedObjectContext) -> Fuel {
+        childContext.parent = mainContext
+        return Fuel(context: childContext)
+    }
+    
+    func fetchFuelings(for period: Period) throws -> [Fuel] {
+        do { return try fetchEntities(entityType: Fuel.self, for: period) }
+        catch { throw error }
+    }
+}

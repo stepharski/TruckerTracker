@@ -36,8 +36,8 @@ class ItemEntryViewController: UIViewController {
     }()
     
     lazy private var fuelTableVC: FuelTableViewController = {
-        let tableController = FuelTableViewController()
-        tableController.viewModel = viewModel.getFuelTableVM()
+        let fuelTableVM = viewModel.getFuelTableVM()
+        let tableController = FuelTableViewController(viewModel: fuelTableVM)
         tableController.delegate = self
         return tableController
     }()
@@ -131,7 +131,7 @@ class ItemEntryViewController: UIViewController {
                 self.dismissVC()
             case .failure(let error):
                 if let error = error as? ValidationError {
-                    self.showAlert(title: "Validation Error", message: error.rawValue)
+                    self.showAlert(title: "Missing Info", message: error.rawValue)
                 } else {
                     self.showAlert(title: "Data Operation Error", message: error.localizedDescription)
                 }

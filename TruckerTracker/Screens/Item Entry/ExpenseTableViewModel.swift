@@ -45,13 +45,16 @@ class ExpenseTableViewModel {
         sections.append(ExpenseTableFrequencySection(self.expense.frequency))
         sections.append(ExpenseTableNoteSection(self.expense.note))
     }
-    
+}
+
+// MARK: - Sections updates
+extension ExpenseTableViewModel {
     // Section Index
     func getIndex(of sectionType: ExpenseTableSectionType) -> Int? {
         return sections.firstIndex(where: { $0.type == sectionType })
     }
     
-    // Section Updates
+    // Updates
     func updateName(_ name: String) {
         if let nameSection = sections.first(where: { $0.type == .name }) as? ExpenseTableNameSection {
             self.expense.name = name
@@ -82,7 +85,10 @@ class ExpenseTableViewModel {
             noteSection.note = note
         }
     }
-    
+}
+
+// MARK: - Core Data Operations
+extension ExpenseTableViewModel {
     // Validation
     func validateSections() -> ValidationError? {
         guard self.expense.name.hasContent() else { return .expenseNoName }

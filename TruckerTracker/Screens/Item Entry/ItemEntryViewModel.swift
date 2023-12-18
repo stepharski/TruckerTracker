@@ -90,7 +90,11 @@ class ItemEntryViewModel {
     }
     
     func getFuelTableVM() -> FuelTableViewModel {
-        return fuelTableViewModel ?? FuelTableViewModel(Fuel.template())
+        return fuelTableViewModel ?? {
+            let newFuelTableVM = FuelTableViewModel(nil)
+            self.fuelTableViewModel = newFuelTableVM
+            return newFuelTableVM
+        }()
     }
     
     // Segments
@@ -226,8 +230,7 @@ extension ItemEntryViewModel {
         case .load:
             result = loadTableViewModel?.save(with: amount)
         case .fuel:
-            //TODO: Add fuel save operation
-            print("Save Fuel")
+            result = fuelTableViewModel?.save()
         }
         
         handleOperationResult(result)
@@ -253,7 +256,7 @@ extension ItemEntryViewModel {
         case .load:
             result = loadTableViewModel?.delete()
         case .fuel:
-            print("Delete Fuel")
+            result = fuelTableViewModel?.delete()
         }
         
         handleOperationResult(result)
@@ -268,10 +271,10 @@ extension ItemEntryViewModel {
         
         switch result {
         case .success():
-            print("operation save success")
+            print("Saving Operation Success")
             dataOperationResult.value = .success(())
         case .failure(let error):
-            print("operation save failure")
+            print("Saving Operation Failure")
             dataOperationResult.value = .failure(error)
         }
     }
