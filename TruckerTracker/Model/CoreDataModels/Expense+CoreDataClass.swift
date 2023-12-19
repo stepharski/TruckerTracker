@@ -23,7 +23,7 @@ public class Expense: NSManagedObject {
         let entity = NSEntityDescription.entity(forEntityName: "Expense", in: context)!
         super.init(entity: entity, insertInto: context)
         self.id = id
-        self.date = date
+        self.date = date.local()
         self.name = name
         self.note = note
         self.amount = amount

@@ -23,7 +23,7 @@ public class Load: NSManagedObject {
         let entity = NSEntityDescription.entity(forEntityName: "Load", in: context)!
         super.init(entity: entity, insertInto: context)
         self.id = id
-        self.date = date
+        self.date = date.local()
         self.amount = amount
         self.distance = distance
         self.startLocation = startLocation

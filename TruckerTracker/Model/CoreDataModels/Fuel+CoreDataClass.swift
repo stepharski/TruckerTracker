@@ -23,7 +23,7 @@ public class Fuel: NSManagedObject {
         let entity = NSEntityDescription.entity(forEntityName: "Fuel", in: context)!
         super.init(entity: entity, insertInto: context)
         self.id = id
-        self.date = date
+        self.date = date.local()
         self.location = location
         self.defAmount = defAmount
         self.dieselAmount = dieselAmount

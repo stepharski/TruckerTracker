@@ -55,7 +55,7 @@ extension Date {
         return calendar.dateInterval(of: component, for: self) ?? DateInterval()
     }
     
-    
+    // Components
     func yearNumber() -> Int {
         let calendar = Calendar.userCurrent()
         return calendar.component(.year, from: self)
@@ -74,5 +74,14 @@ extension Date {
     func dayNumberInYear() -> Int {
         let calendar = Calendar.userCurrent()
         return calendar.ordinality(of: .day, in: .year, for: self) ?? 0
+    }
+    
+    // Local date
+    func local() -> Date {
+        let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: self))
+        let localDate = Calendar.current.date(byAdding: .second,
+                                              value: Int(timeZoneOffset),
+                                              to: self)
+        return localDate ?? self
     }
 }
