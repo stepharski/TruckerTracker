@@ -17,10 +17,19 @@ extension Calendar {
         return currentCalendar
     }
     
+    static func userCurrentUTC() -> Calendar {
+        var currentCalendar = userCurrent()
+        if let utc = TimeZone(secondsFromGMT: 0) { currentCalendar.timeZone = utc }
+        
+        return currentCalendar
+    }
+    
     func isLeapYear(_ year: Int) -> Bool {
         let isLeapYear = ((year % 4 == 0) && (year % 100 != 0)
                                           || (year % 400 == 0))
         
         return isLeapYear
     }
+    
+    
 }

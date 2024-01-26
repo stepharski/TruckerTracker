@@ -25,7 +25,7 @@ class DatePickerViewController: UIViewController {
     weak var delegate: DatePickerDelegeate?
     
     var pickerDate: Date? {
-        didSet { datePicker.date = pickerDate ?? Date().local() }
+        didSet { datePicker.date = pickerDate ?? .now.local }
     }
     
     

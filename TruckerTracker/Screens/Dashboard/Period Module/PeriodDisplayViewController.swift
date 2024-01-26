@@ -116,13 +116,35 @@ class PeriodDisplayViewController: UIViewController {
     }
     
     // Period Update
+    // Next
     @objc private func nextButtonTapped() {
-        period.interval = period.interval.nextInterval()
+        switch period.type {
+        case .year:
+            period.interval = period.interval.nextYearInterval()
+            
+        case .month:
+            period.interval = period.interval.nextMonthInterval()
+            
+        case .week, .customPeriod, .sinceYouStarted:
+            period.interval = period.interval.nextInterval()
+        }
+        
         delegate?.didUpdatePeriod(with: period)
     }
     
+    // Previous
     @objc private func previousButtonTapped() {
-        period.interval = period.interval.previousInterval()
+        switch period.type {
+        case .year:
+            period.interval = period.interval.previousYearInterval()
+            
+        case .month:
+            period.interval = period.interval.previousMonthInterval()
+            
+        case .week, .customPeriod, .sinceYouStarted:
+            period.interval = period.interval.previousInterval()
+        }
+        
         delegate?.didUpdatePeriod(with: period)
     }
 }

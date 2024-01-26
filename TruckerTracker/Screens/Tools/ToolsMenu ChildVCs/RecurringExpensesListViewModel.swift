@@ -56,9 +56,9 @@ class RecurringExpenseViewModel {
         if frequency == .day {
             return frequency.title
         } else if frequency == .week {
-            return "\(frequency.title), \(expense.date.weekdayName())"
+            return "\(frequency.title), \(expense.date.weekdayName)"
         } else {
-            return "\(frequency.title), Day \(expense.date.dayNumberInYear())"
+            return "\(frequency.title), Day \(expense.date.dayNumberInYear)"
         }
     }
     

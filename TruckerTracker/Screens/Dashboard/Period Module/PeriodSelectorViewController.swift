@@ -213,8 +213,8 @@ class PeriodSelectorViewController: UIViewController {
         }
         
         // number of years
-        let userSinceYear = UDValues.userSinceYear
-        let selectedYear = selectedPeriod.interval.start.yearNumber()
+        let userSinceYear = UDValues.userSinceDate.yearNumber
+        let selectedYear = selectedPeriod.interval.start.yearNumber
         let pickerMiddleYear = selectedYear < userSinceYear ? selectedYear
                                                             : userSinceYear
         ((pickerMiddleYear - 5)...(pickerMiddleYear + 5)).forEach {
@@ -233,7 +233,7 @@ class PeriodSelectorViewController: UIViewController {
         var selectedIndexes = [Int]()
         
         let calendar = Calendar.userCurrent()
-        let date = selectedPeriod.interval.middleDate()
+        let date = selectedPeriod.interval.middleDate
 
         switch selectedPeriod.type {
         case .week:
@@ -272,11 +272,11 @@ class PeriodSelectorViewController: UIViewController {
         if component == 0 {
             switch selectedPeriod.type {
             case .week:
-                let year = selectedPeriod.interval.middleDate().yearNumber()
+                let year = selectedPeriod.interval.middleDate.yearNumber
                 dateComponents = DateComponents(weekOfYear: row + 1, yearForWeekOfYear: year)
                 
             case .month:
-                dateComponents = DateComponents(year: selectedPeriod.interval.start.yearNumber(), month: row + 1)
+                dateComponents = DateComponents(year: selectedPeriod.interval.start.yearNumber, month: row + 1)
                 
             case .year:
                 let year = pickerComponents[component][row]
@@ -401,16 +401,12 @@ extension PeriodSelectorViewController: UITableViewDelegate {
             var newInterval = DateInterval()
             
             switch selectedPeriodType {
-            case .week, .month, .year:
+            case .week, .month, .year, .customPeriod:
                 newInterval = Date().getDateInterval(in: selectedPeriodType)
                 
-            case .customPeriod:
-                newInterval = Date().getDateInterval(in: selectedPeriod.type)
-                
             case .sinceYouStarted:
-                let dateComponents = DateComponents(calendar: .userCurrent(), year: UDValues.userSinceYear)
-                let startDate = Calendar.userCurrent().date(from: dateComponents) ?? Date()
-                newInterval = DateInterval(start: startDate, end: Date())
+                newInterval = DateInterval(start: UDManager.shared.userSinceDate,
+                                           end: .now.local.endOfDay)
             }
             
             selectedPeriod = Period(type: selectedPeriodType, interval: newInterval)

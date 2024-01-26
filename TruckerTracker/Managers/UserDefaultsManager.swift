@@ -9,6 +9,8 @@ import UIKit
 
 // MARK: - UserDefaults Keys
 struct UDKeys {
+    static let isFirstLaunch = "isFirstLaunch"
+    static let userSinceDate = "userSinceDate"
     static let dashboardPeriod = "dashboardPeriod"
     static let distanceUnit = "distanceUnit"
     static let currency = "currency"
@@ -18,9 +20,9 @@ struct UDKeys {
 
 // Default Values
 struct UDValues {
-    static let userSinceYear: Int = 2022
+    static let isFirstLaunch: Bool = true
+    static let userSinceDate: Date = .now.local.startOfDay
     static let periodType: PeriodType = .week
-    
     static let distanceUnit: DistanceUnit = .miles
     static let currency: Currency = .usd
     static let weekStartDay: Weekday = .monday
@@ -33,6 +35,20 @@ class UDManager {
     static let shared = UDManager()
     let defaults = UserDefaults.standard
 
+    
+    // First Launch
+    var isFirstLaunch: Bool {
+        get { return defaults.codableValue(forKey: UDKeys.isFirstLaunch) ?? UDValues.isFirstLaunch }
+        
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.isFirstLaunch) }
+    }
+    
+    // User since date
+    var userSinceDate: Date {
+        get { return defaults.codableValue(forKey: UDKeys.userSinceDate) ?? .now }
+        
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.userSinceDate) }
+    }
     
     // Dashboard Period
     var dashboardPeriod: Period {

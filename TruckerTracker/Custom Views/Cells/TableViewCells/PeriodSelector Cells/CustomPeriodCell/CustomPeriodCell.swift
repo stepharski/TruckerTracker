@@ -85,6 +85,7 @@ class CustomPeriodCell: UITableViewCell {
         [startDatePicker, endDatePicker].forEach {
             addSubview($0)
             $0.datePickerMode = .date
+            $0.timeZone = TimeZone(secondsFromGMT: 0)
             $0.preferredDatePickerStyle = .compact
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)

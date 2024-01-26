@@ -258,7 +258,7 @@ class DashboardViewController: UIViewController {
             guard viewModel.dashboardPeriod.type == .week else { return }
             
             // get current middle date
-            let middleDate = viewModel.dashboardPeriod.interval.middleDate()
+            let middleDate = viewModel.dashboardPeriod.interval.middleDate
             // create new interval based on Calendar.firstWeekday
             let newInterval = middleDate.getDateInterval(in: .week)
             viewModel.dashboardPeriod = Period(type: .week, interval: newInterval)

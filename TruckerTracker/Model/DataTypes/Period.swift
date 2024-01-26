@@ -24,13 +24,15 @@ struct Period: Codable {
     func convertToString() -> String {
         switch type {
         case .year:
-            return interval.middleDate().convertToYearFormat()
+            return interval.middleDate.convertToYearFormat()
             
         case .month:
-            return interval.middleDate().converToMonthYearFormat()
+            return interval.middleDate.converToMonthYearFormat()
             
         case .week, .sinceYouStarted, .customPeriod:
-            return "\(interval.start.convertToMonthDayYearFormat()) － \(interval.end.convertToMonthDayYearFormat())"
+            let start = interval.start.convertToMonthDayYearFormat()
+            let end = interval.end.convertToMonthDayYearFormat()
+            return "\(start) － \(end)"
         }
     }
 }

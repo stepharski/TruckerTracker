@@ -14,7 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if UDManager.shared.isFirstLaunch {
+            UDManager.shared.isFirstLaunch = false
+            UDManager.shared.userSinceDate = .now.local.startOfDay
+        }
+        
         return true
     }
 

@@ -65,7 +65,7 @@ class ItemEntryViewModel {
         case .none:
             amount = 0
             isNewItem = true
-            itemDate = Date().local()
+            itemDate = .now.local
             initialItemType = .load
             selectSegment(ItemType.load.index)
             loadTableViewModel = LoadTableViewModel(nil)
