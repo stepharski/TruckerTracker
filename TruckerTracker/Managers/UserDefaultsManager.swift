@@ -11,7 +11,8 @@ import UIKit
 struct UDKeys {
     static let isFirstLaunch = "isFirstLaunch"
     static let userSinceDate = "userSinceDate"
-    static let dashboardPeriod = "dashboardPeriod"
+    static let dashboardPeriodType = "dashboardPeriodType"
+    
     static let distanceUnit = "distanceUnit"
     static let currency = "currency"
     static let weekStartDay = "weekStartDay"
@@ -22,7 +23,8 @@ struct UDKeys {
 struct UDValues {
     static let isFirstLaunch: Bool = true
     static let userSinceDate: Date = .now.local.startOfDay
-    static let periodType: PeriodType = .week
+    static let dashboardPeriodType: PeriodType = .week
+    
     static let distanceUnit: DistanceUnit = .miles
     static let currency: Currency = .usd
     static let weekStartDay: Weekday = .monday
@@ -50,11 +52,11 @@ class UDManager {
         set { defaults.setCodable(value: newValue, forKey: UDKeys.userSinceDate) }
     }
     
-    // Dashboard Period
-    var dashboardPeriod: Period {
-        get { return defaults.codableValue(forKey: UDKeys.dashboardPeriod) ?? Period.getDefault() }
+    // Dashboard Period Type
+    var dashboardPeriodType: PeriodType {
+        get { return defaults.codableValue(forKey: UDKeys.dashboardPeriodType) ?? UDValues.dashboardPeriodType }
         
-        set { defaults.setCodable(value: newValue, forKey: UDKeys.dashboardPeriod) }
+        set { defaults.setCodable(value: newValue, forKey: UDKeys.dashboardPeriodType) }
     }
     
     // Distance unit
@@ -106,7 +108,7 @@ class UDManager {
     
     // Reset
     func resetAll() {
-        dashboardPeriod = Period.getDefault()
+        dashboardPeriodType = UDValues.dashboardPeriodType
         distanceUnit = UDValues.distanceUnit
         currency = UDValues.currency
         weekStartDay = UDValues.weekStartDay

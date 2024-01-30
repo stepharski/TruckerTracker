@@ -38,8 +38,7 @@ class DashboardViewModel {
     }
     
     var dashboardPeriod: Period {
-        get { return UDManager.shared.dashboardPeriod }
-        set { UDManager.shared.dashboardPeriod = newValue }
+        didSet { UDManager.shared.dashboardPeriodType = dashboardPeriod.type }
     }
     
     private var expenses: [Expense] = []
@@ -60,6 +59,12 @@ class DashboardViewModel {
     
     var emptyTableMessage: String {
         return "Please, tap the '+' button to add a new \(selectedSegmentType.title)."
+    }
+    
+    
+    // Init
+    init() {
+        self.dashboardPeriod = Period.getCurrent()
     }
     
     // Table Models

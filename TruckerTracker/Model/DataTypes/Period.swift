@@ -14,10 +14,18 @@ struct Period: Codable {
     
     // Default
     static func getDefault() -> Period {
-        let defaultType = UDValues.periodType
+        let defaultType = UDValues.dashboardPeriodType
         let defaultInterval = Date().getDateInterval(in: defaultType)
         
         return Period(type: defaultType, interval: defaultInterval)
+    }
+    
+    // Current
+    static func getCurrent() -> Period {
+        let currentType = UDManager.shared.dashboardPeriodType
+        let currentInterval = Date().getDateInterval(in: currentType)
+        
+        return Period(type: currentType, interval: currentInterval)
     }
     
     // String
