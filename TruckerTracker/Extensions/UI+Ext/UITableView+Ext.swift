@@ -15,6 +15,14 @@ extension UITableView {
         self.backgroundView = emptyView
     }
     
+    func setEmptyBackground(for type: ItemType) {
+        guard let mainImage = type.image else { return }
+        
+        let emptyDashView = EmptyDashListView(mainImage: mainImage)
+        emptyDashView.frame = self.frame
+        self.backgroundView = emptyDashView
+    }
+    
     func restore() {
         self.backgroundView = nil
     }

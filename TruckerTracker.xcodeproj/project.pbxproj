@@ -80,6 +80,7 @@
 		5F7627AE2AEDC08900B91CA9 /* Load+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627AC2AEDC08900B91CA9 /* Load+CoreDataProperties.swift */; };
 		5F7627B02B0AF24D00B91CA9 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627AF2B0AF24D00B91CA9 /* OperationError.swift */; };
 		5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791012294CEC2900A73600 /* FrequencyType.swift */; };
+		5F795B732B6B21B90007D50D /* EmptyDashListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B722B6B21B90007D50D /* EmptyDashListView.swift */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
 		5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */; };
 		5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F628B7F9FA00441353 /* SceneDelegate.swift */; };
@@ -224,6 +225,7 @@
 		5F7627AC2AEDC08900B91CA9 /* Load+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5F7627AF2B0AF24D00B91CA9 /* OperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationError.swift; sourceTree = "<group>"; };
 		5F791012294CEC2900A73600 /* FrequencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyType.swift; sourceTree = "<group>"; };
+		5F795B722B6B21B90007D50D /* EmptyDashListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDashListView.swift; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		5F8BE2F128B7F9FA00441353 /* TruckerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruckerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -507,8 +509,9 @@
 		5F39788829D4BEC2007C3B65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */,
 				5F16E3B82A0C69B500BA5DFD /* CheckmarkView.swift */,
+				5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */,
+				5F795B722B6B21B90007D50D /* EmptyDashListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1135,6 +1138,7 @@
 				5FD7BB872B2A2A2800062D32 /* Fuel+CoreDataClass.swift in Sources */,
 				5F1185972A11A040006B8F56 /* DriverTypeCell.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
+				5F795B732B6B21B90007D50D /* EmptyDashListView.swift in Sources */,
 				5F39788529D481E6007C3B65 /* LocationManager.swift in Sources */,
 				5FA551E029A0901900D3596F /* ExpenseSummaryCell.swift in Sources */,
 				5FEC7BB529B792080091F8FB /* LoadTableViewModel.swift in Sources */,

@@ -302,7 +302,7 @@ extension DashboardViewController: UITableViewDataSource {
     // Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.numberOfItems == 0 {
-            tableView.setEmptyView(title: viewModel.emptyTableTitle, message: viewModel.emptyTableMessage)
+            tableView.setEmptyBackground(for: viewModel.selectedSegmentType)
         } else {
             tableView.restore()
         }

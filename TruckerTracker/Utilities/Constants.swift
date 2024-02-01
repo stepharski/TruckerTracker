@@ -40,6 +40,7 @@ struct SFSymbols {
     
     // TableView
     static let plusRectangleFill = UIImage(systemName: "plus.rectangle.fill")
+    static let questionmarkBubble = UIImage(systemName: "questionmark.bubble.fill")
     static let docTextMagGlass = UIImage(systemName: "doc.text.magnifyingglass")
     
     // TextField
@@ -47,10 +48,14 @@ struct SFSymbols {
     
     // Expense
     static let scribble = UIImage(systemName: "scribble")
+    static let walletPass = UIImage(systemName: "wallet.pass")
     
     // Frequency
     static let repeatArrows = UIImage(systemName: "repeat")
     static let creditCard = UIImage(systemName: "creditcard")
+    
+    // Load
+    static let shippingBox = UIImage(systemName: "shippingbox")
     
     // Miles
     static let roadLanes = UIImage(systemName: "road.lanes")

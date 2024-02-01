@@ -5,7 +5,7 @@
 //  Created by Stepan Kukharskyi on 2/9/23.
 //
 
-import Foundation
+import UIKit
 
 enum ItemType: String, CaseIterable {
     case expense, load, fuel
@@ -39,6 +39,17 @@ enum ItemType: String, CaseIterable {
             return "trip"
         case .fuel:
             return "transaction"
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .expense:
+            return SFSymbols.walletPass
+        case .load:
+            return SFSymbols.shippingBox
+        case .fuel:
+            return SFSymbols.fuelPumpFill
         }
     }
 }
