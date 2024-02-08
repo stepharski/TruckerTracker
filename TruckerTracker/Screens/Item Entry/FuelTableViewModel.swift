@@ -40,7 +40,7 @@ class FuelTableViewModel {
     
     // Init
     init(_ fuel: Fuel?) {
-        self.fuel = fuel ?? dataManager.createEmptyFuel(in: childContext)
+        self.fuel = fuel ?? dataManager.createEmptyFuel(with: childContext)
         self.totalFuelAmount.value = self.fuel.totalAmount
         
         sections.append(FuelTableLocationSection(self.fuel.location))
@@ -92,6 +92,8 @@ extension FuelTableViewModel {
         
         updateReeferAmount(0)
         sectionToReload.value = .reefer
+        
+        self.fuel.totalAmount = amount
     }
     
     func updateDieselAmount(_ amount: Double) {
@@ -99,7 +101,7 @@ extension FuelTableViewModel {
                                                 as? FuelTableDieselSection {
             self.fuel.dieselAmount = amount
             dieselSection.amount = amount
-            totalFuelAmount.value = fuel.totalAmount
+            updateTotalAmount()
         }
     }
     
@@ -108,7 +110,7 @@ extension FuelTableViewModel {
                                                 as? FuelTableDefSection {
             self.fuel.defAmount = amount
             defSection.amount = amount
-            totalFuelAmount.value = fuel.totalAmount
+            updateTotalAmount()
         }
     }
     
@@ -117,8 +119,13 @@ extension FuelTableViewModel {
                                                 as? FuelTableReeferSection {
             self.fuel.reeferAmount = amount
             reeferSection.amount = amount
-            totalFuelAmount.value = fuel.totalAmount
+            updateTotalAmount()
         }
+    }
+    
+    private func updateTotalAmount() {
+        self.fuel.totalAmount = fuel.dieselAmount + fuel.defAmount + fuel.reeferAmount
+        totalFuelAmount.value = fuel.totalAmount
     }
 }
 

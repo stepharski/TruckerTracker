@@ -39,7 +39,7 @@ class LoadTableViewModel {
     
     // Init
     init(_ load: Load?) {
-        self.load = load ?? dataManager.createEmptyLoad(in: childContext)
+        self.load = load ?? dataManager.createEmptyLoad(with: childContext)
         
         sections.append(LoadTableTripDistanceSection(Int(self.load.distance)))
         sections.append(LoadTableDateSection(self.load.date))

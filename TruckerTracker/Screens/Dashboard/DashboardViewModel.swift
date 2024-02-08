@@ -12,8 +12,15 @@ class DashboardViewModel {
     private let dataManager = CoreDataManager.shared
     var dataChanged: Observable<Bool> = Observable(false)
     
-    //TODO: Calculate total income
-    var totalIncome: Int { return 0 }
+    var totalIncome: Int {
+        // TODO: Get real earning percent from settings
+        let earningPercent = 0.9
+        return Int(loadsAmount * earningPercent - expensesAmount - fuelingsAmount)
+    }
+    
+    private var expensesAmount: Double = 0
+    private var loadsAmount: Double = 0
+    private var fuelingsAmount: Double = 0
     
     var segments: [ItemType] = ItemType.allCases
     var selectedSegment: Int = ItemType.load.index
@@ -21,9 +28,6 @@ class DashboardViewModel {
     
     var segmentTitles: [String] {
         let currency = UDManager.shared.currency.symbol
-        let expensesAmount = expenses.reduce(0, { $0 + $1.amount })
-        let loadsAmount = loads.reduce(0, { $0 + $1.amount })
-        let fuelingsAmount = fuelings.reduce(0, { $0 + $1.totalAmount })
         return ["\(currency)\(expensesAmount.formattedWithSeparator())",
                 "\(currency)\(loadsAmount.formattedWithSeparator())",
                 "\(currency)\(fuelingsAmount.formattedWithSeparator())"]
@@ -100,12 +104,23 @@ class DashboardViewModel {
         fetchExpenses()
         fetchLoads()
         fetchFuelings()
+        fetchItemsSum()
+    }
+    
+    // Sum
+    private func fetchItemsSum() {
+        do { 
+            expensesAmount = try dataManager.fetchExpensesSumAmount(in: dashboardPeriod)
+            loadsAmount = try dataManager.fetchLoadsSumAmount(in: dashboardPeriod)
+            fuelingsAmount = try dataManager.fetchFuelingsSumAmount(in: dashboardPeriod)
+        } 
+        catch let error as NSError { print(error) }
     }
     
     // Expenses
     func fetchExpenses() {
         do {
-            self.expenses = try dataManager.fetchExpenses(for: dashboardPeriod)
+            self.expenses = try dataManager.fetchExpenses(in: dashboardPeriod)
             self.dataChanged.value = true
         }
         catch let error as NSError { print(error) }
@@ -115,7 +130,7 @@ class DashboardViewModel {
     // Loads
     func fetchLoads() {
         do {
-            self.loads = try dataManager.fetchLoads(for: dashboardPeriod)
+            self.loads = try dataManager.fetchLoads(in: dashboardPeriod)
             self.dataChanged.value = true
         }
         catch let error as NSError { print(error) }
@@ -125,7 +140,7 @@ class DashboardViewModel {
     // Fuel
     func fetchFuelings() {
         do {
-            self.fuelings = try dataManager.fetchFuelings(for: dashboardPeriod)
+            self.fuelings = try dataManager.fetchFuelings(in: dashboardPeriod)
             self.dataChanged.value = true
         }
         catch let error as NSError { print(error) }

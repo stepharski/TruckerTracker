@@ -2,7 +2,7 @@
 //  Fuel+CoreDataClass.swift
 //  TruckerTracker
 //
-//  Created by Stepan Kukharskyi on 12/13/23.
+//  Created by Stepan Kukharskyi on 2/7/24.
 //
 //
 
@@ -19,7 +19,8 @@ public class Fuel: NSManagedObject {
                 location: String = "",
                 defAmount: Double = 0,
                 dieselAmount: Double = 0,
-                reeferAmount: Double = 0) {
+                reeferAmount: Double = 0,
+                totalAmount: Double = 0) {
         let entity = NSEntityDescription.entity(forEntityName: "Fuel", in: context)!
         super.init(entity: entity, insertInto: context)
         self.id = id
@@ -28,6 +29,7 @@ public class Fuel: NSManagedObject {
         self.defAmount = defAmount
         self.dieselAmount = dieselAmount
         self.reeferAmount = reeferAmount
+        self.totalAmount = totalAmount
     }
     
     @objc

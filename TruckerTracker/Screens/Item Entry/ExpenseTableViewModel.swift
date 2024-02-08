@@ -38,7 +38,7 @@ class ExpenseTableViewModel {
     
     // Init
     init(_ expense: Expense?) {
-        self.expense = expense ?? dataManager.createEmptyExpense(in: childContext)
+        self.expense = expense ?? dataManager.createEmptyExpense(with: childContext)
         
         sections.append(ExpenseTableNameSection(self.expense.name))
         sections.append(ExpenseTableDateSection(self.expense.date))

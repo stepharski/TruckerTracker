@@ -81,6 +81,8 @@
 		5F7627B02B0AF24D00B91CA9 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627AF2B0AF24D00B91CA9 /* OperationError.swift */; };
 		5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791012294CEC2900A73600 /* FrequencyType.swift */; };
 		5F795B732B6B21B90007D50D /* EmptyDashListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B722B6B21B90007D50D /* EmptyDashListView.swift */; };
+		5F795B762B7435420007D50D /* Fuel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */; };
+		5F795B772B7435420007D50D /* Fuel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
 		5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */; };
 		5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F628B7F9FA00441353 /* SceneDelegate.swift */; };
@@ -127,8 +129,6 @@
 		5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */; };
 		5FD7BB832B29528200062D32 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7BB812B29528200062D32 /* Expense+CoreDataClass.swift */; };
 		5FD7BB842B29528200062D32 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */; };
-		5FD7BB872B2A2A2800062D32 /* Fuel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7BB852B2A2A2800062D32 /* Fuel+CoreDataClass.swift */; };
-		5FD7BB882B2A2A2800062D32 /* Fuel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7BB862B2A2A2800062D32 /* Fuel+CoreDataProperties.swift */; };
 		5FDF97CB29E4D5EC00DCD038 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */; };
 		5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */; };
 		5FDF97DF29F7241E00DCD038 /* SettingOptionPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */; };
@@ -226,6 +226,8 @@
 		5F7627AF2B0AF24D00B91CA9 /* OperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationError.swift; sourceTree = "<group>"; };
 		5F791012294CEC2900A73600 /* FrequencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyType.swift; sourceTree = "<group>"; };
 		5F795B722B6B21B90007D50D /* EmptyDashListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDashListView.swift; sourceTree = "<group>"; };
+		5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		5F8BE2F128B7F9FA00441353 /* TruckerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruckerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -274,8 +276,6 @@
 		5FB92F3928BD7CCB0037A4AD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5FD7BB812B29528200062D32 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5FD7BB852B2A2A2800062D32 /* Fuel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5FD7BB862B2A2A2800062D32 /* Fuel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5FDF97CA29E4D5EC00DCD038 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		5FDF97DC29F7241E00DCD038 /* SettingOptionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionPickerCell.swift; sourceTree = "<group>"; };
 		5FDF97DD29F7241E00DCD038 /* SettingOptionPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOptionPickerCell.xib; sourceTree = "<group>"; };
@@ -523,8 +523,8 @@
 				5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */,
 				5F7627AB2AEDC08900B91CA9 /* Load+CoreDataClass.swift */,
 				5F7627AC2AEDC08900B91CA9 /* Load+CoreDataProperties.swift */,
-				5FD7BB852B2A2A2800062D32 /* Fuel+CoreDataClass.swift */,
-				5FD7BB862B2A2A2800062D32 /* Fuel+CoreDataProperties.swift */,
+				5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */,
+				5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -1032,7 +1032,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					5F8BE2F028B7F9FA00441353 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -1135,8 +1135,8 @@
 				5F37F3702A51FEE400B8BE48 /* ItemEntryViewModel.swift in Sources */,
 				5F16E3CA2A119AF500BA5DFD /* ToolCell.swift in Sources */,
 				5F39785129CE20C7007C3B65 /* LoadDistanceCell.swift in Sources */,
-				5FD7BB872B2A2A2800062D32 /* Fuel+CoreDataClass.swift in Sources */,
 				5F1185972A11A040006B8F56 /* DriverTypeCell.swift in Sources */,
+				5F795B762B7435420007D50D /* Fuel+CoreDataClass.swift in Sources */,
 				5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */,
 				5F795B732B6B21B90007D50D /* EmptyDashListView.swift in Sources */,
 				5F39788529D481E6007C3B65 /* LocationManager.swift in Sources */,
@@ -1162,7 +1162,7 @@
 				5FA5519C297B1AA800D3596F /* PeriodTypeCell.swift in Sources */,
 				5F39786D29D221A7007C3B65 /* AddActionFooterView.swift in Sources */,
 				5FA551BA2981F6E900D3596F /* DateInterval+Ext.swift in Sources */,
-				5FD7BB882B2A2A2800062D32 /* Fuel+CoreDataProperties.swift in Sources */,
+				5F795B772B7435420007D50D /* Fuel+CoreDataProperties.swift in Sources */,
 				5F7627A82AEACBAB00B91CA9 /* LocationError.swift in Sources */,
 				5FED3CCA2A1BBE8D00103045 /* RecurringExpensesListViewController.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
@@ -1243,6 +1243,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1304,6 +1305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
