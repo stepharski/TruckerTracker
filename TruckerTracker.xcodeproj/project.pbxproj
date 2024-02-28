@@ -83,6 +83,7 @@
 		5F795B732B6B21B90007D50D /* EmptyDashListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B722B6B21B90007D50D /* EmptyDashListView.swift */; };
 		5F795B762B7435420007D50D /* Fuel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */; };
 		5F795B772B7435420007D50D /* Fuel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */; };
+		5F795B792B7F07320007D50D /* IncomeDashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B782B7F07320007D50D /* IncomeDashView.swift */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
 		5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */; };
 		5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F628B7F9FA00441353 /* SceneDelegate.swift */; };
@@ -228,6 +229,7 @@
 		5F795B722B6B21B90007D50D /* EmptyDashListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDashListView.swift; sourceTree = "<group>"; };
 		5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5F795B782B7F07320007D50D /* IncomeDashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDashView.swift; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		5F8BE2F128B7F9FA00441353 /* TruckerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruckerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 			children = (
 				5F16E3B82A0C69B500BA5DFD /* CheckmarkView.swift */,
 				5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */,
+				5F795B782B7F07320007D50D /* IncomeDashView.swift */,
 				5F795B722B6B21B90007D50D /* EmptyDashListView.swift */,
 			);
 			path = Views;
@@ -532,8 +535,8 @@
 		5F790FF5294449F300A73600 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				5F1CAB962A26A6D200B651F1 /* DashboardViewController.swift */,
 				5F1CAB982A26A82000B651F1 /* DashboardViewModel.swift */,
+				5F1CAB962A26A6D200B651F1 /* DashboardViewController.swift */,
 				5FD7BB742B13EEA300062D32 /* Segmented Control Module */,
 				5FD7BB732B13EE8B00062D32 /* Period Module */,
 			);
@@ -1110,6 +1113,7 @@
 				5F1185932A119F31006B8F56 /* DriverNameCell.swift in Sources */,
 				5F7627AE2AEDC08900B91CA9 /* Load+CoreDataProperties.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
+				5F795B792B7F07320007D50D /* IncomeDashView.swift in Sources */,
 				5FA551AF29805BC900D3596F /* Period.swift in Sources */,
 				5F37F3762A52052200B8BE48 /* FuelSummaryViewModel.swift in Sources */,
 				5FD7BB842B29528200062D32 /* Expense+CoreDataProperties.swift in Sources */,

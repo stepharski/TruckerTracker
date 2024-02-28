@@ -10,23 +10,23 @@ import UIKit
 class DashboardViewController: UIViewController {
     
     @IBOutlet private var headerView: UIView!
-    @IBOutlet private var headerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private var incomeAmountLabel: UILabel!
+    @IBOutlet private var incomeView: IncomeDashView!
     @IBOutlet private var segmentedControlView: UIView!
     @IBOutlet private var periodContainerView: UIView!
-    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var headerViewHeightConstraint: NSLayoutConstraint!
     
     private let viewModel = DashboardViewModel()
     private var segmentedControl: TRSegmentedControl!
     private let periodDisplayVC = PeriodDisplayViewController()
-
     
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
         updateHeaderHeight()
+        configureIncomeView()
         configureSegmentedControl()
         addPeriodDisplayVC()
         configureTableView()
@@ -92,10 +92,14 @@ class DashboardViewController: UIViewController {
         headerView.applyGradient(colors: AppColors.headerColors, locations: [0, 1])
     }
     
+    private func configureIncomeView() {
+        incomeView.isTeam = false //TODO: Set from Defaults
+        incomeView.amount = viewModel.totalIncome
+        incomeView.currency = UDManager.shared.currency.symbol
+    }
+    
     private func updateIncomeLabel() {
-        let currency = UDManager.shared.currency.symbol
-        let income = viewModel.totalIncome.formattedWithSeparator()
-        incomeAmountLabel.text = currency + " " + income
+        incomeView.amount = viewModel.totalIncome
     }
 
     

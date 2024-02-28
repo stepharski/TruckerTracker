@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vqz-P0-wp0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vqz-P0-wp0">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -45,12 +45,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AM-ff-xYA">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="230"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niz-iu-8ol">
-                                        <rect key="frame" x="178" y="59" width="37" height="29"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <color key="textColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gr-6G-cFK" customClass="IncomeDashView" customModule="TruckerTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="59" width="393" height="101"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iMQ-O7-d9r">
                                         <rect key="frame" x="0.0" y="160" width="393" height="70"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,10 +60,12 @@
                                 <color key="backgroundColor" red="0.18431372549019609" green="0.59999999999999998" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="iMQ-O7-d9r" secondAttribute="trailing" id="CjP-I4-Nks"/>
+                                    <constraint firstItem="5Gr-6G-cFK" firstAttribute="bottom" secondItem="iMQ-O7-d9r" secondAttribute="top" id="Eio-Kf-hQg"/>
                                     <constraint firstItem="iMQ-O7-d9r" firstAttribute="leading" secondItem="1AM-ff-xYA" secondAttribute="leading" id="YAQ-bu-gde"/>
                                     <constraint firstAttribute="height" constant="230" id="dgh-bk-6X6"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Gr-6G-cFK" secondAttribute="trailing" id="iOU-mz-Fna"/>
                                     <constraint firstAttribute="bottom" secondItem="iMQ-O7-d9r" secondAttribute="bottom" id="jO1-fg-Tr9"/>
-                                    <constraint firstItem="niz-iu-8ol" firstAttribute="centerX" secondItem="1AM-ff-xYA" secondAttribute="centerX" id="wKG-0W-ADa"/>
+                                    <constraint firstItem="5Gr-6G-cFK" firstAttribute="leading" secondItem="1AM-ff-xYA" secondAttribute="leading" id="zCJ-f9-LLO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1y-fh-q2m">
@@ -95,10 +95,10 @@
                             <constraint firstItem="a1y-fh-q2m" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" constant="25" id="R0Q-ss-DCM"/>
                             <constraint firstItem="IYc-pz-ZK7" firstAttribute="centerY" secondItem="Vxb-5P-HUb" secondAttribute="centerY" id="bbX-Jr-crh"/>
                             <constraint firstItem="03N-4G-5yh" firstAttribute="trailing" secondItem="a1y-fh-q2m" secondAttribute="trailing" constant="25" id="ozr-3l-7aO"/>
+                            <constraint firstItem="5Gr-6G-cFK" firstAttribute="top" secondItem="03N-4G-5yh" secondAttribute="top" id="qH2-PP-2Dh"/>
                             <constraint firstItem="1AM-ff-xYA" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" id="tFf-ve-8BN"/>
                             <constraint firstItem="03N-4G-5yh" firstAttribute="trailing" secondItem="1AM-ff-xYA" secondAttribute="trailing" id="vBH-R6-cAq"/>
                             <constraint firstItem="IYc-pz-ZK7" firstAttribute="centerX" secondItem="Vxb-5P-HUb" secondAttribute="centerX" id="vKX-t1-9xd"/>
-                            <constraint firstItem="niz-iu-8ol" firstAttribute="top" secondItem="03N-4G-5yh" secondAttribute="top" id="vLl-TO-sfo"/>
                             <constraint firstItem="a1y-fh-q2m" firstAttribute="top" secondItem="1AM-ff-xYA" secondAttribute="bottom" constant="25" id="xPC-XL-ymO"/>
                             <constraint firstItem="Edw-bi-FtK" firstAttribute="leading" secondItem="03N-4G-5yh" secondAttribute="leading" constant="20" id="zcc-jZ-Yom"/>
                         </constraints>
@@ -107,7 +107,7 @@
                         <outlet property="activityIndicator" destination="IYc-pz-ZK7" id="lO7-I4-A1p"/>
                         <outlet property="headerView" destination="1AM-ff-xYA" id="3ti-D3-8BY"/>
                         <outlet property="headerViewHeightConstraint" destination="dgh-bk-6X6" id="F3z-74-xLj"/>
-                        <outlet property="incomeAmountLabel" destination="niz-iu-8ol" id="OM6-ep-4Eq"/>
+                        <outlet property="incomeView" destination="5Gr-6G-cFK" id="kcv-fm-egE"/>
                         <outlet property="periodContainerView" destination="a1y-fh-q2m" id="EPb-E3-yWK"/>
                         <outlet property="segmentedControlView" destination="iMQ-O7-d9r" id="c1N-cP-6sp"/>
                         <outlet property="tableView" destination="Edw-bi-FtK" id="zJY-Na-LYP"/>
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaZ-Mv-R38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73" y="-480"/>
+            <point key="canvasLocation" x="72.51908396946564" y="-480.28169014084511"/>
         </scene>
         <!--Item Entry View Controller-->
         <scene sceneID="5SX-rQ-ti8">
@@ -411,19 +411,19 @@
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="wrench.adjustable" catalog="system" width="128" height="124"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
