@@ -84,7 +84,7 @@ struct SFSymbols {
     // Driver Settings
     static let personIdCard = UIImage(systemName: "person.text.rectangle")
     static let personTwo = UIImage(systemName: "person.2")
-    static let scissors = UIImage(systemName: "scissors")
+    static let percent = UIImage(systemName: "percent.ar")
     
     // Attachments
     static let docFill = UIImage(systemName: "doc.fill")

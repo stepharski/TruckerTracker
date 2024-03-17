@@ -31,6 +31,12 @@ class DriverSettingsViewController: UIViewController {
         settingsHaveChanges = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("test")
+    }
+    
     // UI
     private func layoutUI() {
         view.addSubviews(tableView, saveButton)

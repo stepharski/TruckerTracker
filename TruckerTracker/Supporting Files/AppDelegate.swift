@@ -18,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UDManager.shared.isFirstLaunch {
             UDManager.shared.isFirstLaunch = false
             UDManager.shared.userSinceDate = .now.local.startOfDay
+            //TODO: Show onBoarding
         }
+        
+        // FIXME: display error if any exist
+        // TODO: communicate forward if fetch was succesfull
+        try? CoreDataManager.shared.fetchAndCacheDriver()
         
         return true
     }

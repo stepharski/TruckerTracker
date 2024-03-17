@@ -27,7 +27,7 @@ class DriverPayRateCell: UITableViewCell {
         }
         didSet {
             slider.value = Float(payRate)
-            percentLabel.text = "\(payRate)%"
+            percentLabel.text = "\(payRate) %"
         }
     }
     

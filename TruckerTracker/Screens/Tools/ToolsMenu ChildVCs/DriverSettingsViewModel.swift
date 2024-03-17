@@ -67,8 +67,8 @@ class DriverTypeSettingVM: DriverSettingsOptionViewModel {
 // Pay rate
 class DriverPayRateSettingVM: DriverSettingsOptionViewModel {
     var type: DriverSettingsType = .payRate
-    var image: UIImage? = SFSymbols.scissors
-    var title: String = "Pay rate"
+    var image: UIImage? = SFSymbols.percent
+    var title: String = "of Total Gross"
     
     // TODO: Fetch/Save in CoreData
     var payRate: Int { return 88 }

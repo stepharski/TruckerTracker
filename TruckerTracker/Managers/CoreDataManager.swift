@@ -12,6 +12,7 @@ import CoreData
 class CoreDataManager {
     
     static let shared = CoreDataManager()
+    private(set) var cachedDriver: Driver?
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TruckerTracker")
@@ -36,11 +37,39 @@ class CoreDataManager {
     
     // Delete
     func delete(_ object: NSManagedObject) throws {
-        //TODO: Consider adding perfrom and wait
         mainContext.delete(object)
         try saveChanges()
     }
+}
+
+
+// MARK: - Driver entity functions
+extension CoreDataManager {
+    // Fetch + Cache
+    func fetchAndCacheDriver() throws {
+        cachedDriver = try fetchExistingDriver() ?? createNewDriver()
+    }
     
+    // Fetch driver
+    private func fetchExistingDriver() throws -> Driver? {
+        let request = Driver.fetchRequest()
+        do { return try mainContext.fetch(request).first }
+        catch { throw error }
+    }
+    
+    // Create driver
+    private func createNewDriver() throws -> Driver {
+        do {
+            let newDriver = Driver(context: mainContext)
+            try mainContext.save()
+            return newDriver
+        } catch { throw error }
+    }
+}
+
+
+// MARK: - Expense, Load, Fuel common functions
+extension CoreDataManager {
     // Common fetch
     private func fetchEntities<T: NSManagedObject>(entityType: T.Type, in period: Period) throws -> [T] {
         let request = T.fetchRequest()
@@ -82,6 +111,7 @@ class CoreDataManager {
     }
 }
 
+
 // MARK: - Expense entity functions
 extension CoreDataManager {
     
@@ -100,6 +130,7 @@ extension CoreDataManager {
         catch { throw error }
     }
 }
+
 
 // MARK: - Load entity functions
 extension CoreDataManager {

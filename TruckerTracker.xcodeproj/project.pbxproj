@@ -34,6 +34,8 @@
 		5F2B801A295AA0900044E004 /* TRSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8019295AA0900044E004 /* TRSegmentedControl.swift */; };
 		5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B8026295F7D080044E004 /* ResetOptionCell.swift */; };
 		5F2B8029295F7D080044E004 /* ResetOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B8027295F7D080044E004 /* ResetOptionCell.xib */; };
+		5F332D2F2BA788F900DB52FB /* Driver+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F332D2D2BA788F900DB52FB /* Driver+CoreDataClass.swift */; };
+		5F332D302BA788F900DB52FB /* Driver+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F332D2E2BA788F900DB52FB /* Driver+CoreDataProperties.swift */; };
 		5F37F3702A51FEE400B8BE48 /* ItemEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F36F2A51FEE400B8BE48 /* ItemEntryViewModel.swift */; };
 		5F37F3722A5204F800B8BE48 /* ExpenseSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F3712A5204F800B8BE48 /* ExpenseSummaryViewModel.swift */; };
 		5F37F3742A52050900B8BE48 /* LoadSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F37F3732A52050900B8BE48 /* LoadSummaryViewModel.swift */; };
@@ -182,6 +184,8 @@
 		5F2B8019295AA0900044E004 /* TRSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRSegmentedControl.swift; sourceTree = "<group>"; };
 		5F2B8026295F7D080044E004 /* ResetOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetOptionCell.swift; sourceTree = "<group>"; };
 		5F2B8027295F7D080044E004 /* ResetOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetOptionCell.xib; sourceTree = "<group>"; };
+		5F332D2D2BA788F900DB52FB /* Driver+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5F332D2E2BA788F900DB52FB /* Driver+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5F37F36F2A51FEE400B8BE48 /* ItemEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntryViewModel.swift; sourceTree = "<group>"; };
 		5F37F3712A5204F800B8BE48 /* ExpenseSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSummaryViewModel.swift; sourceTree = "<group>"; };
 		5F37F3732A52050900B8BE48 /* LoadSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSummaryViewModel.swift; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 		5F76279C2A92A0BB00B91CA9 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				5F332D2D2BA788F900DB52FB /* Driver+CoreDataClass.swift */,
+				5F332D2E2BA788F900DB52FB /* Driver+CoreDataProperties.swift */,
 				5FD7BB812B29528200062D32 /* Expense+CoreDataClass.swift */,
 				5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */,
 				5F795B7C2B9C05E80007D50D /* Load+CoreDataClass.swift */,
@@ -1145,6 +1151,7 @@
 				5F39788029D37F6F007C3B65 /* FuelEntryCell.swift in Sources */,
 				5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
+				5F332D302BA788F900DB52FB /* Driver+CoreDataProperties.swift in Sources */,
 				5F37F3722A5204F800B8BE48 /* ExpenseSummaryViewModel.swift in Sources */,
 				5F39785629CE376B007C3B65 /* ItemNameCell.swift in Sources */,
 				5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */,
@@ -1152,6 +1159,7 @@
 				5F39787B29D3761B007C3B65 /* FuelLocationCell.swift in Sources */,
 				5F1185A82A12F593006B8F56 /* AttachmentsListViewModel.swift in Sources */,
 				5F11859C2A11AAE3006B8F56 /* AppSettingsViewModel.swift in Sources */,
+				5F332D2F2BA788F900DB52FB /* Driver+CoreDataClass.swift in Sources */,
 				5F37F3702A51FEE400B8BE48 /* ItemEntryViewModel.swift in Sources */,
 				5F16E3CA2A119AF500BA5DFD /* ToolCell.swift in Sources */,
 				5F39785129CE20C7007C3B65 /* LoadDistanceCell.swift in Sources */,
