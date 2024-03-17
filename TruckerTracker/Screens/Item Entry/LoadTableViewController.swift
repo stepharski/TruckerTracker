@@ -42,12 +42,13 @@ class LoadTableViewController: UITableViewController {
         tableView.sectionHeaderTopPadding = 0
         
         tableView.register(SectionTitleHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionTitleHeaderView.identifier)
-        tableView.register(AddActionFooterView.self, forHeaderFooterViewReuseIdentifier: AddActionFooterView.identifier)
-        tableView.register(LoadDistanceCell.nib, forCellReuseIdentifier: LoadDistanceCell.identifier)
+        tableView.register(LoadEarningsCell.nib, forCellReuseIdentifier: LoadEarningsCell.identifier)
         tableView.register(ItemDateCell.nib, forCellReuseIdentifier: ItemDateCell.identifier)
+        tableView.register(LoadDistanceCell.nib, forCellReuseIdentifier: LoadDistanceCell.identifier)
         tableView.register(LoadLocationCell.nib, forCellReuseIdentifier: LoadLocationCell.identifier)
         tableView.register(ItemAttachmentCell.nib, forCellReuseIdentifier: ItemAttachmentCell.identifier)
         tableView.register(ItemNoAttachmentCell.nib, forCellReuseIdentifier: ItemNoAttachmentCell.identifier)
+        tableView.register(AddActionFooterView.self, forHeaderFooterViewReuseIdentifier: AddActionFooterView.identifier)
     }
     
     // Binders
@@ -83,14 +84,12 @@ class LoadTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = viewModel.sections[indexPath.section]
         switch section.type {
-        case .tripDistance:
-            let cell = tableView.dequeueReusableCell(withIdentifier: LoadDistanceCell.identifier)
-                                                                        as! LoadDistanceCell
-            cell.configure(for: section)
-            
-            cell.distanceDidChange = { [weak self] tripDistance in
-                self?.viewModel.updateTripDistance(tripDistance)
-            }
+        case .earnings:
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadEarningsCell.identifier)
+                                                                        as! LoadEarningsCell
+            //FIXME: Assign proper amounts
+            cell.percentage = 0
+            cell.amount = 0
             return cell
             
         case .date:
@@ -101,6 +100,16 @@ class LoadTableViewController: UITableViewController {
             
             cell.dateDidChange = { [weak self] newDate in
                 self?.viewModel.updateDate(newDate)
+            }
+            return cell
+            
+        case .tripDistance:
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadDistanceCell.identifier)
+                                                                        as! LoadDistanceCell
+            cell.configure(for: section)
+            
+            cell.distanceDidChange = { [weak self] tripDistance in
+                self?.viewModel.updateTripDistance(tripDistance)
             }
             return cell
             

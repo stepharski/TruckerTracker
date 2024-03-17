@@ -93,7 +93,7 @@ class DashboardViewController: UIViewController {
     }
     
     private func configureIncomeView() {
-        incomeView.isTeam = false //TODO: Set from Defaults
+        incomeView.isTeam = false //FIXME: Set from Defaults
         incomeView.amount = viewModel.totalIncome
         incomeView.currency = UDManager.shared.currency.symbol
     }

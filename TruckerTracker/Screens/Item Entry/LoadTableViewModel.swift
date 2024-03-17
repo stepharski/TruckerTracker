@@ -10,8 +10,9 @@ import CoreData
 
 //MARK: - Type
 enum LoadTableSectionType {
-    case tripDistance
+    case earnings
     case date
+    case tripDistance
     case startLocation
     case endLocation
     case attachments
@@ -41,8 +42,9 @@ class LoadTableViewModel {
     init(_ load: Load?) {
         self.load = load ?? dataManager.createEmptyLoad(with: childContext)
         
-        sections.append(LoadTableTripDistanceSection(Int(self.load.distance)))
+        sections.append(LoadTableEarningsSection(self.load.earningsAmount))
         sections.append(LoadTableDateSection(self.load.date))
+        sections.append(LoadTableTripDistanceSection(Int(self.load.distance)))
         sections.append(LoadTableStartLocationSection(self.load.startLocation))
         sections.append(LoadTableEndLocationSection(self.load.endLocation))
     }
@@ -56,11 +58,10 @@ extension LoadTableViewModel {
     }
     
     // Updates
-    func updateTripDistance(_ distance: Int) {
-        if let tripDistanceSection = sections.first(where: { $0.type == .tripDistance })
-                                                        as? LoadTableTripDistanceSection {
-            self.load.distance = Int64(distance)
-            tripDistanceSection.distance = distance
+    func updateEarningsAmount(_ amount: Double) {
+        if let earningsSection = sections.first(where: {$0.type == .earnings}) as? LoadTableEarningsSection {
+            self.load.earningsAmount = amount
+            earningsSection.earningsAmount = amount
         }
     }
     
@@ -69,6 +70,14 @@ extension LoadTableViewModel {
             self.load.date = date
             dateSection.date = date
             sectionToReload.value = .date
+        }
+    }
+    
+    func updateTripDistance(_ distance: Int) {
+        if let tripDistanceSection = sections.first(where: { $0.type == .tripDistance })
+                                                        as? LoadTableTripDistanceSection {
+            self.load.distance = Int64(distance)
+            tripDistanceSection.distance = distance
         }
     }
     
@@ -117,7 +126,8 @@ extension LoadTableViewModel {
     // Save
     func save(with amount: Double) -> Result<Void, Error> {
         do {
-            load.amount = amount
+            load.grossAmount = amount
+            //TODO: Investigate earnings amount 
             try childContext.save()
             try dataManager.saveChanges()
             return .success(())
@@ -138,6 +148,26 @@ extension LoadTableViewModel {
 }
 
 // MARK: - Sections
+// Earnings
+class LoadTableEarningsSection: LoadTableSection {
+    var type: LoadTableSectionType = .earnings
+    var earningsAmount: Double
+    
+    init(_ earningsAmount: Double) {
+        self.earningsAmount = earningsAmount
+    }
+}
+
+// Date
+class LoadTableDateSection: LoadTableSection {
+    var type: LoadTableSectionType = .date
+    var date: Date
+    
+    init(_ date: Date) {
+        self.date = date
+    }
+}
+
 // Trip miles
 class LoadTableTripDistanceSection: LoadTableSection {
     var type: LoadTableSectionType = .tripDistance
@@ -149,16 +179,6 @@ class LoadTableTripDistanceSection: LoadTableSection {
     
     init(_ distance: Int) {
         self.distance = distance
-    }
-}
-
-// Date
-class LoadTableDateSection: LoadTableSection {
-    var type: LoadTableSectionType = .date
-    var date: Date
-    
-    init(_ date: Date) {
-        self.date = date
     }
 }
 

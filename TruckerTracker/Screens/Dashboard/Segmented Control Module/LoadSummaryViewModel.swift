@@ -19,7 +19,7 @@ struct LoadSummaryViewModel {
         date = model.date.convertToMonthDayFormat()
         
         let currencySymbol = UDManager.shared.currency.symbol
-        amount = "\(currencySymbol)\(model.amount.formattedWithSeparator())"
+        amount = "\(currencySymbol)\(model.grossAmount.formattedWithSeparator())"
         
         let distanceSymbol = UDManager.shared.distanceUnit.abbreviation
         distance = "\(model.distance.formattedWithSeparator()) \(distanceSymbol)"

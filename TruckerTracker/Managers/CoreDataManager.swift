@@ -115,7 +115,7 @@ extension CoreDataManager {
     }
     
     func fetchLoadsSumAmount(in period: Period) throws -> Double {
-        do { return try fetchSumAmountForEntities(type: Load.self, in: period, key: "amount") }
+        do { return try fetchSumAmountForEntities(type: Load.self, in: period, key: "grossAmount") }
         catch { throw error }
     }
 }

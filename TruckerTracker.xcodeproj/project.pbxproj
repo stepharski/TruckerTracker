@@ -76,14 +76,16 @@
 		5F7627A62AAF817400B91CA9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */; };
 		5F7627A82AEACBAB00B91CA9 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A72AEACBAB00B91CA9 /* LocationError.swift */; };
 		5F7627AA2AEACC7D00B91CA9 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A92AEACC7D00B91CA9 /* ValidationError.swift */; };
-		5F7627AD2AEDC08900B91CA9 /* Load+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627AB2AEDC08900B91CA9 /* Load+CoreDataClass.swift */; };
-		5F7627AE2AEDC08900B91CA9 /* Load+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627AC2AEDC08900B91CA9 /* Load+CoreDataProperties.swift */; };
 		5F7627B02B0AF24D00B91CA9 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627AF2B0AF24D00B91CA9 /* OperationError.swift */; };
 		5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F791012294CEC2900A73600 /* FrequencyType.swift */; };
 		5F795B732B6B21B90007D50D /* EmptyDashListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B722B6B21B90007D50D /* EmptyDashListView.swift */; };
 		5F795B762B7435420007D50D /* Fuel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */; };
 		5F795B772B7435420007D50D /* Fuel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */; };
 		5F795B792B7F07320007D50D /* IncomeDashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B782B7F07320007D50D /* IncomeDashView.swift */; };
+		5F795B7E2B9C05E80007D50D /* Load+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B7C2B9C05E80007D50D /* Load+CoreDataClass.swift */; };
+		5F795B7F2B9C05E80007D50D /* Load+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B7D2B9C05E80007D50D /* Load+CoreDataProperties.swift */; };
+		5F795B832B9C19900007D50D /* LoadEarningsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F795B812B9C19900007D50D /* LoadEarningsCell.swift */; };
+		5F795B842B9C19900007D50D /* LoadEarningsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F795B822B9C19900007D50D /* LoadEarningsCell.xib */; };
 		5F7B12C028E6448800AA4B6F /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */; };
 		5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */; };
 		5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BE2F628B7F9FA00441353 /* SceneDelegate.swift */; };
@@ -222,14 +224,16 @@
 		5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5F7627A72AEACBAB00B91CA9 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		5F7627A92AEACC7D00B91CA9 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
-		5F7627AB2AEDC08900B91CA9 /* Load+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5F7627AC2AEDC08900B91CA9 /* Load+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5F7627AF2B0AF24D00B91CA9 /* OperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationError.swift; sourceTree = "<group>"; };
 		5F791012294CEC2900A73600 /* FrequencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyType.swift; sourceTree = "<group>"; };
 		5F795B722B6B21B90007D50D /* EmptyDashListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDashListView.swift; sourceTree = "<group>"; };
 		5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fuel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5F795B782B7F07320007D50D /* IncomeDashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDashView.swift; sourceTree = "<group>"; };
+		5F795B7C2B9C05E80007D50D /* Load+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5F795B7D2B9C05E80007D50D /* Load+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5F795B812B9C19900007D50D /* LoadEarningsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadEarningsCell.swift; sourceTree = "<group>"; };
+		5F795B822B9C19900007D50D /* LoadEarningsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadEarningsCell.xib; sourceTree = "<group>"; };
 		5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		5F8BE2F128B7F9FA00441353 /* TruckerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruckerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8BE2F428B7F9FA00441353 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -524,8 +528,8 @@
 			children = (
 				5FD7BB812B29528200062D32 /* Expense+CoreDataClass.swift */,
 				5FD7BB822B29528200062D32 /* Expense+CoreDataProperties.swift */,
-				5F7627AB2AEDC08900B91CA9 /* Load+CoreDataClass.swift */,
-				5F7627AC2AEDC08900B91CA9 /* Load+CoreDataProperties.swift */,
+				5F795B7C2B9C05E80007D50D /* Load+CoreDataClass.swift */,
+				5F795B7D2B9C05E80007D50D /* Load+CoreDataProperties.swift */,
 				5F795B742B7435420007D50D /* Fuel+CoreDataClass.swift */,
 				5F795B752B7435420007D50D /* Fuel+CoreDataProperties.swift */,
 			);
@@ -560,6 +564,15 @@
 				5F1185A52A12E7BF006B8F56 /* SortFilterButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		5F795B802B9C19380007D50D /* LoadEarningsCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F795B812B9C19900007D50D /* LoadEarningsCell.swift */,
+				5F795B822B9C19900007D50D /* LoadEarningsCell.xib */,
+			);
+			path = LoadEarningsCell;
 			sourceTree = "<group>";
 		};
 		5F7B12B928E63EE200AA4B6F /* Cells */ = {
@@ -954,6 +967,7 @@
 				5F39786129CE80DF007C3B65 /* NoteCell */,
 				5F39785C29CE6F2D007C3B65 /* FrequencyCell */,
 				5F39784E29CE20AD007C3B65 /* DistanceCell */,
+				5F795B802B9C19380007D50D /* LoadEarningsCell */,
 				5F39782729BBC532007C3B65 /* TripLocationCell */,
 				5F39787829D375F4007C3B65 /* FuelLocationCell */,
 				5F39787D29D37F11007C3B65 /* FuelEntryCell */,
@@ -1065,6 +1079,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F795B842B9C19900007D50D /* LoadEarningsCell.xib in Resources */,
 				5F39788129D37F6F007C3B65 /* FuelEntryCell.xib in Resources */,
 				5F2B8029295F7D080044E004 /* ResetOptionCell.xib in Resources */,
 				5F1185942A119F31006B8F56 /* DriverNameCell.xib in Resources */,
@@ -1111,13 +1126,13 @@
 				5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */,
 				5F1CAB992A26A82000B651F1 /* DashboardViewModel.swift in Sources */,
 				5F1185932A119F31006B8F56 /* DriverNameCell.swift in Sources */,
-				5F7627AE2AEDC08900B91CA9 /* Load+CoreDataProperties.swift in Sources */,
 				5FB92F3A28BD7CCB0037A4AD /* UIView+Ext.swift in Sources */,
 				5F795B792B7F07320007D50D /* IncomeDashView.swift in Sources */,
 				5FA551AF29805BC900D3596F /* Period.swift in Sources */,
 				5F37F3762A52052200B8BE48 /* FuelSummaryViewModel.swift in Sources */,
 				5FD7BB842B29528200062D32 /* Expense+CoreDataProperties.swift in Sources */,
 				5F8BE2F528B7F9FA00441353 /* AppDelegate.swift in Sources */,
+				5F795B7F2B9C05E80007D50D /* Load+CoreDataProperties.swift in Sources */,
 				5F37F3782A522C5B00B8BE48 /* ItemModelType.swift in Sources */,
 				5FB723B729FDBD41003E6778 /* Array+Ext.swift in Sources */,
 				5FED3CD32A1C39EC00103045 /* SortOptionsViewController.swift in Sources */,
@@ -1126,6 +1141,7 @@
 				5FB723C22A008122003E6778 /* Notification+Ext.swift in Sources */,
 				5F39786729CE9EE4007C3B65 /* FuelTableViewModel.swift in Sources */,
 				5F1CAB972A26A6D200B651F1 /* DashboardViewController.swift in Sources */,
+				5F795B7E2B9C05E80007D50D /* Load+CoreDataClass.swift in Sources */,
 				5F39788029D37F6F007C3B65 /* FuelEntryCell.swift in Sources */,
 				5F2B8015295A14D50044E004 /* UIViewController+Ext.swift in Sources */,
 				5F8BE2F728B7F9FA00441353 /* SceneDelegate.swift in Sources */,
@@ -1171,7 +1187,6 @@
 				5FED3CCA2A1BBE8D00103045 /* RecurringExpensesListViewController.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
 				5F16E3A52A02B91C00BA5DFD /* DriverSettingsViewController.swift in Sources */,
-				5F7627AD2AEDC08900B91CA9 /* Load+CoreDataClass.swift in Sources */,
 				5F11859F2A12801D006B8F56 /* AttachmentsListViewController.swift in Sources */,
 				5F39785929CE3A43007C3B65 /* ContactTextField.swift in Sources */,
 				5FB723D02A017C30003E6778 /* AlertViewController.swift in Sources */,
@@ -1194,6 +1209,7 @@
 				5FED3CEB2A2591D000103045 /* MessageTextView.swift in Sources */,
 				5F791013294CEC2900A73600 /* FrequencyType.swift in Sources */,
 				5F16E3B92A0C69B500BA5DFD /* CheckmarkView.swift in Sources */,
+				5F795B832B9C19900007D50D /* LoadEarningsCell.swift in Sources */,
 				5FB723CC2A017B06003E6778 /* OptionPickerViewController.swift in Sources */,
 				5F39786B29D2215F007C3B65 /* SectionTitleHeaderView.swift in Sources */,
 				5FDF97DE29F7241E00DCD038 /* SettingOptionPickerCell.swift in Sources */,

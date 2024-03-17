@@ -51,7 +51,7 @@ class ItemEntryViewModel {
             selectSegment(ItemType.expense.index)
             expenseTableViewModel = ExpenseTableViewModel(expense)
         case .load(let load):
-            amount = load.amount
+            amount = load.grossAmount
             itemDate = load.date
             initialItemType = .load
             selectSegment(ItemType.load.index)
