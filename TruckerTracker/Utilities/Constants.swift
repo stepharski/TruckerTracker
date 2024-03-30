@@ -7,17 +7,24 @@
 
 import UIKit
 
-struct Constants {
+// MARK: Constants
+enum Constants {
     static let minimumDaysInFirstWeek: Int = 4
 }
 
-struct AppColors {
+// MARK: AppColors
+enum AppColors {
+    // FIXME: Change to HEX
     static let textColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
     static let headerColors = [#colorLiteral(red: 0.1843137255, green: 0.6, blue: 0.4274509804, alpha: 1), #colorLiteral(red: 0.1098039216, green: 0.1568627451, blue: 0.1411764706, alpha: 1)]
     static let negativeIncomeColors = [#colorLiteral(red: 0.7450980392, green: 0.1333333333, blue: 0.07843137255, alpha: 1), #colorLiteral(red: 0.2549019608, green: 0.0431372549, blue: 0.02352941176, alpha: 1)]
 }
 
-struct StoryboardIdentifiers {
+// MARK: StoryboardIdentifiers
+enum StoryboardIdentifiers {
+    static let mainStoryboard = "Main"
+    static let onBoardingStoryboard = "OnBoarding"
+    static let onBoardingController = "OnBoardingViewController"
     static let tabBarController = "TRTabBarController"
     static let dashboardViewController = "DashboardViewController"
     static let itemEntryViewController = "ItemEntryViewController"
@@ -25,8 +32,8 @@ struct StoryboardIdentifiers {
     static let toolMenuViewController = "ToolMenuViewController"
 }
 
-struct SFSymbols {
-    
+// MARK: SFSymbols
+enum SFSymbols {
     // Navigation
     static let xmark = UIImage(systemName: "xmark")
     static let arrowBack = UIImage(systemName: "chevron.backward")
@@ -104,16 +111,16 @@ struct SFSymbols {
     static let macPro = UIImage(systemName: "macpro.gen1")
 }
 
-
-struct ScreenSize {
+// MARK: ScreenSize
+enum ScreenSize {
     static let width        = UIScreen.main.bounds.size.width
     static let height       = UIScreen.main.bounds.size.height
     static let maxLength    = max(ScreenSize.width, ScreenSize.height)
     static let minLength    = min(ScreenSize.width, ScreenSize.height)
 }
 
-
-struct DeviceTypes {
+// MARK: DeviceTypes
+enum DeviceTypes {
     static let idiom                    = UIDevice.current.userInterfaceIdiom
     static let nativeScale              = UIScreen.main.nativeScale
     static let scale                    = UIScreen.main.scale

@@ -8,21 +8,13 @@
 import UIKit
 import CoreData
 
+// MARK: - AppDelegate
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        if UDManager.shared.isFirstLaunch {
-            UDManager.shared.isFirstLaunch = false
-            UDManager.shared.userSinceDate = .now.local.startOfDay
-            //TODO: Show onBoarding
-        }
-        
-        // FIXME: display error if any exist
-        // TODO: communicate forward if fetch was succesfull
-        try? CoreDataManager.shared.fetchAndCacheDriver()
-        
+    // MARK: didFinishLaunchingWithOptions
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }
 
