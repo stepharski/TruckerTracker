@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,6 +63,14 @@
                                     <constraint firstItem="x6h-RN-6YP" firstAttribute="centerY" secondItem="t4c-cu-a6g" secondAttribute="centerY" constant="-15" id="Xxv-Sm-bgH"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbk-4S-Gwl" customClass="PageProgressView" customModule="TruckerTracker" customModuleProvider="target">
+                                <rect key="frame" x="15" y="764" width="100" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Y82-a6-Mr7"/>
+                                    <constraint firstAttribute="width" constant="100" id="vad-tY-69T"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.1843137255" green="0.59999999999999998" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -71,10 +80,12 @@
                             <constraint firstItem="t4c-cu-a6g" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.55" id="Baf-zo-xdm"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4uv-uF-BE3" secondAttribute="trailing" id="Btu-h4-WsV"/>
                             <constraint firstAttribute="bottom" secondItem="t4c-cu-a6g" secondAttribute="bottom" constant="-25" id="EUE-Fk-FY1"/>
+                            <constraint firstItem="Cbk-4S-Gwl" firstAttribute="centerY" secondItem="t4c-cu-a6g" secondAttribute="centerY" id="GwZ-w2-7hJ"/>
                             <constraint firstItem="HBQ-L6-pyp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="HcB-31-d9F"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="HBQ-L6-pyp" secondAttribute="top" id="Nid-CM-6gF"/>
                             <constraint firstItem="t4c-cu-a6g" firstAttribute="top" secondItem="4uv-uF-BE3" secondAttribute="bottom" id="Qxy-Lc-423"/>
                             <constraint firstItem="4uv-uF-BE3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="m8l-ix-i7A"/>
+                            <constraint firstItem="Cbk-4S-Gwl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="wQl-3b-A7T"/>
                         </constraints>
                     </view>
                     <connections>
@@ -84,6 +95,7 @@
                         <outlet property="nextButtonTitleLabel" destination="x6h-RN-6YP" id="Mba-KF-B1l"/>
                         <outlet property="nextButtonTrailingConstraint" destination="8Bh-5F-LRf" id="yN3-XC-DYT"/>
                         <outlet property="nextButtonView" destination="t4c-cu-a6g" id="4DB-yQ-iFm"/>
+                        <outlet property="pageProgressView" destination="Cbk-4S-Gwl" id="3i0-5k-ffk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -93,5 +105,8 @@
     </scenes>
     <resources>
         <image name="chevron.compact.left" catalog="system" width="62" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

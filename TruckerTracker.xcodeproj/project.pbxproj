@@ -75,6 +75,9 @@
 		5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */; };
 		5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */; };
 		5F6FAAA62BCF5F2400792F80 /* OnBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6FAAA52BCF5F2400792F80 /* OnBoardingSlide.swift */; };
+		5F6FAAA82BD007B800792F80 /* PageProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6FAAA72BD007B800792F80 /* PageProgressView.swift */; };
+		5F6FAAAA2BD0082B00792F80 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6FAAA92BD0082A00792F80 /* UIColor+Extension.swift */; };
+		5F6FAAAC2BD0085D00792F80 /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6FAAAB2BD0085D00792F80 /* UIColor+ColorScheme.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F7627A62AAF817400B91CA9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */; };
 		5F7627A82AEACBAB00B91CA9 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A72AEACBAB00B91CA9 /* LocationError.swift */; };
@@ -235,6 +238,9 @@
 		5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		5F6FAAA52BCF5F2400792F80 /* OnBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSlide.swift; sourceTree = "<group>"; };
+		5F6FAAA72BD007B800792F80 /* PageProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProgressView.swift; sourceTree = "<group>"; };
+		5F6FAAA92BD0082A00792F80 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		5F6FAAAB2BD0085D00792F80 /* UIColor+ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorScheme.swift"; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5F7627A72AEACBAB00B91CA9 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
@@ -542,6 +548,7 @@
 				5F16E3B82A0C69B500BA5DFD /* CheckmarkView.swift */,
 				5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */,
 				5F795B782B7F07320007D50D /* IncomeDashView.swift */,
+				5F6FAAA72BD007B800792F80 /* PageProgressView.swift */,
 				5F795B722B6B21B90007D50D /* EmptyDashListView.swift */,
 			);
 			path = Views;
@@ -766,6 +773,8 @@
 				5F7B12BF28E6448800AA4B6F /* UITableViewCell+Ext.swift */,
 				5F2B8014295A14D50044E004 /* UIViewController+Ext.swift */,
 				5F97FD6C292210AA00DEEC20 /* UICollectionReusableView+Ext.swift */,
+				5F6FAAA92BD0082A00792F80 /* UIColor+Extension.swift */,
+				5F6FAAAB2BD0085D00792F80 /* UIColor+ColorScheme.swift */,
 			);
 			path = "UI+Ext";
 			sourceTree = "<group>";
@@ -1203,6 +1212,7 @@
 				5FB92F2828B91FF20037A4AD /* TRTabBarController.swift in Sources */,
 				5F97B6AA2952CEC6004C5D2A /* DriverPayRateCell.swift in Sources */,
 				5FEC7BB729B7D1980091F8FB /* ItemEntryViewController.swift in Sources */,
+				5F6FAAAC2BD0085D00792F80 /* UIColor+ColorScheme.swift in Sources */,
 				5F2B8028295F7D080044E004 /* ResetOptionCell.swift in Sources */,
 				5F1CAB992A26A82000B651F1 /* DashboardViewModel.swift in Sources */,
 				5F1185932A119F31006B8F56 /* DriverNameCell.swift in Sources */,
@@ -1233,6 +1243,7 @@
 				5FA551FD29A164D400D3596F /* Numeric+Ext.swift in Sources */,
 				5F39784129CC8C5C007C3B65 /* FuelTableViewController.swift in Sources */,
 				5F39787B29D3761B007C3B65 /* FuelLocationCell.swift in Sources */,
+				5F6FAAA82BD007B800792F80 /* PageProgressView.swift in Sources */,
 				5F1185A82A12F593006B8F56 /* AttachmentsListViewModel.swift in Sources */,
 				5F11859C2A11AAE3006B8F56 /* AppSettingsViewModel.swift in Sources */,
 				5F332D2F2BA788F900DB52FB /* Driver+CoreDataClass.swift in Sources */,
@@ -1282,6 +1293,7 @@
 				5F37F37C2A54B5C900B8BE48 /* Observable.swift in Sources */,
 				5FED3CE42A256BFA00103045 /* ActionButton.swift in Sources */,
 				5FED3CDF2A1F002700103045 /* FilterOptionCell.swift in Sources */,
+				5F6FAAAA2BD0082B00792F80 /* UIColor+Extension.swift in Sources */,
 				5FB723CA2A0179DC003E6778 /* PeriodSelectorViewController.swift in Sources */,
 				5F39783B29CB827C007C3B65 /* LoadTableViewController.swift in Sources */,
 				5F8BE2FF28B7F9FA00441353 /* TruckerTracker.xcdatamodeld in Sources */,

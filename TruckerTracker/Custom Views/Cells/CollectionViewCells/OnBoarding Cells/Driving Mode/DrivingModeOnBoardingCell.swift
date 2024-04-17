@@ -35,16 +35,16 @@ class DrivingModeOnBoardingCell: UICollectionViewCell {
         [soloView, teamView].forEach { button in
             guard let button else { return }
             button.layer.borderWidth = 2
-            button.layer.borderColor = #colorLiteral(red: 0.9254901961, green: 1, blue: 0.9215686275, alpha: 1)
+            button.layer.borderColor = UIColor.paleMint.cgColor
             button.layer.cornerRadius = button.bounds.height / 2
         }
     }
 
     private func updateUI() {
-        soloLabel.textColor = isTeam ? #colorLiteral(red: 0.9254901961, green: 1, blue: 0.9215686275, alpha: 1) : .black
-        teamLabel.textColor = isTeam ? .black : #colorLiteral(red: 0.9254901961, green: 1, blue: 0.9215686275, alpha: 1)
-        soloView.backgroundColor = isTeam ? .clear : #colorLiteral(red: 0.9254901961, green: 1, blue: 0.9215686275, alpha: 1)
-        teamView.backgroundColor = isTeam ? #colorLiteral(red: 0.9254901961, green: 1, blue: 0.9215686275, alpha: 1) : .clear
+        soloLabel.textColor = isTeam ? .paleMint : .black
+        teamLabel.textColor = isTeam ? .black : .paleMint
+        soloView.backgroundColor = isTeam ? .clear : .paleMint
+        teamView.backgroundColor = isTeam ? .paleMint : .clear
     }
 
     // MARK: Gestures

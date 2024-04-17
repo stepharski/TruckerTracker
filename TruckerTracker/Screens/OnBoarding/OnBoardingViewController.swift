@@ -16,6 +16,7 @@ final class OnBoardingViewController: UIViewController {
     @IBOutlet private var nextButtonTitleLabel: UILabel!
     @IBOutlet private var nextButtonTrailingConstraint: NSLayoutConstraint!
     @IBOutlet private var nextButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private var pageProgressView: PageProgressView!
 
     // MARK: Variables
     private var viewModel = OnBoardingViewModel()
@@ -80,11 +81,13 @@ final class OnBoardingViewController: UIViewController {
             print("Save user")
             return
         }
+        pageProgressView.currentPage += 1
         slide = OnBoardingSlide.allCases[slide.rawValue + 1]
     }
 
     @objc private func moveToPreviousScreen() {
         guard slide.rawValue > 0 else { return }
+        pageProgressView.currentPage -= 1
         slide = OnBoardingSlide.allCases[slide.rawValue - 1]
     }
 
@@ -121,7 +124,7 @@ extension OnBoardingViewController: UICollectionViewDataSource {
             cell.didSelectTeamMode = { [weak self] isTeam in
                 guard let self else { return }
                 // TODO: Update VM
-                print("isTeam = \(isTeam)")
+                print(self)
             }
             return cell
         case .earnings:
