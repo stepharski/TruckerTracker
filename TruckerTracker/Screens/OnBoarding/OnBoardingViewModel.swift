@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+// MARK: - OnBoardingViewModel
+class OnBoardingViewModel {
+    // MARK: Variables
+    private let dataManager = CoreDataManager.shared
+}

@@ -74,6 +74,7 @@
 		5F39788529D481E6007C3B65 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788429D481E6007C3B65 /* LocationManager.swift */; };
 		5F39788729D4BD84007C3B65 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */; };
 		5F39788A29D4BEDB007C3B65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */; };
+		5F6FAAA62BCF5F2400792F80 /* OnBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6FAAA52BCF5F2400792F80 /* OnBoardingSlide.swift */; };
 		5F71DC8529578138003111AF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71DC8429578138003111AF /* Date+Ext.swift */; };
 		5F7627A62AAF817400B91CA9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */; };
 		5F7627A82AEACBAB00B91CA9 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627A72AEACBAB00B91CA9 /* LocationError.swift */; };
@@ -233,6 +234,7 @@
 		5F39788429D481E6007C3B65 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5F39788629D4BD84007C3B65 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		5F39788929D4BEDB007C3B65 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		5F6FAAA52BCF5F2400792F80 /* OnBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSlide.swift; sourceTree = "<group>"; };
 		5F71DC8429578138003111AF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5F7627A52AAF817400B91CA9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5F7627A72AEACBAB00B91CA9 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
@@ -863,8 +865,8 @@
 		5FB92F3128B921FD0037A4AD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				5FF2DDFE2BB28FF700F14938 /* OnBoarding */,
 				5FA55192297AE36D00D3596F /* General */,
+				5FF2DDFE2BB28FF700F14938 /* OnBoarding */,
 				5FA551C02982B19400D3596F /* TabBar */,
 				5F790FF5294449F300A73600 /* Dashboard */,
 				5F28CF8329A1A0A80068C425 /* Item Entry */,
@@ -951,6 +953,7 @@
 			isa = PBXGroup;
 			children = (
 				5FA551B029805C6500D3596F /* PeriodType.swift */,
+				5F6FAAA52BCF5F2400792F80 /* OnBoardingSlide.swift */,
 				5F16E3AD2A02CCF600BA5DFD /* Item */,
 				5F16E3AC2A02CCB900BA5DFD /* Tools */,
 			);
@@ -1267,6 +1270,7 @@
 				5F795B772B7435420007D50D /* Fuel+CoreDataProperties.swift in Sources */,
 				5F7627A82AEACBAB00B91CA9 /* LocationError.swift in Sources */,
 				5FED3CCA2A1BBE8D00103045 /* RecurringExpensesListViewController.swift in Sources */,
+				5F6FAAA62BCF5F2400792F80 /* OnBoardingSlide.swift in Sources */,
 				5FA551D2299596A300D3596F /* ItemType.swift in Sources */,
 				5F16E3A52A02B91C00BA5DFD /* DriverSettingsViewController.swift in Sources */,
 				5F11859F2A12801D006B8F56 /* AttachmentsListViewController.swift in Sources */,
