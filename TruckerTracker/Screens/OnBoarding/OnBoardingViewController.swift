@@ -46,7 +46,7 @@ final class OnBoardingViewController: UIViewController {
     }
 
     private func updateUI() {
-        //TODO: Update page indicator
+        pageProgressView.currentPage = slide.rawValue
         nextButtonTitleLabel.text = slide.buttonTitle
         backButtonView.isHidden = slide.rawValue == 0
         collectionView.reloadData()
@@ -77,25 +77,15 @@ final class OnBoardingViewController: UIViewController {
 
     @objc private func moveToNextScreen() {
         guard OnBoardingSlide.allCases.count - 1 > slide.rawValue else {
-            // TODO: Save user
-            print("Save user")
+            viewModel.saveNewUser()
             return
         }
-        pageProgressView.currentPage += 1
         slide = OnBoardingSlide.allCases[slide.rawValue + 1]
     }
 
     @objc private func moveToPreviousScreen() {
         guard slide.rawValue > 0 else { return }
-        pageProgressView.currentPage -= 1
         slide = OnBoardingSlide.allCases[slide.rawValue - 1]
-    }
-
-    // MARK: UserDefaults
-    private func setupCompletion() {
-        // After last screen
-        UDManager.shared.isFirstLaunch = false
-        UDManager.shared.userSinceDate = .now.local.startOfDay
     }
 }
 
@@ -123,14 +113,20 @@ extension OnBoardingViewController: UICollectionViewDataSource {
 
             cell.didSelectTeamMode = { [weak self] isTeam in
                 guard let self else { return }
-                // TODO: Update VM
-                print(self)
+                viewModel.isTeam = isTeam
             }
             return cell
         case .earnings:
-            return collectionView.dequeueReusableCell(
+            let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: EarningsOnBoardingCell.identifier,
                 for: indexPath) as! EarningsOnBoardingCell
+
+            cell.earningsPercent = 88
+            cell.didChangeEarningsPercent = { [weak self] percent in
+                guard let self else { return }
+                viewModel.earningPercent = percent
+            }
+            return cell
         }
     }
 }

@@ -37,26 +37,46 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkc-Hc-oVO">
-                        <rect key="frame" x="141.66666666666666" y="337" width="67" height="36"/>
+                        <rect key="frame" x="141.66666666666666" y="352" width="67" height="36"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                         <color key="textColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8BP-fl-DXe" customClass="TRSlider" customModule="TruckerTracker" customModuleProvider="target">
+                        <rect key="frame" x="23" y="418" width="304" height="31"/>
+                        <color key="tintColor" red="0.20784313725490194" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="maximumTrackTintColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="sliderValueChanged:" destination="gTV-IL-0wX" eventType="valueChanged" id="a8h-ui-fnU"/>
+                        </connections>
+                    </slider>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" red="0.1529411765" green="0.3921568627" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="1KT-pc-7I2" firstAttribute="top" secondItem="4b3-ns-LPu" secondAttribute="bottom" id="3te-n7-KMw"/>
+                <constraint firstAttribute="trailing" secondItem="8BP-fl-DXe" secondAttribute="trailing" constant="25" id="Ew0-lz-xWg"/>
                 <constraint firstItem="XLm-if-e46" firstAttribute="top" secondItem="1KT-pc-7I2" secondAttribute="bottom" constant="10" id="InW-rw-7Qc"/>
+                <constraint firstItem="8BP-fl-DXe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="25" id="OdR-RP-bMK"/>
                 <constraint firstItem="vkc-Hc-oVO" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Yql-T2-iBF"/>
                 <constraint firstItem="1KT-pc-7I2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="bes-CC-oPb"/>
-                <constraint firstItem="vkc-Hc-oVO" firstAttribute="top" secondItem="XLm-if-e46" secondAttribute="bottom" constant="20" id="dQI-wL-1cr"/>
+                <constraint firstItem="vkc-Hc-oVO" firstAttribute="top" secondItem="XLm-if-e46" secondAttribute="bottom" constant="35" id="dQI-wL-1cr"/>
                 <constraint firstAttribute="trailing" secondItem="XLm-if-e46" secondAttribute="trailing" constant="10" id="hi0-tF-X7Q"/>
+                <constraint firstItem="8BP-fl-DXe" firstAttribute="top" secondItem="vkc-Hc-oVO" secondAttribute="bottom" constant="30" id="oON-qG-Z2A"/>
                 <constraint firstItem="4b3-ns-LPu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="25" id="tm0-jW-bDN"/>
                 <constraint firstItem="XLm-if-e46" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="twL-YC-mce"/>
                 <constraint firstItem="4b3-ns-LPu" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="-5" id="zYd-Wh-s7I"/>
             </constraints>
+            <connections>
+                <outlet property="percentLabel" destination="vkc-Hc-oVO" id="YyG-vN-mSF"/>
+                <outlet property="slider" destination="8BP-fl-DXe" id="38L-hi-e22"/>
+            </connections>
             <point key="canvasLocation" x="56.488549618320612" y="20.422535211267608"/>
         </collectionViewCell>
     </objects>
